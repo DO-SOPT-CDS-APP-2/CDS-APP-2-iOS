@@ -9,7 +9,7 @@ import UIKit
 
 extension UIColor {
     static var point: UIColor {
-        return UIColor(hex: "##FE4902")
+        return UIColor(hex: "#FE4902")
     }
     static var white: UIColor {
         return UIColor(hex: "#FFFFFF")
