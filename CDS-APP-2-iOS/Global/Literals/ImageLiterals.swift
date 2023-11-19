@@ -10,6 +10,7 @@ import UIKit
 enum ImageLiterals {
     enum img {
         static var imgHatsize: UIImage { .load(named: "img_hatsize")}
+        static var imgLogo: UIImage { .load(named: "img_logo")}
     }
     
     enum icon {
