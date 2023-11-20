@@ -123,8 +123,9 @@ extension CategoryViewController: UITableViewDelegate, UITableViewDataSource {
         } else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: CategoryDetailTableViewCell.className, for: indexPath) as? CategoryDetailTableViewCell else { return UITableViewCell() }
             let categoryDetailList = categoryDetailListDummy[indexPath.row]
-            cell.configureCell(category: categoryDetailList)
+            cell.configureCell(category: categoryDetailList, index: indexPath.row)
             cell.selectionStyle = .none
+            cell.cellDelegate = self
             return cell
         }
         
@@ -132,9 +133,16 @@ extension CategoryViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if tableView == contentView.categoryTableView {
-            return 56.adjustedHeight
+            return 56.adjusted
         } else {
-            return 46.adjustedHeight
+            return 46.adjusted
         }
+    }
+}
+
+extension CategoryViewController: HatButtonAction {
+    func hatButtonClicked() {
+        let viewController = ViewController()
+        self.navigationController?.pushViewController(viewController, animated: false)
     }
 }
