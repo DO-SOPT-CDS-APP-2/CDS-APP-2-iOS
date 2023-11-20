@@ -13,7 +13,7 @@ import Then
 final class CategoryTableViewCell: UITableViewCell {
 
     private let categoryList = UILabel()
-    
+        
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 
@@ -29,26 +29,32 @@ final class CategoryTableViewCell: UITableViewCell {
     
     
     private func setUI() {
-        self.backgroundColor = .background
-        
         categoryList.do {
             $0.textColor = .black
             $0.font = .krRegular(ofSize: 14.adjusted)
         }
+        
     }
     
     private func setHierachy() {
-        self.addSubview(categoryList)
+        contentView.addSubview(categoryList)
     }
     
     private func setLayout() {
         categoryList.snp.makeConstraints {
-            $0.centerY.equalToSuperview()
             $0.leading.equalToSuperview().inset(21.adjusted)
+            $0.centerY.equalToSuperview()
         }
     }
-    func configureCell(category: CategoryList) {
+    
+    func configureCell(category: CategoryList, index: Int) {
         categoryList.text = category.label
+        if index == 3 {
+            self.backgroundColor = .white
+            categoryList.font = .krBold(ofSize: 14.adjusted)
+        } else {
+            self.backgroundColor = .background
+        }
     }
 
 }

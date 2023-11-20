@@ -117,7 +117,7 @@ extension CategoryViewController: UITableViewDelegate, UITableViewDataSource {
         if tableView == contentView.categoryTableView {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: CategoryTableViewCell.className, for: indexPath) as? CategoryTableViewCell else { return UITableViewCell() }
             let categoryList = categoryListDummy[indexPath.row]
-            cell.configureCell(category: categoryList)
+            cell.configureCell(category: categoryList, index: indexPath.row)
             cell.selectionStyle = .none
             return cell
         } else {
