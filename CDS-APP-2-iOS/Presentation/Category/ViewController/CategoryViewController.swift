@@ -27,7 +27,6 @@ final class CategoryViewController: UIViewController {
         setLayout()
         setDelegate()
         setRegister()
-        setAddTarget()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -39,6 +38,12 @@ final class CategoryViewController: UIViewController {
     
     private func setUI() {
         self.view.backgroundColor = .white
+        
+        // header의 top padding을 없애줌
+        if #available(iOS 15, *) {
+            contentView.categoryTableView.sectionHeaderTopPadding = 0
+            contentView.categoryDetailTableView.sectionHeaderTopPadding = 0
+        }
     }
     
     private func setHierachy() {
@@ -81,10 +86,6 @@ final class CategoryViewController: UIViewController {
         headerView.horizontalCollectionView.register(CategoryHorizontalCollectionViewCell.self, forCellWithReuseIdentifier: CategoryHorizontalCollectionViewCell.className)
         contentView.categoryTableView.register(CategoryTableViewCell.self, forCellReuseIdentifier: CategoryTableViewCell.className)
         contentView.categoryDetailTableView.register(CategoryDetailTableViewCell.self, forCellReuseIdentifier: CategoryDetailTableViewCell.className)
-        
-    }
-    
-    private func setAddTarget() {
         
     }
    
@@ -136,6 +137,23 @@ extension CategoryViewController: UITableViewDelegate, UITableViewDataSource {
             return 56.adjusted
         } else {
             return 46.adjusted
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if tableView == contentView.categoryTableView {
+            return nil
+        } else {
+            let headerView = CategoryTableHeaderView()
+            return headerView
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if tableView == contentView.categoryTableView {
+            return 0
+        } else {
+            return 178.adjusted
         }
     }
 }

@@ -12,5 +12,10 @@ enum StringLiterals {
         enum header {
             static let searchBarPlaceHolder = "당일 출고 단독 아이템 컬렉션"
         }
+        
+        enum tableViewHeader {
+            static let women = "WOMEN"
+            static let men = "MEN"
+        }
     }
 }

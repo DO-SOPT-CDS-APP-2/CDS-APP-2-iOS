@@ -77,8 +77,11 @@ final class CategoryDetailTableViewCell: UITableViewCell {
     
     func configureCell(category: CategoryDetailList, index: Int) {
         detailCategoryList.text = category.label
-        if index == 1 || index == 2 || index == 3 {
+        // 영어일 때로 추후 변경
+        if index == 1 || index == 2 || index == 3 || index == 17 {
             detailCategoryList.font = .enDisplayBold(ofSize: 10.adjusted)
+        } else {
+            detailCategoryList.font = .krSemiBold(ofSize: 12.adjusted)
         }
         
         // "모자" Cell이 클릭되었을 경우에만 push
