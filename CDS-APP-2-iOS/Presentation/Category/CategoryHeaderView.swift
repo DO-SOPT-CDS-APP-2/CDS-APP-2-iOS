@@ -79,7 +79,7 @@ final class CategoryView: UIView {
         
         flowLayout.do {
             $0.itemSize = CGSize(width: 52.adjusted, height: 78.adjusted)
-            $0.sectionInset = UIEdgeInsets(top: 0, left: 14, bottom: 0, right: 0)
+            $0.sectionInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
             $0.minimumLineSpacing = 14
             $0.minimumInteritemSpacing = 0
             $0.scrollDirection = .horizontal

@@ -11,20 +11,20 @@ enum ImageLiterals {
     enum img {
         static var imgHatsize: UIImage { .load(named: "img_hatsize")}
         static var imgLogo: UIImage { .load(named: "img_logo")}
-        static var img29: UIImage { .load(named: "img29")}
-        static var img29F: UIImage { .load(named: "img29F")}
-        static var imgCollect: UIImage { .load(named: "imgCollect")}
-        static var imgDunst: UIImage { .load(named: "imgDunst")}
-        static var imgEvent: UIImage { .load(named: "imgEvent")}
-        static var imgForeign: UIImage { .load(named: "imgForeign")}
-        static var imgLivingStyle: UIImage { .load(named: "imgLivingStyle")}
-        static var imgLookBook: UIImage { .load(named: "imgLookBook")}
-        static var imgPressent: UIImage { .load(named: "imgPressent")}
-        static var imgPT: UIImage { .load(named: "imgPT")}
-        static var imgShowcase: UIImage { .load(named: "imgShowcase")}
-        static var imgSpecialOrder: UIImage { .load(named: "imgSpecialOrder")}
-        static var imgTableWare: UIImage { .load(named: "imgTableWare")}
-        static var imgWelove: UIImage { .load(named: "imgWelove")}
+        static var imgCollect: UIImage { .load(named: "img_category_1")}
+        static var imgShowcase: UIImage { .load(named: "img_category_2")}
+        static var imgPT: UIImage { .load(named: "img_category_3")}
+        static var imgPressent: UIImage { .load(named: "img_category_4")}
+        static var imgForeign: UIImage { .load(named: "img_category_5")}
+        static var img29F: UIImage { .load(named: "img_category_6")}
+        static var img29: UIImage { .load(named: "img_category_7")}
+        static var imgDunst: UIImage { .load(named: "img_category_8")}
+        static var imgTableWare: UIImage { .load(named: "img_category_9")}
+        static var imgEvent: UIImage { .load(named: "img_category_10")}
+        static var imgLivingStyle: UIImage { .load(named: "img_category_11")}
+        static var imgWelove: UIImage { .load(named: "img_category_12")}
+        static var imgLookBook: UIImage { .load(named: "img_category_13")}
+        static var imgSpecialOrder: UIImage { .load(named: "img_category_14")}
     }
     
     enum icon {

@@ -32,6 +32,7 @@
 		2AA327B72B0B544A00732CE9 /* Adjust+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA327B62B0B544A00732CE9 /* Adjust+.swift */; };
 		2AA327BA2B0B6FFA00732CE9 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA327B92B0B6FFA00732CE9 /* Category.swift */; };
 		2AA327BC2B0B722100732CE9 /* NSObject+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA327BB2B0B722100732CE9 /* NSObject+.swift */; };
+		2AA327BE2B0B728600732CE9 /* CategoryHorizontalCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA327BD2B0B728600732CE9 /* CategoryHorizontalCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,6 +60,7 @@
 		2AA327B62B0B544A00732CE9 /* Adjust+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Adjust+.swift"; sourceTree = "<group>"; };
 		2AA327B92B0B6FFA00732CE9 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		2AA327BB2B0B722100732CE9 /* NSObject+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+.swift"; sourceTree = "<group>"; };
+		2AA327BD2B0B728600732CE9 /* CategoryHorizontalCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryHorizontalCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -245,6 +247,7 @@
 				2AA327B82B0B6FE800732CE9 /* Dummy */,
 				2AA327B22B0B261400732CE9 /* CategoryViewController.swift */,
 				2AA327B42B0B28B800732CE9 /* CategoryHeaderView.swift */,
+				2AA327BD2B0B728600732CE9 /* CategoryHorizontalCollectionViewCell.swift */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -346,6 +349,7 @@
 				2A0C02322B0A6407005764FA /* UIFont+.swift in Sources */,
 				2A0C02102B0A5EA5005764FA /* StringLiterals.swift in Sources */,
 				2A0C02342B0A6681005764FA /* UIColor+.swift in Sources */,
+				2AA327BE2B0B728600732CE9 /* CategoryHorizontalCollectionViewCell.swift in Sources */,
 				2A0C02202B0A5F82005764FA /* x.swift in Sources */,
 				2AA327BA2B0B6FFA00732CE9 /* Category.swift in Sources */,
 				2A0C021D2B0A5F78005764FA /* b.swift in Sources */,

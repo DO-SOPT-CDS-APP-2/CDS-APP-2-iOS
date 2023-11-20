@@ -55,7 +55,7 @@ final class CategoryViewController: UIViewController {
     }
     
     private func setRegister() {
-        
+        originView.horizontalCollectionView.register(CategoryHorizontalCollectionViewCell.self, forCellWithReuseIdentifier: CategoryHorizontalCollectionViewCell.className)
     }
     
     private func setAddTarget() {
@@ -68,12 +68,13 @@ extension CategoryViewController: UICollectionViewDelegate, UICollectionViewData
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return dummy.count
     }
-//    
-//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainWeatherCollectionViewCell.className, for: indexPath) as? MainWeatherCollectionViewCell else { return UICollectionViewCell() }
-//                cell.configureCell() = self
-//                return cell
-//    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryHorizontalCollectionViewCell.className, for: indexPath) as? CategoryHorizontalCollectionViewCell else { return UICollectionViewCell() }
+        let category = Category.dummy()[indexPath.row]
+        cell.configureCell(category: category)
+        return cell
+    }
     
 }
 

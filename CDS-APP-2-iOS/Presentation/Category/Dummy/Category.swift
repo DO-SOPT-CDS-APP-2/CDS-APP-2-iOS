@@ -18,6 +18,7 @@ extension Category {
                 Category(image: ImageLiterals.img.imgShowcase, label: "쇼케이스"),
                 Category(image: ImageLiterals.img.imgPT, label: "PT"),
                 Category(image: ImageLiterals.img.imgPressent, label: "선물하기"),
+                Category(image: ImageLiterals.img.imgForeign, label: "해외브랜드"),
                 Category(image: ImageLiterals.img.img29F, label: "프리미엄홈"),
                 Category(image: ImageLiterals.img.img29, label: "전시공간"),
                 Category(image: ImageLiterals.img.imgDunst, label: "던스트"),
