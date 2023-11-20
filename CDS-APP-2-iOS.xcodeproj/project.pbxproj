@@ -244,10 +244,10 @@
 		2AA327B12B0B260000732CE9 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				2AA327BF2B0B7B5000732CE9 /* View */,
+				2AA327C12B0B7B7000732CE9 /* ViewController */,
+				2AA327C02B0B7B5700732CE9 /* Cell */,
 				2AA327B82B0B6FE800732CE9 /* Dummy */,
-				2AA327B22B0B261400732CE9 /* CategoryViewController.swift */,
-				2AA327B42B0B28B800732CE9 /* CategoryHeaderView.swift */,
-				2AA327BD2B0B728600732CE9 /* CategoryHorizontalCollectionViewCell.swift */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -258,6 +258,30 @@
 				2AA327B92B0B6FFA00732CE9 /* Category.swift */,
 			);
 			path = Dummy;
+			sourceTree = "<group>";
+		};
+		2AA327BF2B0B7B5000732CE9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2AA327B42B0B28B800732CE9 /* CategoryHeaderView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2AA327C02B0B7B5700732CE9 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				2AA327BD2B0B728600732CE9 /* CategoryHorizontalCollectionViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		2AA327C12B0B7B7000732CE9 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				2AA327B22B0B261400732CE9 /* CategoryViewController.swift */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

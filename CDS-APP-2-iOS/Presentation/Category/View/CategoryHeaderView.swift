@@ -99,8 +99,8 @@ final class CategoryView: UIView {
         searchBar.snp.makeConstraints {
             $0.top.equalToSuperview().inset(8.adjusted)
             $0.height.equalTo(30.adjusted)
-            $0.leading.equalToSuperview().inset(20.adjusted)
-            $0.trailing.equalToSuperview().inset(93.adjusted)
+            $0.leading.equalToSuperview().inset(12.adjusted)
+            $0.trailing.equalToSuperview().inset(85.adjusted)
         }
         
         searchButton.snp.makeConstraints {
@@ -122,7 +122,7 @@ final class CategoryView: UIView {
         }
         
         horizontalCollectionView.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(44.adjusted)
+            $0.bottom.equalToSuperview()
             $0.leading.trailing.equalToSuperview()
             $0.height.equalTo(110.adjusted)
         }
