@@ -118,11 +118,13 @@ extension CategoryViewController: UITableViewDelegate, UITableViewDataSource {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: CategoryTableViewCell.className, for: indexPath) as? CategoryTableViewCell else { return UITableViewCell() }
             let categoryList = categoryListDummy[indexPath.row]
             cell.configureCell(category: categoryList)
+            cell.selectionStyle = .none
             return cell
         } else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: CategoryDetailTableViewCell.className, for: indexPath) as? CategoryDetailTableViewCell else { return UITableViewCell() }
             let categoryDetailList = categoryDetailListDummy[indexPath.row]
             cell.configureCell(category: categoryDetailList)
+            cell.selectionStyle = .none
             return cell
         }
         

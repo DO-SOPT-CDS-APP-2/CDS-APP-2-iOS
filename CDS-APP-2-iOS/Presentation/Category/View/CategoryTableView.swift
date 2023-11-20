@@ -20,7 +20,6 @@ final class CategoryTableView: UIView {
         
         setUI()
         setHierachy()
-        setLayout()
     }
     
     @available(*, unavailable)
@@ -50,9 +49,5 @@ final class CategoryTableView: UIView {
     private func setHierachy() {
         self.addSubviews(categoryTableView,
                          categoryDetailTableView)
-    }
-    
-    private func setLayout() {
-        
     }
 }
