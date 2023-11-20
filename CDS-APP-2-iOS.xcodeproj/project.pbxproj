@@ -27,6 +27,9 @@
 		2AA327AA2B0B231B00732CE9 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 2AA327A92B0B231B00732CE9 /* SnapKit */; };
 		2AA327AD2B0B233100732CE9 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 2AA327AC2B0B233100732CE9 /* Then */; };
 		2AA327B02B0B234800732CE9 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 2AA327AF2B0B234800732CE9 /* Kingfisher */; };
+		2AA327B32B0B261400732CE9 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA327B22B0B261400732CE9 /* CategoryViewController.swift */; };
+		2AA327B52B0B28B800732CE9 /* CategoryHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA327B42B0B28B800732CE9 /* CategoryHeaderView.swift */; };
+		2AA327B72B0B544A00732CE9 /* Adjust+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA327B62B0B544A00732CE9 /* Adjust+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +52,9 @@
 		2A5296EF2B051E8600279401 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2A5296F22B051E8600279401 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2A5296F42B051E8600279401 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2AA327B22B0B261400732CE9 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
+		2AA327B42B0B28B800732CE9 /* CategoryHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryHeaderView.swift; sourceTree = "<group>"; };
+		2AA327B62B0B544A00732CE9 /* Adjust+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Adjust+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +102,7 @@
 		2A0C02082B0A5E4C005764FA /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				2AA327B12B0B260000732CE9 /* Category */,
 				2A0C02092B0A5E5E005764FA /* Home */,
 			);
 			path = Presentation;
@@ -116,6 +123,7 @@
 				2A0C02312B0A6407005764FA /* UIFont+.swift */,
 				2A0C02332B0A6681005764FA /* UIColor+.swift */,
 				2A0C02352B0A6B5B005764FA /* UIImage+.swift */,
+				2AA327B62B0B544A00732CE9 /* Adjust+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -226,6 +234,15 @@
 			path = "CDS-APP-2-iOS";
 			sourceTree = "<group>";
 		};
+		2AA327B12B0B260000732CE9 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				2AA327B22B0B261400732CE9 /* CategoryViewController.swift */,
+				2AA327B42B0B28B800732CE9 /* CategoryHeaderView.swift */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -311,14 +328,17 @@
 			files = (
 				2A0C02122B0A5EAE005764FA /* UIView+.swift in Sources */,
 				2A5296EB2B051E8400279401 /* ViewController.swift in Sources */,
+				2AA327B72B0B544A00732CE9 /* Adjust+.swift in Sources */,
 				2A0C02322B0A6407005764FA /* UIFont+.swift in Sources */,
 				2A0C02102B0A5EA5005764FA /* StringLiterals.swift in Sources */,
 				2A0C02342B0A6681005764FA /* UIColor+.swift in Sources */,
 				2A0C02202B0A5F82005764FA /* x.swift in Sources */,
 				2A0C021D2B0A5F78005764FA /* b.swift in Sources */,
 				2A0C020E2B0A5E9A005764FA /* ImageLiterals.swift in Sources */,
+				2AA327B52B0B28B800732CE9 /* CategoryHeaderView.swift in Sources */,
 				2A0C021A2B0A5F30005764FA /* a.swift in Sources */,
 				2A0C02362B0A6B5B005764FA /* UIImage+.swift in Sources */,
+				2AA327B32B0B261400732CE9 /* CategoryViewController.swift in Sources */,
 				2A5296E72B051E8400279401 /* AppDelegate.swift in Sources */,
 				2A5296E92B051E8400279401 /* SceneDelegate.swift in Sources */,
 			);
