@@ -11,6 +11,20 @@ enum ImageLiterals {
     enum img {
         static var imgHatsize: UIImage { .load(named: "img_hatsize")}
         static var imgLogo: UIImage { .load(named: "img_logo")}
+        static var img29: UIImage { .load(named: "img29")}
+        static var img29F: UIImage { .load(named: "img29F")}
+        static var imgCollect: UIImage { .load(named: "imgCollect")}
+        static var imgDunst: UIImage { .load(named: "imgDunst")}
+        static var imgEvent: UIImage { .load(named: "imgEvent")}
+        static var imgForeign: UIImage { .load(named: "imgForeign")}
+        static var imgLivingStyle: UIImage { .load(named: "imgLivingStyle")}
+        static var imgLookBook: UIImage { .load(named: "imgLookBook")}
+        static var imgPressent: UIImage { .load(named: "imgPressent")}
+        static var imgPT: UIImage { .load(named: "imgPT")}
+        static var imgShowcase: UIImage { .load(named: "imgShowcase")}
+        static var imgSpecialOrder: UIImage { .load(named: "imgSpecialOrder")}
+        static var imgTableWare: UIImage { .load(named: "imgTableWare")}
+        static var imgWelove: UIImage { .load(named: "imgWelove")}
     }
     
     enum icon {

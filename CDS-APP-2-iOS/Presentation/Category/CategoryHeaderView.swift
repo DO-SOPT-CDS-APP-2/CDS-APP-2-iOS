@@ -16,7 +16,7 @@ final class CategoryView: UIView {
     private let searchButton = UIButton()
     private let alarmButton = UIButton()
     private let cartButton = UIButton()
-    private lazy var horizontalCollectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
+    lazy var horizontalCollectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
     private let flowLayout = UICollectionViewFlowLayout()
 
     override init(frame: CGRect) {
@@ -69,13 +69,30 @@ final class CategoryView: UIView {
         cartButton.do {
             $0.setImage(ImageLiterals.icon.icCartBlack, for: .normal)
         }
+        
+        horizontalCollectionView.do {
+            $0.isScrollEnabled = true
+            $0.showsHorizontalScrollIndicator = false
+            $0.showsVerticalScrollIndicator = false
+            $0.backgroundColor = .clear
+        }
+        
+        flowLayout.do {
+            $0.itemSize = CGSize(width: 52.adjusted, height: 78.adjusted)
+            $0.sectionInset = UIEdgeInsets(top: 0, left: 14, bottom: 0, right: 0)
+            $0.minimumLineSpacing = 14
+            $0.minimumInteritemSpacing = 0
+            $0.scrollDirection = .horizontal
+            $0.estimatedItemSize = .zero
+        }
     }
     
     private func setHierachy() {
         self.addSubviews(searchBar,
                          searchButton,
                          alarmButton,
-                         cartButton)
+                         cartButton,
+                         horizontalCollectionView)
     }
     
     private func setLayout() {
@@ -102,6 +119,12 @@ final class CategoryView: UIView {
             $0.centerY.equalTo(searchBar)
             $0.leading.equalTo(alarmButton.snp.trailing).offset(15.adjusted)
             $0.size.equalTo(24.adjusted)
+        }
+        
+        horizontalCollectionView.snp.makeConstraints {
+            $0.top.equalToSuperview().inset(44.adjusted)
+            $0.leading.trailing.equalToSuperview()
+            $0.height.equalTo(110.adjusted)
         }
     }
     

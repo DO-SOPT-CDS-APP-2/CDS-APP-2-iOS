@@ -13,6 +13,7 @@ import Then
 final class CategoryViewController: UIViewController {
 
     private let originView = CategoryView()
+    private let dummy = Category.dummy()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,7 +50,8 @@ final class CategoryViewController: UIViewController {
     }
     
     private func setDelegate() {
-        
+        originView.horizontalCollectionView.delegate = self
+        originView.horizontalCollectionView.dataSource = self
     }
     
     private func setRegister() {
@@ -60,5 +62,18 @@ final class CategoryViewController: UIViewController {
         
     }
    
+}
+
+extension CategoryViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return dummy.count
+    }
+//    
+//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainWeatherCollectionViewCell.className, for: indexPath) as? MainWeatherCollectionViewCell else { return UICollectionViewCell() }
+//                cell.configureCell() = self
+//                return cell
+//    }
+    
 }
 

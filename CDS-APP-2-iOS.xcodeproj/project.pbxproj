@@ -30,6 +30,8 @@
 		2AA327B32B0B261400732CE9 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA327B22B0B261400732CE9 /* CategoryViewController.swift */; };
 		2AA327B52B0B28B800732CE9 /* CategoryHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA327B42B0B28B800732CE9 /* CategoryHeaderView.swift */; };
 		2AA327B72B0B544A00732CE9 /* Adjust+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA327B62B0B544A00732CE9 /* Adjust+.swift */; };
+		2AA327BA2B0B6FFA00732CE9 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA327B92B0B6FFA00732CE9 /* Category.swift */; };
+		2AA327BC2B0B722100732CE9 /* NSObject+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA327BB2B0B722100732CE9 /* NSObject+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +57,8 @@
 		2AA327B22B0B261400732CE9 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		2AA327B42B0B28B800732CE9 /* CategoryHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryHeaderView.swift; sourceTree = "<group>"; };
 		2AA327B62B0B544A00732CE9 /* Adjust+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Adjust+.swift"; sourceTree = "<group>"; };
+		2AA327B92B0B6FFA00732CE9 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		2AA327BB2B0B722100732CE9 /* NSObject+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +128,7 @@
 				2A0C02332B0A6681005764FA /* UIColor+.swift */,
 				2A0C02352B0A6B5B005764FA /* UIImage+.swift */,
 				2AA327B62B0B544A00732CE9 /* Adjust+.swift */,
+				2AA327BB2B0B722100732CE9 /* NSObject+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -237,10 +242,19 @@
 		2AA327B12B0B260000732CE9 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				2AA327B82B0B6FE800732CE9 /* Dummy */,
 				2AA327B22B0B261400732CE9 /* CategoryViewController.swift */,
 				2AA327B42B0B28B800732CE9 /* CategoryHeaderView.swift */,
 			);
 			path = Category;
+			sourceTree = "<group>";
+		};
+		2AA327B82B0B6FE800732CE9 /* Dummy */ = {
+			isa = PBXGroup;
+			children = (
+				2AA327B92B0B6FFA00732CE9 /* Category.swift */,
+			);
+			path = Dummy;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -333,8 +347,10 @@
 				2A0C02102B0A5EA5005764FA /* StringLiterals.swift in Sources */,
 				2A0C02342B0A6681005764FA /* UIColor+.swift in Sources */,
 				2A0C02202B0A5F82005764FA /* x.swift in Sources */,
+				2AA327BA2B0B6FFA00732CE9 /* Category.swift in Sources */,
 				2A0C021D2B0A5F78005764FA /* b.swift in Sources */,
 				2A0C020E2B0A5E9A005764FA /* ImageLiterals.swift in Sources */,
+				2AA327BC2B0B722100732CE9 /* NSObject+.swift in Sources */,
 				2AA327B52B0B28B800732CE9 /* CategoryHeaderView.swift in Sources */,
 				2A0C021A2B0A5F30005764FA /* a.swift in Sources */,
 				2A0C02362B0A6B5B005764FA /* UIImage+.swift in Sources */,
