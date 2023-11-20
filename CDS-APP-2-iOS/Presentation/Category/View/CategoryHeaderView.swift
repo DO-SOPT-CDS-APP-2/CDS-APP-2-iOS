@@ -56,6 +56,7 @@ final class CategoryView: UIView {
             $0.searchTextField.attributedPlaceholder = attributedString
             $0.searchTextField.leftViewMode = .never
             $0.searchTextField.leftView = nil
+            $0.searchTextField.clearButtonMode = .never
         }
         
         searchButton.do {
