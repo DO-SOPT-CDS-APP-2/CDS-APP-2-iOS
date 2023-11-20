@@ -54,8 +54,17 @@ final class CategoryViewController: UIViewController {
         
         contentView.snp.makeConstraints {
             $0.top.equalTo(headerView.snp.bottom)
-            $0.leading.trailing.equalToSuperview()
-            $0.height.equalTo(780.adjusted)
+            $0.leading.trailing.bottom.equalToSuperview()
+        }
+        
+        contentView.categoryTableView.snp.makeConstraints {
+            $0.top.leading.bottom.equalToSuperview()
+            $0.width.equalTo(114.adjusted)
+        }
+        
+        contentView.categoryDetailTableView.snp.makeConstraints {
+            $0.top.trailing.bottom.equalToSuperview()
+            $0.width.equalTo(261.adjusted)
         }
     }
     
@@ -64,14 +73,14 @@ final class CategoryViewController: UIViewController {
         
         contentView.categoryTableView.delegate = self
         contentView.categoryTableView.dataSource = self
-//        contentView.categoryDetailTableView.delegate = self
-//        contentView.categoryDetailTableView.dataSource = self
+        contentView.categoryDetailTableView.delegate = self
+        contentView.categoryDetailTableView.dataSource = self
     }
     
     private func setRegister() {
         headerView.horizontalCollectionView.register(CategoryHorizontalCollectionViewCell.self, forCellWithReuseIdentifier: CategoryHorizontalCollectionViewCell.className)
         contentView.categoryTableView.register(CategoryTableViewCell.self, forCellReuseIdentifier: CategoryTableViewCell.className)
-//        contentView.categoryDetailTableView.register(CategoryDetailTableViewCell.self, forCellReuseIdentifier: CategoryDetailTableViewCell.className)
+        contentView.categoryDetailTableView.register(CategoryDetailTableViewCell.self, forCellReuseIdentifier: CategoryDetailTableViewCell.className)
         
     }
     
@@ -112,8 +121,8 @@ extension CategoryViewController: UITableViewDelegate, UITableViewDataSource {
             return cell
         } else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: CategoryDetailTableViewCell.className, for: indexPath) as? CategoryDetailTableViewCell else { return UITableViewCell() }
-//            let categoryList = categoryDetailListDummy[indexPath.row]
-//            cell.configureCell(category: categoryList)
+            let categoryDetailList = categoryDetailListDummy[indexPath.row]
+            cell.configureCell(category: categoryDetailList)
             return cell
         }
         
@@ -121,9 +130,9 @@ extension CategoryViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if tableView == contentView.categoryTableView {
-            return 56.adjusted
+            return 56.adjustedHeight
         } else {
-            return 46.adjusted
+            return 46.adjustedHeight
         }
     }
 }

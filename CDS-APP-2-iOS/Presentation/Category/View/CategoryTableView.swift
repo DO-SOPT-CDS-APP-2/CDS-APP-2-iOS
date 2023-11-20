@@ -35,12 +35,14 @@ final class CategoryTableView: UIView {
             $0.separatorStyle = .none
             $0.backgroundColor = .background
             $0.isUserInteractionEnabled = true
+            $0.showsVerticalScrollIndicator = false
         }
         
         categoryDetailTableView.do {
             $0.separatorStyle = .none
             $0.backgroundColor = .white
             $0.isUserInteractionEnabled = true
+            $0.showsVerticalScrollIndicator = false
         }
         
     }
@@ -51,16 +53,6 @@ final class CategoryTableView: UIView {
     }
     
     private func setLayout() {
-        categoryTableView.snp.makeConstraints {
-            $0.top.leading.equalToSuperview()
-            $0.width.equalTo(114.adjusted)
-            $0.height.equalTo(780.adjusted)
-        }
         
-        categoryDetailTableView.snp.makeConstraints {
-            $0.top.trailing.equalToSuperview()
-            $0.width.equalTo(261.adjusted)
-            $0.height.equalTo(780.adjusted)
-        }
     }
 }
