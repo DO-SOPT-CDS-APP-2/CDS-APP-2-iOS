@@ -25,6 +25,7 @@ enum ImageLiterals {
         static var imgWelove: UIImage { .load(named: "img_category_12")}
         static var imgLookBook: UIImage { .load(named: "img_category_13")}
         static var imgSpecialOrder: UIImage { .load(named: "img_category_14")}
+        static var imgLoveMeMonster: UIImage { .load(named: "imgLoveMeMonster")}
     }
     
     enum icon {
