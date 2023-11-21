@@ -40,13 +40,13 @@ final class CategoryHorizontalCollectionViewCell: UICollectionViewCell {
     
     private func setLayout() {
         categoryImage.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(10.adjusted)
+            $0.top.equalToSuperview()
             $0.centerX.equalToSuperview()
             $0.size.equalTo(54.adjusted)
         }
         
         categoryLabel.snp.makeConstraints {
-            $0.top.equalTo(categoryImage.snp.bottom).offset(6.adjusted)
+            $0.top.equalTo(categoryImage.snp.bottom).offset(8.adjusted)
             $0.centerX.equalToSuperview()
         }
     }
