@@ -10,15 +10,21 @@ import UIKit
 import SnapKit
 import Then
 
+// MARK: - CategoryViewController
+
 final class CategoryViewController: UIViewController {
 
-    private let headerView = CategoryView()
+    // MARK: - Properties
+
+    private let headerView = CategoryView() // View와 ViewController를 분리
     private let headerDummy = Category.dummy()
     
-    private let contentView = CategoryTableView()
+    private let contentView = CategoryTableView() // View와 ViewController를 분리
     private let categoryListDummy = CategoryList.dummy()
     private let categoryDetailListDummy = CategoryDetailList.dummy()
     
+    // MARK: - Life Cycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -36,14 +42,20 @@ final class CategoryViewController: UIViewController {
         self.navigationItem.hidesBackButton = true
     }
     
+    // MARK: - Set UI
+    
     private func setUI() {
         self.view.backgroundColor = .white
     }
+    
+    // MARK: - Set Hierachy
     
     private func setHierachy() {
         self.view.addSubviews(headerView, contentView)
     }
     
+    // MARK: - Set Layout
+
     private func setLayout() {
         headerView.snp.makeConstraints {
             $0.top.equalTo(self.view.safeAreaLayoutGuide)
@@ -69,6 +81,8 @@ final class CategoryViewController: UIViewController {
         }
     }
     
+    // MARK: - Set Delegate
+
     private func setDelegate() {
         headerView.horizontalCollectionView.dataSource = self
         
@@ -78,6 +92,8 @@ final class CategoryViewController: UIViewController {
         contentView.categoryDetailTableView.dataSource = self
     }
     
+    // MARK: - Set Register
+    
     private func setRegister() {
         headerView.horizontalCollectionView.register(CategoryHorizontalCollectionViewCell.self, forCellWithReuseIdentifier: CategoryHorizontalCollectionViewCell.className)
         contentView.categoryTableView.register(CategoryTableViewCell.self, forCellReuseIdentifier: CategoryTableViewCell.className)
@@ -86,6 +102,8 @@ final class CategoryViewController: UIViewController {
     }
    
 }
+
+// MARK: - UICollectionViewDataSource
 
 extension CategoryViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -100,6 +118,8 @@ extension CategoryViewController: UICollectionViewDataSource {
     }
     
 }
+
+// MARK: - UITableViewDelegate, UITableViewDataSource (각 TableView 마다 다르게 적용)
 
 extension CategoryViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -153,6 +173,8 @@ extension CategoryViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
 }
+
+// MARK: - Delegate Protocol
 
 extension CategoryViewController: HatButtonAction {
     func hatButtonClicked() {

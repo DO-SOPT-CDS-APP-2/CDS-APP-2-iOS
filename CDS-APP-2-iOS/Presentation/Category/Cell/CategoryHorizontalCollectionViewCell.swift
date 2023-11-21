@@ -10,10 +10,16 @@ import UIKit
 import SnapKit
 import Then
 
+// MARK: - CategoryHorizontalCollectionViewCell
+
 final class CategoryHorizontalCollectionViewCell: UICollectionViewCell {
+    
+    // MARK: - Properties
     
     private let categoryImage = UIImageView()
     private let categoryLabel = UILabel()
+    
+    // MARK: - Life Cycle
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -27,15 +33,21 @@ final class CategoryHorizontalCollectionViewCell: UICollectionViewCell {
         fatalError()
     }
     
+    // MARK: - Set UI
+
     private func setUI() {
         categoryLabel.do {
             $0.textColor = .black
         }
     }
     
+    // MARK: - Set Hierachy
+    
     private func setHierachy() {
         self.addSubviews(categoryImage, categoryLabel)
     }
+    
+    // MARK: - Set Layout
     
     private func setLayout() {
         categoryImage.snp.makeConstraints {
@@ -50,9 +62,13 @@ final class CategoryHorizontalCollectionViewCell: UICollectionViewCell {
         }
     }
     
+    // MARK: - Configure Cell (CategoryHorizontalCollectionView의 각 Cell 설정)
+
     func configureCell(category: Category) {
         categoryImage.image = category.image
         categoryLabel.text = category.label
+        
+        // 영어와 한글에 각각 다른 font 적용
         for string in category.label.unicodeScalars {
             // ASCII 범위 (영어)
             if string.value >= 65 && string.value <= 122 {

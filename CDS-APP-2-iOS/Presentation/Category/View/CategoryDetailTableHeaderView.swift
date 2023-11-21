@@ -10,12 +10,18 @@ import UIKit
 import SnapKit
 import Then
 
+// MARK: - Detail List TableView Header
+
 final class CategoryDetailTableHeaderView: UIView {
     
+    // MARK: - Properties
+
     private let womenButton = UIButton()
     private let menButton = UIButton()
     private let adImage = UIImageView()
     
+    // MARK: - Life Cycle
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -29,6 +35,8 @@ final class CategoryDetailTableHeaderView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Set UI
+
     private func setUI() {
         self.backgroundColor = .white
         
@@ -57,12 +65,16 @@ final class CategoryDetailTableHeaderView: UIView {
         }
     }
     
+    // MARK: - Set Hierachy
+    
     private func setHierachy() {
         self.addSubviews(womenButton,
                          menButton,
                          adImage)
 
     }
+    
+    // MARK: - Set Layout
     
     private func setLayout() {
         womenButton.snp.makeConstraints {

@@ -10,10 +10,16 @@ import UIKit
 import SnapKit
 import Then
 
+// MARK: - CategoryTableViewCell
+
 final class CategoryTableViewCell: UITableViewCell {
 
+    // MARK: - Properties
+    
     private let categoryList = UILabel()
         
+    // MARK: - Life Cycle
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 
@@ -27,7 +33,8 @@ final class CategoryTableViewCell: UITableViewCell {
         super.init(coder: coder)
     }
     
-    
+    // MARK: - Set UI
+
     private func setUI() {
         categoryList.do {
             $0.textColor = .black
@@ -36,9 +43,13 @@ final class CategoryTableViewCell: UITableViewCell {
         
     }
     
+    // MARK: - Set Hierachy
+    
     private func setHierachy() {
         contentView.addSubview(categoryList)
     }
+    
+    // MARK: - Set Layout
     
     private func setLayout() {
         categoryList.snp.makeConstraints {
@@ -46,6 +57,8 @@ final class CategoryTableViewCell: UITableViewCell {
             $0.centerY.equalToSuperview()
         }
     }
+    
+    // MARK: - Configure Cell (CategoryTableView의 각 Cell 설정)
     
     func configureCell(category: CategoryList, index: Int) {
         categoryList.text = category.label

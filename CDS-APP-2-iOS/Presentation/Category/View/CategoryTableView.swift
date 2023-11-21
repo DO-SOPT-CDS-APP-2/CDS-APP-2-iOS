@@ -10,11 +10,17 @@ import UIKit
 import SnapKit
 import Then
 
+// MARK: - List TableView, Detail List TableView
+
 final class CategoryTableView: UIView {
     
+    // MARK: - Properties
+
     let categoryTableView = UITableView(frame: .zero, style: .grouped)
     let categoryDetailTableView = UITableView(frame: .zero, style: .grouped)
     private let divisionLine = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 0))
+
+    // MARK: - Life Cycle
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -29,6 +35,8 @@ final class CategoryTableView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Set UI
+
     private func setUI() {
         self.backgroundColor = .white
         
@@ -52,12 +60,16 @@ final class CategoryTableView: UIView {
         
     }
     
+    // MARK: - Set Hierachy
+
     private func setHierachy() {
         self.addSubviews(divisionLine,
                          categoryTableView,
                          categoryDetailTableView)
     }
     
+    // MARK: - Set Layout
+
     private func setLayout() {
         divisionLine.snp.makeConstraints {
             $0.edges.equalToSuperview()

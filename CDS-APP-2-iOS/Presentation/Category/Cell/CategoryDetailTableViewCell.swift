@@ -10,18 +10,26 @@ import UIKit
 import SnapKit
 import Then
 
+// MARK: - Protocol
+
 protocol HatButtonAction: AnyObject {
     func hatButtonClicked()
 }
 
+// MARK: - CategoryDetailTableViewCell
+
 final class CategoryDetailTableViewCell: UITableViewCell {
+    
+    // MARK: - Properties
     
     private let detailCategoryList = UILabel()
     private let arrowButton = UIButton()
     private let transparentButton = UIButton()
     
-    weak var cellDelegate: HatButtonAction?
+    weak var cellDelegate: HatButtonAction? // 위에서 선언한 프로토콜을 저장 프로퍼티의 타입으로 채택
 
+    // MARK: - Life Cycle
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 
@@ -35,6 +43,8 @@ final class CategoryDetailTableViewCell: UITableViewCell {
         super.init(coder: coder)
     }
     
+    // MARK: - Set UI
+
     private func setUI() {
         self.backgroundColor = .white
         
@@ -52,11 +62,15 @@ final class CategoryDetailTableViewCell: UITableViewCell {
         }
     }
     
+    // MARK: - Set Hierachy
+
     private func setHierachy() {
         contentView.addSubviews(detailCategoryList,
                                 arrowButton,
                                 transparentButton)
     }
+    
+    // MARK: - Set Layout
     
     private func setLayout() {
         detailCategoryList.snp.makeConstraints {
@@ -75,13 +89,17 @@ final class CategoryDetailTableViewCell: UITableViewCell {
         }
     }
     
+    // MARK: - Configure Cell (CategoryDetailTableView의 각 Cell 설정)
+    
     func configureCell(category: CategoryDetailList, index: Int) {
         detailCategoryList.text = category.label
+        
         // "모자" Cell이 클릭되었을 경우에만 push
         if index == 5 {
             transparentButton.addTarget(self, action: #selector(hatButtonClicked), for: .touchUpInside)
         }
         
+        // 영어와 한글에 각각 다른 font 적용
         for string in category.label.unicodeScalars {
             // ASCII 범위 (영어)
             if string.value >= 65 && string.value <= 122 {
@@ -93,6 +111,8 @@ final class CategoryDetailTableViewCell: UITableViewCell {
             }
         }
     }
+    
+    // MARK: - @objc Methods
     
     @objc
     private func hatButtonClicked() {
