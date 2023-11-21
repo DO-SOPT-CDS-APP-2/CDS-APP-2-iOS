@@ -61,7 +61,7 @@ final class CategoryDetailTableHeaderView: UIView {
         }
         
         adImage.do {
-            $0.image = ImageLiterals.img.imgLoveMeMonster
+            $0.image = ImageLiterals.img.imgLoveMe
         }
     }
     
