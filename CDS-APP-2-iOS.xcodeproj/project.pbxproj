@@ -39,6 +39,7 @@
 		2AA327CC2B0BB43200732CE9 /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA327CB2B0BB43200732CE9 /* CategoryTableViewCell.swift */; };
 		2AA327CE2B0BB44000732CE9 /* CategoryDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA327CD2B0BB44000732CE9 /* CategoryDetailTableViewCell.swift */; };
 		2AA327D02B0BE1B300732CE9 /* CategoryDetailTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA327CF2B0BE1B300732CE9 /* CategoryDetailTableHeaderView.swift */; };
+		2AA327D22B0C30E700732CE9 /* CALayer+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA327D12B0C30E700732CE9 /* CALayer+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -73,6 +74,7 @@
 		2AA327CB2B0BB43200732CE9 /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCell.swift; sourceTree = "<group>"; };
 		2AA327CD2B0BB44000732CE9 /* CategoryDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDetailTableViewCell.swift; sourceTree = "<group>"; };
 		2AA327CF2B0BE1B300732CE9 /* CategoryDetailTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDetailTableHeaderView.swift; sourceTree = "<group>"; };
+		2AA327D12B0C30E700732CE9 /* CALayer+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +145,7 @@
 				2A0C02352B0A6B5B005764FA /* UIImage+.swift */,
 				2AA327B62B0B544A00732CE9 /* Adjust+.swift */,
 				2AA327BB2B0B722100732CE9 /* NSObject+.swift */,
+				2AA327D12B0C30E700732CE9 /* CALayer+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -398,6 +401,7 @@
 				2AA327D02B0BE1B300732CE9 /* CategoryDetailTableHeaderView.swift in Sources */,
 				2A0C02202B0A5F82005764FA /* x.swift in Sources */,
 				2AA327BA2B0B6FFA00732CE9 /* Category.swift in Sources */,
+				2AA327D22B0C30E700732CE9 /* CALayer+.swift in Sources */,
 				2A0C021D2B0A5F78005764FA /* b.swift in Sources */,
 				2A0C020E2B0A5E9A005764FA /* ImageLiterals.swift in Sources */,
 				2AA327BC2B0B722100732CE9 /* NSObject+.swift in Sources */,

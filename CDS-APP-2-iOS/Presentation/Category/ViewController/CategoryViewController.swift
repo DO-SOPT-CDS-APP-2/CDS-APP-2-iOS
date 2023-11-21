@@ -57,12 +57,14 @@ final class CategoryViewController: UIViewController {
         }
         
         contentView.categoryTableView.snp.makeConstraints {
-            $0.top.leading.bottom.equalToSuperview()
+            $0.top.equalToSuperview().inset(1.adjusted)
+            $0.leading.bottom.equalToSuperview()
             $0.width.equalTo(114.adjusted)
         }
         
         contentView.categoryDetailTableView.snp.makeConstraints {
-            $0.top.trailing.bottom.equalToSuperview()
+            $0.top.equalToSuperview().inset(1.adjusted)
+            $0.trailing.bottom.equalToSuperview()
             $0.width.equalTo(261.adjusted)
         }
     }
