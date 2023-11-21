@@ -12,8 +12,8 @@ import Then
 
 final class CategoryTableView: UIView {
     
-    let categoryTableView = UITableView()
-    let categoryDetailTableView = UITableView()
+    let categoryTableView = UITableView(frame: .zero, style: .grouped)
+    let categoryDetailTableView = UITableView(frame: .zero, style: .grouped)
     
     override init(frame: CGRect) {
         super.init(frame: frame)

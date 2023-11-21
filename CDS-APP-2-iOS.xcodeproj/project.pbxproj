@@ -38,7 +38,7 @@
 		2AA327CA2B0BB36D00732CE9 /* CategoryDetailList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA327C92B0BB36D00732CE9 /* CategoryDetailList.swift */; };
 		2AA327CC2B0BB43200732CE9 /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA327CB2B0BB43200732CE9 /* CategoryTableViewCell.swift */; };
 		2AA327CE2B0BB44000732CE9 /* CategoryDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA327CD2B0BB44000732CE9 /* CategoryDetailTableViewCell.swift */; };
-		2AA327D02B0BE1B300732CE9 /* CategoryTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA327CF2B0BE1B300732CE9 /* CategoryTableHeaderView.swift */; };
+		2AA327D02B0BE1B300732CE9 /* CategoryDetailTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA327CF2B0BE1B300732CE9 /* CategoryDetailTableHeaderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,7 +72,7 @@
 		2AA327C92B0BB36D00732CE9 /* CategoryDetailList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDetailList.swift; sourceTree = "<group>"; };
 		2AA327CB2B0BB43200732CE9 /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCell.swift; sourceTree = "<group>"; };
 		2AA327CD2B0BB44000732CE9 /* CategoryDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDetailTableViewCell.swift; sourceTree = "<group>"; };
-		2AA327CF2B0BE1B300732CE9 /* CategoryTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableHeaderView.swift; sourceTree = "<group>"; };
+		2AA327CF2B0BE1B300732CE9 /* CategoryDetailTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDetailTableHeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -279,7 +279,7 @@
 			children = (
 				2AA327B42B0B28B800732CE9 /* CategoryHeaderView.swift */,
 				2AA327C52B0BB0F100732CE9 /* CategoryTableView.swift */,
-				2AA327CF2B0BE1B300732CE9 /* CategoryTableHeaderView.swift */,
+				2AA327CF2B0BE1B300732CE9 /* CategoryDetailTableHeaderView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -395,7 +395,7 @@
 				2A0C02342B0A6681005764FA /* UIColor+.swift in Sources */,
 				2AA327C82B0BB2E800732CE9 /* CategoryList.swift in Sources */,
 				2AA327BE2B0B728600732CE9 /* CategoryHorizontalCollectionViewCell.swift in Sources */,
-				2AA327D02B0BE1B300732CE9 /* CategoryTableHeaderView.swift in Sources */,
+				2AA327D02B0BE1B300732CE9 /* CategoryDetailTableHeaderView.swift in Sources */,
 				2A0C02202B0A5F82005764FA /* x.swift in Sources */,
 				2AA327BA2B0B6FFA00732CE9 /* Category.swift in Sources */,
 				2A0C021D2B0A5F78005764FA /* b.swift in Sources */,

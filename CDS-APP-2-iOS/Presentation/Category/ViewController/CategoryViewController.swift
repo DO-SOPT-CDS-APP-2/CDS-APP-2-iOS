@@ -38,12 +38,6 @@ final class CategoryViewController: UIViewController {
     
     private func setUI() {
         self.view.backgroundColor = .white
-        
-        // header의 top padding을 없애줌
-        if #available(iOS 15, *) {
-            contentView.categoryTableView.sectionHeaderTopPadding = 0
-            contentView.categoryDetailTableView.sectionHeaderTopPadding = 0
-        }
     }
     
     private func setHierachy() {
@@ -144,7 +138,7 @@ extension CategoryViewController: UITableViewDelegate, UITableViewDataSource {
         if tableView == contentView.categoryTableView {
             return nil
         } else {
-            let headerView = CategoryTableHeaderView()
+            let headerView = CategoryDetailTableHeaderView()
             return headerView
         }
     }

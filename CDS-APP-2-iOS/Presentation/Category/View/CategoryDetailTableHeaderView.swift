@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import Then
 
-final class CategoryTableHeaderView: UIView {
+final class CategoryDetailTableHeaderView: UIView {
     
     private let womenButton = UIButton()
     private let menButton = UIButton()
