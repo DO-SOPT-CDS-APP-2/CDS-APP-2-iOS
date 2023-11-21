@@ -10,7 +10,11 @@ import UIKit
 import SnapKit
 import Then
 
+// MARK: - 전체 View의 최상단 부분
+
 final class CategoryView: UIView {
+    
+    // MARK: - Properties
     
     private let searchBar = UISearchBar()
     private let searchButton = UIButton()
@@ -19,6 +23,8 @@ final class CategoryView: UIView {
     lazy var horizontalCollectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
     private let flowLayout = UICollectionViewFlowLayout()
 
+    // MARK: - Life Cycle
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -32,6 +38,8 @@ final class CategoryView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Set UI
+
     private func setUI() {
         self.backgroundColor = .white
         
@@ -88,6 +96,8 @@ final class CategoryView: UIView {
         }
     }
     
+    // MARK: - Set Hierachy
+    
     private func setHierachy() {
         self.addSubviews(searchBar,
                          searchButton,
@@ -95,6 +105,8 @@ final class CategoryView: UIView {
                          cartButton,
                          horizontalCollectionView)
     }
+    
+    // MARK: - Set Layout
     
     private func setLayout() {
         searchBar.snp.makeConstraints {

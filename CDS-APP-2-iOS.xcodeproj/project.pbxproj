@@ -41,6 +41,13 @@
 		2AA327BA2B0B6FFA00732CE9 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA327B92B0B6FFA00732CE9 /* Category.swift */; };
 		2AA327BC2B0B722100732CE9 /* NSObject+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA327BB2B0B722100732CE9 /* NSObject+.swift */; };
 		2AA327BE2B0B728600732CE9 /* CategoryHorizontalCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA327BD2B0B728600732CE9 /* CategoryHorizontalCollectionViewCell.swift */; };
+		2AA327C62B0BB0F100732CE9 /* CategoryTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA327C52B0BB0F100732CE9 /* CategoryTableView.swift */; };
+		2AA327C82B0BB2E800732CE9 /* CategoryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA327C72B0BB2E800732CE9 /* CategoryList.swift */; };
+		2AA327CA2B0BB36D00732CE9 /* CategoryDetailList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA327C92B0BB36D00732CE9 /* CategoryDetailList.swift */; };
+		2AA327CC2B0BB43200732CE9 /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA327CB2B0BB43200732CE9 /* CategoryTableViewCell.swift */; };
+		2AA327CE2B0BB44000732CE9 /* CategoryDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA327CD2B0BB44000732CE9 /* CategoryDetailTableViewCell.swift */; };
+		2AA327D02B0BE1B300732CE9 /* CategoryDetailTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA327CF2B0BE1B300732CE9 /* CategoryDetailTableHeaderView.swift */; };
+		2AA327D22B0C30E700732CE9 /* CALayer+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA327D12B0C30E700732CE9 /* CALayer+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -78,6 +85,13 @@
 		2AA327B92B0B6FFA00732CE9 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		2AA327BB2B0B722100732CE9 /* NSObject+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+.swift"; sourceTree = "<group>"; };
 		2AA327BD2B0B728600732CE9 /* CategoryHorizontalCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryHorizontalCollectionViewCell.swift; sourceTree = "<group>"; };
+		2AA327C52B0BB0F100732CE9 /* CategoryTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableView.swift; sourceTree = "<group>"; };
+		2AA327C72B0BB2E800732CE9 /* CategoryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryList.swift; sourceTree = "<group>"; };
+		2AA327C92B0BB36D00732CE9 /* CategoryDetailList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDetailList.swift; sourceTree = "<group>"; };
+		2AA327CB2B0BB43200732CE9 /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCell.swift; sourceTree = "<group>"; };
+		2AA327CD2B0BB44000732CE9 /* CategoryDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDetailTableViewCell.swift; sourceTree = "<group>"; };
+		2AA327CF2B0BE1B300732CE9 /* CategoryDetailTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDetailTableHeaderView.swift; sourceTree = "<group>"; };
+		2AA327D12B0C30E700732CE9 /* CALayer+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +163,7 @@
 				2A0C02352B0A6B5B005764FA /* UIImage+.swift */,
 				2AA327B62B0B544A00732CE9 /* Adjust+.swift */,
 				2AA327BB2B0B722100732CE9 /* NSObject+.swift */,
+				2AA327D12B0C30E700732CE9 /* CALayer+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -296,6 +311,8 @@
 			isa = PBXGroup;
 			children = (
 				2AA327B92B0B6FFA00732CE9 /* Category.swift */,
+				2AA327C72B0BB2E800732CE9 /* CategoryList.swift */,
+				2AA327C92B0BB36D00732CE9 /* CategoryDetailList.swift */,
 			);
 			path = Dummy;
 			sourceTree = "<group>";
@@ -304,6 +321,8 @@
 			isa = PBXGroup;
 			children = (
 				2AA327B42B0B28B800732CE9 /* CategoryHeaderView.swift */,
+				2AA327C52B0BB0F100732CE9 /* CategoryTableView.swift */,
+				2AA327CF2B0BE1B300732CE9 /* CategoryDetailTableHeaderView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -312,6 +331,8 @@
 			isa = PBXGroup;
 			children = (
 				2AA327BD2B0B728600732CE9 /* CategoryHorizontalCollectionViewCell.swift */,
+				2AA327CB2B0BB43200732CE9 /* CategoryTableViewCell.swift */,
+				2AA327CD2B0BB44000732CE9 /* CategoryDetailTableViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -407,7 +428,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2AA327C62B0BB0F100732CE9 /* CategoryTableView.swift in Sources */,
 				2A0C02122B0A5EAE005764FA /* UIView+.swift in Sources */,
+				2AA327CA2B0BB36D00732CE9 /* CategoryDetailList.swift in Sources */,
 				2A5296EB2B051E8400279401 /* ViewController.swift in Sources */,
 
 				83D8591F2B0B9EC100FD982E /* ProductInfoCollectionViewCell.swift in Sources */,
@@ -419,19 +442,23 @@
 				83D859232B0B9EE500FD982E /* RecommendInfoCollectionViewCell.swift in Sources */,
 				2A0C02102B0A5EA5005764FA /* StringLiterals.swift in Sources */,
 				2A0C02342B0A6681005764FA /* UIColor+.swift in Sources */,
+				2AA327C82B0BB2E800732CE9 /* CategoryList.swift in Sources */,
 				2AA327BE2B0B728600732CE9 /* CategoryHorizontalCollectionViewCell.swift in Sources */,
+				2AA327D02B0BE1B300732CE9 /* CategoryDetailTableHeaderView.swift in Sources */,
 				2A0C02202B0A5F82005764FA /* x.swift in Sources */,
 
 				83D859182B0B98CE00FD982E /* HatDetailViewController.swift in Sources */,
 
 				2AA327BA2B0B6FFA00732CE9 /* Category.swift in Sources */,
-
+				2AA327D22B0C30E700732CE9 /* CALayer+.swift in Sources */,
 				2A0C021D2B0A5F78005764FA /* b.swift in Sources */,
 				83D859212B0B9ED200FD982E /* SizeInfoCollectionViewCell.swift in Sources */,
 				2A0C020E2B0A5E9A005764FA /* ImageLiterals.swift in Sources */,
 				2AA327BC2B0B722100732CE9 /* NSObject+.swift in Sources */,
 				2AA327B52B0B28B800732CE9 /* CategoryHeaderView.swift in Sources */,
+				2AA327CE2B0BB44000732CE9 /* CategoryDetailTableViewCell.swift in Sources */,
 				2A0C021A2B0A5F30005764FA /* a.swift in Sources */,
+				2AA327CC2B0BB43200732CE9 /* CategoryTableViewCell.swift in Sources */,
 				2A0C02362B0A6B5B005764FA /* UIImage+.swift in Sources */,
 				2AA327B32B0B261400732CE9 /* CategoryViewController.swift in Sources */,
 				2A5296E72B051E8400279401 /* AppDelegate.swift in Sources */,
