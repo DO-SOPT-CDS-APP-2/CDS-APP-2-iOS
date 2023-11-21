@@ -30,7 +30,6 @@ final class CategoryHorizontalCollectionViewCell: UICollectionViewCell {
     private func setUI() {
         categoryLabel.do {
             $0.textColor = .black
-            $0.font = .krRegular(ofSize: 12)
         }
     }
     
@@ -46,7 +45,7 @@ final class CategoryHorizontalCollectionViewCell: UICollectionViewCell {
         }
         
         categoryLabel.snp.makeConstraints {
-            $0.top.equalTo(categoryImage.snp.bottom).offset(8.adjusted)
+            $0.bottom.equalToSuperview()
             $0.centerX.equalToSuperview()
         }
     }
@@ -54,5 +53,23 @@ final class CategoryHorizontalCollectionViewCell: UICollectionViewCell {
     func configureCell(category: Category) {
         categoryImage.image = category.image
         categoryLabel.text = category.label
+        for string in category.label.unicodeScalars {
+            // ASCII 범위 (영어)
+            if string.value >= 65 && string.value <= 122 {
+                categoryLabel.font = .enDisplayMedium(ofSize: 10)
+                categoryLabel.snp.remakeConstraints {
+                    $0.bottom.equalToSuperview().inset(3.adjusted)
+                    $0.centerX.equalToSuperview()
+                }
+            }
+            // ASCII 범위 (한글)
+            if string.value >= 44032 && string.value <= 55215 {
+                categoryLabel.font = .krRegular(ofSize: 12)
+                categoryLabel.snp.remakeConstraints {
+                    $0.bottom.equalToSuperview()
+                    $0.centerX.equalToSuperview()
+                }
+            }
+        }
     }
 }

@@ -77,16 +77,20 @@ final class CategoryDetailTableViewCell: UITableViewCell {
     
     func configureCell(category: CategoryDetailList, index: Int) {
         detailCategoryList.text = category.label
-        // 영어일 때로 추후 변경
-        if index == 1 || index == 2 || index == 3 || index == 17 {
-            detailCategoryList.font = .enDisplayBold(ofSize: 10.adjusted)
-        } else {
-            detailCategoryList.font = .krSemiBold(ofSize: 12.adjusted)
-        }
-        
         // "모자" Cell이 클릭되었을 경우에만 push
         if index == 5 {
             transparentButton.addTarget(self, action: #selector(hatButtonClicked), for: .touchUpInside)
+        }
+        
+        for string in category.label.unicodeScalars {
+            // ASCII 범위 (영어)
+            if string.value >= 65 && string.value <= 122 {
+                detailCategoryList.font = .enDisplayBold(ofSize: 10.adjusted)
+            }
+            // ASCII 범위 (한글)
+            if string.value >= 44032 && string.value <= 55215 {
+                detailCategoryList.font = .krSemiBold(ofSize: 12.adjusted)
+            }
         }
     }
     
