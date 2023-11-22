@@ -16,6 +16,13 @@ final class TabbarController: UITabBarController {
         self.addTabBarController()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        self.navigationController?.navigationBar.isHidden = true
+        self.navigationItem.hidesBackButton = true
+    }
+    
     private func setUI() {
         self.view.backgroundColor = .white
         tabBar.backgroundColor = .background
@@ -61,8 +68,9 @@ final class TabbarController: UITabBarController {
         tabbarItem.setTitleTextAttributes(selectedAttributes, for: .selected)
         
         tabNavigationController.tabBarItem = tabbarItem
-        tabNavigationController.isNavigationBarHidden = true
         
+        tabNavigationController.viewControllers = [CategoryViewController()] // 여기에 자신의 뷰컨을 넣어서 제대로 나오는 지 확인해보세요! 지금은 모든 탭에서 같은 뷰컨이 나올 것입니다. 나중에 뷰컨 작업이 끝난 후 한번에 연결시킵시다!
+
         return tabNavigationController
     }
 }
