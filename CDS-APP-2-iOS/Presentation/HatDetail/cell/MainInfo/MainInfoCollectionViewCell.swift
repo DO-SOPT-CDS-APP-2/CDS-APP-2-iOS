@@ -10,7 +10,6 @@ import UIKit
 import SnapKit
 import Then
 
-
 class MainInfoCollectionViewCell: UICollectionViewCell {
     
     static let identifier: String = "MainInfoCollectionViewCell"
@@ -46,10 +45,9 @@ class MainInfoCollectionViewCell: UICollectionViewCell {
     private let shippingexpectedLabel = UILabel()
     private let shippingdescriptLabel = UILabel()
     
-    private let thindivideView1 = UIView()    //height: 1
-    private let thindivideView2 = UIView()    //height: 1
-    private let thindivideView3 = UIView()    //height: 1
-    private let thindivideView4 = UIView()    //height: 1
+    private let thindivideView1 = UIView()
+    private let thindivideView2 = UIView()
+
     
     private let thickdivideView = UIView()    //height: 8
     private let spacerView = UIView()   //공백
@@ -211,7 +209,7 @@ class MainInfoCollectionViewCell: UICollectionViewCell {
         shippingattributedString.addAttribute(.foregroundColor, value: UIColor.darkGray, range: NSRange(location: 5, length: shippingattributedString.length - 5))
         shippingdescriptLabel.attributedText = shippingattributedString
         
-        for i in [thindivideView1, thindivideView2, thindivideView3, thindivideView4] {
+        for i in [thindivideView1, thindivideView2] {
             i.backgroundColor = .border
         }
         
@@ -229,7 +227,7 @@ class MainInfoCollectionViewCell: UICollectionViewCell {
         userstackView.addArrangedSubviews(userdiscountpercentLabel, userdiscountpriceLabel)
         userstackView.addArrangedSubview(usermoreIcon)
         
-        contentView.addSubviews(userstackView, thindivideView2, shippingLabel, shippingfeeLabel, shippingfeedescriptLabel, shippingexpectedLabel, shippingdescriptLabel)
+        contentView.addSubviews(userstackView, thindivideView2, shippingLabel, shippingfeeLabel, shippingfeedescriptLabel, shippingexpectedLabel, shippingdescriptLabel, thickdivideView)
     }
     
     private func setLayout() {
@@ -335,6 +333,13 @@ class MainInfoCollectionViewCell: UICollectionViewCell {
         shippingdescriptLabel.snp.makeConstraints {
             $0.top.equalTo(shippingexpectedLabel)
             $0.leading.equalTo(shippingfeedescriptLabel.snp.leading)
+        }
+        
+    
+        thickdivideView.snp.makeConstraints {
+            $0.top.equalTo(shippingdescriptLabel.snp.bottom).offset(10)
+            $0.bottom.equalTo(shippingdescriptLabel.snp.bottom).offset(18)
+            $0.width.equalTo(contentView.snp.width)
         }
     }
 
