@@ -50,6 +50,8 @@
 		2AB794682B0CFDE8003DFF48 /* LayoutFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB794602B0CFDE8003DFF48 /* LayoutFactory.swift */; };
 		A18370092B0D01B700B64568 /* TabbarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18370082B0D01B700B64568 /* TabbarItem.swift */; };
 		A183700D2B0D032200B64568 /* TabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A183700C2B0D032200B64568 /* TabbarController.swift */; };
+		A19559A12B0DC360002EED37 /* HatCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19559A02B0DC360002EED37 /* HatCategoryViewController.swift */; };
+		A19559B62B0DFAA0002EED37 /* NavigationController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19559B52B0DFAA0002EED37 /* NavigationController+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -95,6 +97,8 @@
 		2AB794602B0CFDE8003DFF48 /* LayoutFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutFactory.swift; sourceTree = "<group>"; };
 		A18370082B0D01B700B64568 /* TabbarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarItem.swift; sourceTree = "<group>"; };
 		A183700C2B0D032200B64568 /* TabbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarController.swift; sourceTree = "<group>"; };
+		A19559A02B0DC360002EED37 /* HatCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HatCategoryViewController.swift; sourceTree = "<group>"; };
+		A19559B52B0DFAA0002EED37 /* NavigationController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationController+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +146,7 @@
 		2A0C02082B0A5E4C005764FA /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				A195599E2B0DC1F3002EED37 /* HatCategory */,
 				A18370052B0D018600B64568 /* Tabbar */,
 				2AB794572B0CFDE8003DFF48 /* HatDetail */,
 				2AB7943E2B0CFD15003DFF48 /* Category */,
@@ -168,6 +173,7 @@
 				2AA327B62B0B544A00732CE9 /* Adjust+.swift */,
 				2AA327BB2B0B722100732CE9 /* NSObject+.swift */,
 				2AA327D12B0C30E700732CE9 /* CALayer+.swift */,
+				A19559B52B0DFAA0002EED37 /* NavigationController+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -360,6 +366,30 @@
 			path = Tabbar;
 			sourceTree = "<group>";
 		};
+		A195599E2B0DC1F3002EED37 /* HatCategory */ = {
+			isa = PBXGroup;
+			children = (
+				A19559A22B0DC3BF002EED37 /* View */,
+				A195599F2B0DC34E002EED37 /* ViewController */,
+			);
+			path = HatCategory;
+			sourceTree = "<group>";
+		};
+		A195599F2B0DC34E002EED37 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A19559A02B0DC360002EED37 /* HatCategoryViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		A19559A22B0DC3BF002EED37 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -451,6 +481,7 @@
 				2AB794642B0CFDE8003DFF48 /* InquireInfoCollectionViewCell.swift in Sources */,
 				2A0C02322B0A6407005764FA /* UIFont+.swift in Sources */,
 				2A0C02102B0A5EA5005764FA /* StringLiterals.swift in Sources */,
+				A19559A12B0DC360002EED37 /* HatCategoryViewController.swift in Sources */,
 				2AB794542B0CFD15003DFF48 /* CategoryHeaderView.swift in Sources */,
 				2AB794502B0CFD15003DFF48 /* CategoryDetailTableViewCell.swift in Sources */,
 				2A0C02342B0A6681005764FA /* UIColor+.swift in Sources */,
@@ -464,6 +495,7 @@
 				2AB794532B0CFD15003DFF48 /* CategoryTableView.swift in Sources */,
 				2A0C021D2B0A5F78005764FA /* b.swift in Sources */,
 				2AB794652B0CFDE8003DFF48 /* SizeInfoCollectionViewCell.swift in Sources */,
+				A19559B62B0DFAA0002EED37 /* NavigationController+.swift in Sources */,
 				2A0C020E2B0A5E9A005764FA /* ImageLiterals.swift in Sources */,
 				2AB794552B0CFD15003DFF48 /* CategoryDetailTableHeaderView.swift in Sources */,
 				2AA327BC2B0B722100732CE9 /* NSObject+.swift in Sources */,
