@@ -11,10 +11,10 @@ extension UINavigationController {
     
     func setBackgroundColor() {
         let appearance = UINavigationBarAppearance()
-            appearance.configureWithOpaqueBackground()
-            appearance.backgroundColor = .white
-            
-            navigationBar.standardAppearance = appearance;
-            navigationBar.scrollEdgeAppearance = navigationBar.standardAppearance
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = .white
+        
+        navigationBar.standardAppearance = appearance;
+        navigationBar.scrollEdgeAppearance = navigationBar.standardAppearance
     }
 }
