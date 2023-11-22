@@ -28,4 +28,17 @@ enum StringLiterals {
             static let my = "MY"
         }
     }
+    
+    enum hatCategory {
+        enum header {
+            static let all = "전체"
+            static let beanie = "비니"
+            static let ballCap = "볼캡"
+            static let bucketHat = "버킷햇"
+            static let balaclava = "바라클라바"
+            static let beret = "베레모"
+            static let trapper = "트루퍼"
+            static let fedora = "페도라"
+        }
+    }
 }
