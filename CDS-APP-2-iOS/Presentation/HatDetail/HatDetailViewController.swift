@@ -51,7 +51,13 @@ final class HatDetailViewController: UIViewController {
     private func setupCollectionView() {
         collectionView.delegate = self
         collectionView.dataSource = self
+        
         collectionView.register(MainInfoCollectionViewCell.self, forCellWithReuseIdentifier: MainInfoCollectionViewCell.identifier)
+        collectionView.register(ProductInfoCollectionViewCell.self, forCellWithReuseIdentifier: ProductInfoCollectionViewCell.identifier)
+        
+        collectionView.register(ProductInfoHeaderCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: ProductInfoHeaderCollectionReusableView.identifier)
+        
+        
         view.addSubview(collectionView)
 
         collectionView.snp.makeConstraints{
@@ -72,6 +78,44 @@ extension HatDetailViewController: UICollectionViewDataSource {
         //나중에 data 추가 예정
         return cell
     }
+    
+    
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+            switch indexPath.section {
+                //case 0은 헤더가 없으므로 생략
+            case 1 :
+                if kind == UICollectionView.elementKindSectionHeader {
+                    guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: ProductInfoHeaderCollectionReusableView.identifier, for: indexPath) as? ProductInfoHeaderCollectionReusableView else {
+                        return ProductInfoHeaderCollectionReusableView()
+                    }
+                    header.configure()
+                    return header
+                } else {
+                    guard let footer = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: ProductInfoFooterCollectionReusableView.identifier, for: indexPath) as? ProductInfoFooterCollectionReusableView else {
+                        return ProductInfoFooterCollectionReusableView()
+                    }
+                    footer.configure()
+                    return footer
+                }
+
+            default :
+                return ProductInfoHeaderCollectionReusableView()
+            }
+        }
+        
+        // 헤더의 크기를 지정
+           func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+               switch section {
+               case 1 :
+                   return CGSize(width: 300, height: 50)
+                   
+               default :
+                   return CGSize.zero
+               }
+         
+           }
+    
 }
 
 extension HatDetailViewController: UICollectionViewDelegateFlowLayout {

@@ -9,4 +9,7 @@ import UIKit
 
 class ProductInfoCollectionViewCell: UICollectionViewCell {
     
+    static let identifier: String = "ProductInfoCollectionViewCell"
+    
+
 }

@@ -24,10 +24,15 @@ class ProductInfoHeaderCollectionReusableView: UICollectionReusableView {
     private let selectStackView = UIStackView()
     private let headerStackView = UIStackView()
     
+    func configure() {
+        setUI()
+        setLayout()
+        setHierachy()
+    }
     
     // MARK: - Set UI
     
-    private func setUI() {
+    func setUI() {
         productInfoLabel.do {
             $0.textColor = .black
             $0.font = .krBold(ofSize: 14)
@@ -72,7 +77,7 @@ class ProductInfoHeaderCollectionReusableView: UICollectionReusableView {
     
     // MARK: - Set Hierachy
     
-    private func setHierachy() {
+    func setHierachy() {
         selectStackView.addArrangedSubview(productInfoLabel)
         selectStackView.addArrangedSubview(selectlineView)
         headerStackView.addArrangedSubview(selectStackView)
@@ -84,7 +89,7 @@ class ProductInfoHeaderCollectionReusableView: UICollectionReusableView {
     
     // MARK: - Set Layout
     
-    private func setLayout() {
+    func setLayout() {
         selectlineView.snp.makeConstraints {
             $0.width.equalTo(67)
             $0.height.equalTo(1)
