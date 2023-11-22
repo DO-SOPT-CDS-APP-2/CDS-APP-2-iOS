@@ -7,6 +7,9 @@
 
 import UIKit
 
+import SnapKit
+import Then
+
 class ProductInfoHeaderCollectionReusableView: UICollectionReusableView {
     
     static let identifier: String = "ProductInfoHeaderCollectionReusableView"
@@ -32,7 +35,7 @@ class ProductInfoHeaderCollectionReusableView: UICollectionReusableView {
         
         selectlineView.do {
             $0.backgroundColor = .black
-        }   //selectline w:67길이
+        }
         
         selectStackView.do {
             $0.axis = .vertical
