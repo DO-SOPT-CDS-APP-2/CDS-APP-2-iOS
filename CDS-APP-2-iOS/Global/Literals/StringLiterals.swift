@@ -18,4 +18,14 @@ enum StringLiterals {
             static let men = "MEN"
         }
     }
+    
+    enum Tabbar {
+        enum title{
+            static let home = "HOME"
+            static let category = "CATEGORY"
+            static let search = "SEARCH"
+            static let like = "LIKE"
+            static let my = "MY"
+        }
+    }
 }
