@@ -11,10 +11,39 @@ extension UINavigationController {
     
     func setBackgroundColor() {
         let appearance = UINavigationBarAppearance()
-        appearance.configureWithOpaqueBackground()
         appearance.backgroundColor = .white
         
         navigationBar.standardAppearance = appearance;
         navigationBar.scrollEdgeAppearance = navigationBar.standardAppearance
+    }
+    
+    func setCenterItem() {
+        let title = UILabel()
+        let detailDownImage = UIImageView(image: ImageLiterals.icon.icDetailDownBlackSmall)
+        
+        title.do {
+            $0.text = "모자"
+            $0.font = UIFont.krBold(ofSize: 18.adjusted)
+        }
+        detailDownImage.do {
+            $0.contentMode = .scaleAspectFit
+        }
+        
+        let stackView = UIStackView(arrangedSubviews: [title, detailDownImage])
+        stackView.spacing = 4.adjusted
+        topViewController?.navigationItem.titleView = stackView
+    }
+
+    func setButtonItem() {
+        let backButtonImage = ImageLiterals.icon.icBack.withRenderingMode(.alwaysOriginal)
+        let searchButtonImage = ImageLiterals.icon.icSearchBlack.withRenderingMode(.alwaysOriginal)
+        let cartButtonImage = ImageLiterals.icon.icCartBlack.withRenderingMode(.alwaysOriginal)
+        
+        let backButton = UIBarButtonItem(image: backButtonImage, style: .plain, target: nil, action: nil)
+        topViewController?.navigationItem.leftBarButtonItem = backButton
+        
+        let searchButton = UIBarButtonItem(image: searchButtonImage, style: .plain, target: nil, action: nil)
+        let cartButton = UIBarButtonItem(image: cartButtonImage, style: .plain, target: nil, action: nil)
+        topViewController?.navigationItem.rightBarButtonItems = [searchButton, cartButton]
     }
 }

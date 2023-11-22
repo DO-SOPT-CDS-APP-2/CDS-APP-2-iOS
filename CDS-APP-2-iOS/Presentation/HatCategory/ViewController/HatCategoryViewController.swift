@@ -20,5 +20,7 @@ final class HatCategoryViewController: UIViewController {
     
     private func setNavigationBar() {
         self.navigationController?.setBackgroundColor()
+        self.navigationController?.setButtonItem()
+        self.navigationController?.setCenterItem()
     }
 }
