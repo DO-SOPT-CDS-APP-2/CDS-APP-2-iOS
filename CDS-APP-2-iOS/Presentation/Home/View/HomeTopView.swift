@@ -21,6 +21,22 @@ final class HomeTopView: UIView {
     private let alertButton = UIButton()
     private let cartButton = UIButton()
     private let topButtonStackView = UIStackView()
+    private let chipViews: [ChipView] = [ChipView(borderColor: .white,
+                                                  labelColor: .white,
+                                                  text: StringLiterals.Home.chip.woman),
+                                         ChipView(borderColor: .white.withAlphaComponent(0.2),
+                                                  labelColor: .white.withAlphaComponent(0.6),
+                                                  text: StringLiterals.Home.chip.man),
+                                         ChipView(borderColor: .white.withAlphaComponent(0.2),
+                                                  labelColor: .white.withAlphaComponent(0.6),
+                                                  text: StringLiterals.Home.chip.life),
+                                         ChipView(borderColor: .white.withAlphaComponent(0.2),
+                                                  labelColor: .white.withAlphaComponent(0.6),
+                                                  text: StringLiterals.Home.chip.best),
+                                         ChipView(borderColor: .white.withAlphaComponent(0.2),
+                                                  labelColor: .white.withAlphaComponent(0.6),
+                                                  text: StringLiterals.Home.chip.recommand) ]
+    private let chipStackView = UIStackView()
 
     // MARK: - Life Cycle
     
@@ -58,20 +74,34 @@ final class HomeTopView: UIView {
             $0.axis = .horizontal
             $0.spacing = 15
         }
+        
+        chipStackView.do {
+            $0.axis = .horizontal
+            $0.spacing = 8
+        }
+        
+        // 맨 처음 ChipView만 label font가 다르기 때문에, 첫번째 요소만 가져와 폰트 변경해주는 코드 작성
+        if let firstSubview = chipStackView.arrangedSubviews.first as? ChipView {
+            firstSubview.tagLabel.font = .krSemiBold(ofSize: 12)
+        }
     }
         
     private func setHierachy() {
         self.addSubviews(logoImageView,
-                         topButtonStackView)
+                         topButtonStackView, chipStackView)
         
         topButtonStackView.addArrangedSubviews(searchButton,
                                                alertButton,
                                                cartButton)
+        
+        chipViews.forEach {
+            chipStackView.addArrangedSubview($0)
+        }
     }
         
     private func setLayout() {
         self.snp.makeConstraints {
-            $0.height.equalTo(132)
+            $0.height.equalTo(132.adjusted)
         }
         logoImageView.snp.makeConstraints {
             $0.top.equalToSuperview().inset(64.adjusted)
@@ -95,6 +125,11 @@ final class HomeTopView: UIView {
             $0.trailing.equalToSuperview().inset(17)
             $0.height.equalTo(24)
         }
+        
+        chipStackView.snp.makeConstraints {
+            $0.top.equalTo(logoImageView.snp.bottom).offset(15)
+            $0.leading.equalToSuperview().inset(18)
+            $0.height.equalTo(30)
+        }
     }
 }
-
