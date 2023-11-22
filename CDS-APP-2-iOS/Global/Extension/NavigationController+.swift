@@ -9,6 +9,8 @@ import UIKit
 
 extension UINavigationController {
     
+    //MARK: setting NavigationBar Background Color
+    
     func setBackgroundColor() {
         let appearance = UINavigationBarAppearance()
         appearance.backgroundColor = .white
@@ -16,6 +18,8 @@ extension UINavigationController {
         navigationBar.standardAppearance = appearance;
         navigationBar.scrollEdgeAppearance = navigationBar.standardAppearance
     }
+    
+    //MARK: setting Center Item in NavigationBar
     
     func setCenterItem() {
         let title = UILabel()
@@ -33,6 +37,8 @@ extension UINavigationController {
         stackView.spacing = 4.adjusted
         topViewController?.navigationItem.titleView = stackView
     }
+    
+    //MARK: setting left and right Button Item in NavigationBar
 
     func setButtonItem() {
         let backButtonImage = ImageLiterals.icon.icBack.withRenderingMode(.alwaysOriginal)

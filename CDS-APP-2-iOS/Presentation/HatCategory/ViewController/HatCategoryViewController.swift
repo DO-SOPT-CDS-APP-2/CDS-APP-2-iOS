@@ -18,6 +18,8 @@ final class HatCategoryViewController: UIViewController {
         self.setNavigationBar()
     }
     
+    //MARK: set NavigationBar
+    
     private func setNavigationBar() {
         self.navigationController?.setBackgroundColor()
         self.navigationController?.setButtonItem()
