@@ -21,21 +21,16 @@ final class HomeTopView: UIView {
     private let alertButton = UIButton()
     private let cartButton = UIButton()
     private let topButtonStackView = UIStackView()
-    private let chipViews: [ChipView] = [ChipView(borderColor: .white,
-                                                  labelColor: .white,
-                                                  text: StringLiterals.Home.chip.woman),
-                                         ChipView(borderColor: .white.withAlphaComponent(0.2),
-                                                  labelColor: .white.withAlphaComponent(0.6),
-                                                  text: StringLiterals.Home.chip.man),
-                                         ChipView(borderColor: .white.withAlphaComponent(0.2),
-                                                  labelColor: .white.withAlphaComponent(0.6),
-                                                  text: StringLiterals.Home.chip.life),
-                                         ChipView(borderColor: .white.withAlphaComponent(0.2),
-                                                  labelColor: .white.withAlphaComponent(0.6),
-                                                  text: StringLiterals.Home.chip.best),
-                                         ChipView(borderColor: .white.withAlphaComponent(0.2),
-                                                  labelColor: .white.withAlphaComponent(0.6),
-                                                  text: StringLiterals.Home.chip.recommand) ]
+    private let chipViews: [ChipView] = [ChipView(text: StringLiterals.Home.chip.woman,
+                                                  chipStyle: .backgroundIsBlack),
+                                         ChipView(text: StringLiterals.Home.chip.man,
+                                                  chipStyle: .backgroundIsBlack),
+                                         ChipView(text: StringLiterals.Home.chip.life,
+                                                  chipStyle: .backgroundIsBlack),
+                                         ChipView(text: StringLiterals.Home.chip.best,
+                                                  chipStyle: .backgroundIsBlack),
+                                         ChipView(text: StringLiterals.Home.chip.recommand,
+                                                  chipStyle: .backgroundIsBlack) ]
     private let chipStackView = UIStackView()
 
     // MARK: - Life Cycle
@@ -83,6 +78,8 @@ final class HomeTopView: UIView {
         // 맨 처음 ChipView만 label font가 다르기 때문에, 첫번째 요소만 가져와 폰트 변경해주는 코드 작성
         if let firstSubview = chipStackView.arrangedSubviews.first as? ChipView {
             firstSubview.tagLabel.font = .krSemiBold(ofSize: 12)
+            firstSubview.tagLabel.textColor = .white
+            firstSubview.layer.borderColor = UIColor.white.cgColor
         }
     }
         

@@ -17,6 +17,10 @@ final class ChipView: UIView {
     private var labelWidth = Double()
     private var labelColor = UIColor()
     private var borderColor = UIColor()
+    enum ChipStyle {
+        case backgroundIsBlack
+        case backgroundIsWhite
+    }
     
     // MARK: - UI Components
 
@@ -29,11 +33,19 @@ final class ChipView: UIView {
     
     // MARK: - Life Cycle
     
-    init(borderColor: UIColor, labelColor: UIColor, text: String) {
+    init(text: String, chipStyle: ChipStyle) {
         super.init(frame: CGRect())
         
-        self.borderColor = borderColor
-        self.labelColor = labelColor
+        switch chipStyle {
+        case .backgroundIsBlack:
+            self.borderColor = .white.withAlphaComponent(0.2)
+            self.labelColor = .white.withAlphaComponent(0.6)
+            
+        case.backgroundIsWhite:
+            self.borderColor = .border
+            self.labelColor = .lightGray
+        }
+        
         tagLabel.text = text
         labelWidth = Double(tagLabel.intrinsicContentSize.width)
         
@@ -89,4 +101,3 @@ final class ChipView: UIView {
         }
     }
 }
-
