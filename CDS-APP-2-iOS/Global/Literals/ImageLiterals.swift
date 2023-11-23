@@ -48,7 +48,7 @@ enum ImageLiterals {
         static var icDetail: UIImage { .load(named: "ic_detail")}
         static var icHeart: UIImage { .load(named: "ic_heart")}
         static var icHomeBlack: UIImage { .load(named: "ic_home_black")}
-        static var icHomeOnSelected: UIImage { .load(named: "ic_home_on_selected")}
+        static var icHomeOff: UIImage { .load(named: "ic_home_off")}
         static var icHomeOn: UIImage { .load(named: "ic_home_on")}
         static var icLikeOffBlackMedium: UIImage { .load(named: "ic_like_off_black_medium")}
         static var icLikeOffGrayBig: UIImage { .load(named: "ic_like_off_gray_big")}
@@ -58,6 +58,7 @@ enum ImageLiterals {
         static var icLikeOnGrayBig: UIImage { .load(named: "ic_like_on_gray_big")}
         static var icLikeOnGrayMedium: UIImage { .load(named: "ic_like_on_gray_medium")}
         static var icLikeOnWhiteMedium: UIImage { .load(named: "ic_like_on_white_medium")}
+        static var icLikeOff: UIImage {.load(named: "ic_like_off")}
         static var icLikeOn: UIImage { .load(named: "ic_like_on")}
         static var icMyOff: UIImage { .load(named: "ic_my_off")}
         static var icMyOn: UIImage { .load(named: "ic_my_on")}
