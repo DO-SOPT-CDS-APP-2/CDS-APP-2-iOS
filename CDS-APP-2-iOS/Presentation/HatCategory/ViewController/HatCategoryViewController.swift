@@ -75,7 +75,7 @@ final class HatCategoryViewController: UIViewController {
     
     private func setHeaderCollectionViewConfig() {
         self.headerCollectionView.register(HeaderCollectionViewCell.self,
-                                           forCellWithReuseIdentifier: HeaderCollectionViewCell.identifier)
+                                           forCellWithReuseIdentifier: HeaderCollectionViewCell.className)
         self.headerCollectionView.delegate = self
         self.headerCollectionView.dataSource = self
     }
@@ -111,7 +111,7 @@ extension HatCategoryViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let item = collectionView.dequeueReusableCell(withReuseIdentifier: HeaderCollectionViewCell.identifier,
+        guard let item = collectionView.dequeueReusableCell(withReuseIdentifier: HeaderCollectionViewCell.className,
                                                             for: indexPath) as? HeaderCollectionViewCell else { return UICollectionViewCell() }
         
         item.bindData(category: headerDummy[indexPath.row].label)

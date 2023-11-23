@@ -12,8 +12,6 @@ import Then
 
 class HeaderCollectionViewCell: UICollectionViewCell {
     
-    static let identifier: String = "HeaderCollectionViewCell"
-    
     // MARK: - Properties
     
     private let categoryLabel = UILabel()
