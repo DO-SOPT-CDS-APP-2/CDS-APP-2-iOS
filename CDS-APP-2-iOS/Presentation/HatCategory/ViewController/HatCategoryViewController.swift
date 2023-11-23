@@ -89,6 +89,19 @@ final class HatCategoryViewController: UIViewController {
 }
 
 // MARK: - Extension
+extension HatCategoryViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        guard let headerCell = cell as? HeaderCollectionViewCell else {
+            return
+        }
+        
+        // 첫 번째 셀 속성 처리
+        if indexPath.item == 0 {
+            headerCell.categoryLabel.textColor = UIColor.black
+            headerCell.categoryLabel.font = UIFont.krBold(ofSize: 14.adjusted)
+        }
+    }
+}
 
 extension HatCategoryViewController: UICollectionViewDelegateFlowLayout {
     // cell width: text 길이에 따른 동적 너비 적용

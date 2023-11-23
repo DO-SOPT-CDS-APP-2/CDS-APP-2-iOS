@@ -14,7 +14,7 @@ class HeaderCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Properties
     
-    private let categoryLabel = UILabel()
+    let categoryLabel = UILabel()
     
     // MARK: - Life Cycle
     
