@@ -70,6 +70,8 @@ class MainInfoCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Set UI
+    
     private func setUI() {
         productImage.do {
             $0.image = #imageLiteral(resourceName: "img_hat")
@@ -245,6 +247,8 @@ class MainInfoCollectionViewCell: UICollectionViewCell {
         }
     }
     
+    // MARK: - Set Hierachy
+    
     private func setHierachy() {
         contentView.addSubviews(productImage, brandLabel, brandmoreIcon, productnameLabel, reviewStackView, reviewnumberLabel, reviewdescriptLabel, priceLabel, discountpercentLabel, discountpriceLabel, pointLabel, pointpercentLabel, pointdescriptLabel, thindivideView1)
 
@@ -255,6 +259,9 @@ class MainInfoCollectionViewCell: UICollectionViewCell {
         
         contentView.addSubviews(userStackView, thindivideView2, shippingLabel, shippingfeeLabel, shippingfeedescriptLabel, shippingexpectedLabel, shippingdescriptLabel, thickdivideView)
     }
+    
+    
+    // MARK: - Set Layout
     
     private func setLayout() {
         productImage.snp.makeConstraints {
