@@ -305,8 +305,8 @@
 		2AB7943F2B0CFD15003DFF48 /* Dummy */ = {
 			isa = PBXGroup;
 			children = (
-				2AB794402B0CFD15003DFF48 /* CategoryList.swift */,
 				2AB794412B0CFD15003DFF48 /* Category.swift */,
+				2AB794402B0CFD15003DFF48 /* CategoryList.swift */,
 				2AB794422B0CFD15003DFF48 /* CategoryDetailList.swift */,
 			);
 			path = Dummy;
@@ -315,9 +315,9 @@
 		2AB794432B0CFD15003DFF48 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				2AB794442B0CFD15003DFF48 /* CategoryDetailTableViewCell.swift */,
-				2AB794452B0CFD15003DFF48 /* CategoryTableViewCell.swift */,
 				2AB794462B0CFD15003DFF48 /* CategoryHorizontalCollectionViewCell.swift */,
+				2AB794452B0CFD15003DFF48 /* CategoryTableViewCell.swift */,
+				2AB794442B0CFD15003DFF48 /* CategoryDetailTableViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -325,8 +325,8 @@
 		2AB794472B0CFD15003DFF48 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				2AB794482B0CFD15003DFF48 /* CategoryTableView.swift */,
 				2AB794492B0CFD15003DFF48 /* CategoryHeaderView.swift */,
+				2AB794482B0CFD15003DFF48 /* CategoryTableView.swift */,
 				2AB7944A2B0CFD15003DFF48 /* CategoryDetailTableHeaderView.swift */,
 			);
 			path = View;
