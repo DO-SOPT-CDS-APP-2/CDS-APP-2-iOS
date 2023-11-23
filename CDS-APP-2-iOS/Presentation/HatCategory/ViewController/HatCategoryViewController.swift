@@ -16,6 +16,7 @@ final class HatCategoryViewController: UIViewController {
     
     private let headerCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout())
     private let headerDummy = HeaderCategory.headerDummy()
+    private let border = BorderView()
     
     // MARK: - Life Cycle
     
@@ -44,16 +45,23 @@ final class HatCategoryViewController: UIViewController {
     //MARK: set Hierachy
     
     private func setHierachy() {
-        self.view.addSubview(headerCollectionView)
+        self.view.addSubviews(headerCollectionView, border)
     }
     
     // MARK: - Set Layout
     
     private func setLayout() {
+        
         headerCollectionView.snp.makeConstraints {
             $0.top.equalToSuperview().inset(88.adjusted) // 이렇게밖에 안된다고 ..??? 좀따가 수정해보자
             $0.leading.trailing.equalToSuperview()
             $0.height.equalTo(43.adjusted)
+        }
+        
+        border.snp.makeConstraints {
+            $0.top.equalTo(headerCollectionView.snp.bottom).offset(3)
+            $0.height.equalTo(1)
+            $0.width.equalToSuperview()
         }
     }
     

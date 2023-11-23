@@ -54,6 +54,7 @@
 		A19559B62B0DFAA0002EED37 /* NavigationController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19559B52B0DFAA0002EED37 /* NavigationController+.swift */; };
 		A1A29DED2B0F223C00C9F25D /* HeaderCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A29DEC2B0F223C00C9F25D /* HeaderCollectionViewCell.swift */; };
 		A1A29DF02B0F37DA00C9F25D /* HeaderCategoryDummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A29DEF2B0F37DA00C9F25D /* HeaderCategoryDummy.swift */; };
+		A1E59EFA2B0F5C8E0074BFD6 /* BorderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E59EF92B0F5C8E0074BFD6 /* BorderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -103,6 +104,7 @@
 		A19559B52B0DFAA0002EED37 /* NavigationController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationController+.swift"; sourceTree = "<group>"; };
 		A1A29DEC2B0F223C00C9F25D /* HeaderCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCollectionViewCell.swift; sourceTree = "<group>"; };
 		A1A29DEF2B0F37DA00C9F25D /* HeaderCategoryDummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCategoryDummy.swift; sourceTree = "<group>"; };
+		A1E59EF92B0F5C8E0074BFD6 /* BorderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -392,6 +394,7 @@
 		A19559A22B0DC3BF002EED37 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				A1E59EF92B0F5C8E0074BFD6 /* BorderView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -523,6 +526,7 @@
 				2AB794552B0CFD15003DFF48 /* CategoryDetailTableHeaderView.swift in Sources */,
 				2AA327BC2B0B722100732CE9 /* NSObject+.swift in Sources */,
 				2AB7944E2B0CFD15003DFF48 /* Category.swift in Sources */,
+				A1E59EFA2B0F5C8E0074BFD6 /* BorderView.swift in Sources */,
 				2A0C021A2B0A5F30005764FA /* a.swift in Sources */,
 				2A0C02362B0A6B5B005764FA /* UIImage+.swift in Sources */,
 				A1A29DF02B0F37DA00C9F25D /* HeaderCategoryDummy.swift in Sources */,
