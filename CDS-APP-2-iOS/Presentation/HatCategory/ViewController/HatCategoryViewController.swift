@@ -79,7 +79,19 @@ final class HatCategoryViewController: UIViewController {
     }
 }
 
-extension HatCategoryViewController: UICollectionViewDelegate {}
+extension HatCategoryViewController: UICollectionViewDelegateFlowLayout {
+    // cell width: text 길이에 따른 동적 너비 적용
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        let text = headerDummy[indexPath.item].label
+        let font = UIFont.krMedium(ofSize: 14.adjusted)
+        let textWidth = (text as NSString).size(withAttributes: [NSAttributedString.Key.font: font]).width
+        
+        let cellWidth = textWidth + 18
+        
+        return CGSize(width: cellWidth, height: 43.adjusted)
+    }
+}
 
 extension HatCategoryViewController: UICollectionViewDataSource {
     
