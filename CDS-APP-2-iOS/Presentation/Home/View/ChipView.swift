@@ -37,9 +37,9 @@ final class ChipView: UIView {
         tagLabel.text = text
         labelWidth = Double(tagLabel.intrinsicContentSize.width)
         
-        style()
-        hieararchy()
-        layout()
+        setUI()
+        setHierachy()
+        setLayout()
     }
     
     required init(coder: NSCoder) {
@@ -48,7 +48,7 @@ final class ChipView: UIView {
     
     // MARK: - Custom Method
     
-    private func style() {
+    private func setUI() {
         self.do {
             $0.layer.borderWidth = 1.2
             $0.layer.borderColor = borderColor.cgColor
@@ -68,11 +68,11 @@ final class ChipView: UIView {
         }
     }
     
-    private func hieararchy() {
+    private func setHierachy() {
         addSubview(tagStackView)
     }
     
-    private func layout() {
+    private func setLayout() {
         self.snp.makeConstraints {
             $0.height.equalTo(30)
         }

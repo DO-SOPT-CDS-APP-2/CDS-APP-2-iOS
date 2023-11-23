@@ -98,7 +98,7 @@ final class HomeTopView: UIView {
             chipStackView.addArrangedSubview($0)
         }
     }
-        
+
     private func setLayout() {
         self.snp.makeConstraints {
             $0.height.equalTo(132.adjusted)
