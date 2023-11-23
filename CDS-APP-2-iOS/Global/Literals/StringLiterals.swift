@@ -41,4 +41,14 @@ enum StringLiterals {
             static let fedora = "페도라"
         }
     }
+  
+    enum Home {
+        enum chip {
+            static let woman = "우먼"
+            static let man = "맨"
+            static let life = "라이프"
+            static let best = "베스트"
+            static let recommand = "추천"
+        }
+    }
 }
