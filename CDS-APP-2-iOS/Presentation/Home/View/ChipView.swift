@@ -73,7 +73,7 @@ final class ChipView: UIView {
         }
         
         tagLabel.do {
-            $0.font = .krMedium(ofSize: 12)
+            $0.font = .krMedium(ofSize: 12.adjusted)
             $0.textColor = labelColor
             $0.textAlignment = .center
             $0.frame.size = $0.intrinsicContentSize
@@ -86,18 +86,18 @@ final class ChipView: UIView {
     
     private func setLayout() {
         self.snp.makeConstraints {
-            $0.height.equalTo(30)
+            $0.height.equalTo(30.adjusted)
         }
         tagStackView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
         
         frontEmptyLabel.snp.makeConstraints {
-            $0.width.equalTo(14.5)
+            $0.width.equalTo(14.5.adjusted)
         }
         
         backEmptyLabel.snp.makeConstraints {
-            $0.width.equalTo(14.5)
+            $0.width.equalTo(14.5.adjusted)
         }
     }
 }
