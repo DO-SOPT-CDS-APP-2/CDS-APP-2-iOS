@@ -30,7 +30,7 @@ enum StringLiterals {
     }
     
     enum HatCategory {
-        enum header: CaseIterable {
+        enum header {
             static let all = "전체"
             static let beanie = "비니"
             static let ballCap = "볼캡"
