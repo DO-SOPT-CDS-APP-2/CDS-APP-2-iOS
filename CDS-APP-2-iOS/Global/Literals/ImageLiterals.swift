@@ -33,7 +33,7 @@ enum ImageLiterals {
     enum icon {
         static var icAlertBlack: UIImage { .load(named: "ic_alert_black")}
         static var icAlertWhite: UIImage { .load(named: "ic_alert_white")}
-        static var icBlack: UIImage { .load(named: "ic_back")}
+        static var icBack: UIImage { .load(named: "ic_back")}
         static var icCartBlack: UIImage { .load(named: "ic_cart_black")}
         static var icCartWhite: UIImage { .load(named: "ic_cart_white")}
         static var icCategoryOff: UIImage { .load(named: "ic_category_off")}

@@ -29,6 +29,7 @@ enum StringLiterals {
         }
     }
     
+
     enum HatDetail {
         enum MainInfo {
             static let brandKR = "타입서비스"
@@ -49,7 +50,29 @@ enum StringLiterals {
             static let shippingfeedescript = "해당 브랜드 제품은 무료배송 됩니다.\n제주도를 포함한 도서/산간지역은 추가배송비 3,500원"
             static let shippingexpected = "배송예정"
             static let shippingdescript = "2일 이내 출고 (주말, 공휴일 제외)"
+        }
+    }
             
+    enum HatCategory {
+        enum header {
+            static let all = "전체"
+            static let beanie = "비니"
+            static let ballCap = "볼캡"
+            static let bucketHat = "버킷햇"
+            static let balaclava = "바라클라바"
+            static let beret = "베레모"
+            static let trapper = "트루퍼"
+            static let fedora = "페도라"
+        }
+    }
+  
+    enum Home {
+        enum chip {
+            static let woman = "우먼"
+            static let man = "맨"
+            static let life = "라이프"
+            static let best = "베스트"
+            static let recommand = "추천"
         }
     }
 }
