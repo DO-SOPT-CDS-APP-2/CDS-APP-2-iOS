@@ -18,9 +18,9 @@ class MainInfoCollectionViewCell: UICollectionViewCell {
     private let likebutton = UIButton()
     private let brandLabel = UILabel()
     private let productnameLabel = UILabel()
-    //private let brandmoreIcon = UIImageView()
+    private let brandmoreIcon = UIImageView()
     
-    private let reviewImage = UIImageView()
+    private let reviewStackView = UIStackView()
     private let reviewnumberLabel = UILabel()
     private let reviewdescriptLabel = UILabel()
     
@@ -36,7 +36,7 @@ class MainInfoCollectionViewCell: UICollectionViewCell {
     private let userdiscountpercentLabel = UILabel()
     private let userdiscountpriceLabel = UILabel()
     private let usermoreIcon = UIImageView()
-    private let userstackView = UIStackView()
+    private let userStackView = UIStackView()
     
     
     private let shippingLabel = UILabel()
@@ -52,6 +52,11 @@ class MainInfoCollectionViewCell: UICollectionViewCell {
     private let thickdivideView = UIView()    //height: 8
     private let spacerView = UIView()   //공백
 
+    private let brandImage = UIImageView()
+    private let brandNameENLabel = UILabel()
+    private let brandNameKRLabel = UILabel()
+    private let brandNameStackView = UIStackView()
+    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -77,12 +82,24 @@ class MainInfoCollectionViewCell: UICollectionViewCell {
             $0.text = "타입서비스"
         } //타입서비스
         
+        brandmoreIcon.do {
+            $0.image = #imageLiteral(resourceName: "ic_detail_right_gray_small")
+        }
+        
         productnameLabel.do {
             $0.textColor = .black
             $0.font = .enDisplayBold(ofSize: 14)
-            
             $0.text = "Typeservice Web Cap [22 Colors]"
         } //Typeservice Web Cap [22 Colors]
+        
+    
+        reviewStackView.do {
+            $0.distribution = .equalSpacing
+        }
+        (1...5).forEach { i in
+            let starImageView = UIImageView(image: #imageLiteral(resourceName: "ic_star_black"))
+            reviewStackView.addArrangedSubview(starImageView)
+        }
         
         reviewnumberLabel.do {
             $0.textColor = .darkGray
@@ -98,26 +115,32 @@ class MainInfoCollectionViewCell: UICollectionViewCell {
             $0.text = "개 리뷰보기"
         } //개 리뷰보기
         
+        
         priceLabel.do {
             $0.textColor = .lightGray
-            $0.font = .enDisplayBold(ofSize: 14)
-            
-            $0.text = "39,000"
-        } //정가 : 39,000
-        
+            $0.text = "39,000원"
+        }
+        let priceattributedString = NSMutableAttributedString(string: priceLabel.text ?? "")
+        priceattributedString.addAttribute(.font, value: UIFont.enDisplayBold(ofSize: 14), range: NSRange(location: 0, length: priceattributedString.length - 1))
+        priceattributedString.addAttribute(.font, value: UIFont.krBold(ofSize: 14), range: NSRange(location: priceattributedString.length - 1, length: 1))
+        priceLabel.attributedText = priceattributedString
+
+
         discountpercentLabel.do {
             $0.textColor = .point
             $0.font = .enDisplayBold(ofSize: 20)
-            
             $0.text = "5%"
-        } //5%
+        }
         
         discountpriceLabel.do {
             $0.textColor = .black
-            $0.font = .enDisplayBold(ofSize: 20)
-            
-            $0.text = "37,050"
-        } //37,050
+            $0.text = "37,050원"
+        }
+        let discountpriceattributedString = NSMutableAttributedString(string: discountpriceLabel.text ?? "")
+        discountpriceattributedString.addAttribute(.font, value: UIFont.enDisplayBold(ofSize: 20), range: NSRange(location: 0, length: discountpriceattributedString.length - 1))
+        discountpriceattributedString.addAttribute(.font, value: UIFont.krBold(ofSize: 20), range: NSRange(location: discountpriceattributedString.length - 1, length: 1))
+        discountpriceLabel.attributedText = discountpriceattributedString
+        
         
         pointLabel.do {
             $0.textColor = .darkGray
@@ -144,12 +167,12 @@ class MainInfoCollectionViewCell: UICollectionViewCell {
             $0.textColor = .black
             $0.font = .krBold(ofSize: 12)
             $0.text = "김디팟님 구매 가능 가격"
-        } //김디팟님 구매 가능 가격
-        
+        }
         let userattributedString = NSMutableAttributedString(string: userLabel.text ?? "")
         userattributedString.addAttribute(.foregroundColor, value: UIColor.black, range: NSRange(location: 0, length: 3))
         userattributedString.addAttribute(.foregroundColor, value: UIColor.mediumGray, range: NSRange(location: 3, length: userattributedString.length - 3))
         userLabel.attributedText = userattributedString
+        
         
         userdiscountpercentLabel.do {
             $0.textColor = .mediumGray
@@ -158,18 +181,22 @@ class MainInfoCollectionViewCell: UICollectionViewCell {
             $0.text = "12%"
         } //12%
         
+        
         userdiscountpriceLabel.do {
             $0.textColor = .black
-            $0.font = .enDisplayBold(ofSize: 16)
-            
             $0.text = "34,468원"
-        } //34,468
+        }
+        let userdiscountpriceattributedString = NSMutableAttributedString(string: userdiscountpriceLabel.text ?? "")
+        userdiscountpriceattributedString.addAttribute(.font, value: UIFont.enDisplayBold(ofSize: 16), range: NSRange(location: 0, length: userdiscountpriceattributedString.length - 1))
+        userdiscountpriceattributedString.addAttribute(.font, value: UIFont.krBold(ofSize: 16), range: NSRange(location: userdiscountpriceattributedString.length - 1, length: 1))
+        userdiscountpriceLabel.attributedText = userdiscountpriceattributedString
+        
         
         usermoreIcon.do {
             $0.image = #imageLiteral(resourceName: "ic_detail_down_gray_small")
         }
         
-        userstackView.do {
+        userStackView.do {
             $0.axis = .horizontal
             $0.spacing = 3
         }
@@ -189,8 +216,9 @@ class MainInfoCollectionViewCell: UICollectionViewCell {
         shippingfeedescriptLabel.do {
             $0.textColor = .darkGray
             $0.font = .krRegular(ofSize: 12)
-            $0.text = "해당 브랜드 제품은 무료배송 됩니다"
-        } //해당 브랜드 제품은 무료배송 됩니다 ~~~~
+            $0.numberOfLines = 0  // 여러 줄 허용
+            $0.text = "해당 브랜드 제품은 무료배송 됩니다.\n제주도를 포함한 도서/산간지역은 추가배송비 3,500원"
+        }
         
         shippingexpectedLabel.do {
             $0.textColor = .darkGray
@@ -202,7 +230,7 @@ class MainInfoCollectionViewCell: UICollectionViewCell {
             $0.textColor = .darkGray
             $0.font = .krRegular(ofSize: 12)
             $0.text = "2일 이내 출고 (주말, 공휴일 제외)"
-        } //2일 이내 출고 -> 색상 나눠야 함
+        }
         
         let shippingattributedString = NSMutableAttributedString(string: shippingdescriptLabel.text ?? "")
         shippingattributedString.addAttribute(.foregroundColor, value: UIColor.point, range: NSRange(location: 0, length: 5))
@@ -212,22 +240,20 @@ class MainInfoCollectionViewCell: UICollectionViewCell {
         for i in [thindivideView1, thindivideView2] {
             i.backgroundColor = .border
         }
-        
         thickdivideView.do {
             $0.backgroundColor = .border
         }
-        
     }
     
     private func setHierachy() {
-        contentView.addSubviews(productImage, brandLabel, productnameLabel, reviewnumberLabel, reviewdescriptLabel, priceLabel, discountpercentLabel, discountpriceLabel, pointLabel, pointpercentLabel, pointdescriptLabel, thindivideView1)
+        contentView.addSubviews(productImage, brandLabel, brandmoreIcon, productnameLabel, reviewStackView, reviewnumberLabel, reviewdescriptLabel, priceLabel, discountpercentLabel, discountpriceLabel, pointLabel, pointpercentLabel, pointdescriptLabel, thindivideView1)
 
-        userstackView.addArrangedSubviews(userLabel)
-        userstackView.addArrangedSubview(spacerView)
-        userstackView.addArrangedSubviews(userdiscountpercentLabel, userdiscountpriceLabel)
-        userstackView.addArrangedSubview(usermoreIcon)
+        userStackView.addArrangedSubviews(userLabel)
+        userStackView.addArrangedSubview(spacerView)
+        userStackView.addArrangedSubviews(userdiscountpercentLabel, userdiscountpriceLabel)
+        userStackView.addArrangedSubview(usermoreIcon)
         
-        contentView.addSubviews(userstackView, thindivideView2, shippingLabel, shippingfeeLabel, shippingfeedescriptLabel, shippingexpectedLabel, shippingdescriptLabel, thickdivideView)
+        contentView.addSubviews(userStackView, thindivideView2, shippingLabel, shippingfeeLabel, shippingfeedescriptLabel, shippingexpectedLabel, shippingdescriptLabel, thickdivideView)
     }
     
     private func setLayout() {
@@ -239,7 +265,11 @@ class MainInfoCollectionViewCell: UICollectionViewCell {
         brandLabel.snp.makeConstraints {
             $0.top.equalTo(productImage.snp.bottom).offset(25)
             $0.leading.equalTo(productImage.snp.leading).offset(10)
-            
+        }
+        
+        brandmoreIcon.snp.makeConstraints {
+            $0.top.equalTo(brandLabel.snp.top).offset(1)
+            $0.leading.equalTo(brandLabel.snp.trailing).offset(3)
         }
         
         productnameLabel.snp.makeConstraints {
@@ -247,9 +277,14 @@ class MainInfoCollectionViewCell: UICollectionViewCell {
             $0.leading.equalTo(brandLabel.snp.leading)
         }
         
+        reviewStackView.snp.makeConstraints {
+            $0.top.equalTo(productnameLabel.snp.bottom).offset(15)
+            $0.leading.equalTo(brandLabel.snp.leading)
+        }
+        
         reviewnumberLabel.snp.makeConstraints {
             $0.top.equalTo(productnameLabel.snp.bottom).offset(15)
-            $0.leading.equalTo(brandLabel.snp.leading).offset(20)
+            $0.leading.equalTo(reviewStackView.snp.trailing).offset(5)
         }
         
         reviewdescriptLabel.snp.makeConstraints {
@@ -298,14 +333,14 @@ class MainInfoCollectionViewCell: UICollectionViewCell {
             $0.width.equalTo(100)
         }
         
-        userstackView.snp.makeConstraints {
+        userStackView.snp.makeConstraints {
             $0.top.equalTo(thindivideView1.snp.bottom).offset(17)
             $0.leading.equalTo(brandLabel.snp.leading)
         }
         
         thindivideView2.snp.makeConstraints {
-            $0.top.equalTo(userstackView.snp.bottom).offset(17)
-            $0.bottom.equalTo(userstackView.snp.bottom).offset(19)
+            $0.top.equalTo(userStackView.snp.bottom).offset(17)
+            $0.bottom.equalTo(userStackView.snp.bottom).offset(19)
             $0.width.equalTo(contentView.snp.width)
         }
         
