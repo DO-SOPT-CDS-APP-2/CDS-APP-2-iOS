@@ -8,12 +8,7 @@
 import UIKit
 
 class ProductInfoFooterCollectionReusableView: UICollectionReusableView {
-    static let identifier: String = "ProductInfoFooterCollectionReusableView"
-        
-    func configure() {
-        backgroundColor = .clear
-    }
-        
+
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
@@ -21,4 +16,10 @@ class ProductInfoFooterCollectionReusableView: UICollectionReusableView {
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
+
+        
+    func configure() {
+        backgroundColor = .clear
+    }
+        
 }

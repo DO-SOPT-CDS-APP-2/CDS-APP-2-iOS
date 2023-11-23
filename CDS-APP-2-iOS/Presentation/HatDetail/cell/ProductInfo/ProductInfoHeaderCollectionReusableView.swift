@@ -12,7 +12,7 @@ import Then
 
 class ProductInfoHeaderCollectionReusableView: UICollectionReusableView {
     
-    static let identifier: String = "ProductInfoHeaderCollectionReusableView"
+
     
     private let productInfoLabel = UILabel()
     private let sizeLabel = UILabel()
@@ -23,6 +23,14 @@ class ProductInfoHeaderCollectionReusableView: UICollectionReusableView {
     
     private let selectStackView = UIStackView()
     private let headerStackView = UIStackView()
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
     
     func configure() {
         setUI()
@@ -35,8 +43,8 @@ class ProductInfoHeaderCollectionReusableView: UICollectionReusableView {
     func setUI() {
         productInfoLabel.do {
             $0.textColor = .black
-            $0.font = .krBold(ofSize: 14)
-        }   //상품정보
+            $0.font = .krBold(ofSize: 14.adjusted)
+        }
         
         selectlineView.do {
             $0.backgroundColor = .black
@@ -49,25 +57,24 @@ class ProductInfoHeaderCollectionReusableView: UICollectionReusableView {
         
         sizeLabel.do {
             $0.textColor = .lightGray
-            $0.font = .krBold(ofSize: 14)
-        }   //사이즈
+            $0.font = .krBold(ofSize: 14.adjusted)
+        }
         
         recommendLabel.do {
             $0.textColor = .lightGray
-            $0.font = .krBold(ofSize: 14)
-        }   //추천
+            $0.font = .krBold(ofSize: 14.adjusted)
+        }
         
         reviewLabel.do {
             $0.textColor = .lightGray
-            $0.font = .krBold(ofSize: 14)
-        }   //리뷰
+            $0.font = .krBold(ofSize: 14.adjusted)
+        }
         
         inquireLabel.do {
             $0.textColor = .lightGray
-            $0.font = .krBold(ofSize: 14)
-        }   //문의
+            $0.font = .krBold(ofSize: 14.adjusted)
+        }
         
-   
         headerStackView.do {
             $0.axis = .horizontal
             $0.distribution = .equalSpacing
@@ -96,18 +103,10 @@ class ProductInfoHeaderCollectionReusableView: UICollectionReusableView {
         }
         
         headerStackView.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(20)
-            $0.leading.equalToSuperview().inset(30)
-            $0.trailing.equalToSuperview().inset(30)
+            $0.top.equalToSuperview().inset(20.adjusted)
+            $0.leading.equalToSuperview().inset(30.adjusted)
+            $0.trailing.equalToSuperview().inset(30.adjusted)
         }
-    }
+    } 
     
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-    }
-    
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-    }
 }
