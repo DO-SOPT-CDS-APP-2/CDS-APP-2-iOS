@@ -9,6 +9,8 @@ import UIKit
 
 final class TabbarController: UITabBarController {
     
+    // MARK: - Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -16,10 +18,14 @@ final class TabbarController: UITabBarController {
         self.addTabBarController()
     }
     
+    // MARK: - Set UI
+    
     private func setUI() {
         self.view.backgroundColor = .white
         tabBar.backgroundColor = .background
     }
+    
+    // MARK: - Methods
     
     private func addTabBarController() {
         var tabNavigationControllers = [UINavigationController]()

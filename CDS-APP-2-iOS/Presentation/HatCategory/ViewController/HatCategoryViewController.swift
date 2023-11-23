@@ -12,11 +12,12 @@ import Then
 
 final class HatCategoryViewController: UIViewController {
     
-    //MARK: set Property
+    // MARK: - Properties
     
     private let headerCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout())
-    
     private let headerDummy = HeaderCategory.headerDummy()
+    
+    // MARK: - Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +32,7 @@ final class HatCategoryViewController: UIViewController {
         self.setCollectionViewLayout()
     }
     
-    //MARK: set UI
+    // MARK: - Set UI
     
     private func setUI() {
         headerCollectionView.do {
@@ -46,7 +47,7 @@ final class HatCategoryViewController: UIViewController {
         self.view.addSubview(headerCollectionView)
     }
     
-    //MARK: set Layout
+    // MARK: - Set Layout
     
     private func setLayout() {
         headerCollectionView.snp.makeConstraints {
@@ -56,7 +57,7 @@ final class HatCategoryViewController: UIViewController {
         }
     }
     
-    //MARK: set NavigationBar
+    // MARK: - Methods
     
     private func setNavigationBar() {
         self.navigationController?.setBackgroundColor()
@@ -78,6 +79,8 @@ final class HatCategoryViewController: UIViewController {
         self.headerCollectionView.setCollectionViewLayout(flowLayout, animated: false)
     }
 }
+
+// MARK: - Extension
 
 extension HatCategoryViewController: UICollectionViewDelegateFlowLayout {
     // cell width: text 길이에 따른 동적 너비 적용

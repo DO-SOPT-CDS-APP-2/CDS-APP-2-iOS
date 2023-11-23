@@ -14,9 +14,11 @@ class HeaderCollectionViewCell: UICollectionViewCell {
     
     static let identifier: String = "HeaderCollectionViewCell"
     
-    //MARK: set Property
+    // MARK: - Properties
     
     private let categoryLabel = UILabel()
+    
+    // MARK: - Life Cycle
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -30,7 +32,7 @@ class HeaderCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    //MARK: set UI
+    // MARK: - Set UI
     
     private func setUI() {
         categoryLabel.do {
@@ -39,13 +41,13 @@ class HeaderCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    //MARK: set Hierachy
+    //MARK: - set Hierachy
     
     private func setHierachy() {
         self.addSubview(categoryLabel)
     }
     
-    //MARK: set Layout
+    //MARK: - set Layout
     
     private func setLayout() {
         categoryLabel.snp.makeConstraints {
@@ -54,7 +56,7 @@ class HeaderCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    //MARK: bind data
+    //MARK: - function
     
     func bindData(category: String) {
         categoryLabel.text = category
