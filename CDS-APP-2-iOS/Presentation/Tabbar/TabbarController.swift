@@ -9,24 +9,30 @@ import UIKit
 
 final class TabbarController: UITabBarController {
     
+    // MARK: - Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.setUI()
         self.addTabBarController()
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
         self.navigationController?.navigationBar.isHidden = true
         self.navigationItem.hidesBackButton = true
     }
+  
+    // MARK: - Set UI
     
     private func setUI() {
         self.view.backgroundColor = .white
         tabBar.backgroundColor = .background
     }
+    
+    // MARK: - Methods
     
     private func addTabBarController() {
         var tabNavigationControllers = [UINavigationController]()
