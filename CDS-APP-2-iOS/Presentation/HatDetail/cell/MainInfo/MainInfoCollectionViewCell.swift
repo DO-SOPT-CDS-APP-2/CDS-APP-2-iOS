@@ -76,7 +76,7 @@ final class MainInfoCollectionViewCell: UICollectionViewCell {
         brandLabel.do {
             $0.textColor = .darkGray
             $0.font = .krSemiBold(ofSize: 12.adjusted)
-            $0.text = "타입서비스"
+            $0.text = StringLiterals.HatDetail.MainInfo.brandKR
         }
         
         brandmoreIcon.do {
@@ -86,7 +86,7 @@ final class MainInfoCollectionViewCell: UICollectionViewCell {
         productnameLabel.do {
             $0.textColor = .black
             $0.font = .enDisplayBold(ofSize: 14.adjusted)
-            $0.text = "Typeservice Web Cap [22 Colors]"
+            $0.text = StringLiterals.HatDetail.MainInfo.productname
         }
         
     
@@ -102,19 +102,18 @@ final class MainInfoCollectionViewCell: UICollectionViewCell {
         reviewnumberLabel.do {
             $0.textColor = .darkGray
             $0.font = .enDisplayMedium(ofSize: 10.adjusted)
-            $0.text = "13266"
+            $0.text = StringLiterals.HatDetail.MainInfo.reviewnumber
         }
         
         reviewdescriptLabel.do {
             $0.textColor = .darkGray
             $0.font = .krMedium(ofSize: 10.adjusted)
-            $0.text = "개 리뷰보기"
+            $0.text = StringLiterals.HatDetail.MainInfo.reviewdescript
         }
-        
         
         priceLabel.do {
             $0.textColor = .lightGray
-            $0.text = "39,000원"
+            $0.text = StringLiterals.HatDetail.MainInfo.originprice
         }
         let priceattributedString = NSMutableAttributedString(string: priceLabel.text ?? "")
         priceattributedString.addAttribute(.font, value: UIFont.enDisplayBold(ofSize: 14.adjusted), range: NSRange(location: 0, length: priceattributedString.length - 1))
@@ -124,12 +123,12 @@ final class MainInfoCollectionViewCell: UICollectionViewCell {
         discountpercentLabel.do {
             $0.textColor = .point
             $0.font = .enDisplayBold(ofSize: 20.adjusted)
-            $0.text = "5%"
+            $0.text = StringLiterals.HatDetail.MainInfo.discountpercent
         }
         
         discountpriceLabel.do {
             $0.textColor = .black
-            $0.text = "37,050원"
+            $0.text = StringLiterals.HatDetail.MainInfo.discountprice
         }
         let discountpriceattributedString = NSMutableAttributedString(string: discountpriceLabel.text ?? "")
         discountpriceattributedString.addAttribute(.font, value: UIFont.enDisplayBold(ofSize: 20.adjusted), range: NSRange(location: 0, length: discountpriceattributedString.length - 1))
@@ -140,25 +139,25 @@ final class MainInfoCollectionViewCell: UICollectionViewCell {
         pointLabel.do {
             $0.textColor = .darkGray
             $0.font = .enDisplayMedium(ofSize: 10.adjusted)
-            $0.text = "371p"
+            $0.text = StringLiterals.HatDetail.MainInfo.point
         }
         
         pointpercentLabel.do {
             $0.textColor = .darkGray
             $0.font = .enDisplayMedium(ofSize: 12.adjusted)
-            $0.text = "(1%)"
+            $0.text = StringLiterals.HatDetail.MainInfo.pointpercent
         }
     
         pointdescriptLabel.do {
             $0.textColor = .darkGray
             $0.font = .krMedium(ofSize: 12.adjusted)
-            $0.text = "적립"
+            $0.text = StringLiterals.HatDetail.MainInfo.pointdescript
         }
         
         userLabel.do {
             $0.textColor = .black
             $0.font = .krBold(ofSize: 12.adjusted)
-            $0.text = "김디팟님 구매 가능 가격"
+            $0.text = StringLiterals.HatDetail.MainInfo.user
         }
         let userattributedString = NSMutableAttributedString(string: userLabel.text ?? "")
         userattributedString.addAttribute(.foregroundColor, value: UIColor.black, range: NSRange(location: 0, length: 3))
@@ -168,12 +167,12 @@ final class MainInfoCollectionViewCell: UICollectionViewCell {
         userdiscountpercentLabel.do {
             $0.textColor = .mediumGray
             $0.font = .enDisplayBold(ofSize: 16.adjusted)
-            $0.text = "12%"
+            $0.text = StringLiterals.HatDetail.MainInfo.userdiscountpercent
         }
         
         userdiscountpriceLabel.do {
             $0.textColor = .black
-            $0.text = "34,468원"
+            $0.text = StringLiterals.HatDetail.MainInfo.userdiscountprice
         }
         let userdiscountpriceattributedString = NSMutableAttributedString(string: userdiscountpriceLabel.text ?? "")
         userdiscountpriceattributedString.addAttribute(.font, value: UIFont.enDisplayBold(ofSize: 16.adjusted), range: NSRange(location: 0, length: userdiscountpriceattributedString.length - 1))
@@ -192,32 +191,32 @@ final class MainInfoCollectionViewCell: UICollectionViewCell {
         shippingLabel.do {
             $0.textColor = .black
             $0.font = .krBold(ofSize: 16.adjusted)
-            $0.text = "배송정보"
+            $0.text = StringLiterals.HatDetail.MainInfo.shipping
         }
         
         shippingfeeLabel.do {
             $0.textColor = .darkGray
             $0.font = .krRegular(ofSize: 12.adjusted)
-            $0.text = "배송비"
+            $0.text = StringLiterals.HatDetail.MainInfo.shippigfee
         }
         
         shippingfeedescriptLabel.do {
             $0.textColor = .darkGray
             $0.font = .krRegular(ofSize: 12.adjusted)
             $0.numberOfLines = 0
-            $0.text = "해당 브랜드 제품은 무료배송 됩니다.\n제주도를 포함한 도서/산간지역은 추가배송비 3,500원"
+            $0.text = StringLiterals.HatDetail.MainInfo.shippingfeedescript
         }
         
         shippingexpectedLabel.do {
             $0.textColor = .darkGray
             $0.font = .krRegular(ofSize: 12.adjusted)
-            $0.text = "배송예정"
+            $0.text = StringLiterals.HatDetail.MainInfo.shippingexpected
         }
         
         shippingdescriptLabel.do {
             $0.textColor = .darkGray
             $0.font = .krRegular(ofSize: 12.adjusted)
-            $0.text = "2일 이내 출고 (주말, 공휴일 제외)"
+            $0.text = StringLiterals.HatDetail.MainInfo.shippingdescript
         }
         
         let shippingattributedString = NSMutableAttributedString(string: shippingdescriptLabel.text ?? "")
