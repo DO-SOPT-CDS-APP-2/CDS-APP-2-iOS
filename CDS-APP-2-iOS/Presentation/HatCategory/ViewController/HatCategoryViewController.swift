@@ -89,6 +89,7 @@ final class HatCategoryViewController: UIViewController {
 }
 
 // MARK: - Extension
+
 extension HatCategoryViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         guard let headerCell = cell as? HeaderCollectionViewCell else {

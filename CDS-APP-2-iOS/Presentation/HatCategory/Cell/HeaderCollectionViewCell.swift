@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import Then
 
-class HeaderCollectionViewCell: UICollectionViewCell {
+final class HeaderCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Properties
     
