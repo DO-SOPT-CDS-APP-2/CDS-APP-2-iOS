@@ -24,12 +24,14 @@ final class HomeViewController: UIViewController {
         setUI()
         setHierachy()
         setLayout()
+        setRegister()
+        setDelegate()
     }
 
     // MARK: - Functions
     
     private func setUI() {
-        self.view.backgroundColor = .white
+        self.view.backgroundColor = .clear
     }
     
     private func setHierachy() {
@@ -40,6 +42,43 @@ final class HomeViewController: UIViewController {
         homeView.snp.makeConstraints {
             $0.top.equalToSuperview()
             $0.leading.trailing.equalToSuperview()
+            $0.bottom.equalToSuperview()
+        }
+    }
+    
+    private func setRegister() {
+        homeView.homeCollectionView.register(HomeCardCollectionViewCell.self,
+                                             forCellWithReuseIdentifier: HomeCardCollectionViewCell.className)
+    }
+    
+    private func setDelegate() {
+        homeView.homeCollectionView.delegate = self
+        homeView.homeCollectionView.dataSource = self
+    }
+}
+
+extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        switch section {
+        case 0:
+            return 1
+        default:
+            return 0
+        }
+
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let sectionType = HomeSection(rawValue: indexPath.section) else {
+            print("Wrong Section !")
+            return UICollectionViewCell()
+        }
+        
+        switch sectionType {
+        case .card:
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeCardCollectionViewCell.className,
+                                                                for: indexPath) as? HomeCardCollectionViewCell else { return UICollectionViewCell() }
+            return cell
         }
     }
 }

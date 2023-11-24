@@ -17,6 +17,9 @@ final class HomeView: UIView {
     // MARK: - UI Components
     
     private let homeTopView = HomeTopView()
+    private let collectionViewLayout = HomeLayoutFactory.create()
+    lazy var homeCollectionView = UICollectionView(frame: .zero,
+                                                   collectionViewLayout: collectionViewLayout)
 
     // MARK: - Life Cycle
     
@@ -36,17 +39,26 @@ final class HomeView: UIView {
     // MARK: - Functions
 
     private func setUI() {
-        
+//        homeCollectionView.do {
+//            $0.alwaysBounceHorizontal = false
+//        }
     }
         
     private func setHierachy() {
-        self.addSubviews(homeTopView)
+        self.addSubviews(homeTopView,
+                         homeCollectionView)
     }
         
     private func setLayout() {
         homeTopView.snp.makeConstraints {
             $0.top.equalToSuperview()
             $0.leading.trailing.equalToSuperview()
+        }
+        
+        homeCollectionView.snp.makeConstraints {
+            $0.top.equalTo(homeTopView.snp.bottom)
+            $0.leading.trailing.equalToSuperview()
+            $0.bottom.equalToSuperview()
         }
     }
 }

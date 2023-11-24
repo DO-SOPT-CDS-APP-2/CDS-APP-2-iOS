@@ -11,7 +11,9 @@
 		056F2F392B0DF1C700BA6ED8 /* UIStackView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056F2F382B0DF1C600BA6ED8 /* UIStackView+.swift */; };
 		056F2F3B2B0DF67D00BA6ED8 /* ChipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056F2F3A2B0DF67D00BA6ED8 /* ChipView.swift */; };
 		056F2F3D2B0E0DF600BA6ED8 /* UIButton+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056F2F3C2B0E0DF600BA6ED8 /* UIButton+.swift */; };
-		058D7AB42B10C850002D6A0A /* LayoutFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058D7AB32B10C850002D6A0A /* LayoutFactory.swift */; };
+		058D7AB42B10C850002D6A0A /* HomeLayoutFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058D7AB32B10C850002D6A0A /* HomeLayoutFactory.swift */; };
+		058D7AB72B10CBB5002D6A0A /* HomeCardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058D7AB62B10CBB5002D6A0A /* HomeCardCollectionViewCell.swift */; };
+		058D7AB92B11044B002D6A0A /* HomeSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058D7AB82B11044B002D6A0A /* HomeSection.swift */; };
 		058DD4442B109A4B001C63A6 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058DD4432B109A4B001C63A6 /* HomeView.swift */; };
 		2A0C020E2B0A5E9A005764FA /* ImageLiterals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0C020D2B0A5E9A005764FA /* ImageLiterals.swift */; };
 		2A0C02102B0A5EA5005764FA /* StringLiterals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0C020F2B0A5EA5005764FA /* StringLiterals.swift */; };
@@ -67,7 +69,9 @@
 		056F2F382B0DF1C600BA6ED8 /* UIStackView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+.swift"; sourceTree = "<group>"; };
 		056F2F3A2B0DF67D00BA6ED8 /* ChipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChipView.swift; sourceTree = "<group>"; };
 		056F2F3C2B0E0DF600BA6ED8 /* UIButton+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+.swift"; sourceTree = "<group>"; };
-		058D7AB32B10C850002D6A0A /* LayoutFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutFactory.swift; sourceTree = "<group>"; };
+		058D7AB32B10C850002D6A0A /* HomeLayoutFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeLayoutFactory.swift; sourceTree = "<group>"; };
+		058D7AB62B10CBB5002D6A0A /* HomeCardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCardCollectionViewCell.swift; sourceTree = "<group>"; };
+		058D7AB82B11044B002D6A0A /* HomeSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSection.swift; sourceTree = "<group>"; };
 		058DD4432B109A4B001C63A6 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		2A0C020D2B0A5E9A005764FA /* ImageLiterals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLiterals.swift; sourceTree = "<group>"; };
 		2A0C020F2B0A5EA5005764FA /* StringLiterals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringLiterals.swift; sourceTree = "<group>"; };
@@ -134,6 +138,7 @@
 		056F2F342B0DE59B00BA6ED8 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				058D7AB52B10CB73002D6A0A /* Cell */,
 				056F2F362B0DE5BC00BA6ED8 /* HomeTopView.swift */,
 				056F2F3A2B0DF67D00BA6ED8 /* ChipView.swift */,
 				058DD4432B109A4B001C63A6 /* HomeView.swift */,
@@ -152,9 +157,18 @@
 		058D7AB22B10C82D002D6A0A /* Enum */ = {
 			isa = PBXGroup;
 			children = (
-				058D7AB32B10C850002D6A0A /* LayoutFactory.swift */,
+				058D7AB32B10C850002D6A0A /* HomeLayoutFactory.swift */,
+				058D7AB82B11044B002D6A0A /* HomeSection.swift */,
 			);
 			path = Enum;
+			sourceTree = "<group>";
+		};
+		058D7AB52B10CB73002D6A0A /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				058D7AB62B10CBB5002D6A0A /* HomeCardCollectionViewCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		2A0C02052B0A5DF0005764FA /* Application */ = {
@@ -537,7 +551,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2A0C02122B0A5EAE005764FA /* UIView+.swift in Sources */,
 				2A5296EB2B051E8400279401 /* HomeViewController.swift in Sources */,
 				A18370092B0D01B700B64568 /* TabbarItem.swift in Sources */,
 				056F2F372B0DE5BC00BA6ED8 /* HomeTopView.swift in Sources */,
@@ -551,14 +564,16 @@
 				A19559A12B0DC360002EED37 /* HatCategoryViewController.swift in Sources */,
 				056F2F3D2B0E0DF600BA6ED8 /* UIButton+.swift in Sources */,
 				2AB794542B0CFD15003DFF48 /* CategoryHeaderView.swift in Sources */,
+				2A0C02122B0A5EAE005764FA /* UIView+.swift in Sources */,
 				2AB794502B0CFD15003DFF48 /* CategoryDetailTableViewCell.swift in Sources */,
-				058D7AB42B10C850002D6A0A /* LayoutFactory.swift in Sources */,
+				058D7AB42B10C850002D6A0A /* HomeLayoutFactory.swift in Sources */,
 				2A0C02342B0A6681005764FA /* UIColor+.swift in Sources */,
 				2A0C02202B0A5F82005764FA /* x.swift in Sources */,
 				2AB794622B0CFDE8003DFF48 /* MainInfoCollectionViewCell.swift in Sources */,
 				A183700D2B0D032200B64568 /* TabbarController.swift in Sources */,
 				A1A29DED2B0F223C00C9F25D /* HeaderCollectionViewCell.swift in Sources */,
 				2AB794512B0CFD15003DFF48 /* CategoryTableViewCell.swift in Sources */,
+				058D7AB72B10CBB5002D6A0A /* HomeCardCollectionViewCell.swift in Sources */,
 				2AB794672B0CFDE8003DFF48 /* RecommendInfoCollectionViewCell.swift in Sources */,
 				056F2F3B2B0DF67D00BA6ED8 /* ChipView.swift in Sources */,
 				2AA327D22B0C30E700732CE9 /* CALayer+.swift in Sources */,
@@ -576,6 +591,7 @@
 				A1A29DF02B0F37DA00C9F25D /* HeaderCategoryDummy.swift in Sources */,
 				2AB794612B0CFDE8003DFF48 /* HatDetailViewController.swift in Sources */,
 				2A5296E72B051E8400279401 /* AppDelegate.swift in Sources */,
+				058D7AB92B11044B002D6A0A /* HomeSection.swift in Sources */,
 				2AB794662B0CFDE8003DFF48 /* ReviewInfoCollectionViewCell.swift in Sources */,
 				2A5296E92B051E8400279401 /* SceneDelegate.swift in Sources */,
 				2AB794522B0CFD15003DFF48 /* CategoryHorizontalCollectionViewCell.swift in Sources */,
