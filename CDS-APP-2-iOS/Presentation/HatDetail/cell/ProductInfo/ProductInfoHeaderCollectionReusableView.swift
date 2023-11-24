@@ -33,6 +33,7 @@ class ProductInfoHeaderCollectionReusableView: UICollectionReusableView {
     }
     
     func configure() {
+        
         setUI()
         setHierachy()
         setLayout()

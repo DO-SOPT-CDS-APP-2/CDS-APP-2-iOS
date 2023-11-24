@@ -59,6 +59,10 @@ enum StringLiterals {
             static let review = "리뷰"
             static let inquire = "문의"
         }
+        
+        enum ProductInfo {
+            static let productdescriptmore = "상품설명 더보기"
+        }
     }
             
     enum HatCategory {

@@ -51,11 +51,6 @@ final class HatDetailViewController: UIViewController {
     // MARK: - Set CollectionView
     
     private func setupCollectionView() {
-//        let layout = UICollectionViewFlowLayout()
-//        layout.scrollDirection = .vertical
-//        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-//        collectionView.isScrollEnabled = true
-
         detailcollectionView.register(MainInfoCollectionViewCell.self, forCellWithReuseIdentifier: MainInfoCollectionViewCell.className)
         detailcollectionView.register(ProductInfoCollectionViewCell.self, forCellWithReuseIdentifier: ProductInfoCollectionViewCell.className)
         
@@ -113,9 +108,20 @@ extension HatDetailViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainInfoCollectionViewCell.className, for: indexPath) as! MainInfoCollectionViewCell
-        //나중에 data 추가 예정
-        return cell
+        if indexPath.section == 0 {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainInfoCollectionViewCell.className, for: indexPath) as! MainInfoCollectionViewCell
+            return cell
+        }
+        else if indexPath.section == 1 {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier:
+                    ProductInfoCollectionViewCell.className, for: indexPath) as! ProductInfoCollectionViewCell
+            return cell
+        }
+        else {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainInfoCollectionViewCell.className, for: indexPath) as! MainInfoCollectionViewCell
+            return cell
+        }
+
     }
     
     
@@ -132,6 +138,7 @@ extension HatDetailViewController: UICollectionViewDataSource {
                         return ProductInfoHeaderCollectionReusableView()
                     }
                     header.configure()
+                    header.backgroundColor = .white   //이 친구..ProductInfoViewCell에서 바꾸고 싶은데... 뭔가 이상해져서... 일단 여기에...
                     return header
                 } else {
                     guard let footer = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionFooter,
@@ -164,6 +171,15 @@ extension HatDetailViewController: UICollectionViewDataSource {
 
 extension HatDetailViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.bounds.width, height: collectionView.bounds.height)
+        switch indexPath.section {
+        case 0:
+            return CGSize(width: collectionView.bounds.width, height: 1000)
+        case 1:
+            return CGSize(width: collectionView.bounds.width, height: 1000)
+        case 2:
+            return CGSize(width: collectionView.bounds.width, height: 500)
+        default:
+            return CGSize(width: 0.0, height: 0.0)
+        }
     }
 }
