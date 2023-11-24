@@ -26,7 +26,6 @@ final class HomeView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        setUI()
         setHierachy()
         setLayout()
     }
@@ -37,12 +36,6 @@ final class HomeView: UIView {
     }
     
     // MARK: - Functions
-
-    private func setUI() {
-//        homeCollectionView.do {
-//            $0.alwaysBounceHorizontal = false
-//        }
-    }
         
     private func setHierachy() {
         self.addSubviews(homeTopView,
