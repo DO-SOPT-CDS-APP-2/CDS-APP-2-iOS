@@ -51,6 +51,14 @@ enum StringLiterals {
             static let shippingexpected = "배송예정"
             static let shippingdescript = "2일 이내 출고 (주말, 공휴일 제외)"
         }
+        
+        enum header {
+            static let productinfo = "상품정보"
+            static let size = "사이즈"
+            static let recommend = "추천"
+            static let review = "리뷰"
+            static let inquire = "문의"
+        }
     }
             
     enum HatCategory {

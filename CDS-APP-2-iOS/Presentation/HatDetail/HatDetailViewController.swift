@@ -12,7 +12,13 @@ import Then
 
 final class HatDetailViewController: UIViewController {
     
-    private let collectionView = UICollectionView()
+    private let detailcollectionView : UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.isScrollEnabled = true
+        return collectionView
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +26,10 @@ final class HatDetailViewController: UIViewController {
         
         setupNavigationBar()
         setupCollectionView()
+        setHierachy()
+        setUI()
+        setLayout()
+        setDelegate()
     }
     
     // MARK: - Set NavigationBar
@@ -41,30 +51,32 @@ final class HatDetailViewController: UIViewController {
     // MARK: - Set CollectionView
     
     private func setupCollectionView() {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .vertical
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.isScrollEnabled = true
+//        let layout = UICollectionViewFlowLayout()
+//        layout.scrollDirection = .vertical
+//        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+//        collectionView.isScrollEnabled = true
 
-        collectionView.register(MainInfoCollectionViewCell.self, forCellWithReuseIdentifier: MainInfoCollectionViewCell.className)
-        collectionView.register(ProductInfoCollectionViewCell.self, forCellWithReuseIdentifier: ProductInfoCollectionViewCell.className)
+        detailcollectionView.register(MainInfoCollectionViewCell.self, forCellWithReuseIdentifier: MainInfoCollectionViewCell.className)
+        detailcollectionView.register(ProductInfoCollectionViewCell.self, forCellWithReuseIdentifier: ProductInfoCollectionViewCell.className)
         
-        collectionView.register(ProductInfoHeaderCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: ProductInfoHeaderCollectionReusableView.className)
+        detailcollectionView.register(ProductInfoHeaderCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: ProductInfoHeaderCollectionReusableView.className)
     }
     
     
     // MARK: - Set UI
     
     private func setUI() {
-        collectionView.backgroundColor = .clear
+        detailcollectionView.backgroundColor = .clear
     }
     
     
     // MARK: - Set Layout
     
     private func setLayout() {
-        collectionView.snp.makeConstraints{
-            $0.top.leading.trailing.bottom.equalToSuperview()
+        detailcollectionView.snp.makeConstraints {
+            $0.top.equalToSuperview().inset(10)
+            $0.leading.trailing.bottom.equalToSuperview()
+        
         }
     }
     
@@ -72,22 +84,32 @@ final class HatDetailViewController: UIViewController {
     // MARK: - Set Hierachy
     
     private func setHierachy() {
-        view.addSubview(collectionView)
+        view.addSubview(detailcollectionView)
     }
     
     // MARK: - Set Delegate
     
     private func setDelegate() {
-        collectionView.delegate = self
-        collectionView.dataSource = self
+        detailcollectionView.delegate = self
+        detailcollectionView.dataSource = self
     }
 
 }
 
 extension HatDetailViewController: UICollectionViewDelegate {}
 extension HatDetailViewController: UICollectionViewDataSource {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+            return 2
+        }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        switch section {
+        case 0 :
+            return 1
+        case 1 :
+            return 1
+        default :
+            return 0
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

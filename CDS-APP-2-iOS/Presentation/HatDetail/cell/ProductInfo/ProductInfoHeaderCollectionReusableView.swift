@@ -34,8 +34,9 @@ class ProductInfoHeaderCollectionReusableView: UICollectionReusableView {
     
     func configure() {
         setUI()
-        setLayout()
         setHierachy()
+        setLayout()
+        
     }
     
     // MARK: - Set UI
@@ -44,6 +45,7 @@ class ProductInfoHeaderCollectionReusableView: UICollectionReusableView {
         productInfoLabel.do {
             $0.textColor = .black
             $0.font = .krBold(ofSize: 14.adjusted)
+            $0.text = StringLiterals.HatDetail.header.productinfo
         }
         
         selectlineView.do {
@@ -52,27 +54,30 @@ class ProductInfoHeaderCollectionReusableView: UICollectionReusableView {
         
         selectStackView.do {
             $0.axis = .vertical
-            $0.spacing = 3
         }
         
         sizeLabel.do {
             $0.textColor = .lightGray
             $0.font = .krBold(ofSize: 14.adjusted)
+            $0.text = StringLiterals.HatDetail.header.size
         }
         
         recommendLabel.do {
             $0.textColor = .lightGray
             $0.font = .krBold(ofSize: 14.adjusted)
+            $0.text = StringLiterals.HatDetail.header.recommend
         }
         
         reviewLabel.do {
             $0.textColor = .lightGray
             $0.font = .krBold(ofSize: 14.adjusted)
+            $0.text = StringLiterals.HatDetail.header.review
         }
         
         inquireLabel.do {
             $0.textColor = .lightGray
             $0.font = .krBold(ofSize: 14.adjusted)
+            $0.text = StringLiterals.HatDetail.header.inquire
         }
         
         headerStackView.do {
@@ -100,12 +105,13 @@ class ProductInfoHeaderCollectionReusableView: UICollectionReusableView {
         selectlineView.snp.makeConstraints {
             $0.width.equalTo(67)
             $0.height.equalTo(1)
+            $0.leading.equalTo(productInfoLabel.snp.leading).offset(-5)
         }
         
         headerStackView.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(20.adjusted)
-            $0.leading.equalToSuperview().inset(30.adjusted)
-            $0.trailing.equalToSuperview().inset(30.adjusted)
+            $0.top.equalToSuperview()
+            $0.leading.trailing.equalToSuperview().inset(30.adjusted)
+            $0.height.equalTo(45)
         }
     } 
     
