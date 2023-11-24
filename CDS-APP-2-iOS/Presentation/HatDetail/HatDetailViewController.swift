@@ -20,6 +20,8 @@ final class HatDetailViewController: UIViewController {
         return collectionView
     }()
     
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .background
@@ -30,6 +32,7 @@ final class HatDetailViewController: UIViewController {
         setUI()
         setLayout()
         setDelegate()
+        configureColletionView()
     }
     
     // MARK: - Set NavigationBar
@@ -88,6 +91,15 @@ final class HatDetailViewController: UIViewController {
         detailcollectionView.delegate = self
         detailcollectionView.dataSource = self
     }
+    
+    
+    // MARK: - Set CollectionViewFlowLayout
+    
+    private func configureColletionView() {
+        if let layout = detailcollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+            layout.sectionHeadersPinToVisibleBounds = true
+        }
+    }
 
 }
 
@@ -95,7 +107,8 @@ extension HatDetailViewController: UICollectionViewDelegate {}
 extension HatDetailViewController: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
             return 2
-        }
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch section {
         case 0 :
@@ -157,19 +170,17 @@ extension HatDetailViewController: UICollectionViewDataSource {
         }
         
         // 헤더의 크기 지정
-           func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-               switch section {
-               case 1 :
-                   return CGSize(width: 300, height: 50)
-                   
-               default :
-                   return CGSize.zero
-               }
-         
-           }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        switch section {
+        case 1 :
+            return CGSize(width: 300, height: 50)
+        default :
+            return CGSize.zero
+        }
+    }
 }
 
-extension HatDetailViewController: UICollectionViewDelegateFlowLayout {
+extension HatDetailViewController: UICollectionViewDelegateFlowLayout, UIScrollViewDelegate {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         switch indexPath.section {
         case 0:
@@ -182,4 +193,26 @@ extension HatDetailViewController: UICollectionViewDelegateFlowLayout {
             return CGSize(width: 0.0, height: 0.0)
         }
     }
+    
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        updateHeaderView(for: scrollView, inSection: 1)
+    }
+    
+    private func updateHeaderView(for scrollView: UIScrollView, inSection section: Int) {
+        //헤더 가져오기
+        let headerView = detailcollectionView.visibleSupplementaryViews(ofKind: UICollectionView.elementKindSectionHeader).first as? ProductInfoHeaderCollectionReusableView
+        
+        // 스크롤 오프셋
+        let yOffset = scrollView.contentOffset.y
+        
+        // 헤더의 y 좌표 업데이트
+        let indexPathsForVisibleItems = detailcollectionView.indexPathsForVisibleItems
+        let firstVisibleSection = indexPathsForVisibleItems.map({ $0.section }).min()
+        if firstVisibleSection == section {
+            headerView?.frame.origin.y = max(0, yOffset)
+        }
+    }
 }
+
+
