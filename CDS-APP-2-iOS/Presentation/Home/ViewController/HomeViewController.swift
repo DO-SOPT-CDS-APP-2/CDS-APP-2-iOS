@@ -14,7 +14,7 @@ final class HomeViewController: UIViewController {
     
     // MARK: - UI Components
     
-    private let homeTopView = HomeTopView()
+    private let homeView = HomeView()
     
     // MARK: - Life Cycles
 
@@ -33,14 +33,13 @@ final class HomeViewController: UIViewController {
     }
     
     private func setHierachy() {
-        self.view.addSubviews(homeTopView)
+        self.view.addSubviews(homeView)
     }
         
     private func setLayout() {
-        homeTopView.snp.makeConstraints {
+        homeView.snp.makeConstraints {
             $0.top.equalToSuperview()
             $0.leading.trailing.equalToSuperview()
-            
         }
     }
 }
