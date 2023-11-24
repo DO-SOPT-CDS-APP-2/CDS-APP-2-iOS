@@ -7,6 +7,9 @@
 
 import UIKit
 
+import SnapKit
+import Then
+
 class ProductInfoCollectionViewCell: UICollectionViewCell {
     
     private let hatImage = UIImageView()
@@ -25,6 +28,8 @@ class ProductInfoCollectionViewCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    // MARK: - Set UI
     
     private func setUI() {
         contentView.backgroundColor = .white
@@ -51,13 +56,15 @@ class ProductInfoCollectionViewCell: UICollectionViewCell {
     }
     
     
+    // MARK: - Set Hierachy
+    
     private func setHierachy() {
         contentView.addSubviews(hatImage, hatmodelImage, productdescriptmoreButton, thickdivideView)
     }
     
+    // MARK: - Set Layout
     
     private func setLayout() {
-        
         hatImage.snp.makeConstraints {
             $0.top.equalToSuperview().inset(10.adjusted)
             $0.centerX.equalToSuperview()
@@ -80,6 +87,4 @@ class ProductInfoCollectionViewCell: UICollectionViewCell {
             $0.bottom.equalTo(productdescriptmoreButton.snp.bottom).offset(18.adjusted)
         }
     }
-    
-    
 }

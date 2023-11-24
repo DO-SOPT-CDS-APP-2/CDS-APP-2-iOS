@@ -12,15 +12,12 @@ import Then
 
 class ProductInfoHeaderCollectionReusableView: UICollectionReusableView {
     
-
-    
     private let productInfoLabel = UILabel()
     private let sizeLabel = UILabel()
     private let recommendLabel = UILabel()
     private let reviewLabel = UILabel()
     private let inquireLabel = UILabel()
     private let selectlineView = UIView()
-    
     private let selectStackView = UIStackView()
     private let headerStackView = UIStackView()
     
@@ -33,11 +30,11 @@ class ProductInfoHeaderCollectionReusableView: UICollectionReusableView {
     }
     
     func configure() {
+        backgroundColor = .white
         
         setUI()
         setHierachy()
         setLayout()
-        
     }
     
     // MARK: - Set UI

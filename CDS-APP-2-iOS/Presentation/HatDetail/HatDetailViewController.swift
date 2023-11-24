@@ -20,7 +20,6 @@ final class HatDetailViewController: UIViewController {
         return collectionView
     }()
     
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -136,8 +135,7 @@ extension HatDetailViewController: UICollectionViewDataSource {
         }
 
     }
-    
-    
+
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
             switch indexPath.section {
@@ -151,7 +149,6 @@ extension HatDetailViewController: UICollectionViewDataSource {
                         return ProductInfoHeaderCollectionReusableView()
                     }
                     header.configure()
-                    header.backgroundColor = .white   //이 친구..ProductInfoViewCell에서 바꾸고 싶은데... 뭔가 이상해져서... 일단 여기에...
                     return header
                 } else {
                     guard let footer = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionFooter,
@@ -184,7 +181,7 @@ extension HatDetailViewController: UICollectionViewDelegateFlowLayout, UIScrollV
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         switch indexPath.section {
         case 0:
-            return CGSize(width: collectionView.bounds.width, height: 1000)
+            return CGSize(width: collectionView.bounds.width, height: 900)
         case 1:
             return CGSize(width: collectionView.bounds.width, height: 1000)
         case 2:
