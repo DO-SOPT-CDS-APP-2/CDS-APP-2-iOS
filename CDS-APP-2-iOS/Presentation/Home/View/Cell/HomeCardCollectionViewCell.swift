@@ -46,9 +46,10 @@ final class HomeCardCollectionViewCell: UICollectionViewCell {
     
     private func setLayout() {
         cardImageView.snp.makeConstraints {
-            $0.center.equalToSuperview()
+            $0.centerX.equalToSuperview()
             $0.height.equalTo(446.adjusted)
             $0.width.equalTo(334.adjusted)
+            $0.bottom.equalToSuperview().inset(16)
         }
     }
 }

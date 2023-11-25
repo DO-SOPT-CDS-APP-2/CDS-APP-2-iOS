@@ -26,6 +26,7 @@ final class HomeView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+        setUI()
         setHierachy()
         setLayout()
     }
@@ -36,10 +37,16 @@ final class HomeView: UIView {
     }
     
     // MARK: - Functions
+    
+    private func setUI() {
+        homeCollectionView.do {
+            $0.contentInsetAdjustmentBehavior = .never
+        }
+    }
         
     private func setHierachy() {
-        self.addSubviews(homeTopView,
-                         homeCollectionView)
+        self.addSubviews(homeCollectionView,
+                         homeTopView)
     }
         
     private func setLayout() {
@@ -49,7 +56,7 @@ final class HomeView: UIView {
         }
         
         homeCollectionView.snp.makeConstraints {
-            $0.top.equalTo(homeTopView.snp.bottom)
+            $0.top.equalToSuperview()
             $0.leading.trailing.equalToSuperview()
             $0.bottom.equalToSuperview()
         }

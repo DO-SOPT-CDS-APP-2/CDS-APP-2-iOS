@@ -35,7 +35,7 @@ enum HomeLayoutFactory {
                                                      trailing: 0)
         
         let groupSize = NSCollectionLayoutSize(widthDimension: .absolute(UIScreen.main.bounds.width),
-                                               heightDimension: .absolute(470.adjusted))
+                                               heightDimension: .absolute(602.adjusted))
         
         let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
 
