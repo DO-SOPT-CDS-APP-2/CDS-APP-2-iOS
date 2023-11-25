@@ -17,6 +17,7 @@ final class HatCategoryViewController: UIViewController {
     private let headerCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout())
     private let headerDummy = HeaderCategory.headerDummy()
     private let divisionLine = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 0))
+    private let hatCategoryMainView = HatCategoryMainView()
     
     // MARK: - Life Cycle
     
@@ -35,7 +36,7 @@ final class HatCategoryViewController: UIViewController {
         self.setCollectionViewLayout()
     }
     
-    // MARK: - Set UI
+    // MARK: - set UI
     
     private func setUI() {
         headerCollectionView.do {
@@ -51,10 +52,12 @@ final class HatCategoryViewController: UIViewController {
     //MARK: set Hierachy
     
     private func setHierachy() {
-        self.view.addSubviews(headerCollectionView, divisionLine)
+        self.view.addSubviews(headerCollectionView,
+                              divisionLine,
+                              hatCategoryMainView)
     }
     
-    // MARK: - Set Layout
+    // MARK: - set Layout
     
     private func setLayout() {
         headerCollectionView.snp.makeConstraints {
@@ -67,6 +70,10 @@ final class HatCategoryViewController: UIViewController {
             $0.top.equalTo(headerCollectionView.snp.bottom).offset(1.adjusted)
             $0.height.equalTo(1.adjusted)
         }
+        
+        hatCategoryMainView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
     }
     
     // MARK: - Methods
@@ -75,6 +82,10 @@ final class HatCategoryViewController: UIViewController {
         self.navigationController?.setBackgroundColor()
         self.navigationController?.setButtonItem()
         self.navigationController?.setCenterItem()
+    }
+    
+    private func setRegister() {
+        // hatCategoryMainView.mainCollectionView.register
     }
     
     private func setHeaderCollectionViewConfig() {
@@ -134,5 +145,30 @@ extension HatCategoryViewController: UICollectionViewDataSource {
         
         item.bindData(category: headerDummy[indexPath.row].label)
         return item
+    }
+}
+
+extension HatCategoryViewController {
+    private func createLayout() -> UICollectionViewLayout {
+        let configuration = UICollectionViewCompositionalLayoutConfiguration()
+        let layout = createCompositionalLayout()
+        layout.configuration = configuration
+        return layout
+    }
+    
+    private func createCompositionalLayout() -> UICollectionViewCompositionalLayout {
+        return UICollectionViewCompositionalLayout { (sectionIndex, NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection? in
+            let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
+                                                  heightDimension: .fractionalHeight(1))
+            let item = NSCollectionLayoutItem(layoutSize: itemSize)
+            
+            let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
+                                                   heightDimension: .absolute(140))
+            let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+            
+            let section = NSCollectionLayoutSection(group: group)
+            return section
+        }
+        
     }
 }

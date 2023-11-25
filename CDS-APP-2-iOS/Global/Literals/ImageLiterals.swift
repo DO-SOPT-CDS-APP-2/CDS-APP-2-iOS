@@ -27,9 +27,12 @@ enum ImageLiterals {
         static var imgSpecialOrder: UIImage { .load(named: "img_category_14")}
         static var imgLoveMe: UIImage { .load(named: "imgLoveMe")}
         static var imgHat: UIImage { .load(named: "img_hat")}
-        
+        static var imgHatCategory1: UIImage { .load(named: "img_hatcategory_1")}
+        static var imgHatCategory2: UIImage { .load(named: "img_hatcategory_2")}
+        static var imgHatCategory3: UIImage { .load(named: "img_hatcategory_3")}
+        static var imgHatCategory4: UIImage { .load(named: "img_hatcategory_4")}
     }
-    
+
     enum icon {
         static var icAlertBlack: UIImage { .load(named: "ic_alert_black")}
         static var icAlertWhite: UIImage { .load(named: "ic_alert_white")}

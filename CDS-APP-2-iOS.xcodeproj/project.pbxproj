@@ -55,6 +55,9 @@
 		835898CF2B0FA68D00503CD1 /* SizeInfoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835898CE2B0FA68D00503CD1 /* SizeInfoCollectionViewCell.swift */; };
 		835898E42B0FFEFE00503CD1 /* TabbarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835898E32B0FFEFE00503CD1 /* TabbarItem.swift */; };
 		835898E72B0FFF2200503CD1 /* TabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835898E62B0FFF2200503CD1 /* TabbarController.swift */; };
+		A17FBB4E2B11B1EC009214D9 /* HatCategoryLayoutFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17FBB4D2B11B1EC009214D9 /* HatCategoryLayoutFactory.swift */; };
+		A17FBB552B11C227009214D9 /* HatCategoryMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17FBB542B11C227009214D9 /* HatCategoryMainView.swift */; };
+		A17FBB572B11C52F009214D9 /* RealTimeBestCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17FBB562B11C52F009214D9 /* RealTimeBestCollectionViewCell.swift */; };
 		A19559A12B0DC360002EED37 /* HatCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19559A02B0DC360002EED37 /* HatCategoryViewController.swift */; };
 		A19559B62B0DFAA0002EED37 /* NavigationController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19559B52B0DFAA0002EED37 /* NavigationController+.swift */; };
 		A1A29DED2B0F223C00C9F25D /* HeaderCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A29DEC2B0F223C00C9F25D /* HeaderCollectionViewCell.swift */; };
@@ -109,6 +112,9 @@
 		835898CE2B0FA68D00503CD1 /* SizeInfoCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SizeInfoCollectionViewCell.swift; sourceTree = "<group>"; };
 		835898E32B0FFEFE00503CD1 /* TabbarItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabbarItem.swift; sourceTree = "<group>"; };
 		835898E62B0FFF2200503CD1 /* TabbarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabbarController.swift; sourceTree = "<group>"; };
+		A17FBB4D2B11B1EC009214D9 /* HatCategoryLayoutFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HatCategoryLayoutFactory.swift; sourceTree = "<group>"; };
+		A17FBB542B11C227009214D9 /* HatCategoryMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HatCategoryMainView.swift; sourceTree = "<group>"; };
+		A17FBB562B11C52F009214D9 /* RealTimeBestCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealTimeBestCollectionViewCell.swift; sourceTree = "<group>"; };
 		A18370082B0D01B700B64568 /* TabbarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarItem.swift; sourceTree = "<group>"; };
 		A183700C2B0D032200B64568 /* TabbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarController.swift; sourceTree = "<group>"; };
 		A19559A02B0DC360002EED37 /* HatCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HatCategoryViewController.swift; sourceTree = "<group>"; };
@@ -453,9 +459,27 @@
 			path = Tabbar;
 			sourceTree = "<group>";
 		};
+		A17FBB4C2B11B1AE009214D9 /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+				A17FBB4D2B11B1EC009214D9 /* HatCategoryLayoutFactory.swift */,
+			);
+			path = Enum;
+			sourceTree = "<group>";
+		};
+		A17FBB532B11C219009214D9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A17FBB542B11C227009214D9 /* HatCategoryMainView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		A195599E2B0DC1F3002EED37 /* HatCategory */ = {
 			isa = PBXGroup;
 			children = (
+				A17FBB532B11C219009214D9 /* View */,
+				A17FBB4C2B11B1AE009214D9 /* Enum */,
 				A1A29DEE2B0F37C900C9F25D /* Dummy */,
 				A1A29DEB2B0F221900C9F25D /* Cell */,
 				A195599F2B0DC34E002EED37 /* ViewController */,
@@ -475,6 +499,7 @@
 			isa = PBXGroup;
 			children = (
 				A1A29DEC2B0F223C00C9F25D /* HeaderCollectionViewCell.swift */,
+				A17FBB562B11C52F009214D9 /* RealTimeBestCollectionViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -593,13 +618,16 @@
 				A1A29DED2B0F223C00C9F25D /* HeaderCollectionViewCell.swift in Sources */,
 				2AB794512B0CFD15003DFF48 /* CategoryTableViewCell.swift in Sources */,
 				056F2F3B2B0DF67D00BA6ED8 /* ChipView.swift in Sources */,
+				A17FBB572B11C52F009214D9 /* RealTimeBestCollectionViewCell.swift in Sources */,
 				2AA327D22B0C30E700732CE9 /* CALayer+.swift in Sources */,
 				2AB794682B0CFDE8003DFF48 /* LayoutFactory.swift in Sources */,
 				2AB794532B0CFD15003DFF48 /* CategoryTableView.swift in Sources */,
+				A17FBB4E2B11B1EC009214D9 /* HatCategoryLayoutFactory.swift in Sources */,
 				2A0C021D2B0A5F78005764FA /* b.swift in Sources */,
 				A19559B62B0DFAA0002EED37 /* NavigationController+.swift in Sources */,
 				2A0C020E2B0A5E9A005764FA /* ImageLiterals.swift in Sources */,
 				835898A02B0E455500503CD1 /* ProductInfoFooterCollectionReusableView.swift in Sources */,
+				A17FBB552B11C227009214D9 /* HatCategoryMainView.swift in Sources */,
 				2AB794552B0CFD15003DFF48 /* CategoryDetailTableHeaderView.swift in Sources */,
 				2AA327BC2B0B722100732CE9 /* NSObject+.swift in Sources */,
 				2AB7944E2B0CFD15003DFF48 /* Category.swift in Sources */,
