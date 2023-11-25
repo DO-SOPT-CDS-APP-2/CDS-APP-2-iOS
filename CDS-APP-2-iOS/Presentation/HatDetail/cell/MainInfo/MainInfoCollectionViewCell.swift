@@ -69,6 +69,9 @@ final class MainInfoCollectionViewCell: UICollectionViewCell {
     // MARK: - Set UI
     
     private func setUI() {
+        contentView.backgroundColor = .white
+        
+        
         productImage.do {
             $0.image = ImageLiterals.img.imgHat
         }
@@ -368,7 +371,6 @@ final class MainInfoCollectionViewCell: UICollectionViewCell {
             $0.width.equalTo(contentView.snp.width)
         }
     }
-
 }
 
 
