@@ -26,10 +26,11 @@ enum ImageLiterals {
         static var imgLookBook: UIImage { .load(named: "img_category_13")}
         static var imgSpecialOrder: UIImage { .load(named: "img_category_14")}
         static var imgLoveMe: UIImage { .load(named: "imgLoveMe")}
+        static var imgHomeBackground: UIImage { .load(named: "img_home_65")}
+        static var imgHomeCard: UIImage { .load(named: "img_home_1")}
         static var imgHat: UIImage { .load(named: "img_hat")}
         static var imgHat2 : UIImage{ .load(named: "img_hat2")}
         static var imgHatModel : UIImage{ .load(named: "img_hatmodel")}
-
     }
     
     enum icon {
