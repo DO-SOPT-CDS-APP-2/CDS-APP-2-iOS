@@ -21,11 +21,7 @@ final class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setUI()
-        setHierachy()
-        setLayout()
-        setRegister()
-        setDelegate()
+        addFunctions()
     }
 
     // MARK: - Functions
@@ -46,6 +42,15 @@ final class HomeViewController: UIViewController {
         }
     }
     
+    private func addFunctions() {
+        setUI()
+        setHierachy()
+        setLayout()
+        setRegister()
+        setDelegate()
+        setNavigation()
+    }
+    
     private func setRegister() {
         homeView.homeCollectionView.register(HomeCardCollectionViewCell.self,
                                              forCellWithReuseIdentifier: HomeCardCollectionViewCell.className)
@@ -54,6 +59,10 @@ final class HomeViewController: UIViewController {
     private func setDelegate() {
         homeView.homeCollectionView.delegate = self
         homeView.homeCollectionView.dataSource = self
+    }
+    
+    private func setNavigation() {
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
 }
 
