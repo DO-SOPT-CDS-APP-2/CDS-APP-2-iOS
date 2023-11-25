@@ -36,9 +36,7 @@ final class HomeViewController: UIViewController {
         
     private func setLayout() {
         homeView.snp.makeConstraints {
-            $0.top.equalToSuperview()
-            $0.leading.trailing.equalToSuperview()
-            $0.bottom.equalToSuperview()
+            $0.edges.equalToSuperview()
         }
     }
     

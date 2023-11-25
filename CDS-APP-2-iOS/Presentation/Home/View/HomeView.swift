@@ -56,9 +56,7 @@ final class HomeView: UIView {
         }
         
         homeCollectionView.snp.makeConstraints {
-            $0.top.equalToSuperview()
-            $0.leading.trailing.equalToSuperview()
-            $0.bottom.equalToSuperview()
+            $0.edges.equalToSuperview()
         }
     }
 }
