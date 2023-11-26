@@ -33,6 +33,7 @@ enum StringLiterals {
     enum HatDetail {
         enum MainInfo {
             static let brandKR = "타입서비스"
+            static let brandEN = "typeservice"
             static let productname = "Typeservice Web Cap [22 Colors]"
             static let reviewnumber = "13266"
             static let reviewdescript = "개 리뷰보기"
@@ -50,6 +51,8 @@ enum StringLiterals {
             static let shippingfeedescript = "해당 브랜드 제품은 무료배송 됩니다.\n제주도를 포함한 도서/산간지역은 추가배송비 3,500원"
             static let shippingexpected = "배송예정"
             static let shippingdescript = "2일 이내 출고 (주말, 공휴일 제외)"
+            static let likecount = "50908"
+            
         }
         
         enum header {
