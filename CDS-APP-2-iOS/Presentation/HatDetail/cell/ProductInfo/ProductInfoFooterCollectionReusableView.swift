@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ProductInfoFooterCollectionReusableView: UICollectionReusableView {
+final class ProductInfoFooterCollectionReusableView: UICollectionReusableView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)

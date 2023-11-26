@@ -75,7 +75,7 @@ final class MainInfoDetailView: UIView {
         }
         
         likecount.do {
-            $0.text = StringLiterals.HatDetail.MainInfo.likecount
+            $0.text = StringLiterals.HatDetail.MainInfo.likeCount
             $0.font = .enDisplayMedium(ofSize: 8)
             $0.textColor = .mediumGray
         }

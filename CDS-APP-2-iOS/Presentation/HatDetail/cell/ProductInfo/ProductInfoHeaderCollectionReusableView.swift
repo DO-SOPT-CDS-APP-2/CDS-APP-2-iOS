@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import Then
 
-class ProductInfoHeaderCollectionReusableView: UICollectionReusableView {
+final class ProductInfoHeaderCollectionReusableView: UICollectionReusableView {
     
     private let productInfoLabel = UILabel()
     private let sizeLabel = UILabel()
@@ -43,7 +43,7 @@ class ProductInfoHeaderCollectionReusableView: UICollectionReusableView {
         productInfoLabel.do {
             $0.textColor = .black
             $0.font = .krBold(ofSize: 14.adjusted)
-            $0.text = StringLiterals.HatDetail.header.productinfo
+            $0.text = StringLiterals.HatDetail.header.productInfo
         }
         
         selectlineView.do {

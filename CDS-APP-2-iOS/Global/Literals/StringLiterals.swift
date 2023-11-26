@@ -34,29 +34,29 @@ enum StringLiterals {
         enum MainInfo {
             static let brandKR = "타입서비스"
             static let brandEN = "typeservice"
-            static let productname = "Typeservice Web Cap [22 Colors]"
-            static let reviewnumber = "13266"
-            static let reviewdescript = "개 리뷰보기"
-            static let originprice = "39,000원"
-            static let discountpercent = "5%"
-            static let discountprice = "37,050원"
+            static let productName = "Typeservice Web Cap [22 Colors]"
+            static let reviewNumber = "13266"
+            static let reviewDescript = "개 리뷰보기"
+            static let originPrice = "39,000원"
+            static let discountPercent = "5%"
+            static let discountPrice = "37,050원"
             static let point = "371p"
-            static let pointpercent = "(1%)"
-            static let pointdescript = "적립"
+            static let pointPercent = "(1%)"
+            static let pointDescript = "적립"
             static let user = "김디팟님 구매 가능 가격"
-            static let userdiscountpercent = "12%"
-            static let userdiscountprice = "34,468원"
+            static let userDiscountPercent = "12%"
+            static let userDiscountPrice = "34,468원"
             static let shipping = "배송정보"
-            static let shippigfee = "배송비"
-            static let shippingfeedescript = "해당 브랜드 제품은 무료배송 됩니다.\n제주도를 포함한 도서/산간지역은 추가배송비 3,500원"
-            static let shippingexpected = "배송예정"
-            static let shippingdescript = "2일 이내 출고 (주말, 공휴일 제외)"
-            static let likecount = "50908"
+            static let shippigFee = "배송비"
+            static let shippingFeeDescript = "해당 브랜드 제품은 무료배송 됩니다.\n제주도를 포함한 도서/산간지역은 추가배송비 3,500원"
+            static let shippingExpected = "배송예정"
+            static let shippingDescript = "2일 이내 출고 (주말, 공휴일 제외)"
+            static let likeCount = "50908"
             
         }
         
         enum header {
-            static let productinfo = "상품정보"
+            static let productInfo = "상품정보"
             static let size = "사이즈"
             static let recommend = "추천"
             static let review = "리뷰"
@@ -64,7 +64,7 @@ enum StringLiterals {
         }
         
         enum ProductInfo {
-            static let productdescriptmore = "상품설명 더보기"
+            static let productDescriptMore = "상품설명 더보기"
         }
     }
             

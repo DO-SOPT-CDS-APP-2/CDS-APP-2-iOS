@@ -43,7 +43,7 @@ final class ProductInfoCollectionViewCell: UICollectionViewCell {
         }
         
         productdescriptmoreButton.do {
-            $0.setTitle(StringLiterals.HatDetail.ProductInfo.productdescriptmore, for: .normal)
+            $0.setTitle(StringLiterals.HatDetail.ProductInfo.productDescriptMore, for: .normal)
             $0.setTitleColor(.black, for: .normal)
             $0.titleLabel?.font = .krMedium(ofSize: 14.adjusted)
             $0.layer.borderColor = UIColor.black.cgColor

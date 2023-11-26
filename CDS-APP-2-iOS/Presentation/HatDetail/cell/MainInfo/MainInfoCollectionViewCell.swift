@@ -91,7 +91,7 @@ final class MainInfoCollectionViewCell: UICollectionViewCell {
         productnameLabel.do {
             $0.textColor = .black
             $0.font = .enDisplayBold(ofSize: 14.adjusted)
-            $0.text = StringLiterals.HatDetail.MainInfo.productname
+            $0.text = StringLiterals.HatDetail.MainInfo.productName
         }
         
     
@@ -107,18 +107,18 @@ final class MainInfoCollectionViewCell: UICollectionViewCell {
         reviewnumberLabel.do {
             $0.textColor = .darkGray
             $0.font = .enDisplayMedium(ofSize: 10.adjusted)
-            $0.text = StringLiterals.HatDetail.MainInfo.reviewnumber
+            $0.text = StringLiterals.HatDetail.MainInfo.reviewNumber
         }
         
         reviewdescriptLabel.do {
             $0.textColor = .darkGray
             $0.font = .krMedium(ofSize: 10.adjusted)
-            $0.text = StringLiterals.HatDetail.MainInfo.reviewdescript
+            $0.text = StringLiterals.HatDetail.MainInfo.reviewDescript
         }
         
         priceLabel.do {
             $0.textColor = .lightGray
-            $0.text = StringLiterals.HatDetail.MainInfo.originprice
+            $0.text = StringLiterals.HatDetail.MainInfo.originPrice
         }
         let priceattributedString = NSMutableAttributedString(string: priceLabel.text ?? "")
         priceattributedString.addAttribute(.font, value: UIFont.enDisplayBold(ofSize: 14.adjusted), range: NSRange(location: 0, length: priceattributedString.length - 1))
@@ -128,12 +128,12 @@ final class MainInfoCollectionViewCell: UICollectionViewCell {
         discountpercentLabel.do {
             $0.textColor = .point
             $0.font = .enDisplayBold(ofSize: 20.adjusted)
-            $0.text = StringLiterals.HatDetail.MainInfo.discountpercent
+            $0.text = StringLiterals.HatDetail.MainInfo.discountPercent
         }
         
         discountpriceLabel.do {
             $0.textColor = .black
-            $0.text = StringLiterals.HatDetail.MainInfo.discountprice
+            $0.text = StringLiterals.HatDetail.MainInfo.discountPrice
         }
         let discountpriceattributedString = NSMutableAttributedString(string: discountpriceLabel.text ?? "")
         discountpriceattributedString.addAttribute(.font, value: UIFont.enDisplayBold(ofSize: 20.adjusted), range: NSRange(location: 0, length: discountpriceattributedString.length - 1))
@@ -150,13 +150,13 @@ final class MainInfoCollectionViewCell: UICollectionViewCell {
         pointpercentLabel.do {
             $0.textColor = .darkGray
             $0.font = .enDisplayMedium(ofSize: 12.adjusted)
-            $0.text = StringLiterals.HatDetail.MainInfo.pointpercent
+            $0.text = StringLiterals.HatDetail.MainInfo.pointPercent
         }
     
         pointdescriptLabel.do {
             $0.textColor = .darkGray
             $0.font = .krMedium(ofSize: 12.adjusted)
-            $0.text = StringLiterals.HatDetail.MainInfo.pointdescript
+            $0.text = StringLiterals.HatDetail.MainInfo.pointDescript
         }
         
         userLabel.do {
@@ -172,12 +172,12 @@ final class MainInfoCollectionViewCell: UICollectionViewCell {
         userdiscountpercentLabel.do {
             $0.textColor = .mediumGray
             $0.font = .enDisplayBold(ofSize: 16.adjusted)
-            $0.text = StringLiterals.HatDetail.MainInfo.userdiscountpercent
+            $0.text = StringLiterals.HatDetail.MainInfo.userDiscountPercent
         }
         
         userdiscountpriceLabel.do {
             $0.textColor = .black
-            $0.text = StringLiterals.HatDetail.MainInfo.userdiscountprice
+            $0.text = StringLiterals.HatDetail.MainInfo.userDiscountPrice
         }
         let userdiscountpriceattributedString = NSMutableAttributedString(string: userdiscountpriceLabel.text ?? "")
         userdiscountpriceattributedString.addAttribute(.font, value: UIFont.enDisplayBold(ofSize: 16.adjusted), range: NSRange(location: 0, length: userdiscountpriceattributedString.length - 1))
@@ -202,26 +202,26 @@ final class MainInfoCollectionViewCell: UICollectionViewCell {
         shippingfeeLabel.do {
             $0.textColor = .darkGray
             $0.font = .krRegular(ofSize: 12.adjusted)
-            $0.text = StringLiterals.HatDetail.MainInfo.shippigfee
+            $0.text = StringLiterals.HatDetail.MainInfo.shippigFee
         }
         
         shippingfeedescriptLabel.do {
             $0.textColor = .darkGray
             $0.font = .krRegular(ofSize: 12.adjusted)
             $0.numberOfLines = 0
-            $0.text = StringLiterals.HatDetail.MainInfo.shippingfeedescript
+            $0.text = StringLiterals.HatDetail.MainInfo.shippingFeeDescript
         }
         
         shippingexpectedLabel.do {
             $0.textColor = .darkGray
             $0.font = .krRegular(ofSize: 12.adjusted)
-            $0.text = StringLiterals.HatDetail.MainInfo.shippingexpected
+            $0.text = StringLiterals.HatDetail.MainInfo.shippingExpected
         }
         
         shippingdescriptLabel.do {
             $0.textColor = .darkGray
             $0.font = .krRegular(ofSize: 12.adjusted)
-            $0.text = StringLiterals.HatDetail.MainInfo.shippingdescript
+            $0.text = StringLiterals.HatDetail.MainInfo.shippingDescript
         }
         
         let shippingattributedString = NSMutableAttributedString(string: shippingdescriptLabel.text ?? "")
