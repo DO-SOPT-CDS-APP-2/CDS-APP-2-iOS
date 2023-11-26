@@ -47,12 +47,15 @@ final class MainInfoCollectionViewCell: UICollectionViewCell {
     private let thindivideView2 = UIView()
 
     private let thickdivideView = UIView()
+    private let thickdivideView2 = UIView()
     private let spacerView = UIView()
 
     private let brandImage = UIImageView()
     private let brandNameENLabel = UILabel()
     private let brandNameKRLabel = UILabel()
     private let brandNameStackView = UIStackView()
+    
+    private let detailView = MainInfoDetailView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -70,7 +73,6 @@ final class MainInfoCollectionViewCell: UICollectionViewCell {
     
     private func setUI() {
         contentView.backgroundColor = .white
-        
         
         productImage.do {
             $0.image = ImageLiterals.img.imgHat
@@ -227,11 +229,8 @@ final class MainInfoCollectionViewCell: UICollectionViewCell {
         shippingattributedString.addAttribute(.foregroundColor, value: UIColor.darkGray, range: NSRange(location: 5, length: shippingattributedString.length - 5))
         shippingdescriptLabel.attributedText = shippingattributedString
         
-        for i in [thindivideView1, thindivideView2] {
-            i.backgroundColor = .border
-        }
-        thickdivideView.do {
-            $0.backgroundColor = .border
+        for i in [thindivideView1, thindivideView2, thickdivideView, thickdivideView2] {
+            i.backgroundColor = .background
         }
     }
     
@@ -245,7 +244,7 @@ final class MainInfoCollectionViewCell: UICollectionViewCell {
         userStackView.addArrangedSubviews(userdiscountpercentLabel, userdiscountpriceLabel)
         userStackView.addArrangedSubview(usermoreIcon)
         
-        contentView.addSubviews(userStackView, thindivideView2, shippingLabel, shippingfeeLabel, shippingfeedescriptLabel, shippingexpectedLabel, shippingdescriptLabel, thickdivideView)
+        contentView.addSubviews(userStackView, thindivideView2, shippingLabel, shippingfeeLabel, shippingfeedescriptLabel, shippingexpectedLabel, shippingdescriptLabel, thickdivideView, detailView, thickdivideView2)
     }
     
     // MARK: - Set Layout
@@ -368,6 +367,17 @@ final class MainInfoCollectionViewCell: UICollectionViewCell {
         thickdivideView.snp.makeConstraints {
             $0.top.equalTo(shippingdescriptLabel.snp.bottom).offset(10.adjusted)
             $0.bottom.equalTo(shippingdescriptLabel.snp.bottom).offset(18.adjusted)
+            $0.width.equalTo(contentView.snp.width)
+        }
+        
+        detailView.snp.makeConstraints {
+            $0.top.equalTo(thickdivideView.snp.bottom).offset(20.adjusted)
+            $0.centerX.equalToSuperview()
+        }
+        
+        thickdivideView2.snp.makeConstraints {
+            $0.top.equalTo(detailView.snp.bottom).offset(20.adjusted)
+            $0.bottom.equalTo(detailView.snp.bottom).offset(28.adjusted)
             $0.width.equalTo(contentView.snp.width)
         }
     }
