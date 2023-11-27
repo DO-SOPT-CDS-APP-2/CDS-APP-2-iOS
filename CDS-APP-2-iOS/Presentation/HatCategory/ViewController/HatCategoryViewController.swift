@@ -34,8 +34,10 @@ final class HatCategoryViewController: UIViewController {
         self.setHierachy()
         self.setLayout()
         
-        self.setHeaderCollectionViewConfig()
         self.setHeaderCollectionViewLayout()
+        
+        self.setRegister()
+        self.setDelegate()
     }
     
     // MARK: - set UI
@@ -63,7 +65,7 @@ final class HatCategoryViewController: UIViewController {
     
     private func setLayout() {
         headerCollectionView.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(88.adjusted) // 이렇게밖에 안된다고 ..??? 좀따가 수정해보자
+            $0.top.equalToSuperview().inset(88.adjusted)
             $0.leading.trailing.equalToSuperview()
             $0.height.equalTo(43.adjusted)
         }
@@ -71,11 +73,14 @@ final class HatCategoryViewController: UIViewController {
         divisionLine.snp.makeConstraints {
             $0.top.equalTo(headerCollectionView.snp.bottom).offset(1.adjusted)
             $0.height.equalTo(1.adjusted)
+            $0.leading.trailing.equalToSuperview()
         }
         
         hatCategoryMainView.snp.makeConstraints {
-            $0.top.equalTo(headerCollectionView.snp.bottom)
-            $0.leading.trailing.equalToSuperview()
+            $0.top.equalTo(divisionLine.snp.bottom)
+            $0.leading.equalToSuperview().inset(20.adjusted)
+            $0.trailing.equalToSuperview()
+            $0.height.equalTo(700.adjusted)
         }
     }
     
@@ -87,32 +92,73 @@ final class HatCategoryViewController: UIViewController {
         self.navigationController?.setCenterItem()
     }
     
-    private func setRegister() {
-        hatCategoryMainView.mainCollectionView.register(RealTimeBestCollectionViewCell.self,
-                                                        forCellWithReuseIdentifier: RealTimeBestCollectionViewCell.className)
-    }
-    
-    private func setDelegate() {
-        hatCategoryMainView.mainCollectionView.dataSource = self
-        hatCategoryMainView.mainCollectionView.delegate = self
-    }
-    
-    private func setHeaderCollectionViewConfig() {
-        self.headerCollectionView.register(HeaderCollectionViewCell.self,
-                                           forCellWithReuseIdentifier: HeaderCollectionViewCell.className)
-        self.headerCollectionView.delegate = self
-        self.headerCollectionView.dataSource = self
-    }
-    
     private func setHeaderCollectionViewLayout() {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .horizontal
         flowLayout.minimumInteritemSpacing = 9
         self.headerCollectionView.setCollectionViewLayout(flowLayout, animated: false)
     }
+    
+    private func setRegister() {
+        self.headerCollectionView.register(HeaderCollectionViewCell.self,
+                                           forCellWithReuseIdentifier: HeaderCollectionViewCell.className)
+        hatCategoryMainView.realtimeBestCollectionView.register(RealTimeBestCollectionViewCell.self, forCellWithReuseIdentifier: RealTimeBestCollectionViewCell.className)
+    }
+    
+    private func setDelegate() {
+        self.headerCollectionView.delegate = self
+        self.headerCollectionView.dataSource = self
+        
+        hatCategoryMainView.realtimeBestCollectionView.delegate = self
+        hatCategoryMainView.realtimeBestCollectionView.dataSource = self
+    }
 }
 
 // MARK: - Extension
+
+extension HatCategoryViewController: UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if collectionView == self.headerCollectionView {
+            return headerDummy.count
+        }
+        else {
+            return realtimeBestDummy.count
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if collectionView == self.headerCollectionView {
+            guard let item = collectionView.dequeueReusableCell(withReuseIdentifier: HeaderCollectionViewCell.className, for: indexPath) as? HeaderCollectionViewCell else { return UICollectionViewCell()}
+            
+            item.bindData(category: headerDummy[indexPath.row].label)
+            return item
+        }
+        else {
+            guard let item = collectionView.dequeueReusableCell(withReuseIdentifier: RealTimeBestCollectionViewCell.className, for: indexPath) as? RealTimeBestCollectionViewCell else { return UICollectionViewCell() }
+            
+            item.bindData(item: realtimeBestDummy[indexPath.row])
+            return item
+        }
+    }
+}
+
+extension HatCategoryViewController: UICollectionViewDelegateFlowLayout {
+    // cell width: text 길이에 따른 동적 너비 적용
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        if collectionView == self.headerCollectionView {
+            let text = headerDummy[indexPath.item].label
+            let font = UIFont.krMedium(ofSize: 14.adjusted)
+            let textWidth = (text as NSString).size(withAttributes: [NSAttributedString.Key.font: font]).width
+            
+            let cellWidth = textWidth + 18
+            return CGSize(width: cellWidth, height: 43.adjusted)
+        }
+        else {
+            return CGSize(width: 115.adjusted, height: 157.adjusted)
+        }
+    }
+}
 
 extension HatCategoryViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
@@ -128,31 +174,3 @@ extension HatCategoryViewController: UICollectionViewDelegate {
     }
 }
 
-extension HatCategoryViewController: UICollectionViewDelegateFlowLayout {
-    // cell width: text 길이에 따른 동적 너비 적용
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        let text = headerDummy[indexPath.item].label
-        let font = UIFont.krMedium(ofSize: 14.adjusted)
-        let textWidth = (text as NSString).size(withAttributes: [NSAttributedString.Key.font: font]).width
-        
-        let cellWidth = textWidth + 18
-        
-        return CGSize(width: cellWidth, height: 43.adjusted)
-    }
-}
-
-extension HatCategoryViewController: UICollectionViewDataSource {
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return headerDummy.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let item = collectionView.dequeueReusableCell(withReuseIdentifier: HeaderCollectionViewCell.className,
-                                                            for: indexPath) as? HeaderCollectionViewCell else { return UICollectionViewCell() }
-        
-        item.bindData(category: headerDummy[indexPath.row].label)
-        return item
-    }
-}

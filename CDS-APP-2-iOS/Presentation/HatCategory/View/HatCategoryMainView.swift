@@ -10,10 +10,9 @@ import UIKit
 final class HatCategoryMainView: UIView {
     
     //MARK: - set Properties
-    
-    private let collectionViewLayout = HatCategoryLayoutFactory.createLayout()
-    lazy var mainCollectionView = UICollectionView(frame: .zero,
-                                                           collectionViewLayout: collectionViewLayout)
+
+    lazy var realtimeBestCollectionView = UICollectionView(frame: .zero,
+                                                   collectionViewLayout: UICollectionViewLayout())
     
     //MARK: - Life Cycle
     
@@ -23,6 +22,8 @@ final class HatCategoryMainView: UIView {
         self.setUI()
         self.setHierachy()
         self.setLayout()
+        
+        self.setrealtimeCollectionViewLayout()
     }
     
     @available(*, unavailable)
@@ -31,19 +32,28 @@ final class HatCategoryMainView: UIView {
     }
     
     private func setUI() {
-        mainCollectionView.do {
+        realtimeBestCollectionView.do {
             $0.contentInsetAdjustmentBehavior = .never
+            $0.showsHorizontalScrollIndicator = false
         }
     }
     
     private func setHierachy() {
-        self.addSubview(mainCollectionView)
+        self.addSubview(realtimeBestCollectionView)
     }
     
     private func setLayout() {
-        mainCollectionView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
+        realtimeBestCollectionView.snp.makeConstraints {
+            $0.top.leading.trailing.equalToSuperview()
+            $0.height.equalTo(175.adjusted)
         }
     }
     
+    private func setrealtimeCollectionViewLayout() {
+        let flowLayout = UICollectionViewFlowLayout()
+        flowLayout.scrollDirection = .horizontal
+        flowLayout.minimumInteritemSpacing = 8
+        self.realtimeBestCollectionView.setCollectionViewLayout(flowLayout, animated: false)
+    }
 }
+
