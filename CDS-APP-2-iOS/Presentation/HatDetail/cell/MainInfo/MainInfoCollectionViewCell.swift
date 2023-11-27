@@ -43,11 +43,11 @@ final class MainInfoCollectionViewCell: UICollectionViewCell {
     private let shippingexpectedLabel = UILabel()
     private let shippingdescriptLabel = UILabel()
     
-    private let thindivideView1 = UIView()
-    private let thindivideView2 = UIView()
+    private let topThinDivideView = UIView()
+    private let bottomThinDivideView = UIView()
 
-    private let thickdivideView = UIView()
-    private let thickdivideView2 = UIView()
+    private let topThickDivideView = UIView()
+    private let bottomThickDivideView = UIView()
     private let spacerView = UIView()
 
     private let brandImage = UIImageView()
@@ -229,7 +229,7 @@ final class MainInfoCollectionViewCell: UICollectionViewCell {
         shippingattributedString.addAttribute(.foregroundColor, value: UIColor.darkGray, range: NSRange(location: 5, length: shippingattributedString.length - 5))
         shippingdescriptLabel.attributedText = shippingattributedString
         
-        for i in [thindivideView1, thindivideView2, thickdivideView, thickdivideView2] {
+        for i in [topThinDivideView, bottomThinDivideView, topThickDivideView, bottomThickDivideView] {
             i.backgroundColor = .background
         }
     }
@@ -237,14 +237,14 @@ final class MainInfoCollectionViewCell: UICollectionViewCell {
     // MARK: - Set Hierachy
     
     private func setHierachy() {
-        contentView.addSubviews(productImage, brandLabel, brandmoreIcon, productnameLabel, reviewStackView, reviewnumberLabel, reviewdescriptLabel, priceLabel, discountpercentLabel, discountpriceLabel, pointLabel, pointpercentLabel, pointdescriptLabel, thindivideView1)
+        contentView.addSubviews(productImage, brandLabel, brandmoreIcon, productnameLabel, reviewStackView, reviewnumberLabel, reviewdescriptLabel, priceLabel, discountpercentLabel, discountpriceLabel, pointLabel, pointpercentLabel, pointdescriptLabel, topThinDivideView)
 
         userStackView.addArrangedSubviews(userLabel)
         userStackView.addArrangedSubview(spacerView)
         userStackView.addArrangedSubviews(userdiscountpercentLabel, userdiscountpriceLabel)
         userStackView.addArrangedSubview(usermoreIcon)
         
-        contentView.addSubviews(userStackView, thindivideView2, shippingLabel, shippingfeeLabel, shippingfeedescriptLabel, shippingexpectedLabel, shippingdescriptLabel, thickdivideView, detailView, thickdivideView2)
+        contentView.addSubviews(userStackView, bottomThinDivideView, shippingLabel, shippingfeeLabel, shippingfeedescriptLabel, shippingexpectedLabel, shippingdescriptLabel, topThickDivideView, detailView, bottomThickDivideView)
     }
     
     // MARK: - Set Layout
@@ -315,10 +315,9 @@ final class MainInfoCollectionViewCell: UICollectionViewCell {
             $0.leading.equalTo(brandLabel.snp.leading).offset(57.adjusted)
         }
         
-        thindivideView1.snp.makeConstraints {
+        topThinDivideView.snp.makeConstraints {
             $0.top.equalTo(pointLabel.snp.bottom).offset(23.adjusted)
             $0.bottom.equalTo(pointLabel.snp.bottom).offset(25.adjusted)
-
             $0.width.equalTo(contentView.snp.width)
         }
         
@@ -327,11 +326,11 @@ final class MainInfoCollectionViewCell: UICollectionViewCell {
         }
         
         userStackView.snp.makeConstraints {
-            $0.top.equalTo(thindivideView1.snp.bottom).offset(17.adjusted)
+            $0.top.equalTo(topThinDivideView.snp.bottom).offset(17.adjusted)
             $0.leading.equalTo(brandLabel.snp.leading)
         }
         
-        thindivideView2.snp.makeConstraints {
+        bottomThinDivideView.snp.makeConstraints {
             $0.top.equalTo(userStackView.snp.bottom).offset(17.adjusted)
             $0.bottom.equalTo(userStackView.snp.bottom).offset(19.adjusted)
             $0.width.equalTo(contentView.snp.width)
@@ -339,7 +338,7 @@ final class MainInfoCollectionViewCell: UICollectionViewCell {
         
 
         shippingLabel.snp.makeConstraints {
-            $0.top.equalTo(thindivideView2.snp.bottom).offset(15.adjusted)
+            $0.top.equalTo(bottomThinDivideView.snp.bottom).offset(15.adjusted)
             $0.leading.equalTo(brandLabel.snp.leading)
         }
         
@@ -364,18 +363,18 @@ final class MainInfoCollectionViewCell: UICollectionViewCell {
         }
         
     
-        thickdivideView.snp.makeConstraints {
+        topThickDivideView.snp.makeConstraints {
             $0.top.equalTo(shippingdescriptLabel.snp.bottom).offset(10.adjusted)
             $0.bottom.equalTo(shippingdescriptLabel.snp.bottom).offset(18.adjusted)
             $0.width.equalTo(contentView.snp.width)
         }
         
         detailView.snp.makeConstraints {
-            $0.top.equalTo(thickdivideView.snp.bottom).offset(20.adjusted)
+            $0.top.equalTo(topThickDivideView.snp.bottom).offset(20.adjusted)
             $0.centerX.equalToSuperview()
         }
         
-        thickdivideView2.snp.makeConstraints {
+        bottomThickDivideView.snp.makeConstraints {
             $0.top.equalTo(detailView.snp.bottom).offset(20.adjusted)
             $0.bottom.equalTo(detailView.snp.bottom).offset(28.adjusted)
             $0.width.equalTo(contentView.snp.width)

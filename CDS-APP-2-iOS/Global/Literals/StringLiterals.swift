@@ -66,6 +66,21 @@ enum StringLiterals {
         enum ProductInfo {
             static let productDescriptMore = "상품설명 더보기"
         }
+        
+        enum SizeInfo {
+            static let one = "1"
+            static let two = "2"
+            static let three = "3"
+            static let headCircumference = "머리둘레"
+            static let depth = "깊이"
+            static let brimLength = "챙길이"
+            static let free = "FREE"
+            static let cm = "CM"
+            static let headCircumferenceSize = "58"
+            static let depthSize = "16.5"
+            static let brimLengthSize = "7.5"
+            static let realSize = "실측 사이즈"
+        }
     }
             
     enum HatCategory {

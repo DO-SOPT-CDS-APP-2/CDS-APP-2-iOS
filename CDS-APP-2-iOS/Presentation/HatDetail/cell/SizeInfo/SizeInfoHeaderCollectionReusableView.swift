@@ -1,16 +1,15 @@
 //
-//  ProductInfoHeaderCollectionReusableView.swift
+//  SizeInfoHeaderCollectionReusableView.swift
 //  CDS-APP-2-iOS
 //
-//  Created by Gahyun Kim on 2023/11/22.
+//  Created by Gahyun Kim on 2023/11/27.
 //
-
 import UIKit
 
 import SnapKit
 import Then
-
-final class ProductInfoHeaderCollectionReusableView: UICollectionReusableView {
+ 
+final class SizeInfoHeaderCollectionReusableView: UICollectionReusableView {
     
     private let productInfoLabel = UILabel()
     private let sizeLabel = UILabel()
@@ -41,10 +40,9 @@ final class ProductInfoHeaderCollectionReusableView: UICollectionReusableView {
     
     func setUI() {
         productInfoLabel.do {
-            $0.textColor = .black
+            $0.textColor = .lightGray
             $0.font = .krBold(ofSize: 14.adjusted)
             $0.text = StringLiterals.HatDetail.header.productInfo
-            $0.textAlignment = .center
         }
         
         selectlineView.do {
@@ -56,9 +54,10 @@ final class ProductInfoHeaderCollectionReusableView: UICollectionReusableView {
         }
         
         sizeLabel.do {
-            $0.textColor = .lightGray
+            $0.textColor = .black
             $0.font = .krBold(ofSize: 14.adjusted)
             $0.text = StringLiterals.HatDetail.header.size
+            $0.textAlignment = .center
         }
         
         recommendLabel.do {
@@ -82,6 +81,7 @@ final class ProductInfoHeaderCollectionReusableView: UICollectionReusableView {
         headerStackView.do {
             $0.axis = .horizontal
             $0.distribution = .equalSpacing
+            
         }
     }
     
@@ -89,10 +89,10 @@ final class ProductInfoHeaderCollectionReusableView: UICollectionReusableView {
     // MARK: - Set Hierachy
     
     func setHierachy() {
-        selectStackView.addArrangedSubview(productInfoLabel)
+        selectStackView.addArrangedSubview(sizeLabel)
         selectStackView.addArrangedSubview(selectlineView)
-        headerStackView.addArrangedSubview(selectStackView)
-        headerStackView.addArrangedSubviews(sizeLabel, recommendLabel, reviewLabel, inquireLabel)
+        //headerStackView.addArrangedSubview(selectStackView)
+        headerStackView.addArrangedSubviews(productInfoLabel, selectStackView, recommendLabel, reviewLabel, inquireLabel)
 
         addSubview(headerStackView)
     }
@@ -104,7 +104,8 @@ final class ProductInfoHeaderCollectionReusableView: UICollectionReusableView {
         selectlineView.snp.makeConstraints {
             $0.width.equalTo(63.adjusted)
             $0.height.equalTo(1.adjusted)
-            $0.leading.equalTo(productInfoLabel.snp.leading).inset(5.adjusted)
+            $0.leading.equalTo(sizeLabel.snp.leading).inset(5.adjusted)
+            
         }
         
         headerStackView.snp.makeConstraints {
@@ -112,6 +113,6 @@ final class ProductInfoHeaderCollectionReusableView: UICollectionReusableView {
             $0.leading.trailing.equalToSuperview().inset(30.adjusted)
             $0.height.equalTo(45.adjusted)
         }
-    } 
-    
+    }
 }
+

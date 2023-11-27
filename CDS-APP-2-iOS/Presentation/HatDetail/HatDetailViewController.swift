@@ -55,8 +55,10 @@ final class HatDetailViewController: UIViewController {
     private func setupCollectionView() {
         detailcollectionView.register(MainInfoCollectionViewCell.self, forCellWithReuseIdentifier: MainInfoCollectionViewCell.className)
         detailcollectionView.register(ProductInfoCollectionViewCell.self, forCellWithReuseIdentifier: ProductInfoCollectionViewCell.className)
+        detailcollectionView.register(SizeInfoCollectionViewCell.self, forCellWithReuseIdentifier: SizeInfoCollectionViewCell.className)
         
         detailcollectionView.register(ProductInfoHeaderCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: ProductInfoHeaderCollectionReusableView.className)
+        detailcollectionView.register(SizeInfoHeaderCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SizeInfoHeaderCollectionReusableView.className)
     }
     
     
@@ -104,7 +106,7 @@ final class HatDetailViewController: UIViewController {
 extension HatDetailViewController: UICollectionViewDelegate {}
 extension HatDetailViewController: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-            return 2
+            return 4
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -112,6 +114,8 @@ extension HatDetailViewController: UICollectionViewDataSource {
         case 0 :
             return 1
         case 1 :
+            return 1
+        case 2 :
             return 1
         default :
             return 0
@@ -124,8 +128,11 @@ extension HatDetailViewController: UICollectionViewDataSource {
             return cell
         }
         else if indexPath.section == 1 {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier:
-                    ProductInfoCollectionViewCell.className, for: indexPath) as! ProductInfoCollectionViewCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProductInfoCollectionViewCell.className, for: indexPath) as! ProductInfoCollectionViewCell
+            return cell
+        }
+        else if indexPath.section == 2 {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SizeInfoCollectionViewCell.className, for: indexPath) as! SizeInfoCollectionViewCell
             return cell
         }
         else {
@@ -159,6 +166,27 @@ extension HatDetailViewController: UICollectionViewDataSource {
                     footer.configure()
                     return footer
                 }
+            case 2 :
+                if kind == UICollectionView.elementKindSectionHeader {
+                    guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader,
+                                                                                       withReuseIdentifier: SizeInfoHeaderCollectionReusableView.className,
+                                                                                       for: indexPath) as? SizeInfoHeaderCollectionReusableView
+                    else {
+                        return SizeInfoHeaderCollectionReusableView()
+                    }
+                    header.configure()
+                    return header
+                } else {
+                    guard let footer = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionFooter,
+                                                                                       withReuseIdentifier: SizeInfoFooterCollectionReusableView.className,
+                                                                                       for: indexPath) as? SizeInfoFooterCollectionReusableView
+                    else {
+                        return SizeInfoFooterCollectionReusableView()
+                    }
+                    footer.configure()
+                    return footer
+                }
+                
 
             default :
                 return ProductInfoHeaderCollectionReusableView()
@@ -170,6 +198,8 @@ extension HatDetailViewController: UICollectionViewDataSource {
         switch section {
         case 1 :
             return CGSize(width: 300, height: 50)
+        case 2 :
+            return CGSize(width: 300, height: 50)
         default :
             return CGSize.zero
         }
@@ -180,11 +210,11 @@ extension HatDetailViewController: UICollectionViewDelegateFlowLayout, UIScrollV
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         switch indexPath.section {
         case 0:
-            return CGSize(width: collectionView.bounds.width, height: 950.adjusted)
+            return CGSize(width: collectionView.bounds.width, height: 900.adjusted)
         case 1:
-            return CGSize(width: collectionView.bounds.width, height: 1000.adjusted)
+            return CGSize(width: collectionView.bounds.width, height: 980.adjusted)
         case 2:
-            return CGSize(width: collectionView.bounds.width, height: 500.adjusted)
+            return CGSize(width: collectionView.bounds.width, height: 700.adjusted)
         default:
             return CGSize(width: 0.0, height: 0.0)
         }
@@ -196,6 +226,7 @@ extension HatDetailViewController: UICollectionViewDelegateFlowLayout, UIScrollV
     }
     
     private func updateHeaderView(for scrollView: UIScrollView, inSection section: Int) {
+        
         //헤더 가져오기
         let headerView = detailcollectionView.visibleSupplementaryViews(ofKind: UICollectionView.elementKindSectionHeader).first as? ProductInfoHeaderCollectionReusableView
         
