@@ -14,6 +14,7 @@ final class HatCategoryMainView: UIView {
     private let realtimeBestViewTitle = UILabel()
     lazy var realtimeBestCollectionView = UICollectionView(frame: .zero,
                                                            collectionViewLayout: UICollectionViewLayout())
+    private let divisionLine = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 0))
     
     //MARK: - Life Cycle
     
@@ -43,11 +44,16 @@ final class HatCategoryMainView: UIView {
             $0.contentInsetAdjustmentBehavior = .never
             $0.showsHorizontalScrollIndicator = false
         }
+        
+        divisionLine.do {
+            $0.layer.addBorder([.bottom], color: .border, width: 1)
+        }
     }
     
     private func setHierachy() {
         self.addSubviews(realtimeBestViewTitle,
-                         realtimeBestCollectionView)
+                         realtimeBestCollectionView,
+                         divisionLine)
     }
     
     private func setLayout() {
@@ -57,10 +63,16 @@ final class HatCategoryMainView: UIView {
         }
         
         realtimeBestCollectionView.snp.makeConstraints {
-            $0.top.equalTo(realtimeBestViewTitle.snp.bottom).offset(7.adjusted)
+            $0.top.equalTo(realtimeBestViewTitle.snp.bottom).offset(2.adjusted)
             $0.leading.equalToSuperview().inset(20.adjusted)
             $0.trailing.equalToSuperview()
             $0.height.equalTo(175.adjusted)
+        }
+        
+        divisionLine.snp.makeConstraints {
+            $0.top.equalTo(realtimeBestCollectionView.snp.bottom).offset(10.adjusted)
+            $0.leading.trailing.equalToSuperview()
+            $0.height.equalTo(1.adjusted)
         }
     }
     
