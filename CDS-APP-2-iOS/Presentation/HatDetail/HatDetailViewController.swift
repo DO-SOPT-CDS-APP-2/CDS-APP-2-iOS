@@ -210,11 +210,11 @@ extension HatDetailViewController: UICollectionViewDelegateFlowLayout, UIScrollV
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         switch indexPath.section {
         case 0:
-            return CGSize(width: collectionView.bounds.width, height: 950.adjusted)
+            return CGSize(width: collectionView.bounds.width, height: 900.adjusted)
         case 1:
-            return CGSize(width: collectionView.bounds.width, height: 1000.adjusted)
+            return CGSize(width: collectionView.bounds.width, height: 980.adjusted)
         case 2:
-            return CGSize(width: collectionView.bounds.width, height: 1000.adjusted)
+            return CGSize(width: collectionView.bounds.width, height: 700.adjusted)
         default:
             return CGSize(width: 0.0, height: 0.0)
         }

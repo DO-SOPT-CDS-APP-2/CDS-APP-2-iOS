@@ -171,15 +171,15 @@ final class SizeInfoCollectionViewCell: UICollectionViewCell {
         
         for i in [rowStackView1, rowStackView2] {
             i.snp.makeConstraints {
-                $0.width.equalTo(370.adjusted)
-                $0.height.equalTo((99/2).adjusted)
+                $0.width.equalTo(336.adjusted)
+                $0.height.equalTo((100/2).adjusted)
             }
         }
         
         for i in [cmLabel, headCircumferenceStackView, depthStackView, brimLengthStackView, freeLabel, size1Label, size2Label, size3Label] {
             i.snp.makeConstraints {
-                $0.width.equalTo((370/4).adjusted)
-                $0.height.equalTo((99/2).adjusted)
+                $0.width.equalTo((336/4).adjusted)
+                $0.height.equalTo((100/2).adjusted)
             }
         }
         
@@ -187,8 +187,8 @@ final class SizeInfoCollectionViewCell: UICollectionViewCell {
             $0.top.equalTo(hatSizeImage.snp.bottom).offset(20.adjusted)
             $0.leading.equalTo(realSizeLabel.snp.leading)
             $0.centerX.equalToSuperview()
-            $0.width.equalTo(370.adjusted)
-            $0.height.equalTo(99.adjusted)
+            $0.width.equalTo(336.adjusted)
+            $0.height.equalTo(100.adjusted)
         }
         
         thickdivideView.snp.makeConstraints {
