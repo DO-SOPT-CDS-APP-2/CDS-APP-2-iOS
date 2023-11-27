@@ -23,6 +23,7 @@
 		058D7AB72B10CBB5002D6A0A /* HomeCardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058D7AB62B10CBB5002D6A0A /* HomeCardCollectionViewCell.swift */; };
 		058D7AB92B11044B002D6A0A /* HomeSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058D7AB82B11044B002D6A0A /* HomeSection.swift */; };
 		058DD4442B109A4B001C63A6 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058DD4432B109A4B001C63A6 /* HomeView.swift */; };
+		05C3D3AC2B150C2F00A51903 /* HomeTitleReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3D3AB2B150C2F00A51903 /* HomeTitleReusableView.swift */; };
 		2A0C020E2B0A5E9A005764FA /* ImageLiterals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0C020D2B0A5E9A005764FA /* ImageLiterals.swift */; };
 		2A0C02102B0A5EA5005764FA /* StringLiterals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0C020F2B0A5EA5005764FA /* StringLiterals.swift */; };
 		2A0C02122B0A5EAE005764FA /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0C02112B0A5EAE005764FA /* UIView+.swift */; };
@@ -93,6 +94,7 @@
 		058D7AB62B10CBB5002D6A0A /* HomeCardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCardCollectionViewCell.swift; sourceTree = "<group>"; };
 		058D7AB82B11044B002D6A0A /* HomeSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSection.swift; sourceTree = "<group>"; };
 		058DD4432B109A4B001C63A6 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		05C3D3AB2B150C2F00A51903 /* HomeTitleReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTitleReusableView.swift; sourceTree = "<group>"; };
 		2A0C020D2B0A5E9A005764FA /* ImageLiterals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLiterals.swift; sourceTree = "<group>"; };
 		2A0C020F2B0A5EA5005764FA /* StringLiterals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringLiterals.swift; sourceTree = "<group>"; };
 		2A0C02112B0A5EAE005764FA /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 			isa = PBXGroup;
 			children = (
 				051836292B1487B700D4FB81 /* HomePromotionReusableView.swift */,
+				05C3D3AB2B150C2F00A51903 /* HomeTitleReusableView.swift */,
 			);
 			path = Header;
 			sourceTree = "<group>";
@@ -707,6 +710,7 @@
 				051836342B14A78700D4FB81 /* PromotionCellData.swift in Sources */,
 				051836222B11E66100D4FB81 /* UILabel+.swift in Sources */,
 				2A5296E72B051E8400279401 /* AppDelegate.swift in Sources */,
+				05C3D3AC2B150C2F00A51903 /* HomeTitleReusableView.swift in Sources */,
 				058D7AB92B11044B002D6A0A /* HomeSection.swift in Sources */,
 				2A5296E92B051E8400279401 /* SceneDelegate.swift in Sources */,
 				2AB794522B0CFD15003DFF48 /* CategoryHorizontalCollectionViewCell.swift in Sources */,
