@@ -10,9 +10,10 @@ import UIKit
 final class HatCategoryMainView: UIView {
     
     //MARK: - set Properties
-
+    
+    private let realtimeBestViewTitle = UILabel()
     lazy var realtimeBestCollectionView = UICollectionView(frame: .zero,
-                                                   collectionViewLayout: UICollectionViewLayout())
+                                                           collectionViewLayout: UICollectionViewLayout())
     
     //MARK: - Life Cycle
     
@@ -32,6 +33,12 @@ final class HatCategoryMainView: UIView {
     }
     
     private func setUI() {
+        realtimeBestViewTitle.do {
+            $0.text = "실시간 베스트"
+            $0.font = UIFont.krBold(ofSize: 16.adjusted)
+            $0.textColor = .black
+        }
+        
         realtimeBestCollectionView.do {
             $0.contentInsetAdjustmentBehavior = .never
             $0.showsHorizontalScrollIndicator = false
@@ -39,12 +46,20 @@ final class HatCategoryMainView: UIView {
     }
     
     private func setHierachy() {
-        self.addSubview(realtimeBestCollectionView)
+        self.addSubviews(realtimeBestViewTitle,
+                         realtimeBestCollectionView)
     }
     
     private func setLayout() {
+        realtimeBestViewTitle.snp.makeConstraints {
+            $0.top.equalToSuperview().inset(19.adjusted)
+            $0.leading.equalToSuperview().inset(20.adjusted)
+        }
+        
         realtimeBestCollectionView.snp.makeConstraints {
-            $0.top.leading.trailing.equalToSuperview()
+            $0.top.equalTo(realtimeBestViewTitle.snp.bottom).offset(7.adjusted)
+            $0.leading.equalToSuperview().inset(20.adjusted)
+            $0.trailing.equalToSuperview()
             $0.height.equalTo(175.adjusted)
         }
     }

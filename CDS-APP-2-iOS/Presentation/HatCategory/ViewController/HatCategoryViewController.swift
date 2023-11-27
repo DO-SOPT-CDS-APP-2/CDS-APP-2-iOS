@@ -78,8 +78,7 @@ final class HatCategoryViewController: UIViewController {
         
         hatCategoryMainView.snp.makeConstraints {
             $0.top.equalTo(divisionLine.snp.bottom)
-            $0.leading.equalToSuperview().inset(20.adjusted)
-            $0.trailing.equalToSuperview()
+            $0.leading.trailing.equalToSuperview()
             $0.height.equalTo(700.adjusted)
         }
     }
