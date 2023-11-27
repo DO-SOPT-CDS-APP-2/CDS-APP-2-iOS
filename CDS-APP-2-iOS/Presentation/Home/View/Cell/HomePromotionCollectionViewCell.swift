@@ -12,6 +12,15 @@ import Then
 
 final class HomePromotionCollectionViewCell: UICollectionViewCell {
     
+    // MARK: - Properties
+    
+    var handler: (() -> (Void))?
+    var isTapped: Bool = false {
+        didSet {
+            heartButton.isSelected = isTapped
+        }
+    }
+    
     // MARK: - UI Components
     
     private let lineView = LineView()
@@ -25,7 +34,7 @@ final class HomePromotionCollectionViewCell: UICollectionViewCell {
     private lazy var labelStackView = UIStackView(arrangedSubviews: [titleLabel,
                                                                      subTitleLabel,
                                                                      totalPriceStackView])
-    private let heartButton = UIButton()
+    private lazy var heartButton = UIButton()
     private let heartCountLabel = UILabel()
     private lazy var heartStackView = UIStackView(arrangedSubviews: [heartButton,
                                                                      heartCountLabel])
@@ -68,8 +77,9 @@ final class HomePromotionCollectionViewCell: UICollectionViewCell {
         }
         
         heartButton.do {
-            $0.setImage(ImageLiterals.icon.icLikeOff, for: .normal)
-            $0.setImage(ImageLiterals.icon.icLikeOn, for: .selected)
+            $0.setImage(ImageLiterals.icon.icLikeOffGrayMedium, for: .normal)
+            $0.setImage(ImageLiterals.icon.icLikeOnGrayMedium, for: .selected)
+            $0.addTarget(self, action: #selector(tappedHeartButton), for: .touchUpInside)
         }
         
         heartCountLabel.do {
@@ -133,6 +143,11 @@ final class HomePromotionCollectionViewCell: UICollectionViewCell {
             $0.leading.equalTo(productImageView.snp.trailing).offset(13.adjusted)
             $0.centerY.equalTo(productImageView)
         }
+    }
+    
+    @objc
+    private func tappedHeartButton() {
+        handler?()
     }
     
     func configureCell(data: PromotionCellData) {
