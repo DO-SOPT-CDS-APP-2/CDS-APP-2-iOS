@@ -17,7 +17,9 @@ final class HatCategoryViewController: UIViewController {
     private let headerCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout())
     private let headerDummy = HeaderCategory.headerDummy()
     private let divisionLine = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 0))
+    
     private let hatCategoryMainView = HatCategoryMainView()
+    private let realtimeBestDummy = RealtimeBestItem.realtimeBestDummy()
     
     // MARK: - Life Cycle
     
@@ -33,7 +35,7 @@ final class HatCategoryViewController: UIViewController {
         self.setLayout()
         
         self.setHeaderCollectionViewConfig()
-        self.setCollectionViewLayout()
+        self.setHeaderCollectionViewLayout()
     }
     
     // MARK: - set UI
@@ -86,7 +88,13 @@ final class HatCategoryViewController: UIViewController {
     }
     
     private func setRegister() {
-        // hatCategoryMainView.mainCollectionView.register
+        hatCategoryMainView.mainCollectionView.register(RealTimeBestCollectionViewCell.self,
+                                                        forCellWithReuseIdentifier: RealTimeBestCollectionViewCell.className)
+    }
+    
+    private func setDelegate() {
+        hatCategoryMainView.mainCollectionView.dataSource = self
+        hatCategoryMainView.mainCollectionView.delegate = self
     }
     
     private func setHeaderCollectionViewConfig() {
@@ -96,7 +104,7 @@ final class HatCategoryViewController: UIViewController {
         self.headerCollectionView.dataSource = self
     }
     
-    private func setCollectionViewLayout() {
+    private func setHeaderCollectionViewLayout() {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .horizontal
         flowLayout.minimumInteritemSpacing = 9
