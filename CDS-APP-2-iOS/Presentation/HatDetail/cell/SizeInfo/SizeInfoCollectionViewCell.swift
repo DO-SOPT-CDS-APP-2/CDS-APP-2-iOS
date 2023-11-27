@@ -18,25 +18,23 @@ final class SizeInfoCollectionViewCell: UICollectionViewCell {
     private let oneLabel = UILabel()
     private let twoLabel = UILabel()
     private let threeLabel = UILabel()
-    let numberList = ["1", "2", "3"]
+    let numberList = [StringLiterals.HatDetail.SizeInfo.one, StringLiterals.HatDetail.SizeInfo.two, StringLiterals.HatDetail.SizeInfo.three]
     
     private let sizeName1Label = UILabel()
     private let sizeName2Label = UILabel()
     private let sizeName3Label = UILabel()
-    let sizeNameList = ["머리둘레", "깊이", "챙길이"]
+    let sizeNameList = [StringLiterals.HatDetail.SizeInfo.headCircumference, StringLiterals.HatDetail.SizeInfo.depth, StringLiterals.HatDetail.SizeInfo.brimLength]
     
     private let freeLabel = UILabel()
     private let size1Label = UILabel()
     private let size2Label = UILabel()
     private let size3Label = UILabel()
-    let sizeList = ["58", "16.5", "7.5"]
+    let sizeList = [StringLiterals.HatDetail.SizeInfo.headCircumferenceSize, StringLiterals.HatDetail.SizeInfo.depthSize, StringLiterals.HatDetail.SizeInfo.brimLengthSize]
     
     private let rowStackView1 = UIStackView()
     private let rowStackView2 = UIStackView()
     private let stackView = UIStackView()
 
-    
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -52,8 +50,10 @@ final class SizeInfoCollectionViewCell: UICollectionViewCell {
     // MARK: - Set UI
     
     private func setUI() {
+        contentView.backgroundColor = .white
+        
         realSizeLabel.do {
-            $0.text = "실측 사이즈"
+            $0.text = StringLiterals.HatDetail.SizeInfo.realSize
             $0.font = .krBold(ofSize: 18.adjusted)
             $0.textColor = .black
         }
@@ -63,17 +63,19 @@ final class SizeInfoCollectionViewCell: UICollectionViewCell {
         }
         
         cmLabel.do {
-            $0.text = "CM"
-            $0.font = .enDisplayMedium(ofSize: 12)
-            $0.textColor = .black
+            $0.text = StringLiterals.HatDetail.SizeInfo.cm
         }
         
         freeLabel.do {
-            $0.text = "FREE"
-            $0.font = .enDisplayMedium(ofSize: 12)
-            $0.textColor = .black
+            $0.text = StringLiterals.HatDetail.SizeInfo.free
         }
         
+        for i in [cmLabel, freeLabel] {
+            i.font = .enDisplayMedium(ofSize: 12.adjusted)
+            i.textColor = .black
+            i.backgroundColor = .background
+            i.textAlignment = .center
+        }
         
         for i in [oneLabel, twoLabel, threeLabel] {
             var num: Int = 0
@@ -84,39 +86,37 @@ final class SizeInfoCollectionViewCell: UICollectionViewCell {
         }
         var num: Int = 0
         for i in [sizeName1Label, sizeName2Label, sizeName3Label] {
-            
             i.text = sizeNameList[num]
-            i.font = .krMedium(ofSize: 12)
+            i.font = .krMedium(ofSize: 12.adjusted)
             i.textColor = .black
+            i.textAlignment = .center
+            i.layer.borderWidth = 1
+            i.layer.borderColor = UIColor.border.cgColor
             num += 1
         }
         var num2: Int = 0
         for i in [size1Label, size2Label, size3Label] {
-        
             i.text = sizeList[num2]
             i.font = .enDisplayMedium(ofSize: 12.adjusted)
             i.textColor = .darkGray
+            i.textAlignment = .center
+            i.layer.borderWidth = 1
+            i.layer.borderColor = UIColor.border.cgColor
             num2 += 1
         }
         
         stackView.do {
             $0.axis = .vertical
             $0.distribution = .fillEqually
-            $0.layer.borderWidth = 1
-            $0.layer.borderColor = UIColor.black.cgColor
             $0.alignment = .center
         }
         
-        rowStackView1.do {
-            $0.axis = .horizontal
-            $0.distribution = .equalCentering
-            $0.alignment = .center
-        }
-        
-        rowStackView2.do {
-            $0.axis = .horizontal
-            $0.distribution = .equalCentering
-            $0.alignment = .center
+        for i in [rowStackView1, rowStackView2] {
+            i.axis = .horizontal
+            i.distribution = .equalCentering
+            i.alignment = .center
+            i.layer.borderWidth = 1
+            i.layer.borderColor = UIColor.border.cgColor
         }
     }
     
@@ -135,8 +135,8 @@ final class SizeInfoCollectionViewCell: UICollectionViewCell {
     
     private func setLayout() {
         realSizeLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(10.adjusted)
-            $0.leading.equalToSuperview().inset(10.adjusted)
+            $0.top.equalToSuperview().inset(20.adjusted)
+            $0.leading.equalToSuperview().inset(15.adjusted)
         }
         
         hatSizeImage.snp.makeConstraints {
@@ -145,25 +145,26 @@ final class SizeInfoCollectionViewCell: UICollectionViewCell {
         }
         
 
-        rowStackView1.snp.makeConstraints {
-            $0.width.equalTo(335)
-            $0.height.equalTo(99/2)
+        for i in [rowStackView1, rowStackView2] {
+            i.snp.makeConstraints {
+                $0.width.equalTo(370.adjusted)
+                $0.height.equalTo((99/2).adjusted)
+            }
         }
         
-        rowStackView2.snp.makeConstraints {
-            $0.width.equalTo(335)
-            $0.height.equalTo(99/2)
+        for i in [cmLabel, sizeName1Label, sizeName2Label, sizeName3Label, freeLabel, size1Label, size2Label, size3Label] {
+            i.snp.makeConstraints {
+                $0.width.equalTo((370/4).adjusted)
+                $0.height.equalTo((99/2).adjusted)
+            }
         }
         
         stackView.snp.makeConstraints {
             $0.top.equalTo(hatSizeImage.snp.bottom).offset(20.adjusted)
             $0.leading.equalTo(realSizeLabel.snp.leading)
             $0.centerX.equalToSuperview()
-            $0.width.equalTo(335)
-            $0.height.equalTo(99)
-            
+            $0.width.equalTo(370.adjusted)
+            $0.height.equalTo(99.adjusted)
         }
-        
     }
-    
 }
