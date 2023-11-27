@@ -20,10 +20,14 @@ final class SizeInfoCollectionViewCell: UICollectionViewCell {
     private let threeLabel = UILabel()
     let numberList = [StringLiterals.HatDetail.SizeInfo.one, StringLiterals.HatDetail.SizeInfo.two, StringLiterals.HatDetail.SizeInfo.three]
     
-    private let sizeName1Label = UILabel()
-    private let sizeName2Label = UILabel()
-    private let sizeName3Label = UILabel()
+    private let headCircumferenceLabel = UILabel()
+    private let depthLabel = UILabel()
+    private let brimLengthLabel = UILabel()
     let sizeNameList = [StringLiterals.HatDetail.SizeInfo.headCircumference, StringLiterals.HatDetail.SizeInfo.depth, StringLiterals.HatDetail.SizeInfo.brimLength]
+    
+    private let headCircumferenceStackView = UIStackView()
+    private let depthStackView = UIStackView()
+    private let brimLengthStackView = UIStackView()
     
     private let freeLabel = UILabel()
     private let size1Label = UILabel()
@@ -35,6 +39,9 @@ final class SizeInfoCollectionViewCell: UICollectionViewCell {
     private let rowStackView2 = UIStackView()
     private let stackView = UIStackView()
 
+    private let thickdivideView = UIView()
+    
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -77,23 +84,24 @@ final class SizeInfoCollectionViewCell: UICollectionViewCell {
             i.textAlignment = .center
         }
         
+        var num: Int = 0
         for i in [oneLabel, twoLabel, threeLabel] {
-            var num: Int = 0
             i.text = numberList[num]
             i.font = .enDisplayMedium(ofSize: 10.adjusted)
             i.textColor = .point
             num += 1
         }
-        var num: Int = 0
-        for i in [sizeName1Label, sizeName2Label, sizeName3Label] {
-            i.text = sizeNameList[num]
+        
+        var num1: Int = 0
+        for i in [headCircumferenceLabel, depthLabel, brimLengthLabel] {
+            i.text = sizeNameList[num1]
             i.font = .krMedium(ofSize: 12.adjusted)
             i.textColor = .black
             i.textAlignment = .center
-            i.layer.borderWidth = 1
-            i.layer.borderColor = UIColor.border.cgColor
-            num += 1
+            num1 += 1
         }
+        
+        
         var num2: Int = 0
         for i in [size1Label, size2Label, size3Label] {
             i.text = sizeList[num2]
@@ -118,16 +126,32 @@ final class SizeInfoCollectionViewCell: UICollectionViewCell {
             i.layer.borderWidth = 1
             i.layer.borderColor = UIColor.border.cgColor
         }
+        
+        for i in [headCircumferenceStackView, depthStackView, brimLengthStackView] {
+            i.axis = .vertical
+            i.alignment = .center
+            i.distribution = .fillEqually
+            i.layer.borderWidth = 1
+            i.layer.borderColor = UIColor.border.cgColor
+        }
+        
+        thickdivideView.do {
+            $0.backgroundColor = .background
+        }
     }
     
     
     // MARK: - Set UI
     
     private func setHierachy() {
-        rowStackView1.addArrangedSubviews(cmLabel, sizeName1Label, sizeName2Label, sizeName3Label)
+        headCircumferenceStackView.addArrangedSubviews(oneLabel, headCircumferenceLabel)
+        depthStackView.addArrangedSubviews(twoLabel, depthLabel)
+        brimLengthStackView.addArrangedSubviews(threeLabel, brimLengthLabel)
+        
+        rowStackView1.addArrangedSubviews(cmLabel, headCircumferenceStackView, depthStackView, brimLengthStackView)
         rowStackView2.addArrangedSubviews(freeLabel, size1Label, size2Label, size3Label)
         stackView.addArrangedSubviews(rowStackView1, rowStackView2)
-        contentView.addSubviews(realSizeLabel, hatSizeImage, stackView)
+        contentView.addSubviews(realSizeLabel, hatSizeImage, stackView, thickdivideView)
     }
     
     
@@ -143,8 +167,8 @@ final class SizeInfoCollectionViewCell: UICollectionViewCell {
             $0.top.equalTo(realSizeLabel.snp.bottom).offset(20.adjusted)
             $0.centerX.equalToSuperview()
         }
-        
 
+        
         for i in [rowStackView1, rowStackView2] {
             i.snp.makeConstraints {
                 $0.width.equalTo(370.adjusted)
@@ -152,7 +176,7 @@ final class SizeInfoCollectionViewCell: UICollectionViewCell {
             }
         }
         
-        for i in [cmLabel, sizeName1Label, sizeName2Label, sizeName3Label, freeLabel, size1Label, size2Label, size3Label] {
+        for i in [cmLabel, headCircumferenceStackView, depthStackView, brimLengthStackView, freeLabel, size1Label, size2Label, size3Label] {
             i.snp.makeConstraints {
                 $0.width.equalTo((370/4).adjusted)
                 $0.height.equalTo((99/2).adjusted)
@@ -165,6 +189,12 @@ final class SizeInfoCollectionViewCell: UICollectionViewCell {
             $0.centerX.equalToSuperview()
             $0.width.equalTo(370.adjusted)
             $0.height.equalTo(99.adjusted)
+        }
+        
+        thickdivideView.snp.makeConstraints {
+            $0.top.equalTo(stackView.snp.bottom).offset(17.adjusted)
+            $0.bottom.equalTo(stackView.snp.bottom).offset(25.adjusted)
+            $0.width.equalTo(contentView.snp.width)
         }
     }
 }

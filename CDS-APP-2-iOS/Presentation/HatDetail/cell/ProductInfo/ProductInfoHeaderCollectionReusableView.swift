@@ -44,6 +44,7 @@ final class ProductInfoHeaderCollectionReusableView: UICollectionReusableView {
             $0.textColor = .black
             $0.font = .krBold(ofSize: 14.adjusted)
             $0.text = StringLiterals.HatDetail.header.productInfo
+            $0.textAlignment = .center
         }
         
         selectlineView.do {
@@ -101,15 +102,15 @@ final class ProductInfoHeaderCollectionReusableView: UICollectionReusableView {
     
     func setLayout() {
         selectlineView.snp.makeConstraints {
-            $0.width.equalTo(67)
-            $0.height.equalTo(1)
-            $0.leading.equalTo(productInfoLabel.snp.leading).offset(-5)
+            $0.width.equalTo(63.adjusted)
+            $0.height.equalTo(1.adjusted)
+            $0.leading.equalTo(productInfoLabel.snp.leading).inset(5.adjusted)
         }
         
         headerStackView.snp.makeConstraints {
             $0.top.equalToSuperview()
             $0.leading.trailing.equalToSuperview().inset(30.adjusted)
-            $0.height.equalTo(45)
+            $0.height.equalTo(45.adjusted)
         }
     } 
     
