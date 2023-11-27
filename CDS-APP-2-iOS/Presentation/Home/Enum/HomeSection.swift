@@ -8,4 +8,5 @@
 @frozen
 enum HomeSection: Int, CaseIterable {
     case card
+    case recommend
 }

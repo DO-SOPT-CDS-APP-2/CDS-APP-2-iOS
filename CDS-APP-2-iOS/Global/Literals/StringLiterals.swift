@@ -89,5 +89,14 @@ enum StringLiterals {
             static let best = "베스트"
             static let recommand = "추천"
         }
+        
+        enum secondSection {
+            static let only = "오직 김디팟님만 볼 수 있어요"
+            static let quration = "큐레이션 종료까지 D-4 13:00:33"
+            static let winter = "겨울 캐주얼 신상품"
+            static let jewelry = "핫한 트렌드 주얼리"
+            static let best = "MD 추천 베스트 브랜드"
+            static let present = "센스있는 선물하기"
+        }
     }
 }

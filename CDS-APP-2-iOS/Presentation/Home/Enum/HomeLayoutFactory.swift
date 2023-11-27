@@ -16,6 +16,8 @@ enum HomeLayoutFactory {
             switch sectionNumber {
             case 0:
                 section = createCardSection()
+            case 1:
+                section = createRecommendSection()
             default:
                 section = createCardSection()
             }
@@ -41,6 +43,63 @@ enum HomeLayoutFactory {
 
         let section = NSCollectionLayoutSection(group: group)
         section.orthogonalScrollingBehavior = .none
+        return section
+    }
+    
+    // MARK: - Section 1 에 대한 Layout
+    
+    static func createRecommendSection() -> NSCollectionLayoutSection {
+        // 왼쪽의 큰 아이템
+        let bigItemSize = NSCollectionLayoutSize(widthDimension: .absolute(314.adjusted),
+                                                 heightDimension: .estimated(94.adjusted))
+        let bigItem = NSCollectionLayoutItem(layoutSize: bigItemSize)
+        bigItem.contentInsets  = NSDirectionalEdgeInsets(top: 0,
+                                                         leading: 20.adjusted,
+                                                         bottom: 0,
+                                                         trailing: 10.adjusted)
+
+        // 오른쪽의 작은 아이템
+        let smallItemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.5),
+                                                   heightDimension: .fractionalHeight(1.0))
+        let smallItem = NSCollectionLayoutItem(layoutSize: smallItemSize)
+        smallItem.contentInsets = NSDirectionalEdgeInsets(top: 0,
+                                                          leading: 0,
+                                                          bottom: 0,
+                                                          trailing: 10.adjusted)
+
+        // 작은 아이템을 가로로 묶음
+        let horizontalGroupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
+                                                         heightDimension: .fractionalHeight(0.5))
+        let horizontalGroup = NSCollectionLayoutGroup.horizontal(layoutSize: horizontalGroupSize,
+                                                                 repeatingSubitem: smallItem,
+                                                                 count: 2)
+        
+        horizontalGroup.contentInsets = NSDirectionalEdgeInsets(top: 0,
+                                                                leading: 0,
+                                                                bottom: 6.adjusted,
+                                                                trailing: 0)
+        
+        // 작은 아이템을 세로로 묶음
+        let verticalGroupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.5),
+                                                       heightDimension: .fractionalHeight(1.0))
+        let verticalGroup = NSCollectionLayoutGroup.vertical(layoutSize: verticalGroupSize,
+                                                             repeatingSubitem: horizontalGroup,
+                                                             count: 2)
+
+        // 큰 아이템과, 작은 아이템 그룹을 하나의 그룹으로 다시 묶음
+        let totalGroupSize = NSCollectionLayoutSize(widthDimension: .estimated(800.adjusted),
+                                                    heightDimension: .absolute(100.adjusted))
+        let totalGroup = NSCollectionLayoutGroup.horizontal(layoutSize: totalGroupSize,
+                                                            subitems: [bigItem, verticalGroup])
+        totalGroup.contentInsets = NSDirectionalEdgeInsets(top: 0,
+                                                           leading: 10.adjusted,
+                                                           bottom: 0,
+                                                           trailing: 0)
+
+        // 최종 그룹을 section에 반환
+        let section = NSCollectionLayoutSection(group: totalGroup)
+        section.orthogonalScrollingBehavior = .continuousGroupLeadingBoundary
+
         return section
     }
 }
