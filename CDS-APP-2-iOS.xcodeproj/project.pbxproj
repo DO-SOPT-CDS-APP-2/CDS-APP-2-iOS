@@ -55,6 +55,7 @@
 		835898CF2B0FA68D00503CD1 /* SizeInfoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835898CE2B0FA68D00503CD1 /* SizeInfoCollectionViewCell.swift */; };
 		835898E42B0FFEFE00503CD1 /* TabbarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835898E32B0FFEFE00503CD1 /* TabbarItem.swift */; };
 		835898E72B0FFF2200503CD1 /* TabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835898E62B0FFF2200503CD1 /* TabbarController.swift */; };
+		A122D17F2B14DA82009752A7 /* MainCategoryDummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = A122D17E2B14DA82009752A7 /* MainCategoryDummy.swift */; };
 		A17FBB4E2B11B1EC009214D9 /* HatCategoryLayoutFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17FBB4D2B11B1EC009214D9 /* HatCategoryLayoutFactory.swift */; };
 		A17FBB552B11C227009214D9 /* HatCategoryMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17FBB542B11C227009214D9 /* HatCategoryMainView.swift */; };
 		A17FBB572B11C52F009214D9 /* RealTimeBestCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17FBB562B11C52F009214D9 /* RealTimeBestCollectionViewCell.swift */; };
@@ -112,6 +113,7 @@
 		835898CE2B0FA68D00503CD1 /* SizeInfoCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SizeInfoCollectionViewCell.swift; sourceTree = "<group>"; };
 		835898E32B0FFEFE00503CD1 /* TabbarItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabbarItem.swift; sourceTree = "<group>"; };
 		835898E62B0FFF2200503CD1 /* TabbarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabbarController.swift; sourceTree = "<group>"; };
+		A122D17E2B14DA82009752A7 /* MainCategoryDummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCategoryDummy.swift; sourceTree = "<group>"; };
 		A17FBB4D2B11B1EC009214D9 /* HatCategoryLayoutFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HatCategoryLayoutFactory.swift; sourceTree = "<group>"; };
 		A17FBB542B11C227009214D9 /* HatCategoryMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HatCategoryMainView.swift; sourceTree = "<group>"; };
 		A17FBB562B11C52F009214D9 /* RealTimeBestCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealTimeBestCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -508,6 +510,7 @@
 			isa = PBXGroup;
 			children = (
 				A1A29DEF2B0F37DA00C9F25D /* HeaderCategoryDummy.swift */,
+				A122D17E2B14DA82009752A7 /* MainCategoryDummy.swift */,
 			);
 			path = Dummy;
 			sourceTree = "<group>";
@@ -609,6 +612,7 @@
 				A19559A12B0DC360002EED37 /* HatCategoryViewController.swift in Sources */,
 				056F2F3D2B0E0DF600BA6ED8 /* UIButton+.swift in Sources */,
 				2AB794542B0CFD15003DFF48 /* CategoryHeaderView.swift in Sources */,
+				A122D17F2B14DA82009752A7 /* MainCategoryDummy.swift in Sources */,
 				835898E42B0FFEFE00503CD1 /* TabbarItem.swift in Sources */,
 				835898CF2B0FA68D00503CD1 /* SizeInfoCollectionViewCell.swift in Sources */,
 				2AB794502B0CFD15003DFF48 /* CategoryDetailTableViewCell.swift in Sources */,

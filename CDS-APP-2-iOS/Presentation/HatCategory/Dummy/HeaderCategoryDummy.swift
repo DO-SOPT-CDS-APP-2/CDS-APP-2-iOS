@@ -26,18 +26,4 @@ extension HeaderCategory {
     }
 }
 
-struct RealtimeBestItem {
-    let image: UIImage
-    let brandName: String
-    let salePercent: String
-    let itemPrice: String
-    let rankingNumber: Int
-}
 
-extension RealtimeBestItem{
-    static func realtimeBestDummy() -> [RealtimeBestItem] {
-        return [
-
-        ]
-    }
-}
