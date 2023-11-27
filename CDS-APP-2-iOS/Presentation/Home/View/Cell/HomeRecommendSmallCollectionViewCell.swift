@@ -10,11 +10,6 @@ import UIKit
 import SnapKit
 import Then
 
-struct RecommendSmallCellData {
-    let image: UIImage
-    let text: String
-}
-
 final class HomeRecommendSmallCollectionViewCell: UICollectionViewCell {
     
     // MARK: - UI Components
