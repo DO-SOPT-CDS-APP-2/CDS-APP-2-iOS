@@ -33,23 +33,53 @@ enum StringLiterals {
     enum HatDetail {
         enum MainInfo {
             static let brandKR = "타입서비스"
-            static let productname = "Typeservice Web Cap [22 Colors]"
-            static let reviewnumber = "13266"
-            static let reviewdescript = "개 리뷰보기"
-            static let originprice = "39,000원"
-            static let discountpercent = "5%"
-            static let discountprice = "37,050원"
+            static let brandEN = "typeservice"
+            static let productName = "Typeservice Web Cap [22 Colors]"
+            static let reviewNumber = "13266"
+            static let reviewDescript = "개 리뷰보기"
+            static let originPrice = "39,000원"
+            static let discountPercent = "5%"
+            static let discountPrice = "37,050원"
             static let point = "371p"
-            static let pointpercent = "(1%)"
-            static let pointdescript = "적립"
+            static let pointPercent = "(1%)"
+            static let pointDescript = "적립"
             static let user = "김디팟님 구매 가능 가격"
-            static let userdiscountpercent = "12%"
-            static let userdiscountprice = "34,468원"
+            static let userDiscountPercent = "12%"
+            static let userDiscountPrice = "34,468원"
             static let shipping = "배송정보"
-            static let shippigfee = "배송비"
-            static let shippingfeedescript = "해당 브랜드 제품은 무료배송 됩니다.\n제주도를 포함한 도서/산간지역은 추가배송비 3,500원"
-            static let shippingexpected = "배송예정"
-            static let shippingdescript = "2일 이내 출고 (주말, 공휴일 제외)"
+            static let shippigFee = "배송비"
+            static let shippingFeeDescript = "해당 브랜드 제품은 무료배송 됩니다.\n제주도를 포함한 도서/산간지역은 추가배송비 3,500원"
+            static let shippingExpected = "배송예정"
+            static let shippingDescript = "2일 이내 출고 (주말, 공휴일 제외)"
+            static let likeCount = "50908"
+            
+        }
+        
+        enum header {
+            static let productInfo = "상품정보"
+            static let size = "사이즈"
+            static let recommend = "추천"
+            static let review = "리뷰"
+            static let inquire = "문의"
+        }
+        
+        enum ProductInfo {
+            static let productDescriptMore = "상품설명 더보기"
+        }
+        
+        enum SizeInfo {
+            static let one = "1"
+            static let two = "2"
+            static let three = "3"
+            static let headCircumference = "머리둘레"
+            static let depth = "깊이"
+            static let brimLength = "챙길이"
+            static let free = "FREE"
+            static let cm = "CM"
+            static let headCircumferenceSize = "58"
+            static let depthSize = "16.5"
+            static let brimLengthSize = "7.5"
+            static let realSize = "실측 사이즈"
         }
     }
             
@@ -73,6 +103,26 @@ enum StringLiterals {
             static let life = "라이프"
             static let best = "베스트"
             static let recommand = "추천"
+        }
+        
+        enum secondSection {
+            static let only = "오직 김디팟님만 볼 수 있어요"
+            static let quration = "큐레이션 종료까지 D-4 13:00:33"
+            static let winter = "겨울 캐주얼 신상품"
+            static let jewelry = "핫한 트렌드 주얼리"
+            static let best = "MD 추천 베스트 브랜드"
+            static let present = "센스있는 선물하기"
+        }
+        
+        enum thirdSection {
+            static let headerTitle = "노티아의 겨울 추천 코디"
+            static let headerSubTitle = "노티아와 크리에이터 디팟이 추천합니다. 올 겨울 코디하기 좋은\n다양한 룩을 준비했어요."
+            static let notia = "노티아"
+            static let firstCellSubtitle = "MERINO WOOL ROUND CARDIGAN - RED"
+            static let secondCellSubtitle = "LUNA BALMACAN HANDMADE COAT - BEIGE"
+            static let tenPercent = "10%"
+            static let firstCellPrice = "106,200"
+            static let secondCellPrice = "282,600"
         }
     }
 }

@@ -43,16 +43,19 @@ final class MainInfoCollectionViewCell: UICollectionViewCell {
     private let shippingexpectedLabel = UILabel()
     private let shippingdescriptLabel = UILabel()
     
-    private let thindivideView1 = UIView()
-    private let thindivideView2 = UIView()
+    private let topThinDivideView = UIView()
+    private let bottomThinDivideView = UIView()
 
-    private let thickdivideView = UIView()
+    private let topThickDivideView = UIView()
+    private let bottomThickDivideView = UIView()
     private let spacerView = UIView()
 
     private let brandImage = UIImageView()
     private let brandNameENLabel = UILabel()
     private let brandNameKRLabel = UILabel()
     private let brandNameStackView = UIStackView()
+    
+    private let detailView = MainInfoDetailView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -69,6 +72,8 @@ final class MainInfoCollectionViewCell: UICollectionViewCell {
     // MARK: - Set UI
     
     private func setUI() {
+        contentView.backgroundColor = .white
+        
         productImage.do {
             $0.image = ImageLiterals.img.imgHat
         }
@@ -86,7 +91,7 @@ final class MainInfoCollectionViewCell: UICollectionViewCell {
         productnameLabel.do {
             $0.textColor = .black
             $0.font = .enDisplayBold(ofSize: 14.adjusted)
-            $0.text = StringLiterals.HatDetail.MainInfo.productname
+            $0.text = StringLiterals.HatDetail.MainInfo.productName
         }
         
     
@@ -102,18 +107,18 @@ final class MainInfoCollectionViewCell: UICollectionViewCell {
         reviewnumberLabel.do {
             $0.textColor = .darkGray
             $0.font = .enDisplayMedium(ofSize: 10.adjusted)
-            $0.text = StringLiterals.HatDetail.MainInfo.reviewnumber
+            $0.text = StringLiterals.HatDetail.MainInfo.reviewNumber
         }
         
         reviewdescriptLabel.do {
             $0.textColor = .darkGray
             $0.font = .krMedium(ofSize: 10.adjusted)
-            $0.text = StringLiterals.HatDetail.MainInfo.reviewdescript
+            $0.text = StringLiterals.HatDetail.MainInfo.reviewDescript
         }
         
         priceLabel.do {
             $0.textColor = .lightGray
-            $0.text = StringLiterals.HatDetail.MainInfo.originprice
+            $0.text = StringLiterals.HatDetail.MainInfo.originPrice
         }
         let priceattributedString = NSMutableAttributedString(string: priceLabel.text ?? "")
         priceattributedString.addAttribute(.font, value: UIFont.enDisplayBold(ofSize: 14.adjusted), range: NSRange(location: 0, length: priceattributedString.length - 1))
@@ -123,12 +128,12 @@ final class MainInfoCollectionViewCell: UICollectionViewCell {
         discountpercentLabel.do {
             $0.textColor = .point
             $0.font = .enDisplayBold(ofSize: 20.adjusted)
-            $0.text = StringLiterals.HatDetail.MainInfo.discountpercent
+            $0.text = StringLiterals.HatDetail.MainInfo.discountPercent
         }
         
         discountpriceLabel.do {
             $0.textColor = .black
-            $0.text = StringLiterals.HatDetail.MainInfo.discountprice
+            $0.text = StringLiterals.HatDetail.MainInfo.discountPrice
         }
         let discountpriceattributedString = NSMutableAttributedString(string: discountpriceLabel.text ?? "")
         discountpriceattributedString.addAttribute(.font, value: UIFont.enDisplayBold(ofSize: 20.adjusted), range: NSRange(location: 0, length: discountpriceattributedString.length - 1))
@@ -145,13 +150,13 @@ final class MainInfoCollectionViewCell: UICollectionViewCell {
         pointpercentLabel.do {
             $0.textColor = .darkGray
             $0.font = .enDisplayMedium(ofSize: 12.adjusted)
-            $0.text = StringLiterals.HatDetail.MainInfo.pointpercent
+            $0.text = StringLiterals.HatDetail.MainInfo.pointPercent
         }
     
         pointdescriptLabel.do {
             $0.textColor = .darkGray
             $0.font = .krMedium(ofSize: 12.adjusted)
-            $0.text = StringLiterals.HatDetail.MainInfo.pointdescript
+            $0.text = StringLiterals.HatDetail.MainInfo.pointDescript
         }
         
         userLabel.do {
@@ -167,12 +172,12 @@ final class MainInfoCollectionViewCell: UICollectionViewCell {
         userdiscountpercentLabel.do {
             $0.textColor = .mediumGray
             $0.font = .enDisplayBold(ofSize: 16.adjusted)
-            $0.text = StringLiterals.HatDetail.MainInfo.userdiscountpercent
+            $0.text = StringLiterals.HatDetail.MainInfo.userDiscountPercent
         }
         
         userdiscountpriceLabel.do {
             $0.textColor = .black
-            $0.text = StringLiterals.HatDetail.MainInfo.userdiscountprice
+            $0.text = StringLiterals.HatDetail.MainInfo.userDiscountPrice
         }
         let userdiscountpriceattributedString = NSMutableAttributedString(string: userdiscountpriceLabel.text ?? "")
         userdiscountpriceattributedString.addAttribute(.font, value: UIFont.enDisplayBold(ofSize: 16.adjusted), range: NSRange(location: 0, length: userdiscountpriceattributedString.length - 1))
@@ -197,26 +202,26 @@ final class MainInfoCollectionViewCell: UICollectionViewCell {
         shippingfeeLabel.do {
             $0.textColor = .darkGray
             $0.font = .krRegular(ofSize: 12.adjusted)
-            $0.text = StringLiterals.HatDetail.MainInfo.shippigfee
+            $0.text = StringLiterals.HatDetail.MainInfo.shippigFee
         }
         
         shippingfeedescriptLabel.do {
             $0.textColor = .darkGray
             $0.font = .krRegular(ofSize: 12.adjusted)
             $0.numberOfLines = 0
-            $0.text = StringLiterals.HatDetail.MainInfo.shippingfeedescript
+            $0.text = StringLiterals.HatDetail.MainInfo.shippingFeeDescript
         }
         
         shippingexpectedLabel.do {
             $0.textColor = .darkGray
             $0.font = .krRegular(ofSize: 12.adjusted)
-            $0.text = StringLiterals.HatDetail.MainInfo.shippingexpected
+            $0.text = StringLiterals.HatDetail.MainInfo.shippingExpected
         }
         
         shippingdescriptLabel.do {
             $0.textColor = .darkGray
             $0.font = .krRegular(ofSize: 12.adjusted)
-            $0.text = StringLiterals.HatDetail.MainInfo.shippingdescript
+            $0.text = StringLiterals.HatDetail.MainInfo.shippingDescript
         }
         
         let shippingattributedString = NSMutableAttributedString(string: shippingdescriptLabel.text ?? "")
@@ -224,25 +229,22 @@ final class MainInfoCollectionViewCell: UICollectionViewCell {
         shippingattributedString.addAttribute(.foregroundColor, value: UIColor.darkGray, range: NSRange(location: 5, length: shippingattributedString.length - 5))
         shippingdescriptLabel.attributedText = shippingattributedString
         
-        for i in [thindivideView1, thindivideView2] {
-            i.backgroundColor = .border
-        }
-        thickdivideView.do {
-            $0.backgroundColor = .border
+        for i in [topThinDivideView, bottomThinDivideView, topThickDivideView, bottomThickDivideView] {
+            i.backgroundColor = .background
         }
     }
     
     // MARK: - Set Hierachy
     
     private func setHierachy() {
-        contentView.addSubviews(productImage, brandLabel, brandmoreIcon, productnameLabel, reviewStackView, reviewnumberLabel, reviewdescriptLabel, priceLabel, discountpercentLabel, discountpriceLabel, pointLabel, pointpercentLabel, pointdescriptLabel, thindivideView1)
+        contentView.addSubviews(productImage, brandLabel, brandmoreIcon, productnameLabel, reviewStackView, reviewnumberLabel, reviewdescriptLabel, priceLabel, discountpercentLabel, discountpriceLabel, pointLabel, pointpercentLabel, pointdescriptLabel, topThinDivideView)
 
         userStackView.addArrangedSubviews(userLabel)
         userStackView.addArrangedSubview(spacerView)
         userStackView.addArrangedSubviews(userdiscountpercentLabel, userdiscountpriceLabel)
         userStackView.addArrangedSubview(usermoreIcon)
         
-        contentView.addSubviews(userStackView, thindivideView2, shippingLabel, shippingfeeLabel, shippingfeedescriptLabel, shippingexpectedLabel, shippingdescriptLabel, thickdivideView)
+        contentView.addSubviews(userStackView, bottomThinDivideView, shippingLabel, shippingfeeLabel, shippingfeedescriptLabel, shippingexpectedLabel, shippingdescriptLabel, topThickDivideView, detailView, bottomThickDivideView)
     }
     
     // MARK: - Set Layout
@@ -313,10 +315,9 @@ final class MainInfoCollectionViewCell: UICollectionViewCell {
             $0.leading.equalTo(brandLabel.snp.leading).offset(57.adjusted)
         }
         
-        thindivideView1.snp.makeConstraints {
+        topThinDivideView.snp.makeConstraints {
             $0.top.equalTo(pointLabel.snp.bottom).offset(23.adjusted)
             $0.bottom.equalTo(pointLabel.snp.bottom).offset(25.adjusted)
-
             $0.width.equalTo(contentView.snp.width)
         }
         
@@ -325,11 +326,11 @@ final class MainInfoCollectionViewCell: UICollectionViewCell {
         }
         
         userStackView.snp.makeConstraints {
-            $0.top.equalTo(thindivideView1.snp.bottom).offset(17.adjusted)
+            $0.top.equalTo(topThinDivideView.snp.bottom).offset(17.adjusted)
             $0.leading.equalTo(brandLabel.snp.leading)
         }
         
-        thindivideView2.snp.makeConstraints {
+        bottomThinDivideView.snp.makeConstraints {
             $0.top.equalTo(userStackView.snp.bottom).offset(17.adjusted)
             $0.bottom.equalTo(userStackView.snp.bottom).offset(19.adjusted)
             $0.width.equalTo(contentView.snp.width)
@@ -337,7 +338,7 @@ final class MainInfoCollectionViewCell: UICollectionViewCell {
         
 
         shippingLabel.snp.makeConstraints {
-            $0.top.equalTo(thindivideView2.snp.bottom).offset(15.adjusted)
+            $0.top.equalTo(bottomThinDivideView.snp.bottom).offset(15.adjusted)
             $0.leading.equalTo(brandLabel.snp.leading)
         }
         
@@ -362,13 +363,23 @@ final class MainInfoCollectionViewCell: UICollectionViewCell {
         }
         
     
-        thickdivideView.snp.makeConstraints {
+        topThickDivideView.snp.makeConstraints {
             $0.top.equalTo(shippingdescriptLabel.snp.bottom).offset(10.adjusted)
             $0.bottom.equalTo(shippingdescriptLabel.snp.bottom).offset(18.adjusted)
             $0.width.equalTo(contentView.snp.width)
         }
+        
+        detailView.snp.makeConstraints {
+            $0.top.equalTo(topThickDivideView.snp.bottom).offset(20.adjusted)
+            $0.centerX.equalToSuperview()
+        }
+        
+        bottomThickDivideView.snp.makeConstraints {
+            $0.top.equalTo(detailView.snp.bottom).offset(20.adjusted)
+            $0.bottom.equalTo(detailView.snp.bottom).offset(28.adjusted)
+            $0.width.equalTo(contentView.snp.width)
+        }
     }
-
 }
 
 

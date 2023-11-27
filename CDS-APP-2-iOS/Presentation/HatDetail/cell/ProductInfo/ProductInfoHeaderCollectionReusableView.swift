@@ -10,9 +10,7 @@ import UIKit
 import SnapKit
 import Then
 
-class ProductInfoHeaderCollectionReusableView: UICollectionReusableView {
-    
-
+final class ProductInfoHeaderCollectionReusableView: UICollectionReusableView {
     
     private let productInfoLabel = UILabel()
     private let sizeLabel = UILabel()
@@ -20,7 +18,6 @@ class ProductInfoHeaderCollectionReusableView: UICollectionReusableView {
     private let reviewLabel = UILabel()
     private let inquireLabel = UILabel()
     private let selectlineView = UIView()
-    
     private let selectStackView = UIStackView()
     private let headerStackView = UIStackView()
     
@@ -33,9 +30,11 @@ class ProductInfoHeaderCollectionReusableView: UICollectionReusableView {
     }
     
     func configure() {
+        backgroundColor = .white
+        
         setUI()
-        setLayout()
         setHierachy()
+        setLayout()
     }
     
     // MARK: - Set UI
@@ -44,6 +43,8 @@ class ProductInfoHeaderCollectionReusableView: UICollectionReusableView {
         productInfoLabel.do {
             $0.textColor = .black
             $0.font = .krBold(ofSize: 14.adjusted)
+            $0.text = StringLiterals.HatDetail.header.productInfo
+            $0.textAlignment = .center
         }
         
         selectlineView.do {
@@ -52,27 +53,30 @@ class ProductInfoHeaderCollectionReusableView: UICollectionReusableView {
         
         selectStackView.do {
             $0.axis = .vertical
-            $0.spacing = 3
         }
         
         sizeLabel.do {
             $0.textColor = .lightGray
             $0.font = .krBold(ofSize: 14.adjusted)
+            $0.text = StringLiterals.HatDetail.header.size
         }
         
         recommendLabel.do {
             $0.textColor = .lightGray
             $0.font = .krBold(ofSize: 14.adjusted)
+            $0.text = StringLiterals.HatDetail.header.recommend
         }
         
         reviewLabel.do {
             $0.textColor = .lightGray
             $0.font = .krBold(ofSize: 14.adjusted)
+            $0.text = StringLiterals.HatDetail.header.review
         }
         
         inquireLabel.do {
             $0.textColor = .lightGray
             $0.font = .krBold(ofSize: 14.adjusted)
+            $0.text = StringLiterals.HatDetail.header.inquire
         }
         
         headerStackView.do {
@@ -98,14 +102,15 @@ class ProductInfoHeaderCollectionReusableView: UICollectionReusableView {
     
     func setLayout() {
         selectlineView.snp.makeConstraints {
-            $0.width.equalTo(67)
-            $0.height.equalTo(1)
+            $0.width.equalTo(63.adjusted)
+            $0.height.equalTo(1.adjusted)
+            $0.leading.equalTo(productInfoLabel.snp.leading).inset(5.adjusted)
         }
         
         headerStackView.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(20.adjusted)
-            $0.leading.equalToSuperview().inset(30.adjusted)
-            $0.trailing.equalToSuperview().inset(30.adjusted)
+            $0.top.equalToSuperview()
+            $0.leading.trailing.equalToSuperview().inset(30.adjusted)
+            $0.height.equalTo(45.adjusted)
         }
     } 
     
