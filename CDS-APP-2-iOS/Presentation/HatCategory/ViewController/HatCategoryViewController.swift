@@ -35,7 +35,6 @@ final class HatCategoryViewController: UIViewController {
         self.setLayout()
         
         self.setHeaderCollectionViewLayout()
-        
         self.setRegister()
         self.setDelegate()
     }
@@ -127,12 +126,14 @@ extension HatCategoryViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        // 1. 고정영역의 수평 컬렉션뷰
         if collectionView == self.headerCollectionView {
             guard let item = collectionView.dequeueReusableCell(withReuseIdentifier: HeaderCollectionViewCell.className, for: indexPath) as? HeaderCollectionViewCell else { return UICollectionViewCell()}
             
             item.bindData(category: headerDummy[indexPath.row].label)
             return item
         }
+        // 2. 실시간 베스트 수평 컬렉션뷰
         else {
             guard let item = collectionView.dequeueReusableCell(withReuseIdentifier: RealTimeBestCollectionViewCell.className, for: indexPath) as? RealTimeBestCollectionViewCell else { return UICollectionViewCell() }
             
@@ -143,8 +144,8 @@ extension HatCategoryViewController: UICollectionViewDataSource {
 }
 
 extension HatCategoryViewController: UICollectionViewDelegateFlowLayout {
-    // cell width: text 길이에 따른 동적 너비 적용
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        // 고정영역의 컬렉션뷰 아이템의 동적 width 적용을 위한 익스텐션 추가
         if collectionView == self.headerCollectionView {
             let text = headerDummy[indexPath.item].label
             let font = UIFont.krMedium(ofSize: 14.adjusted)
@@ -159,6 +160,7 @@ extension HatCategoryViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
+// 고정영역의 컬렉션뷰 첫번째 아이템의 볼드체 처리를 위한 익스텐션 추가
 extension HatCategoryViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         guard let headerCell = cell as? HeaderCollectionViewCell else {

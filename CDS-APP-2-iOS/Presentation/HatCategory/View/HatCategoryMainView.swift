@@ -33,6 +33,8 @@ final class HatCategoryMainView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK: - set UI
+    
     private func setUI() {
         realtimeBestViewTitle.do {
             $0.text = "실시간 베스트"
@@ -50,11 +52,15 @@ final class HatCategoryMainView: UIView {
         }
     }
     
+    //MARK: - set Heirachy
+    
     private func setHierachy() {
         self.addSubviews(realtimeBestViewTitle,
                          realtimeBestCollectionView,
                          divisionLine)
     }
+    
+    //MARK: - set Layout
     
     private func setLayout() {
         realtimeBestViewTitle.snp.makeConstraints {
@@ -75,6 +81,8 @@ final class HatCategoryMainView: UIView {
             $0.height.equalTo(1.adjusted)
         }
     }
+    
+    //MARK: - set collectionView FlowLayout
     
     private func setrealtimeCollectionViewLayout() {
         let flowLayout = UICollectionViewFlowLayout()
