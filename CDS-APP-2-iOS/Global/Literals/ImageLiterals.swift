@@ -31,6 +31,7 @@ enum ImageLiterals {
         static var imgHat: UIImage { .load(named: "img_hat")}
         static var imgHat2 : UIImage{ .load(named: "img_hat2")}
         static var imgHatModel : UIImage{ .load(named: "img_hatmodel")}
+        static var imgHatDetail: UIImage{ .load(named: "img_hatdetail")}
     }
     
     enum icon {

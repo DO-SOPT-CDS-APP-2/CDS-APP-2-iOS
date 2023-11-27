@@ -73,7 +73,6 @@ final class HatDetailViewController: UIViewController {
         detailcollectionView.snp.makeConstraints {
             $0.top.equalToSuperview().inset(10)
             $0.leading.trailing.bottom.equalToSuperview()
-        
         }
     }
     
@@ -181,11 +180,11 @@ extension HatDetailViewController: UICollectionViewDelegateFlowLayout, UIScrollV
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         switch indexPath.section {
         case 0:
-            return CGSize(width: collectionView.bounds.width, height: 900)
+            return CGSize(width: collectionView.bounds.width, height: 950.adjusted)
         case 1:
-            return CGSize(width: collectionView.bounds.width, height: 1000)
+            return CGSize(width: collectionView.bounds.width, height: 1000.adjusted)
         case 2:
-            return CGSize(width: collectionView.bounds.width, height: 500)
+            return CGSize(width: collectionView.bounds.width, height: 500.adjusted)
         default:
             return CGSize(width: 0.0, height: 0.0)
         }
