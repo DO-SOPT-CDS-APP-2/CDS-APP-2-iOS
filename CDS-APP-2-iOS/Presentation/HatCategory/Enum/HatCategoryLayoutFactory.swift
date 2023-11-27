@@ -29,18 +29,24 @@ enum HatCategoryLayoutFactory {
     //MARK: - Section0 Layout
     
     static func createRealtimeBestSection() -> NSCollectionLayoutSection {
-        let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .fractionalWidth(1)))
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .estimated(115), heightDimension: .estimated(157)), subitems: [item])
+        let itemSize = NSCollectionLayoutSize(widthDimension: .absolute(115.adjusted),
+                                              heightDimension: .absolute(157.adjusted))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        
+        let groupSize = NSCollectionLayoutSize(widthDimension: .estimated(504.adjusted),
+                                               heightDimension: .estimated(157.adjusted))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+        
         let section = NSCollectionLayoutSection(group: group)
-        
-        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(100.0))
-        let header = NSCollectionLayoutBoundarySupplementaryItem(
-            layoutSize: headerSize,
-            elementKind: UICollectionView.elementKindSectionHeader,
-            alignment: .top
-        )
-        section.boundarySupplementaryItems = [header]
-        
+//        
+//        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(100.0))
+//        let header = NSCollectionLayoutBoundarySupplementaryItem(
+//            layoutSize: headerSize,
+//            elementKind: UICollectionView.elementKindSectionHeader,
+//            alignment: .top
+//        )
+//        section.boundarySupplementaryItems = [header]
+//        
         return section
     }
 }

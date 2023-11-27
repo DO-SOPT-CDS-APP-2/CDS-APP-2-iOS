@@ -72,7 +72,8 @@ final class HatCategoryViewController: UIViewController {
         }
         
         hatCategoryMainView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
+            $0.top.equalTo(headerCollectionView.snp.bottom)
+            $0.leading.trailing.equalToSuperview()
         }
     }
     
