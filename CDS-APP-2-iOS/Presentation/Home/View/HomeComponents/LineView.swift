@@ -36,7 +36,7 @@ final class LineView: UIView {
         
     private func setLayout() {
         self.snp.makeConstraints {
-            $0.height.equalTo(0.96)
+            $0.height.equalTo(0.96.adjusted)
         }
     }
 }

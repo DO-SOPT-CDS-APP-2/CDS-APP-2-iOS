@@ -57,22 +57,22 @@ final class HomePromotionCollectionViewCell: UICollectionViewCell {
     
     private func setUI() {
         titleLabel.do {
-            $0.font = .krBold(ofSize: 10)
+            $0.font = .krBold(ofSize: 10.adjusted)
             $0.textColor = .black
         }
         
         subTitleLabel.do {
-            $0.font = .enDisplayMedium(ofSize: 8)
+            $0.font = .enDisplayMedium(ofSize: 8.adjusted)
             $0.textColor = .black
         }
         
         discountLabel.do {
-            $0.font = .enDisplayBold(ofSize: 10)
+            $0.font = .enDisplayBold(ofSize: 10.adjusted)
             $0.textColor = .point
         }
         
         priceLabel.do {
-            $0.font = .enDisplayBold(ofSize: 10)
+            $0.font = .enDisplayBold(ofSize: 10.adjusted)
             $0.textColor = .black
         }
         
@@ -83,7 +83,7 @@ final class HomePromotionCollectionViewCell: UICollectionViewCell {
         }
         
         heartCountLabel.do {
-            $0.font = .enDisplayMedium(ofSize: 8)
+            $0.font = .enDisplayMedium(ofSize: 8.adjusted)
             $0.textColor = .lightGray
         }
         
