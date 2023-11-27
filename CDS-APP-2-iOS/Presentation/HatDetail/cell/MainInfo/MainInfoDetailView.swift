@@ -38,7 +38,6 @@ final class MainInfoDetailView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
 
     // MARK: - set UI
     
@@ -50,7 +49,7 @@ final class MainInfoDetailView: UIView {
         }
         
         brandnameEN.do {
-            $0.font = .enDisplayBold(ofSize: 12)
+            $0.font = .enDisplayBold(ofSize: 12.adjusted)
             $0.text = StringLiterals.HatDetail.MainInfo.brandEN
             $0.textColor = .darkGray
         }
@@ -60,7 +59,7 @@ final class MainInfoDetailView: UIView {
         }
         
         brandnameKR.do {
-            $0.font = .krRegular(ofSize: 12)
+            $0.font = .krRegular(ofSize: 12.adjusted)
             $0.text = StringLiterals.HatDetail.MainInfo.brandKR
             $0.textColor = .darkGray
         }
@@ -76,7 +75,7 @@ final class MainInfoDetailView: UIView {
         
         likecount.do {
             $0.text = StringLiterals.HatDetail.MainInfo.likeCount
-            $0.font = .enDisplayMedium(ofSize: 8)
+            $0.font = .enDisplayMedium(ofSize: 8.adjusted)
             $0.textColor = .mediumGray
         }
         
@@ -104,8 +103,8 @@ final class MainInfoDetailView: UIView {
     
     private func setLayout() {
         self.snp.makeConstraints {
-            $0.width.equalTo(335)
-            $0.height.equalTo(72)
+            $0.width.equalTo(335.adjusted)
+            $0.height.equalTo(72.adjusted)
         }
         
         hatdetailImage.snp.makeConstraints {
@@ -127,9 +126,4 @@ final class MainInfoDetailView: UIView {
             $0.leading.equalTo(brandnameStackView.snp.trailing).offset(115.adjusted)
         }
     }
-    
-    
-
 }
-
-

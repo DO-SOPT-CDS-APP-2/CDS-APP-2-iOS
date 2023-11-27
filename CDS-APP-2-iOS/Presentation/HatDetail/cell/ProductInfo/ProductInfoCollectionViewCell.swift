@@ -15,7 +15,7 @@ final class ProductInfoCollectionViewCell: UICollectionViewCell {
     private let hatImage = UIImageView()
     private let hatmodelImage = UIImageView()
     private let productdescriptmoreButton = UIButton()
-    private let thickdivideView = UIView()
+    private let thickDivideView = UIView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -50,7 +50,7 @@ final class ProductInfoCollectionViewCell: UICollectionViewCell {
             $0.layer.borderWidth = 1
         }
         
-        thickdivideView.do {
+        thickDivideView.do {
             $0.backgroundColor = .background
         }
     }
@@ -59,7 +59,7 @@ final class ProductInfoCollectionViewCell: UICollectionViewCell {
     // MARK: - Set Hierachy
     
     private func setHierachy() {
-        contentView.addSubviews(hatImage, hatmodelImage, productdescriptmoreButton, thickdivideView)
+        contentView.addSubviews(hatImage, hatmodelImage, productdescriptmoreButton, thickDivideView)
     }
     
     // MARK: - Set Layout
@@ -82,9 +82,10 @@ final class ProductInfoCollectionViewCell: UICollectionViewCell {
             $0.height.equalTo(56.adjusted)
         }
         
-        thickdivideView.snp.makeConstraints {
-            $0.top.equalTo(productdescriptmoreButton.snp.bottom).offset(10.adjusted)
-            $0.bottom.equalTo(productdescriptmoreButton.snp.bottom).offset(18.adjusted)
+        thickDivideView.snp.makeConstraints {
+            $0.top.equalTo(productdescriptmoreButton.snp.bottom).offset(17.adjusted)
+            $0.bottom.equalTo(productdescriptmoreButton.snp.bottom).offset(25.adjusted)
+            $0.width.equalTo(contentView.snp.width)
         }
     }
 }
