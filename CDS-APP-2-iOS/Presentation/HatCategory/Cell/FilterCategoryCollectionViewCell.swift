@@ -31,19 +31,20 @@ final class FilterCategoryCollectionViewCell: UICollectionViewCell {
     //MARK: - set UI
     
     private func setUI() {
-        
         self.do {
-            $0.layer.addBorder([.all], color: .border, width: 1)
+            $0.layer.borderColor = UIColor.border.cgColor
+            $0.layer.borderWidth = 1
             $0.layer.cornerRadius = 18.adjusted
         }
         
         label.do {
             $0.font = UIFont.krSemiBold(ofSize: 12.adjusted)
-            $0.textColor = .lightGray
+            $0.textColor = .darkGray
         }
         
         downDetailImageView.do {
             $0.image = ImageLiterals.icon.icDetailDownGraySmall
+            $0.contentMode = .scaleAspectFit
         }
     }
     
@@ -63,14 +64,15 @@ final class FilterCategoryCollectionViewCell: UICollectionViewCell {
         
         downDetailImageView.snp.makeConstraints {
             $0.top.equalToSuperview().inset(9.adjusted)
+            $0.bottom.equalToSuperview().inset(8.adjusted)
             $0.leading.equalTo(label.snp.trailing).offset(5.adjusted)
+            $0.trailing.equalToSuperview().inset(12.adjusted)
         }
     }
     
     //MARK: - Methods
     
-    private func bindData(filterCategory: String) {
+    func bindData(filterCategory: String) {
         label.text = filterCategory
     }
-    
 }

@@ -17,6 +17,8 @@ final class HatCategoryMainView: UIView {
     private let divisionLine = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 0))
     lazy var productFilterCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout())
     
+    
+    
     //MARK: - Life Cycle
     
     override init(frame: CGRect) {
@@ -90,9 +92,10 @@ final class HatCategoryMainView: UIView {
         }
         
         productFilterCollectionView.snp.makeConstraints {
-            $0.top.equalTo(divisionLine.snp.bottom)
-            $0.leading.trailing.equalToSuperview()
-            $0.height.equalTo(57.adjusted)
+            $0.top.equalTo(divisionLine.snp.bottom).offset(13.adjusted)
+            $0.leading.equalToSuperview().inset(12.adjusted)
+            $0.trailing.equalToSuperview()
+            $0.height.equalTo(31.adjusted)
         }
     }
     
