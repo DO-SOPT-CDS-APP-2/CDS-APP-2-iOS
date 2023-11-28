@@ -32,11 +32,10 @@ class FirstRecommendCollectionViewCell: UICollectionViewCell {
         super.init(coder: coder)
     }
     
+    
+    // MARK: - Set UI
+    
     private func setUI() {
-        productImage.do {
-            $0.image = ImageLiterals.img.imgHatDetail
-        }
-        
         brandNameKR.do {
             $0.font = .krBold(ofSize: 10.adjusted)
             $0.textColor = .black
@@ -70,9 +69,11 @@ class FirstRecommendCollectionViewCell: UICollectionViewCell {
         
         productStackView.do {
             $0.axis = .vertical
-            $0.spacing = 10.adjusted
+            $0.spacing = 10
         }
     }
+    
+    // MARK: - Set Hierachy
     
     private func setHierachy() {
         priceStackView.addArrangedSubviews(salePercentLabel, priceLabel)
@@ -80,8 +81,9 @@ class FirstRecommendCollectionViewCell: UICollectionViewCell {
         contentView.addSubview(productStackView)
     }
     
+    // MARK: - Set Layout
+    
     private func setLayout() {
-
         salePercentLabel.snp.makeConstraints {
             $0.width.equalTo(24.adjusted)
         }
@@ -89,9 +91,9 @@ class FirstRecommendCollectionViewCell: UICollectionViewCell {
             $0.width.equalTo(48.adjusted)
         }
         productStackView.snp.makeConstraints {
-            $0.top.equalTo(contentView.snp.top).inset(50)
-            $0.width.equalTo(153)
-            $0.height.equalTo(253)
+            $0.top.equalTo(contentView.snp.top).inset(50.adjusted)
+            $0.width.equalTo(153.adjusted)
+            $0.height.equalTo(253.adjusted)
         }
     }
 
