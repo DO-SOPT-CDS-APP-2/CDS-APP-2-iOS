@@ -81,6 +81,24 @@ final class HatCategoryViewController: UIViewController {
             $0.height.equalTo(700.adjusted)
         }
     }
+   
+    //MARK: - set Register
+    
+    private func setRegister() {
+        self.headerCollectionView.register(HeaderCollectionViewCell.self,
+                                           forCellWithReuseIdentifier: HeaderCollectionViewCell.className)
+        hatCategoryMainView.realtimeBestCollectionView.register(RealTimeBestCollectionViewCell.self, forCellWithReuseIdentifier: RealTimeBestCollectionViewCell.className)
+    }
+    
+    //MARK: - set Delegate
+    
+    private func setDelegate() {
+        self.headerCollectionView.delegate = self
+        self.headerCollectionView.dataSource = self
+        
+        hatCategoryMainView.realtimeBestCollectionView.delegate = self
+        hatCategoryMainView.realtimeBestCollectionView.dataSource = self
+    }
     
     // MARK: - Methods
     
@@ -96,20 +114,7 @@ final class HatCategoryViewController: UIViewController {
         flowLayout.minimumInteritemSpacing = 9
         self.headerCollectionView.setCollectionViewLayout(flowLayout, animated: false)
     }
-    
-    private func setRegister() {
-        self.headerCollectionView.register(HeaderCollectionViewCell.self,
-                                           forCellWithReuseIdentifier: HeaderCollectionViewCell.className)
-        hatCategoryMainView.realtimeBestCollectionView.register(RealTimeBestCollectionViewCell.self, forCellWithReuseIdentifier: RealTimeBestCollectionViewCell.className)
-    }
-    
-    private func setDelegate() {
-        self.headerCollectionView.delegate = self
-        self.headerCollectionView.dataSource = self
-        
-        hatCategoryMainView.realtimeBestCollectionView.delegate = self
-        hatCategoryMainView.realtimeBestCollectionView.dataSource = self
-    }
+ 
 }
 
 // MARK: - Extension
