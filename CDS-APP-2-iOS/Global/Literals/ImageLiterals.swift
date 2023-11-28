@@ -29,6 +29,10 @@ enum ImageLiterals {
         static var imgHomeBackground: UIImage { .load(named: "img_home_65")}
         static var imgHomeCard: UIImage { .load(named: "img_home_1")}
         static var imgHat: UIImage { .load(named: "img_hat")}
+        static var imgHatCategory1: UIImage { .load(named: "img_hatcategory_1")}
+        static var imgHatCategory2: UIImage { .load(named: "img_hatcategory_2")}
+        static var imgHatCategory3: UIImage { .load(named: "img_hatcategory_3")}
+        static var imgHatCategory4: UIImage { .load(named: "img_hatcategory_4")}
         static var imgHat2 : UIImage{ .load(named: "img_hat2")}
         static var imgHatModel : UIImage{ .load(named: "img_hatmodel")}
         static var imgHome1 : UIImage{ .load(named: "img_home_2")}
@@ -41,7 +45,7 @@ enum ImageLiterals {
         static var imgHomePromotion2 : UIImage{ .load(named: "img_home6")}
         static var imgHomePromotion3 : UIImage{ .load(named: "img_home_7")}
     }
-    
+
     enum icon {
         static var icAlertBlack: UIImage { .load(named: "ic_alert_black")}
         static var icAlertWhite: UIImage { .load(named: "ic_alert_white")}
