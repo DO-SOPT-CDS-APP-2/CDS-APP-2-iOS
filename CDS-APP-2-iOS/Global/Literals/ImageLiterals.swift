@@ -65,6 +65,7 @@ enum ImageLiterals {
         static var imgReview4: UIImage{ .load(named: "img_hatreview4")}
         static var imgReview5: UIImage{ .load(named: "img_hatreview5")}
         static var imgReview6: UIImage{ .load(named: "img_hatreview6")}
+        static var imgInquire: UIImage{ .load(named: "img_inquire")}
     }
 
     enum icon {
