@@ -226,7 +226,7 @@ extension HatDetailViewController: UICollectionViewDelegateFlowLayout, UIScrollV
         case 2:
             return CGSize(width: collectionView.bounds.width, height: 500.adjusted)
         case 3:
-            return CGSize(width: collectionView.bounds.width, height: 500.adjusted)
+            return CGSize(width: collectionView.bounds.width, height: 800.adjusted)
         default:
             return CGSize(width: 0.0, height: 0.0)
         }

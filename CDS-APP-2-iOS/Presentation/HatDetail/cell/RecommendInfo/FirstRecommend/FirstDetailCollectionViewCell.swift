@@ -1,5 +1,5 @@
 //
-//  FirstRecommendCollectionViewCell.swift
+//  FirstDetailCollectionViewCell.swift
 //  CDS-APP-2-iOS
 //
 //  Created by Gahyun Kim on 2023/11/28.
@@ -7,10 +7,7 @@
 
 import UIKit
 
-import SnapKit
-import Then
-
-class FirstRecommendCollectionViewCell: UICollectionViewCell {
+class FirstDetailCollectionViewCell: UICollectionViewCell {
     private let productImage = UIImageView()
     private let brandNameEN = UILabel()
     private let brandNameKR = UILabel()
@@ -19,7 +16,7 @@ class FirstRecommendCollectionViewCell: UICollectionViewCell {
     private let priceStackView = UIStackView()
     private let shippingLabel = UILabel()
     private let productStackView = UIStackView()
-
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -31,6 +28,7 @@ class FirstRecommendCollectionViewCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
+    
     
     
     // MARK: - Set UI
@@ -61,7 +59,6 @@ class FirstRecommendCollectionViewCell: UICollectionViewCell {
         }
         
         shippingLabel.do {
-            $0.backgroundColor = .background
             $0.text = "무료배송"
             $0.font = .krRegular(ofSize: 10.adjusted)
             $0.textColor = .black
@@ -90,6 +87,7 @@ class FirstRecommendCollectionViewCell: UICollectionViewCell {
         priceLabel.snp.makeConstraints {
             $0.width.equalTo(48.adjusted)
         }
+
         productStackView.snp.makeConstraints {
             $0.top.equalTo(contentView.snp.top).inset(50.adjusted)
             $0.width.equalTo(153.adjusted)
@@ -105,4 +103,5 @@ class FirstRecommendCollectionViewCell: UICollectionViewCell {
         salePercentLabel.text = item.salePercent
         priceLabel.text = item.price
     }
+    
 }

@@ -11,22 +11,16 @@ import SnapKit
 import Then
 
 class RecommendInfoCollectionViewCell: UICollectionViewCell {
-    
-    private let recommendDummy = RecommendItem.recommendDummy()
-    
+
     private let detailCollecitonView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
-        flowLayout.itemSize = CGSize(width: 153, height: UIScreen.main.bounds.height/2)
-        flowLayout.scrollDirection = .horizontal
+        flowLayout.itemSize = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/2)
+        flowLayout.scrollDirection = .vertical
         flowLayout.minimumLineSpacing = 8.adjusted
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
         return collectionView
     }()
-    
-    
-    private let recommendLabel = UILabel()
-    private let eventLabel = UILabel()
-    
+
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -45,50 +39,22 @@ class RecommendInfoCollectionViewCell: UICollectionViewCell {
     // MARK: - Set UI
     
     private func setUI() {
-        detailCollecitonView.backgroundColor = .clear
-        
-        recommendLabel.do {
-            $0.text = "타입서비스의 이 상품은 어때요?"
-            $0.font = .krBold(ofSize: 18.adjusted)
-        }
-        let brandString = NSMutableAttributedString(string: recommendLabel.text ?? "")
-        brandString.addAttribute(.foregroundColor, value: UIColor.point, range: NSRange(location: 0, length: 5))
-        brandString.addAttribute(.foregroundColor, value: UIColor.black, range: NSRange(location: 5, length: brandString.length - 5))
-        recommendLabel.attributedText = brandString
-        
-        eventLabel.do {
-            $0.text = "관련 이벤트"
-            $0.font = .krBold(ofSize: 18.adjusted)
-            $0.textColor = .black
-        }
+        detailCollecitonView.backgroundColor = .white
+        detailCollecitonView.isScrollEnabled = false
     }
     
     
     // MARK: - Set Hierachy
     
     private func setHierachy() {
-        contentView.addSubview(recommendLabel)
         contentView.addSubview(detailCollecitonView)
     }
     
     // MARK: - Set Layout
     
     private func setLayout() {
-        recommendLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(15.adjusted)
-            $0.leading.equalToSuperview().inset(10.adjusted)
-        }
-        
         detailCollecitonView.snp.makeConstraints {
-            $0.top.equalTo(recommendLabel.snp.bottom).offset(10.adjusted)
-            $0.leading.equalTo(recommendLabel.snp.leading)
-            $0.height.equalTo(253)
-            $0.width.equalTo(UIScreen.main.bounds.width)
-        }
-        
-        eventLabel.snp.makeConstraints {
-            $0.top.equalTo(detailCollecitonView.snp.bottom).offset(20.adjusted)
-            $0.leading.equalTo(recommendLabel.snp.leading)
+            $0.top.bottom.leading.trailing.equalToSuperview()
         }
     }
     
@@ -104,7 +70,7 @@ class RecommendInfoCollectionViewCell: UICollectionViewCell {
     
     private func setupCollectionView() {
         detailCollecitonView.register(FirstRecommendCollectionViewCell.self, forCellWithReuseIdentifier: FirstRecommendCollectionViewCell.className)
-        
+        detailCollecitonView.register(SecondRecommendCollectionViewCell.self, forCellWithReuseIdentifier: SecondRecommendCollectionViewCell.className)
     }
 }
 
@@ -112,17 +78,47 @@ class RecommendInfoCollectionViewCell: UICollectionViewCell {
 extension RecommendInfoCollectionViewCell: UICollectionViewDelegate {}
 extension RecommendInfoCollectionViewCell: UICollectionViewDataSource {
     
-
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+            return 2
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4    }
+        switch section {
+        case 0 :
+            return 1
+        case 1 :
+            return 1
+        default :
+            return 0
+        }
+    }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let item = collectionView.dequeueReusableCell(withReuseIdentifier: FirstRecommendCollectionViewCell.className,
-                                                            for: indexPath) as? FirstRecommendCollectionViewCell else {return UICollectionViewCell()}
-        item.bindData(item: recommendDummy[indexPath.row])
-        
-        return item
+        if indexPath.section == 0 {
+            let item = collectionView.dequeueReusableCell(withReuseIdentifier: FirstRecommendCollectionViewCell.className, for: indexPath) as! FirstRecommendCollectionViewCell
+
+            return item
+        } else {
+            guard let item = collectionView.dequeueReusableCell(withReuseIdentifier: SecondRecommendCollectionViewCell.className,
+                                                                for: indexPath) as? SecondRecommendCollectionViewCell else {return UICollectionViewCell()}
+
+            return item
+        }
+
     }
     
 
 }
+
+//extension RecommendInfoCollectionViewCell: UICollectionViewFlowLayout {
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        switch indexPath.section {
+//        case 0:
+//            return CGSize(width: collectionView.bounds.width, height: 300.adjusted)
+//        case 1:
+//            return CGSize(width: collectionView.bounds.width, height: 250.adjusted)
+//        default:
+//            return CGSize(width: 0.0, height: 0.0)
+//        }
+//    }
+//}
