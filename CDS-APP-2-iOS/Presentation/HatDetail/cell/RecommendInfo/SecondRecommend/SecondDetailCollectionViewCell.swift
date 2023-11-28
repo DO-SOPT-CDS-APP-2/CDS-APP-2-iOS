@@ -1,5 +1,5 @@
 //
-//  SecondRecommendCollectionViewCell.swift
+//  SecondDetailCollectionViewCell.swift
 //  CDS-APP-2-iOS
 //
 //  Created by Gahyun Kim on 2023/11/28.
@@ -7,10 +7,7 @@
 
 import UIKit
 
-import SnapKit
-import Then
-
-class SecondRecommendCollectionViewCell: UICollectionViewCell {
+class SecondDetailCollectionViewCell: UICollectionViewCell {
     
     private let eventImage = UIImageView()
     private let eventTitleLabel = UILabel()
@@ -45,6 +42,7 @@ class SecondRecommendCollectionViewCell: UICollectionViewCell {
         eventStackView.do {
             $0.axis = .vertical
             $0.spacing = 10
+            
         }
     }
     
@@ -58,10 +56,12 @@ class SecondRecommendCollectionViewCell: UICollectionViewCell {
     // MARK: - Set Layout
     
     private func setLayout() {
+
         eventStackView.snp.makeConstraints {
             $0.top.equalToSuperview()
             $0.width.equalTo(217.adjusted)
-            $0.height.equalTo(201.adjusted)
+            $0.height.equalTo(250.adjusted)
+     
         }
     }
     
