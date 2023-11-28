@@ -76,6 +76,7 @@
 		832B0C732B16A04F0042A417 /* InquireInfoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832B0C722B16A04F0042A417 /* InquireInfoCollectionViewCell.swift */; };
 		832B0C772B16A2CA0042A417 /* InquireList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832B0C762B16A2CA0042A417 /* InquireList.swift */; };
 		832B0C792B16A8450042A417 /* ListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832B0C782B16A8450042A417 /* ListCollectionViewCell.swift */; };
+		832B0C7B2B16B2540042A417 /* InquireInfoHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832B0C7A2B16B2540042A417 /* InquireInfoHeaderCollectionReusableView.swift */; };
 		8358989C2B0DE62100503CD1 /* ProductInfoHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8358989B2B0DE62100503CD1 /* ProductInfoHeaderCollectionReusableView.swift */; };
 		835898A02B0E455500503CD1 /* ProductInfoFooterCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8358989F2B0E455500503CD1 /* ProductInfoFooterCollectionReusableView.swift */; };
 		835898CB2B0FA68100503CD1 /* RecommendInfoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835898CA2B0FA68100503CD1 /* RecommendInfoCollectionViewCell.swift */; };
@@ -166,6 +167,7 @@
 		832B0C722B16A04F0042A417 /* InquireInfoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InquireInfoCollectionViewCell.swift; sourceTree = "<group>"; };
 		832B0C762B16A2CA0042A417 /* InquireList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InquireList.swift; sourceTree = "<group>"; };
 		832B0C782B16A8450042A417 /* ListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCollectionViewCell.swift; sourceTree = "<group>"; };
+		832B0C7A2B16B2540042A417 /* InquireInfoHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InquireInfoHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 		8358989B2B0DE62100503CD1 /* ProductInfoHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductInfoHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 		8358989F2B0E455500503CD1 /* ProductInfoFooterCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductInfoFooterCollectionReusableView.swift; sourceTree = "<group>"; };
 		835898CA2B0FA68100503CD1 /* RecommendInfoCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommendInfoCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -513,12 +515,12 @@
 		2AB794592B0CFDE8003DFF48 /* cell */ = {
 			isa = PBXGroup;
 			children = (
-				832B0C6F2B16A00E0042A417 /* InquireInfo */,
 				835898972B0DE59E00503CD1 /* MainInfo */,
 				8358989A2B0DE60500503CD1 /* ProductInfo */,
 				835898D02B0FA69200503CD1 /* SizeInfo */,
-				835898D12B0FA6A200503CD1 /* ReviewInfo */,
 				835898D22B0FA6B000503CD1 /* RecommendInfo */,
+				835898D12B0FA6A200503CD1 /* ReviewInfo */,
+				832B0C6F2B16A00E0042A417 /* InquireInfo */,
 			);
 			path = cell;
 			sourceTree = "<group>";
@@ -556,6 +558,7 @@
 				832B0C722B16A04F0042A417 /* InquireInfoCollectionViewCell.swift */,
 				832B0C782B16A8450042A417 /* ListCollectionViewCell.swift */,
 				832B0C762B16A2CA0042A417 /* InquireList.swift */,
+				832B0C7A2B16B2540042A417 /* InquireInfoHeaderCollectionReusableView.swift */,
 			);
 			path = InquireInfo;
 			sourceTree = "<group>";
@@ -810,6 +813,7 @@
 				056F2F3B2B0DF67D00BA6ED8 /* ChipView.swift in Sources */,
 				A17FBB572B11C52F009214D9 /* RealTimeBestCollectionViewCell.swift in Sources */,
 				2AA327D22B0C30E700732CE9 /* CALayer+.swift in Sources */,
+				832B0C7B2B16B2540042A417 /* InquireInfoHeaderCollectionReusableView.swift in Sources */,
 				2AB794682B0CFDE8003DFF48 /* LayoutFactory.swift in Sources */,
 				832B0C792B16A8450042A417 /* ListCollectionViewCell.swift in Sources */,
 				832B0C582B15E9230042A417 /* SecondRecommendCollectionViewCell.swift in Sources */,
