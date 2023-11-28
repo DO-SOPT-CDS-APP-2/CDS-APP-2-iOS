@@ -23,6 +23,7 @@ class RecommendInfoCollectionViewCell: UICollectionViewCell {
         return collectionView
     }()
     
+    
     private let recommendLabel = UILabel()
     private let eventLabel = UILabel()
     
@@ -83,6 +84,11 @@ class RecommendInfoCollectionViewCell: UICollectionViewCell {
             $0.leading.equalTo(recommendLabel.snp.leading)
             $0.height.equalTo(253)
             $0.width.equalTo(UIScreen.main.bounds.width)
+        }
+        
+        eventLabel.snp.makeConstraints {
+            $0.top.equalTo(detailCollecitonView.snp.bottom).offset(20.adjusted)
+            $0.leading.equalTo(recommendLabel.snp.leading)
         }
     }
     
