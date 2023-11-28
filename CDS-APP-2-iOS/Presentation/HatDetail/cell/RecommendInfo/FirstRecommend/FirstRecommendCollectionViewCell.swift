@@ -17,7 +17,7 @@ class FirstRecommendCollectionViewCell: UICollectionViewCell {
     // 1번째 추천 CollectionView - Recommend
     private let firstCollecitonView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
-        flowLayout.itemSize = CGSize(width: 153, height: UIScreen.main.bounds.height/2)
+        flowLayout.itemSize = CGSize(width: 153, height: 330)
         flowLayout.scrollDirection = .horizontal
         flowLayout.minimumLineSpacing = 12
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)

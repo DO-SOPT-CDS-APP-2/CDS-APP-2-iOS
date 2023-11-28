@@ -10,17 +10,20 @@ import UIKit
 import SnapKit
 import Then
 
+// MARK: - 추천 Section main Cell
+
 class RecommendInfoCollectionViewCell: UICollectionViewCell {
 
     private let detailCollecitonView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
-        flowLayout.itemSize = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/2)
+        flowLayout.itemSize = CGSize(width: UIScreen.main.bounds.width, height: 350)
         flowLayout.scrollDirection = .vertical
         flowLayout.minimumLineSpacing = 8.adjusted
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
         return collectionView
     }()
 
+    private let thickdivideView = UIView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -39,15 +42,22 @@ class RecommendInfoCollectionViewCell: UICollectionViewCell {
     // MARK: - Set UI
     
     private func setUI() {
-        detailCollecitonView.backgroundColor = .white
-        detailCollecitonView.isScrollEnabled = false
+
+        detailCollecitonView.do {
+            $0.backgroundColor = .white
+            $0.isScrollEnabled = false
+        }
+        
+        thickdivideView.do {
+            $0.backgroundColor = .background
+        }
     }
     
     
     // MARK: - Set Hierachy
     
     private func setHierachy() {
-        contentView.addSubview(detailCollecitonView)
+        contentView.addSubviews(detailCollecitonView, thickdivideView)
     }
     
     // MARK: - Set Layout
@@ -55,6 +65,13 @@ class RecommendInfoCollectionViewCell: UICollectionViewCell {
     private func setLayout() {
         detailCollecitonView.snp.makeConstraints {
             $0.top.bottom.leading.trailing.equalToSuperview()
+        }
+        
+        thickdivideView.snp.makeConstraints {
+            $0.top.equalTo(detailCollecitonView.snp.bottom).inset(70.adjusted)
+            $0.height.equalTo(8)
+            $0.width.equalTo(contentView.snp.width)
+
         }
     }
     
@@ -110,15 +127,15 @@ extension RecommendInfoCollectionViewCell: UICollectionViewDataSource {
 
 }
 
-//extension RecommendInfoCollectionViewCell: UICollectionViewFlowLayout {
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        switch indexPath.section {
-//        case 0:
-//            return CGSize(width: collectionView.bounds.width, height: 300.adjusted)
-//        case 1:
-//            return CGSize(width: collectionView.bounds.width, height: 250.adjusted)
-//        default:
-//            return CGSize(width: 0.0, height: 0.0)
-//        }
-//    }
-//}
+extension RecommendInfoCollectionViewCell: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        switch indexPath.section {
+        case 0:
+            return CGSize(width: collectionView.bounds.width, height: 350.adjusted)
+        case 1:
+            return CGSize(width: collectionView.bounds.width, height: 270.adjusted)
+        default:
+            return CGSize(width: 0.0, height: 0.0)
+        }
+    }
+}

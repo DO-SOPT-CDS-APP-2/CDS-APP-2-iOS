@@ -63,6 +63,8 @@ final class HatDetailViewController: UIViewController {
         
         detailcollectionView.register(ProductInfoHeaderCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: ProductInfoHeaderCollectionReusableView.className)
         detailcollectionView.register(SizeInfoHeaderCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SizeInfoHeaderCollectionReusableView.className)
+        detailcollectionView.register(RecommendInfoHeaderCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: RecommendInfoHeaderCollectionReusableView.className)
+
     }
     
     
@@ -96,7 +98,7 @@ final class HatDetailViewController: UIViewController {
         detailcollectionView.dataSource = self
     }
     
-    
+
     // MARK: - Set CollectionViewFlowLayout
     
     private func configureColletionView() {
@@ -104,7 +106,6 @@ final class HatDetailViewController: UIViewController {
             layout.sectionHeadersPinToVisibleBounds = true
         }
     }
-
 }
 
 extension HatDetailViewController: UICollectionViewDelegate {}
@@ -149,7 +150,6 @@ extension HatDetailViewController: UICollectionViewDataSource {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainInfoCollectionViewCell.className, for: indexPath) as! MainInfoCollectionViewCell
             return cell
         }
-
     }
 
     
@@ -196,7 +196,13 @@ extension HatDetailViewController: UICollectionViewDataSource {
                     footer.configure()
                     return footer
                 }
-                
+            case 3 :
+                guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader,
+                                                                                   withReuseIdentifier: RecommendInfoHeaderCollectionReusableView.className,
+                                                                                   for: indexPath) as? RecommendInfoHeaderCollectionReusableView
+                else { return RecommendInfoHeaderCollectionReusableView() }
+                header.configure()
+                return header
 
             default :
                 return ProductInfoHeaderCollectionReusableView()
@@ -207,9 +213,11 @@ extension HatDetailViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         switch section {
         case 1 :
-            return CGSize(width: 300, height: 50)
+            return CGSize(width: 300, height: 45)
         case 2 :
-            return CGSize(width: 300, height: 50)
+            return CGSize(width: 300, height: 45)
+        case 3 :
+            return CGSize(width: 300, height: 45)
         default :
             return CGSize.zero
         }
@@ -224,9 +232,9 @@ extension HatDetailViewController: UICollectionViewDelegateFlowLayout, UIScrollV
         case 1:
             return CGSize(width: collectionView.bounds.width, height: 980.adjusted)
         case 2:
-            return CGSize(width: collectionView.bounds.width, height: 500.adjusted)
+            return CGSize(width: collectionView.bounds.width, height: 340.adjusted)
         case 3:
-            return CGSize(width: collectionView.bounds.width, height: 800.adjusted)
+            return CGSize(width: collectionView.bounds.width, height: 650.adjusted)
         default:
             return CGSize(width: 0.0, height: 0.0)
         }
