@@ -81,6 +81,16 @@ enum StringLiterals {
             static let brimLengthSize = "7.5"
             static let realSize = "실측 사이즈"
         }
+        
+        enum ReviewInfo {
+            static let GPA = "평점"
+            static let size = "사이즈"
+            static let color = "색감"
+            static let quality = "퀄리티"
+            static let score = "4.8 / 5"
+            static let reviewCount = "리뷰(13291)"
+            static let moreReview = "상품 리뷰 전체보기(13291)"
+        }
     }
             
     enum HatCategory {
