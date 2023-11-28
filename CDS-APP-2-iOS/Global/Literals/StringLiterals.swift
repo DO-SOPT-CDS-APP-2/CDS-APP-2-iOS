@@ -89,7 +89,7 @@ enum StringLiterals {
             static let quality = "퀄리티"
             static let score = "4.8 / 5"
             static let reviewCount = "리뷰(13291)"
-            static let moreReview = "상품 리뷰 전체보기(13291)"
+            static let moreReview = "  상품 리뷰 전체보기(13291)"
         }
     }
             
