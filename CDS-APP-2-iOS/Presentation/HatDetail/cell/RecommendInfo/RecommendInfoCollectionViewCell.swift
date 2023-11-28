@@ -12,10 +12,13 @@ import Then
 
 class RecommendInfoCollectionViewCell: UICollectionViewCell {
     
+    private let recommendDummy = RecommendItem.recommendDummy()
+    
     private let detailCollecitonView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
-        flowLayout.itemSize = CGSize(width: 100, height: UIScreen.main.bounds.height/2)
+        flowLayout.itemSize = CGSize(width: 153, height: UIScreen.main.bounds.height/2)
         flowLayout.scrollDirection = .horizontal
+        flowLayout.minimumLineSpacing = 8.adjusted
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
         return collectionView
     }()
@@ -60,6 +63,13 @@ class RecommendInfoCollectionViewCell: UICollectionViewCell {
     }
     
     
+    // MARK: - Set Hierachy
+    
+    private func setHierachy() {
+        contentView.addSubview(recommendLabel)
+        contentView.addSubview(detailCollecitonView)
+    }
+    
     // MARK: - Set Layout
     
     private func setLayout() {
@@ -72,14 +82,8 @@ class RecommendInfoCollectionViewCell: UICollectionViewCell {
             $0.top.equalTo(recommendLabel.snp.bottom).offset(10.adjusted)
             $0.leading.equalTo(recommendLabel.snp.leading)
             $0.height.equalTo(253)
+            $0.width.equalTo(UIScreen.main.bounds.width)
         }
-    }
-    
-    
-    // MARK: - Set Hierachy
-    
-    private func setHierachy() {
-        contentView.addSubview(detailCollecitonView)
     }
     
     
@@ -96,27 +100,21 @@ class RecommendInfoCollectionViewCell: UICollectionViewCell {
         detailCollecitonView.register(FirstRecommendCollectionViewCell.self, forCellWithReuseIdentifier: FirstRecommendCollectionViewCell.className)
         
     }
-    
-    //func bindData
- 
 }
 
 
 extension RecommendInfoCollectionViewCell: UICollectionViewDelegate {}
 extension RecommendInfoCollectionViewCell: UICollectionViewDataSource {
     
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 2
-    }
-    
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
-    }
+        return 4    }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let item = collectionView.dequeueReusableCell(withReuseIdentifier: FirstRecommendCollectionViewCell.className,
                                                             for: indexPath) as? FirstRecommendCollectionViewCell else {return UICollectionViewCell()}
-
+        item.bindData(item: recommendDummy[indexPath.row])
+        
         return item
     }
     

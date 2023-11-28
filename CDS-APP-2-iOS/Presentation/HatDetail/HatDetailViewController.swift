@@ -56,6 +56,10 @@ final class HatDetailViewController: UIViewController {
         detailcollectionView.register(MainInfoCollectionViewCell.self, forCellWithReuseIdentifier: MainInfoCollectionViewCell.className)
         detailcollectionView.register(ProductInfoCollectionViewCell.self, forCellWithReuseIdentifier: ProductInfoCollectionViewCell.className)
         detailcollectionView.register(SizeInfoCollectionViewCell.self, forCellWithReuseIdentifier: SizeInfoCollectionViewCell.className)
+        detailcollectionView.register(RecommendInfoCollectionViewCell.self, forCellWithReuseIdentifier: RecommendInfoCollectionViewCell.className)
+        
+        
+        
         
         detailcollectionView.register(ProductInfoHeaderCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: ProductInfoHeaderCollectionReusableView.className)
         detailcollectionView.register(SizeInfoHeaderCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SizeInfoHeaderCollectionReusableView.className)
@@ -117,6 +121,8 @@ extension HatDetailViewController: UICollectionViewDataSource {
             return 1
         case 2 :
             return 1
+        case 3:
+            return 1
         default :
             return 0
         }
@@ -133,6 +139,10 @@ extension HatDetailViewController: UICollectionViewDataSource {
         }
         else if indexPath.section == 2 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SizeInfoCollectionViewCell.className, for: indexPath) as! SizeInfoCollectionViewCell
+            return cell
+        }
+        else if indexPath.section == 3 {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecommendInfoCollectionViewCell.className, for: indexPath) as! RecommendInfoCollectionViewCell
             return cell
         }
         else {
@@ -214,7 +224,9 @@ extension HatDetailViewController: UICollectionViewDelegateFlowLayout, UIScrollV
         case 1:
             return CGSize(width: collectionView.bounds.width, height: 980.adjusted)
         case 2:
-            return CGSize(width: collectionView.bounds.width, height: 700.adjusted)
+            return CGSize(width: collectionView.bounds.width, height: 500.adjusted)
+        case 3:
+            return CGSize(width: collectionView.bounds.width, height: 500.adjusted)
         default:
             return CGSize(width: 0.0, height: 0.0)
         }
