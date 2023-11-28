@@ -67,9 +67,11 @@ final class HatDetailViewController: UIViewController {
         
         detailcollectionView.register(ReviewInfoCollectionViewCell.self,
                                       forCellWithReuseIdentifier: ReviewInfoCollectionViewCell.className)
-
         
+        detailcollectionView.register(InquireInfoCollectionViewCell.self,
+                                      forCellWithReuseIdentifier: InquireInfoCollectionViewCell.className)
         
+        // Header
         detailcollectionView.register(ProductInfoHeaderCollectionReusableView.self,
                                       forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
                                       withReuseIdentifier: ProductInfoHeaderCollectionReusableView.className)
@@ -132,7 +134,7 @@ final class HatDetailViewController: UIViewController {
 extension HatDetailViewController: UICollectionViewDelegate {}
 extension HatDetailViewController: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-            return 6
+            return 7
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -147,8 +149,10 @@ extension HatDetailViewController: UICollectionViewDataSource {
             return 1
         case 4:
             return 1
+        case 5:
+            return 1
         default :
-            return 0
+            return 1
         }
     }
     
@@ -174,7 +178,7 @@ extension HatDetailViewController: UICollectionViewDataSource {
             return cell
         }
         else {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainInfoCollectionViewCell.className, for: indexPath) as! MainInfoCollectionViewCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: InquireInfoCollectionViewCell.className, for: indexPath) as! InquireInfoCollectionViewCell
             return cell
         }
     }
@@ -255,6 +259,7 @@ extension HatDetailViewController: UICollectionViewDataSource {
             return CGSize(width: 300, height: 45)
         case 4 :
             return CGSize(width: 300, height: 45)
+  
         default :
             return CGSize.zero
         }
@@ -273,6 +278,8 @@ extension HatDetailViewController: UICollectionViewDelegateFlowLayout, UIScrollV
         case 3:
             return CGSize(width: collectionView.bounds.width, height: 650.adjusted)
         case 4:
+            return CGSize(width: collectionView.bounds.width, height: 500.adjusted)
+        case 5:
             return CGSize(width: collectionView.bounds.width, height: 500.adjusted)
         default:
             return CGSize(width: 0.0, height: 0.0)
