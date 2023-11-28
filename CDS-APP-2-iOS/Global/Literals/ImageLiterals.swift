@@ -40,6 +40,13 @@ enum ImageLiterals {
         static var imgHomePromotion1 : UIImage{ .load(named: "img_home_5")}
         static var imgHomePromotion2 : UIImage{ .load(named: "img_home6")}
         static var imgHomePromotion3 : UIImage{ .load(named: "img_home_7")}
+        static var imgHomeProduct1 : UIImage{ .load(named: "img_home_8")}
+        static var imgHomeProduct2 : UIImage{ .load(named: "img_home_9")}
+        static var imgHomeProduct3 : UIImage{ .load(named: "img_home_10")}
+        static var imgHomeProduct4 : UIImage{ .load(named: "img_home_11")}
+        static var imgHomeProduct5 : UIImage{ .load(named: "img_home_12")}
+        static var imgHomeProduct6 : UIImage{ .load(named: "img_home_13")}
+
     }
     
     enum icon {

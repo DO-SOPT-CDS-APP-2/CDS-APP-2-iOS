@@ -25,6 +25,8 @@
 		058DD4442B109A4B001C63A6 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058DD4432B109A4B001C63A6 /* HomeView.swift */; };
 		05C3D3AC2B150C2F00A51903 /* HomeTitleReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3D3AB2B150C2F00A51903 /* HomeTitleReusableView.swift */; };
 		05C3D3AE2B150CD800A51903 /* HomeProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3D3AD2B150CD800A51903 /* HomeProductCollectionViewCell.swift */; };
+		05C3D3B02B150FAF00A51903 /* ProductCellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3D3AF2B150FAF00A51903 /* ProductCellData.swift */; };
+		05C3D3B22B1511D400A51903 /* HomeSeeAllReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C3D3B12B1511D400A51903 /* HomeSeeAllReusableView.swift */; };
 		2A0C020E2B0A5E9A005764FA /* ImageLiterals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0C020D2B0A5E9A005764FA /* ImageLiterals.swift */; };
 		2A0C02102B0A5EA5005764FA /* StringLiterals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0C020F2B0A5EA5005764FA /* StringLiterals.swift */; };
 		2A0C02122B0A5EAE005764FA /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0C02112B0A5EAE005764FA /* UIView+.swift */; };
@@ -97,6 +99,8 @@
 		058DD4432B109A4B001C63A6 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		05C3D3AB2B150C2F00A51903 /* HomeTitleReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTitleReusableView.swift; sourceTree = "<group>"; };
 		05C3D3AD2B150CD800A51903 /* HomeProductCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeProductCollectionViewCell.swift; sourceTree = "<group>"; };
+		05C3D3AF2B150FAF00A51903 /* ProductCellData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCellData.swift; sourceTree = "<group>"; };
+		05C3D3B12B1511D400A51903 /* HomeSeeAllReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSeeAllReusableView.swift; sourceTree = "<group>"; };
 		2A0C020D2B0A5E9A005764FA /* ImageLiterals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLiterals.swift; sourceTree = "<group>"; };
 		2A0C020F2B0A5EA5005764FA /* StringLiterals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringLiterals.swift; sourceTree = "<group>"; };
 		2A0C02112B0A5EAE005764FA /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
@@ -170,6 +174,7 @@
 			children = (
 				051836292B1487B700D4FB81 /* HomePromotionReusableView.swift */,
 				05C3D3AB2B150C2F00A51903 /* HomeTitleReusableView.swift */,
+				05C3D3B12B1511D400A51903 /* HomeSeeAllReusableView.swift */,
 			);
 			path = Reusable;
 			sourceTree = "<group>";
@@ -180,6 +185,7 @@
 				051836312B14A71500D4FB81 /* RecommendSmallCellData.swift */,
 				051836332B14A78700D4FB81 /* PromotionCellData.swift */,
 				051836352B14AA6F00D4FB81 /* PromotionHeaderData.swift */,
+				05C3D3AF2B150FAF00A51903 /* ProductCellData.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -665,6 +671,7 @@
 				2A5296EB2B051E8400279401 /* HomeViewController.swift in Sources */,
 				835898CD2B0FA68700503CD1 /* ReviewInfoCollectionViewCell.swift in Sources */,
 				835899182B13016B00503CD1 /* MainInfoDetailView.swift in Sources */,
+				05C3D3B22B1511D400A51903 /* HomeSeeAllReusableView.swift in Sources */,
 				2A5296EB2B051E8400279401 /* HomeViewController.swift in Sources */,
 				05C3D3AE2B150CD800A51903 /* HomeProductCollectionViewCell.swift in Sources */,
 				056F2F372B0DE5BC00BA6ED8 /* HomeTopView.swift in Sources */,
@@ -723,6 +730,7 @@
 				2AB7944D2B0CFD15003DFF48 /* CategoryList.swift in Sources */,
 				835898E72B0FFF2200503CD1 /* TabbarController.swift in Sources */,
 				835898CB2B0FA68100503CD1 /* RecommendInfoCollectionViewCell.swift in Sources */,
+				05C3D3B02B150FAF00A51903 /* ProductCellData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
