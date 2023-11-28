@@ -29,6 +29,10 @@ enum ImageLiterals {
         static var imgHomeBackground: UIImage { .load(named: "img_home_65")}
         static var imgHomeCard: UIImage { .load(named: "img_home_1")}
         static var imgHat: UIImage { .load(named: "img_hat")}
+        static var imgHatCategory1: UIImage { .load(named: "img_hatcategory_1")}
+        static var imgHatCategory2: UIImage { .load(named: "img_hatcategory_2")}
+        static var imgHatCategory3: UIImage { .load(named: "img_hatcategory_3")}
+        static var imgHatCategory4: UIImage { .load(named: "img_hatcategory_4")}
         static var imgHat2 : UIImage{ .load(named: "img_hat2")}
         static var imgHatModel : UIImage{ .load(named: "img_hatmodel")}
         static var imgHome1 : UIImage{ .load(named: "img_home_2")}
@@ -37,6 +41,16 @@ enum ImageLiterals {
         static var imgHome4 : UIImage{ .load(named: "img_home4")}
         static var imgHome5 : UIImage{ .load(named: "img_home64")}
         static var imgHatDetail: UIImage{ .load(named: "img_hatdetail")}
+        static var imgHomePromotion1 : UIImage{ .load(named: "img_home_5")}
+        static var imgHomePromotion2 : UIImage{ .load(named: "img_home6")}
+        static var imgHomePromotion3 : UIImage{ .load(named: "img_home_7")}
+        static var imgHomeProduct1 : UIImage{ .load(named: "img_home_8")}
+        static var imgHomeProduct2 : UIImage{ .load(named: "img_home_9")}
+        static var imgHomeProduct3 : UIImage{ .load(named: "img_home_10")}
+        static var imgHomeProduct4 : UIImage{ .load(named: "img_home_11")}
+        static var imgHomeProduct5 : UIImage{ .load(named: "img_home_12")}
+        static var imgHomeProduct6 : UIImage{ .load(named: "img_home_13")}
+
         static var imgHatRecommend1: UIImage{ .load(named: "img_hatrecommend1")}
         static var imgHatRecommend2: UIImage{ .load(named: "img_hatrecommend2")}
         static var imgHatRecommend3: UIImage{ .load(named: "img_hatrecommend3")}
@@ -46,7 +60,7 @@ enum ImageLiterals {
         static var imgEvent3: UIImage{ .load(named: "img_event3")}
         static var imgEvent4: UIImage{ .load(named: "img_event4")}
     }
-    
+
     enum icon {
         static var icAlertBlack: UIImage { .load(named: "ic_alert_black")}
         static var icAlertWhite: UIImage { .load(named: "ic_alert_white")}

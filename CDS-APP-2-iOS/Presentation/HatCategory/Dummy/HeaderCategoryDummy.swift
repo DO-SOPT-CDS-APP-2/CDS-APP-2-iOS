@@ -5,7 +5,7 @@
 //  Created by 최서연 on 11/23/23.
 //
 
-import Foundation
+import UIKit
 
 struct HeaderCategory {
     let label: String
@@ -25,3 +25,5 @@ extension HeaderCategory {
         ]
     }
 }
+
+

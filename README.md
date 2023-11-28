@@ -25,4 +25,12 @@
 
 ~~~
 
+## ✒️ Code Review Convention
+```
+**P1: 꼭 반영해주세요 (Request changes)**
+
+**P2: 반영해도 좋고 넘어가도 좋습니다 (Approve)**
+
+**P3: 그냥 사소한 의견입니다 (Approve)**
+```
 

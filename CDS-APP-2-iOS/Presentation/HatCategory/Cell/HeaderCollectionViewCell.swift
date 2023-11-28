@@ -54,7 +54,7 @@ final class HeaderCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    //MARK: - function
+    //MARK: - Methods
     
     func bindData(category: String) {
         categoryLabel.text = category
