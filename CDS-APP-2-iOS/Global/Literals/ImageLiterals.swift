@@ -37,6 +37,10 @@ enum ImageLiterals {
         static var imgHome4 : UIImage{ .load(named: "img_home4")}
         static var imgHome5 : UIImage{ .load(named: "img_home64")}
         static var imgHatDetail: UIImage{ .load(named: "img_hatdetail")}
+        static var imgHatRecommend1: UIImage{ .load(named: "img_hatrecommend1")}
+        static var imgHatRecommend2: UIImage{ .load(named: "img_hatrecommend2")}
+        static var imgHatRecommend3: UIImage{ .load(named: "img_hatrecommend3")}
+        static var imgHatRecommend4: UIImage{ .load(named: "img_hatrecommend4")}
     }
     
     enum icon {
