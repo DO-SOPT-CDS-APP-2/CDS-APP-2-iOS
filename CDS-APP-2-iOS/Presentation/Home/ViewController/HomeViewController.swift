@@ -16,6 +16,7 @@ final class HomeViewController: UIViewController {
     
     private let recommendSmallCellData: [RecommendSmallCellData] = RecommendSmallCellData.recommendSmallCellDummy()
     private let promotionCellData: [PromotionCellData] = PromotionCellData.promotionCellDummy()
+    private let productCellData: [ProductCellData] = ProductCellData.productCellDummy()
     
     // MARK: - UI Components
     
@@ -71,6 +72,17 @@ final class HomeViewController: UIViewController {
         homeView.homeCollectionView.register(HomePromotionReusableView.self,
                                              forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
                                              withReuseIdentifier: HomePromotionReusableView.className)
+        
+        // section 4
+        homeView.homeCollectionView.register(HomeProductCollectionViewCell.self,
+                                             forCellWithReuseIdentifier: HomeProductCollectionViewCell.className)
+        homeView.homeCollectionView.register(HomeTitleReusableView.self,
+                                             forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+                                             withReuseIdentifier: HomeTitleReusableView.className)
+        homeView.homeCollectionView.register(HomeSeeAllReusableView.self,
+                                             forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter,
+                                             withReuseIdentifier: HomeSeeAllReusableView.className)
+        
     }
     
     private func setDelegate() {
@@ -86,7 +98,7 @@ final class HomeViewController: UIViewController {
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 3
+        return 4
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -97,6 +109,8 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             return 5
         case 2:
             return 2
+        case 3:
+            return 6
         default:
             return 0
         }
@@ -136,6 +150,16 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
                 cell.isTapped.toggle()
             }
             return cell
+            
+        case .product:
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeProductCollectionViewCell.className,
+                                                                for: indexPath) as? HomeProductCollectionViewCell else { return UICollectionViewCell() }
+            cell.configureCell(data: productCellData[indexPath.item])
+            cell.handler = { [weak self] in
+                guard let self else { return }
+                cell.isTapped.toggle()
+            }
+            return cell
         }
     }
     
@@ -148,10 +172,25 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
                                                                                    for: indexPath) as? HomePromotionReusableView else { fatalError() }
                 header.configureHeader(data: PromotionHeaderData.thirdSectionHeaderData())
                 return header
+            } else if indexPath.section == 3 {
+                guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
+                                                                                   withReuseIdentifier: HomeTitleReusableView.className,
+                                                                                   for: indexPath) as? HomeTitleReusableView else { fatalError() }
+                header.configureHeader(data: StringLiterals.Home.fourthSection.header)
+                return header
             } else {
                 return UICollectionReusableView()
             }
             
+        case UICollectionView.elementKindSectionFooter:
+            if indexPath.section == 3 {
+                guard let footer = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
+                                                                                   withReuseIdentifier: HomeSeeAllReusableView.className,
+                                                                                   for: indexPath) as? HomeSeeAllReusableView else { fatalError() }
+                return footer
+            } else {
+                return UICollectionReusableView()
+            }
         default:
             return UICollectionReusableView()
         }

@@ -124,5 +124,19 @@ enum StringLiterals {
             static let firstCellPrice = "106,200"
             static let secondCellPrice = "282,600"
         }
+        
+        enum fourthSection {
+            static let header = "김디팟님을 위한 추천 상품"
+            static let footer = "추천상품 전체보기"
+            static let firstTitle = "플레이스 스튜디오"
+            static let firstDiscount = "20%"
+            static let firstPrice = "62,400"
+            static let secondTitle = "시엔느"
+            static let secondDiscount = "10%"
+            static let secondPrice = "53,000"
+            static let thirdTitle = "승연이의집"
+            static let thirdDiscount = "53%"
+            static let thirdPrice = "39,800"
+        }
     }
 }
