@@ -54,4 +54,3 @@ final class HomeTitleReusableView: UICollectionReusableView {
         titleLabel.text = data
     }
 }
-
