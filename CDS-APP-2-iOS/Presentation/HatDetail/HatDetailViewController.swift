@@ -53,17 +53,38 @@ final class HatDetailViewController: UIViewController {
     // MARK: - Set CollectionView
     
     private func setupCollectionView() {
-        detailcollectionView.register(MainInfoCollectionViewCell.self, forCellWithReuseIdentifier: MainInfoCollectionViewCell.className)
-        detailcollectionView.register(ProductInfoCollectionViewCell.self, forCellWithReuseIdentifier: ProductInfoCollectionViewCell.className)
-        detailcollectionView.register(SizeInfoCollectionViewCell.self, forCellWithReuseIdentifier: SizeInfoCollectionViewCell.className)
-        detailcollectionView.register(RecommendInfoCollectionViewCell.self, forCellWithReuseIdentifier: RecommendInfoCollectionViewCell.className)
+        detailcollectionView.register(MainInfoCollectionViewCell.self,
+                                      forCellWithReuseIdentifier: MainInfoCollectionViewCell.className)
+        
+        detailcollectionView.register(ProductInfoCollectionViewCell.self,
+                                      forCellWithReuseIdentifier: ProductInfoCollectionViewCell.className)
+        
+        detailcollectionView.register(SizeInfoCollectionViewCell.self,
+                                      forCellWithReuseIdentifier: SizeInfoCollectionViewCell.className)
+        
+        detailcollectionView.register(RecommendInfoCollectionViewCell.self,
+                                      forCellWithReuseIdentifier: RecommendInfoCollectionViewCell.className)
+        
+        detailcollectionView.register(ReviewInfoCollectionViewCell.self,
+                                      forCellWithReuseIdentifier: ReviewInfoCollectionViewCell.className)
+
         
         
+        detailcollectionView.register(ProductInfoHeaderCollectionReusableView.self,
+                                      forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+                                      withReuseIdentifier: ProductInfoHeaderCollectionReusableView.className)
         
+        detailcollectionView.register(SizeInfoHeaderCollectionReusableView.self,
+                                      forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+                                      withReuseIdentifier: SizeInfoHeaderCollectionReusableView.className)
         
-        detailcollectionView.register(ProductInfoHeaderCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: ProductInfoHeaderCollectionReusableView.className)
-        detailcollectionView.register(SizeInfoHeaderCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SizeInfoHeaderCollectionReusableView.className)
-        detailcollectionView.register(RecommendInfoHeaderCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: RecommendInfoHeaderCollectionReusableView.className)
+        detailcollectionView.register(RecommendInfoHeaderCollectionReusableView.self,
+                                      forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+                                      withReuseIdentifier: RecommendInfoHeaderCollectionReusableView.className)
+        
+        detailcollectionView.register(ReviewInfoHeaderCollectionReusableView.self,
+                                      forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+                                      withReuseIdentifier: ReviewInfoHeaderCollectionReusableView.className)
 
     }
     
@@ -111,7 +132,7 @@ final class HatDetailViewController: UIViewController {
 extension HatDetailViewController: UICollectionViewDelegate {}
 extension HatDetailViewController: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-            return 4
+            return 6
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -123,6 +144,8 @@ extension HatDetailViewController: UICollectionViewDataSource {
         case 2 :
             return 1
         case 3:
+            return 1
+        case 4:
             return 1
         default :
             return 0
@@ -144,6 +167,10 @@ extension HatDetailViewController: UICollectionViewDataSource {
         }
         else if indexPath.section == 3 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecommendInfoCollectionViewCell.className, for: indexPath) as! RecommendInfoCollectionViewCell
+            return cell
+        }
+        else if indexPath.section == 4 {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ReviewInfoCollectionViewCell.className, for: indexPath) as! ReviewInfoCollectionViewCell
             return cell
         }
         else {
@@ -203,6 +230,14 @@ extension HatDetailViewController: UICollectionViewDataSource {
                 else { return RecommendInfoHeaderCollectionReusableView() }
                 header.configure()
                 return header
+            case 4 :
+                guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader,
+                                                                                   withReuseIdentifier: ReviewInfoHeaderCollectionReusableView.className,
+                                                                                   for: indexPath) as? ReviewInfoHeaderCollectionReusableView
+                else { return ReviewInfoHeaderCollectionReusableView() }
+                header.configure()
+                return header
+
 
             default :
                 return ProductInfoHeaderCollectionReusableView()
@@ -217,6 +252,8 @@ extension HatDetailViewController: UICollectionViewDataSource {
         case 2 :
             return CGSize(width: 300, height: 45)
         case 3 :
+            return CGSize(width: 300, height: 45)
+        case 4 :
             return CGSize(width: 300, height: 45)
         default :
             return CGSize.zero
@@ -235,11 +272,12 @@ extension HatDetailViewController: UICollectionViewDelegateFlowLayout, UIScrollV
             return CGSize(width: collectionView.bounds.width, height: 340.adjusted)
         case 3:
             return CGSize(width: collectionView.bounds.width, height: 650.adjusted)
+        case 4:
+            return CGSize(width: collectionView.bounds.width, height: 500.adjusted)
         default:
             return CGSize(width: 0.0, height: 0.0)
         }
     }
-    
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         updateHeaderView(for: scrollView, inSection: 1)
