@@ -24,7 +24,14 @@ final class DetailProductCollectionViewCell: UICollectionViewCell {
     private let heartNumber = UILabel()
     private let starRate = UILabel()
     private let starNumber = UILabel()
-    private let likedButton = UIButton()
+    private lazy var likedButton = UIButton()
+    
+    var handler: (() -> (Void))?
+    var isTapped: Bool = false {
+        didSet {
+            likedButton.isSelected = isTapped
+        }
+    }
     
     // MARK: - Life Cycle
     
@@ -204,7 +211,6 @@ final class DetailProductCollectionViewCell: UICollectionViewCell {
     
     @objc
     func likeTapped() {
-        print("좋아요 클릭 ❤️")
-        
+        handler?()
     }
 }

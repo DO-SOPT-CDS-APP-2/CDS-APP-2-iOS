@@ -179,7 +179,10 @@ extension HatCategoryViewController: UICollectionViewDataSource {
             let tapGesture = UITapGestureRecognizer(target: self, action: #selector(pushHatDetailView))
             item.isUserInteractionEnabled = true
             item.addGestureRecognizer(tapGesture)
-            
+            item.handler = { [weak self] in
+                            guard let self else { return }
+                            item.isTapped.toggle()
+                        }
             item.bindData(detailProduct: detailProductDummy[indexPath.row])
             return item
         }
