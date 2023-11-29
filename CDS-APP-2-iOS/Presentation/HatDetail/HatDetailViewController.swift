@@ -107,7 +107,8 @@ final class HatDetailViewController: UIViewController {
         }
         
         scrollToTopButton.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(50.adjusted)
+            $0.top.equalTo(detailcollectionView.snp.bottom).inset(70.adjusted)
+            $0.leading.equalTo(detailcollectionView.snp.trailing).inset(70.adjusted)
         }
     }
     
@@ -128,10 +129,9 @@ final class HatDetailViewController: UIViewController {
         }
     }
     
-    @objc func buttonTapped() {
-        print("Button tapped!")
+    @objc func buttonTapped(_ sender: UIButton) {
+        detailcollectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
     }
-    
 }
 
 extension HatDetailViewController: UICollectionViewDelegate {}
