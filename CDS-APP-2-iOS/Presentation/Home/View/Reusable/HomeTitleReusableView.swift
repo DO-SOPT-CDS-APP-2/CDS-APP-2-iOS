@@ -46,7 +46,7 @@ final class HomeTitleReusableView: UICollectionReusableView {
     
     private func setLayout() {
         titleLabel.snp.makeConstraints {
-            $0.top.leading.equalToSuperview()
+            $0.bottom.leading.equalToSuperview()
         }
     }
     
