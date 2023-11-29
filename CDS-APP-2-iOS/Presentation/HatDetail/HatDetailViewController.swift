@@ -20,6 +20,7 @@ final class HatDetailViewController: UIViewController {
         return collectionView
     }()
     
+    private let scrollToTopButton = UIButton(type: .custom)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -83,6 +84,17 @@ final class HatDetailViewController: UIViewController {
     
     private func setUI() {
         detailcollectionView.backgroundColor = .clear
+        
+        scrollToTopButton.do {
+            $0.setImage(ImageLiterals.img.imgBtnUp, for: .normal)
+            $0.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+        }
+    }
+    
+    // MARK: - Set Hierachy
+    
+    private func setHierachy() {
+        view.addSubviews(detailcollectionView, scrollToTopButton)
     }
     
     
@@ -90,17 +102,15 @@ final class HatDetailViewController: UIViewController {
     
     private func setLayout() {
         detailcollectionView.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(10)
+            $0.top.equalToSuperview().inset(10.adjusted)
             $0.leading.trailing.bottom.equalToSuperview()
+        }
+        
+        scrollToTopButton.snp.makeConstraints {
+            $0.top.equalToSuperview().inset(50.adjusted)
         }
     }
     
-    
-    // MARK: - Set Hierachy
-    
-    private func setHierachy() {
-        view.addSubview(detailcollectionView)
-    }
     
     // MARK: - Set Delegate
     
@@ -117,6 +127,11 @@ final class HatDetailViewController: UIViewController {
             layout.sectionHeadersPinToVisibleBounds = true
         }
     }
+    
+    @objc func buttonTapped() {
+        print("Button tapped!")
+    }
+    
 }
 
 extension HatDetailViewController: UICollectionViewDelegate {}
