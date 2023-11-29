@@ -124,6 +124,11 @@ final class HatCategoryViewController: UIViewController {
         flowLayout.minimumInteritemSpacing = 9
         self.headerCollectionView.setCollectionViewLayout(flowLayout, animated: false)
     }
+    
+    @objc
+    func pushHatDetailView() {
+        self.navigationController?.pushViewController(HatDetailViewController(), animated: true)
+    }
 }
 
 // MARK: - Extension
@@ -170,6 +175,10 @@ extension HatCategoryViewController: UICollectionViewDataSource {
         // 4. 상세 상품 수직 컬렉션뷰
         else {
             guard let item = collectionView.dequeueReusableCell(withReuseIdentifier: DetailProductCollectionViewCell.className, for: indexPath) as? DetailProductCollectionViewCell else { return UICollectionViewCell() }
+            
+            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(pushHatDetailView))
+            item.isUserInteractionEnabled = true
+            item.addGestureRecognizer(tapGesture)
             
             item.bindData(detailProduct: detailProductDummy[indexPath.row])
             return item
