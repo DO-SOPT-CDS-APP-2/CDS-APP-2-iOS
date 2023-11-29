@@ -167,7 +167,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         case .promotion:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomePromotionCollectionViewCell.className,
                                                                 for: indexPath) as? HomePromotionCollectionViewCell else { return UICollectionViewCell() }
-            cell.configureCell(data: additionCellData[indexPath.item])
+            cell.configureCell(data: promotionCellData[indexPath.item])
             cell.handler = { [weak self] in
                 guard let self else { return }
                 cell.isTapped.toggle()
@@ -209,7 +209,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         case .addition:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomePromotionCollectionViewCell.className,
                                                                 for: indexPath) as? HomePromotionCollectionViewCell else { return UICollectionViewCell() }
-            cell.configureCell(data: promotionCellData[indexPath.item])
+            cell.configureCell(data: additionCellData[indexPath.item])
             cell.handler = { [weak self] in
                 guard let self else { return }
                 cell.isTapped.toggle()
