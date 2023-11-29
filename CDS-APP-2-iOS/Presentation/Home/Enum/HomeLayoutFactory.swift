@@ -26,6 +26,8 @@ enum HomeLayoutFactory {
                 section = createBrandIssueSection()
             case 5:
                 section = createPopularSection()
+            case 6:
+                section = createAdditionSection()
             default:
                 section = createCardSection()
             }
@@ -233,7 +235,8 @@ enum HomeLayoutFactory {
                                                     heightDimension: .estimated(324.adjusted))
         let totalGroup = NSCollectionLayoutGroup.vertical(layoutSize: totalGroupSize,
                                                           subitems: [bigHorizontalGroup, smallHorizontalGroup])
-
+        totalGroup.interItemSpacing = .fixed(11.adjusted)
+        
         // 최종 그룹을 section에 반환
         let section = NSCollectionLayoutSection(group: totalGroup)
         section.contentInsets = NSDirectionalEdgeInsets(top: 15.adjusted,
@@ -277,10 +280,37 @@ enum HomeLayoutFactory {
         
         section.contentInsets = NSDirectionalEdgeInsets(top: 20.adjusted,
                                                         leading: 20.adjusted,
-                                                        bottom: 5.adjusted,
+                                                        bottom: 95.adjusted,
                                                         trailing: 12.adjusted)
         
         section.orthogonalScrollingBehavior = .continuous
+        return section
+        
+    }
+    
+    static func createAdditionSection() -> NSCollectionLayoutSection {
+        
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
+                                              heightDimension: .fractionalHeight(0.5))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        
+        item.contentInsets = NSDirectionalEdgeInsets(top: 10.adjusted,
+                                                     leading: 0,
+                                                     bottom: 0,
+                                                     trailing: 0)
+        
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
+                                               heightDimension: .estimated(154.adjusted))
+        
+        let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
+        
+        let section = NSCollectionLayoutSection(group: group)
+        section.boundarySupplementaryItems = [self.createSupplementaryHeaderItem(forSection: 2)]
+        section.contentInsets = NSDirectionalEdgeInsets(top: 18.adjusted,
+                                                        leading: 20.adjusted,
+                                                        bottom: 90.adjusted,
+                                                        trailing: 20.adjusted)
+        section.orthogonalScrollingBehavior = .none
         return section
         
     }
@@ -289,7 +319,7 @@ enum HomeLayoutFactory {
         let headerElement: NSCollectionLayoutBoundarySupplementaryItem
         
         switch section {
-        case 2:
+        case 2, 6:
             headerElement = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: .init(widthDimension: .fractionalWidth(1),
                                                                                           heightDimension: .estimated(423.adjusted)),
                                                                         elementKind: UICollectionView.elementKindSectionHeader,
