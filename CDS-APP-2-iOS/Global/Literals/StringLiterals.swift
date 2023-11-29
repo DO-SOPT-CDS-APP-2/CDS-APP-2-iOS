@@ -145,6 +145,11 @@ enum StringLiterals {
             static let life = "라이프"
             static let best = "베스트"
             static let recommand = "추천"
+            static let hat = "모자"
+            static let jewelry = "주얼리"
+            static let watch = "시계"
+            static let eye = "아이웨어"
+            static let fashion = "패션 악세서리"
         }
         
         enum secondSection {
@@ -187,6 +192,10 @@ enum StringLiterals {
             static let hoka = "호카"
             static let price = "95,400"
             static let discount = "20%"
+        }
+        
+        enum sixthSection {
+            static let header = "넘겨보는 인기 액세서리"
         }
     }
 }
