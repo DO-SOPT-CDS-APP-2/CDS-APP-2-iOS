@@ -29,7 +29,6 @@ enum StringLiterals {
         }
     }
     
-
     enum HatDetail {
         enum MainInfo {
             static let brandKR = "타입서비스"
@@ -82,7 +81,7 @@ enum StringLiterals {
             static let realSize = "실측 사이즈"
         }
     }
-            
+    
     enum HatCategory {
         enum header {
             static let all = "전체"
@@ -94,8 +93,41 @@ enum StringLiterals {
             static let trapper = "트루퍼"
             static let fedora = "페도라"
         }
+        
+        enum main {
+            enum realtimeBest {
+                enum product1 {
+                    static let name = "타입서비스"
+                    static let salePercent = "5%"
+                    static let price = "37,050"
+                }
+                enum product2 {
+                    static let name = "슬리피슬립"
+                    static let salePercent = "10%"
+                    static let price = "52,200"
+                }
+                enum product3 {
+                    static let name = "론론"
+                    static let salePercent = "15%"
+                    static let price = "140,250"
+                }
+                enum product4 {
+                    static let name = "시엔느"
+                    static let salePercent = "5%"
+                    static let price = "45,000"
+                }
+            }
+            
+            enum filter {
+                static let recommend = "추천순"
+                static let color = "색상"
+                static let priceRange = "가격대"
+                static let productInfo = "상품정보"
+                static let brand = "브랜드"
+            }
+        }
     }
-  
+    
     enum Home {
         enum chip {
             static let woman = "우먼"
