@@ -12,4 +12,5 @@ enum HomeSection: Int, CaseIterable {
     case promotion
     case product
     case brandIssue
+    case popular
 }

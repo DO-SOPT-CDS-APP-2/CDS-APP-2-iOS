@@ -19,6 +19,7 @@ final class HomeViewController: UIViewController {
     private let productCellData: [ProductCellData] = ProductCellData.productCellDummy()
     private let brandIssueSmallCellData: [ProductCellData] = ProductCellData.brandIssueCellDummy()
     private let brandIssueBigCellData: [UIImage] = [ImageLiterals.img.imgHomeBrand1, ImageLiterals.img.imgHomeBrand2]
+    private let popularCellData: [PopularCellData] = PopularCellData.popularCellData()
     
     // MARK: - UI Components
     
@@ -91,6 +92,13 @@ final class HomeViewController: UIViewController {
         homeView.homeCollectionView.register(HomeBrandSmallCollectionViewCell.self,
                                              forCellWithReuseIdentifier: HomeBrandSmallCollectionViewCell.className)
         
+        // section 6
+        homeView.homeCollectionView.register(HomePopularCollectionViewCell.self,
+                                             forCellWithReuseIdentifier: HomePopularCollectionViewCell.className)
+        homeView.homeCollectionView.register(HomeChipReusableView.self,
+                                             forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+                                             withReuseIdentifier: HomeChipReusableView.className)
+        
     }
     
     private func setDelegate() {
@@ -106,7 +114,7 @@ final class HomeViewController: UIViewController {
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 5
+        return 6
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -121,6 +129,8 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             return 6
         case 4:
             return 6
+        case 5:
+            return 12
         default:
             return 0
         }
@@ -188,31 +198,45 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
                 }
                 return cell
             }
+        case .popular:
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomePopularCollectionViewCell.className,
+                                                                for: indexPath) as? HomePopularCollectionViewCell else { return UICollectionViewCell() }
+            cell.configureCell(image: popularCellData[indexPath.row].image)
+            return cell
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         switch kind {
         case UICollectionView.elementKindSectionHeader:
-            if indexPath.section == 2 {
+            switch indexPath.section {
+            case 2:
                 guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
                                                                                    withReuseIdentifier: HomePromotionReusableView.className,
                                                                                    for: indexPath) as? HomePromotionReusableView else { fatalError() }
                 header.configureHeader(data: PromotionHeaderData.thirdSectionHeaderData())
                 return header
-            } else if indexPath.section == 3 {
+                
+            case 3:
                 guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
                                                                                    withReuseIdentifier: HomeTitleReusableView.className,
                                                                                    for: indexPath) as? HomeTitleReusableView else { fatalError() }
                 header.configureHeader(data: StringLiterals.Home.fourthSection.header)
                 return header
-            } else if indexPath.section == 4 {
+                
+            case 4:
                 guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
                                                                                    withReuseIdentifier: HomeTitleReusableView.className,
                                                                                    for: indexPath) as? HomeTitleReusableView else { fatalError() }
                 header.configureHeader(data: StringLiterals.Home.fifthSection.header)
                 return header
-            } else {
+            case 5:
+                guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
+                                                                                   withReuseIdentifier: HomeChipReusableView.className,
+                                                                                   for: indexPath) as? HomeChipReusableView else { fatalError() }
+                return header
+                
+            default:
                 return UICollectionReusableView()
             }
             
