@@ -17,10 +17,38 @@ struct RealtimeBestItem {
 extension RealtimeBestItem{
     static func realtimeBestDummy() -> [RealtimeBestItem] {
         return [
-            RealtimeBestItem(image: ImageLiterals.img.imgHatCategory1, brandName: "타입서비스", salePercent: "5%", itemPrice: "37,050"),
-            RealtimeBestItem(image: ImageLiterals.img.imgHatCategory2, brandName: "슬리피슬립", salePercent: "10%", itemPrice: "52,200"),
-            RealtimeBestItem(image: ImageLiterals.img.imgHatCategory3, brandName: "론론", salePercent: "15%", itemPrice: "140,250"),
-            RealtimeBestItem(image: ImageLiterals.img.imgHatCategory4, brandName: "시엔느", salePercent: "7%", itemPrice: "54,500")
+            RealtimeBestItem(image: ImageLiterals.img.imgHatCategory1,
+                             brandName: StringLiterals.HatCategory.main.realtimeBest.product1.name,
+                             salePercent: StringLiterals.HatCategory.main.realtimeBest.product1.salePercent,
+                             itemPrice: StringLiterals.HatCategory.main.realtimeBest.product1.price),
+            RealtimeBestItem(image: ImageLiterals.img.imgHatCategory2, 
+                             brandName: StringLiterals.HatCategory.main.realtimeBest.product2.name,
+                             salePercent: StringLiterals.HatCategory.main.realtimeBest.product2.salePercent,
+                             itemPrice: StringLiterals.HatCategory.main.realtimeBest.product2.price),
+            RealtimeBestItem(image: ImageLiterals.img.imgHatCategory3,
+                             brandName: StringLiterals.HatCategory.main.realtimeBest.product3.name,
+                             salePercent: StringLiterals.HatCategory.main.realtimeBest.product3.salePercent,
+                             itemPrice: StringLiterals.HatCategory.main.realtimeBest.product3.price),
+            RealtimeBestItem(image: ImageLiterals.img.imgHatCategory4,
+                             brandName: StringLiterals.HatCategory.main.realtimeBest.product4.name,
+                             salePercent: StringLiterals.HatCategory.main.realtimeBest.product4.salePercent,
+                             itemPrice: StringLiterals.HatCategory.main.realtimeBest.product4.price)
+        ]
+    }
+}
+
+struct FilterCategory {
+    let label: String
+}
+
+extension FilterCategory {
+    static func filterCategoryDummy() -> [FilterCategory] {
+        return [
+            FilterCategory(label: StringLiterals.HatCategory.main.filter.recommend),
+            FilterCategory(label: StringLiterals.HatCategory.main.filter.color),
+            FilterCategory(label: StringLiterals.HatCategory.main.filter.priceRange),
+            FilterCategory(label: StringLiterals.HatCategory.main.filter.productInfo),
+            FilterCategory(label: StringLiterals.HatCategory.main.filter.brand)
         ]
     }
 }
