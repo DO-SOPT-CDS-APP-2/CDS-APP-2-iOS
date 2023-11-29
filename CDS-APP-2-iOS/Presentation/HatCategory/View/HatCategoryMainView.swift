@@ -129,6 +129,7 @@ final class HatCategoryMainView: UIView {
         flowLayout.scrollDirection = .vertical
         flowLayout.itemSize = CGSize(width: (UIScreen.main.bounds.width - 1) / 2 , height: 314.adjusted)
         flowLayout.minimumInteritemSpacing = 1
+        flowLayout.minimumLineSpacing = 30
         self.detailProductCollectionView.setCollectionViewLayout(flowLayout, animated: false)
     }
 }
