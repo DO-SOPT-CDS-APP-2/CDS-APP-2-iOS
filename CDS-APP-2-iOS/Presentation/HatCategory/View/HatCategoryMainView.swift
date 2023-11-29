@@ -12,12 +12,10 @@ final class HatCategoryMainView: UIView {
     //MARK: - set Properties
     
     private let realtimeBestViewTitle = UILabel()
-    lazy var realtimeBestCollectionView = UICollectionView(frame: .zero,
-                                                           collectionViewLayout: UICollectionViewLayout())
+    lazy var realtimeBestCollectionView = UICollectionView(frame: .zero,collectionViewLayout: UICollectionViewLayout())
     private let divisionLine = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 0))
     lazy var productFilterCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout())
-    
-    
+    lazy var detailProductCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout())
     
     //MARK: - Life Cycle
     
@@ -59,6 +57,11 @@ final class HatCategoryMainView: UIView {
             $0.contentInsetAdjustmentBehavior = .never
             $0.showsHorizontalScrollIndicator = false
         }
+        
+        detailProductCollectionView.do {
+            $0.contentInsetAdjustmentBehavior = .never
+            $0.showsVerticalScrollIndicator = false
+        }
     }
     
     //MARK: - set Heirachy
@@ -67,7 +70,8 @@ final class HatCategoryMainView: UIView {
         self.addSubviews(realtimeBestViewTitle,
                          realtimeBestCollectionView,
                          divisionLine,
-                         productFilterCollectionView)
+                         productFilterCollectionView,
+                         detailProductCollectionView)
     }
     
     //MARK: - set Layout
@@ -97,6 +101,11 @@ final class HatCategoryMainView: UIView {
             $0.trailing.equalToSuperview()
             $0.height.equalTo(31.adjusted)
         }
+        
+        detailProductCollectionView.snp.makeConstraints {
+            $0.top.equalTo(productFilterCollectionView.snp.bottom).offset(13.adjusted)
+            $0.leading.trailing.bottom.equalToSuperview()
+        }
     }
     
     //MARK: - set collectionView FlowLayout
@@ -113,6 +122,14 @@ final class HatCategoryMainView: UIView {
         flowLayout.scrollDirection = .horizontal
         flowLayout.minimumInteritemSpacing = 6
         self.productFilterCollectionView.setCollectionViewLayout(flowLayout, animated: false)
+    }
+    
+    private func setDetailProductCollectionViewLayout() {
+        let flowLayout = UICollectionViewFlowLayout()
+        flowLayout.scrollDirection = .vertical
+        flowLayout.itemSize = CGSize(width: (UIScreen.main.bounds.width - 1) / 2 , height: 314.adjusted)
+        flowLayout.minimumInteritemSpacing = 1
+        self.detailProductCollectionView.setCollectionViewLayout(flowLayout, animated: false)
     }
 }
 
