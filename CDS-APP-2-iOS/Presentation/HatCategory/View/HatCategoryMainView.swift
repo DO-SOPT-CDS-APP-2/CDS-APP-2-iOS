@@ -29,6 +29,9 @@ final class HatCategoryMainView: UIView {
         
         self.setRealtimeCollectionViewLayout()
         self.setProductFilterCollectionViewLayout()
+        self.setDetailProductCollectionViewLayout()
+        
+        
     }
     
     @available(*, unavailable)
@@ -67,8 +70,6 @@ final class HatCategoryMainView: UIView {
         detailProductCollectionView.do {
             $0.contentInsetAdjustmentBehavior = .never
             $0.showsVerticalScrollIndicator = false
-            $0.isScrollEnabled = true
-            $0.backgroundColor = .systemPink
         }
     }
     

@@ -20,7 +20,7 @@ final class DetailProductCollectionViewCell: UICollectionViewCell {
     private let salePercent = UILabel()
     private let productPrice = UILabel()
     
-    private let freeDelivery = UILabel()
+    private let freeDelivery = FreeDelieveryChipView()
     private let heartNumber = UILabel()
     private let starRate = UILabel()
     private let starNumber = UILabel()
@@ -51,6 +51,7 @@ final class DetailProductCollectionViewCell: UICollectionViewCell {
         productName.do {
             $0.font = UIFont.enDisplayMedium(ofSize: 10.adjusted)
             $0.lineBreakMode = .byWordWrapping
+            $0.numberOfLines = 2
         }
         
         salePercent.do {
@@ -68,10 +69,11 @@ final class DetailProductCollectionViewCell: UICollectionViewCell {
     
     private func setHierachy() {
         self.contentView.addSubviews(productImageView,
-                         brandName,
-                         productName,
-                         salePercent,
-                         productPrice)
+                                     brandName,
+                                     productName,
+                                     salePercent,
+                                     productPrice,
+                                     freeDelivery)
     }
     
     //MARK: - set Layout
@@ -90,6 +92,7 @@ final class DetailProductCollectionViewCell: UICollectionViewCell {
         productName.snp.makeConstraints {
             $0.top.equalTo(brandName.snp.bottom).offset(7.adjusted)
             $0.leading.equalToSuperview().inset(12.adjusted)
+            $0.width.equalTo(150.adjusted)
         }
         
         salePercent.snp.makeConstraints {
@@ -99,7 +102,14 @@ final class DetailProductCollectionViewCell: UICollectionViewCell {
         
         productPrice.snp.makeConstraints {
             $0.top.equalTo(productName.snp.bottom).offset(9.adjusted)
-            $0.leading.equalTo(salePercent.snp.trailing).inset(4.adjusted)
+            $0.leading.equalTo(salePercent.snp.trailing).offset(4.adjusted)
+        }
+        
+        freeDelivery.snp.makeConstraints {
+            $0.top.equalTo(salePercent.snp.bottom).offset(7.adjusted)
+            $0.leading.equalToSuperview().offset(12.adjusted)
+            $0.width.equalTo(43.adjusted)
+            $0.height.equalTo(18.adjusted)
         }
     }
     
