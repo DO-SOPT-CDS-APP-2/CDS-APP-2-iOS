@@ -86,7 +86,8 @@ enum ImageLiterals {
         static var imgHomeAddition2 : UIImage{ .load(named: "img_home_33")}
         static var imgHomeAddition3 : UIImage{ .load(named: "img_home_34")}
         static var imgInquire: UIImage{ .load(named: "img_inquire")}
-        static var imgBtnUp: UIImage{ .load(named: "img_btnUP")    }
+        static var imgBtnUp: UIImage{ .load(named: "img_btnUP")}
+    }
 
     enum icon {
         static var icAlertBlack: UIImage { .load(named: "ic_alert_black")}
