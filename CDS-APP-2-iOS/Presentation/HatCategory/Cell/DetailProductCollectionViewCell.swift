@@ -92,6 +92,8 @@ final class DetailProductCollectionViewCell: UICollectionViewCell {
         
         likedButton.do {
             $0.setImage(ImageLiterals.icon.icLikeOffBlackMedium, for: .normal)
+            $0.setImage(ImageLiterals.icon.icLikeOnBlackMedium, for: .selected)
+            $0.addTarget(self, action: #selector(likeTapped), for: .touchUpInside)
         }
     }
     
@@ -126,9 +128,9 @@ final class DetailProductCollectionViewCell: UICollectionViewCell {
         }
         
         productName.snp.makeConstraints {
-            $0.top.equalTo(brandName.snp.bottom).offset(7.adjusted)
+            $0.top.equalTo(brandName.snp.bottom).offset(10.adjusted)
             $0.leading.equalToSuperview().inset(12.adjusted)
-            $0.width.equalTo(150.adjusted)
+            $0.width.equalTo(165.adjusted)
         }
         
         salePercent.snp.makeConstraints {
@@ -142,7 +144,7 @@ final class DetailProductCollectionViewCell: UICollectionViewCell {
         }
         
         freeDelivery.snp.makeConstraints {
-            $0.top.equalTo(salePercent.snp.bottom).offset(7.adjusted)
+            $0.top.equalTo(productPrice.snp.bottom).offset(7.adjusted)
             $0.leading.equalToSuperview().offset(12.adjusted)
             $0.width.equalTo(43.adjusted)
             $0.height.equalTo(18.adjusted)
@@ -185,12 +187,24 @@ final class DetailProductCollectionViewCell: UICollectionViewCell {
         productImageView.image = detailProduct.productImage
         brandName.text = detailProduct.brandName
         productName.text = detailProduct.productName
-        salePercent.text = "\(detailProduct.salePercent)%"
+        if let percent = detailProduct.salePercent {
+            salePercent.text = "\(percent)%"
+        } else {
+            salePercent.text = nil
+        }
         
         // 가격에 세자리마다 콤마 찍어주기
         let numberFormatter = NumberFormatter()
         numberFormatter.numberStyle = .decimal
         let price = numberFormatter.string(for: detailProduct.productPrice)
         productPrice.text = price
+        
+        self.layoutIfNeeded()
+    }
+    
+    @objc
+    func likeTapped() {
+        print("좋아요 클릭 ❤️")
+        
     }
 }

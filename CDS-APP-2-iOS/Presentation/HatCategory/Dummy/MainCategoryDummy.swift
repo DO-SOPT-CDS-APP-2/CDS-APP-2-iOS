@@ -10,7 +10,7 @@ import UIKit
 struct RealtimeBestItem {
     let image: UIImage
     let brandName: String
-    let salePercent: String
+    let salePercent: String?
     let itemPrice: String
 }
 
@@ -31,7 +31,7 @@ extension RealtimeBestItem{
                              itemPrice: StringLiterals.HatCategory.main.realtimeBest.product3.price),
             RealtimeBestItem(image: ImageLiterals.img.imgHatCategory4,
                              brandName: StringLiterals.HatCategory.main.realtimeBest.product4.name,
-                             salePercent: StringLiterals.HatCategory.main.realtimeBest.product4.salePercent,
+                             salePercent: nil,
                              itemPrice: StringLiterals.HatCategory.main.realtimeBest.product4.price)
         ]
     }
@@ -57,7 +57,7 @@ struct DetailProduct {
     let productImage: UIImage
     let brandName: String
     let productName: String
-    let salePercent: Int
+    let salePercent: Int?
     let productPrice: Int
 }
 
@@ -82,7 +82,7 @@ extension DetailProduct {
             DetailProduct(productImage: ImageLiterals.img.imgHatCategory8,
                           brandName: "타입서비스",
                           productName: "Arch Logo Ball Cap [Beige]",
-                          salePercent: 10,
+                          salePercent: nil,
                           productPrice: 39000)
         ]
     }
