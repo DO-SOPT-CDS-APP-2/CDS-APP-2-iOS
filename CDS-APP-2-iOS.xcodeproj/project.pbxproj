@@ -33,7 +33,7 @@
 		2A0C02102B0A5EA5005764FA /* StringLiterals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0C020F2B0A5EA5005764FA /* StringLiterals.swift */; };
 		2A0C02122B0A5EAE005764FA /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0C02112B0A5EAE005764FA /* UIView+.swift */; };
 		2A0C021A2B0A5F30005764FA /* a.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0C02192B0A5F30005764FA /* a.swift */; };
-		2A0C021D2B0A5F78005764FA /* b.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0C021C2B0A5F78005764FA /* b.swift */; };
+		2A0C021D2B0A5F78005764FA /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0C021C2B0A5F78005764FA /* Config.swift */; };
 		2A0C02202B0A5F82005764FA /* x.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0C021F2B0A5F82005764FA /* x.swift */; };
 		2A0C022A2B0A61D3005764FA /* GmarketSansTTFBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2A0C02232B0A61D3005764FA /* GmarketSansTTFBold.ttf */; };
 		2A0C022B2B0A61D3005764FA /* GmarketSansTTFLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2A0C02242B0A61D3005764FA /* GmarketSansTTFLight.ttf */; };
@@ -129,7 +129,7 @@
 		2A0C020F2B0A5EA5005764FA /* StringLiterals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringLiterals.swift; sourceTree = "<group>"; };
 		2A0C02112B0A5EAE005764FA /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		2A0C02192B0A5F30005764FA /* a.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = a.swift; sourceTree = "<group>"; };
-		2A0C021C2B0A5F78005764FA /* b.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = b.swift; sourceTree = "<group>"; };
+		2A0C021C2B0A5F78005764FA /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		2A0C021F2B0A5F82005764FA /* x.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = x.swift; sourceTree = "<group>"; };
 		2A0C02232B0A61D3005764FA /* GmarketSansTTFBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GmarketSansTTFBold.ttf; sourceTree = "<group>"; };
 		2A0C02242B0A61D3005764FA /* GmarketSansTTFLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GmarketSansTTFLight.ttf; sourceTree = "<group>"; };
@@ -310,6 +310,7 @@
 		2A0C02072B0A5E3F005764FA /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				2A0C021B2B0A5F66005764FA /* Foundation */,
 				2A0C02172B0A5F1F005764FA /* Home */,
 			);
 			path = Network;
@@ -403,7 +404,6 @@
 			children = (
 				2A0C02182B0A5F27005764FA /* DTO */,
 				2A0C021E2B0A5F7B005764FA /* Sevice */,
-				2A0C021B2B0A5F66005764FA /* Foundation */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -419,7 +419,7 @@
 		2A0C021B2B0A5F66005764FA /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
-				2A0C021C2B0A5F78005764FA /* b.swift */,
+				2A0C021C2B0A5F78005764FA /* Config.swift */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
@@ -835,7 +835,7 @@
 				2AB794532B0CFD15003DFF48 /* CategoryTableView.swift in Sources */,
 				832B0C692B168ED20042A417 /* ReviewPhotoCollectionViewCell.swift in Sources */,
 				A17FBB4E2B11B1EC009214D9 /* HatCategoryLayoutFactory.swift in Sources */,
-				2A0C021D2B0A5F78005764FA /* b.swift in Sources */,
+				2A0C021D2B0A5F78005764FA /* Config.swift in Sources */,
 				A19559B62B0DFAA0002EED37 /* NavigationController+.swift in Sources */,
 				2A0C020E2B0A5E9A005764FA /* ImageLiterals.swift in Sources */,
 				835898A02B0E455500503CD1 /* ProductInfoFooterCollectionReusableView.swift in Sources */,
@@ -886,6 +886,7 @@
 /* Begin XCBuildConfiguration section */
 		2A5296F52B051E8600279401 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2A2EAFE22B176903002D3800 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -946,6 +947,7 @@
 		};
 		2A5296F62B051E8600279401 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2A2EAFE22B176903002D3800 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
