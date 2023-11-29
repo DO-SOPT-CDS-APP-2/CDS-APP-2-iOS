@@ -34,4 +34,21 @@ extension PromotionCellData {
                                   isHearted: false,
                                   heartCount: 148)]
     }
+    
+    static func additionCellDummy() -> [PromotionCellData] {
+        return [PromotionCellData(image: ImageLiterals.img.imgHomeAddition2,
+                                  title: StringLiterals.Home.seventhSection.maron,
+                                  subTitle: StringLiterals.Home.seventhSection.firstCellSubTitle,
+                                  percent: StringLiterals.Home.seventhSection.percent,
+                                  price: StringLiterals.Home.seventhSection.firstCellPrice,
+                                  isHearted: false,
+                                  heartCount: 148),
+                PromotionCellData(image: ImageLiterals.img.imgHomeAddition3,
+                                  title: StringLiterals.Home.seventhSection.maron,
+                                  subTitle: StringLiterals.Home.seventhSection.secondCellSubtitle,
+                                  percent: StringLiterals.Home.seventhSection.percent,
+                                  price: StringLiterals.Home.seventhSection.secondCellPrice,
+                                  isHearted: false,
+                                  heartCount: 148)]
+    }
 }

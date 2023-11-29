@@ -197,5 +197,16 @@ enum StringLiterals {
         enum sixthSection {
             static let header = "넘겨보는 인기 액세서리"
         }
+        
+        enum seventhSection {
+            static let header = "디팟입점회로 만나요"
+            static let subTitle = "마론에디션의 디팟입점회가 시작되었어요. 29% 쿠폰으로 만나는 큰\n 혜택, 놓치지 마시길 바라요!"
+            static let maron = "마론에디션"
+            static let firstCellSubTitle = "23 Winter_ Grey Volume Sleeve Wool Coat"
+            static let secondCellSubtitle = "23 Winter_ Black Daddy Fit Wool Blazer"
+            static let percent = "29%"
+            static let firstCellPrice = "269,090"
+            static let secondCellPrice = "205,190"
+        }
     }
 }
