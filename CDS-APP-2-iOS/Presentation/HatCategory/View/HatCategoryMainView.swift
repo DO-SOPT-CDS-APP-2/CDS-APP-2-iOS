@@ -10,7 +10,8 @@ import UIKit
 final class HatCategoryMainView: UIView {
     
     //MARK: - set Properties
-    
+    private let scrollView = UIScrollView()
+    private let contentView = UIView()
     private let realtimeBestViewTitle = UILabel()
     lazy var realtimeBestCollectionView = UICollectionView(frame: .zero,collectionViewLayout: UICollectionViewLayout())
     private let divisionLine = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 0))
@@ -38,6 +39,11 @@ final class HatCategoryMainView: UIView {
     //MARK: - set UI
     
     private func setUI() {
+        scrollView.do {
+            $0.contentInsetAdjustmentBehavior = .never
+            $0.showsVerticalScrollIndicator = false
+        }
+
         realtimeBestViewTitle.do {
             $0.text = "실시간 베스트"
             $0.font = UIFont.krBold(ofSize: 16.adjusted)
@@ -61,22 +67,37 @@ final class HatCategoryMainView: UIView {
         detailProductCollectionView.do {
             $0.contentInsetAdjustmentBehavior = .never
             $0.showsVerticalScrollIndicator = false
+            $0.isScrollEnabled = true
+            $0.backgroundColor = .systemPink
         }
     }
     
     //MARK: - set Heirachy
     
     private func setHierachy() {
-        self.addSubviews(realtimeBestViewTitle,
-                         realtimeBestCollectionView,
-                         divisionLine,
-                         productFilterCollectionView,
-                         detailProductCollectionView)
+        self.addSubview(scrollView)
+        scrollView.addSubview(contentView)
+        contentView.addSubviews(realtimeBestViewTitle,
+                                realtimeBestCollectionView,
+                                divisionLine,
+                                productFilterCollectionView,
+                                detailProductCollectionView)
     }
     
     //MARK: - set Layout
     
     private func setLayout() {
+        scrollView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+            $0.width.equalToSuperview()
+        }
+        
+        contentView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+            $0.width.equalToSuperview()
+            $0.height.equalTo(1400)
+        }
+        
         realtimeBestViewTitle.snp.makeConstraints {
             $0.top.equalToSuperview().inset(19.adjusted)
             $0.leading.equalToSuperview().inset(20.adjusted)
@@ -104,7 +125,8 @@ final class HatCategoryMainView: UIView {
         
         detailProductCollectionView.snp.makeConstraints {
             $0.top.equalTo(productFilterCollectionView.snp.bottom).offset(13.adjusted)
-            $0.leading.trailing.bottom.equalToSuperview()
+            $0.leading.trailing.equalToSuperview()
+            $0.height.equalTo(658)
         }
     }
     
@@ -120,7 +142,7 @@ final class HatCategoryMainView: UIView {
     private func setProductFilterCollectionViewLayout() {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .horizontal
-        flowLayout.minimumInteritemSpacing = 6
+        flowLayout.minimumLineSpacing = 6
         self.productFilterCollectionView.setCollectionViewLayout(flowLayout, animated: false)
     }
     

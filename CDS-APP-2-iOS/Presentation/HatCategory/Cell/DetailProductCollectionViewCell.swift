@@ -67,7 +67,7 @@ final class DetailProductCollectionViewCell: UICollectionViewCell {
     //MARK: - set Hierachy
     
     private func setHierachy() {
-        self.addSubviews(productImageView,
+        self.contentView.addSubviews(productImageView,
                          brandName,
                          productName,
                          salePercent,
@@ -101,5 +101,15 @@ final class DetailProductCollectionViewCell: UICollectionViewCell {
             $0.top.equalTo(productName.snp.bottom).offset(9.adjusted)
             $0.leading.equalTo(salePercent.snp.trailing).inset(4.adjusted)
         }
+    }
+    
+    //MARK: - Methods
+    
+    func bindData(detailProduct: DetailProduct) {
+        productImageView.image = detailProduct.productImage
+        brandName.text = detailProduct.brandName
+        productName.text = detailProduct.productName
+        salePercent.text = "\(detailProduct.salePercent)%"
+        productPrice.text = "\(detailProduct.productPrice)"
     }
 }
