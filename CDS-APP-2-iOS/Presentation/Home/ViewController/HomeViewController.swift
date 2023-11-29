@@ -20,6 +20,7 @@ final class HomeViewController: UIViewController {
     private let brandIssueSmallCellData: [ProductCellData] = ProductCellData.brandIssueCellDummy()
     private let brandIssueBigCellData: [UIImage] = [ImageLiterals.img.imgHomeBrand1, ImageLiterals.img.imgHomeBrand2]
     private let popularCellData: [PopularCellData] = PopularCellData.popularCellData()
+    private let additionCellData: [PromotionCellData] = PromotionCellData.additionCellDummy()
     
     // MARK: - UI Components
     
@@ -114,7 +115,7 @@ final class HomeViewController: UIViewController {
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 6
+        return 7
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -131,6 +132,8 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             return 6
         case 5:
             return 12
+        case 6:
+            return 2
         default:
             return 0
         }
@@ -164,7 +167,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         case .promotion:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomePromotionCollectionViewCell.className,
                                                                 for: indexPath) as? HomePromotionCollectionViewCell else { return UICollectionViewCell() }
-            cell.configureCell(data: promotionCellData[indexPath.item])
+            cell.configureCell(data: additionCellData[indexPath.item])
             cell.handler = { [weak self] in
                 guard let self else { return }
                 cell.isTapped.toggle()
@@ -203,6 +206,15 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
                                                                 for: indexPath) as? HomePopularCollectionViewCell else { return UICollectionViewCell() }
             cell.configureCell(image: popularCellData[indexPath.row].image)
             return cell
+        case .addition:
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomePromotionCollectionViewCell.className,
+                                                                for: indexPath) as? HomePromotionCollectionViewCell else { return UICollectionViewCell() }
+            cell.configureCell(data: promotionCellData[indexPath.item])
+            cell.handler = { [weak self] in
+                guard let self else { return }
+                cell.isTapped.toggle()
+            }
+            return cell
         }
     }
     
@@ -236,6 +248,12 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
                                                                                    for: indexPath) as? HomeChipReusableView else { fatalError() }
                 return header
                 
+            case 6:
+                guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
+                                                                                   withReuseIdentifier: HomePromotionReusableView.className,
+                                                                                   for: indexPath) as? HomePromotionReusableView else { fatalError() }
+                header.configureHeader(data: PromotionHeaderData.seventhSectionHeaderData())
+                return header
             default:
                 return UICollectionReusableView()
             }
