@@ -10,7 +10,7 @@ import Foundation
 enum Config {
     enum Keys {
         enum Plist {
-            static let apiKey = "BASE_URL"
+            static let baseURL = "BASE_URL"
         }
     }
     
