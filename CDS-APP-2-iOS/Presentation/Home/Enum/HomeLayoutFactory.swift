@@ -22,6 +22,8 @@ enum HomeLayoutFactory {
                 section = createPromotionSection()
             case 3:
                 section = createProductSection()
+            case 4:
+                section = createBrandIssueSection()
             default:
                 section = createCardSection()
             }
@@ -132,7 +134,7 @@ enum HomeLayoutFactory {
         section.boundarySupplementaryItems = [self.createSupplementaryHeaderItem(forSection: 2)]
         section.contentInsets = NSDirectionalEdgeInsets(top: 18.adjusted,
                                                         leading: 20.adjusted,
-                                                        bottom: 90.adjusted,
+                                                        bottom: 0,
                                                         trailing: 20.adjusted)
         section.orthogonalScrollingBehavior = .none
         return section
@@ -165,7 +167,7 @@ enum HomeLayoutFactory {
         let verticalGroup = NSCollectionLayoutGroup.vertical(layoutSize: verticalGroupSize, repeatingSubitem: horizontalGroup, count: 2)
         verticalGroup.contentInsets = NSDirectionalEdgeInsets(top: 4.adjusted,
                                                               leading: 0,
-                                                              bottom: 16.adjusted,
+                                                              bottom: 20.adjusted,
                                                               trailing: 0)
         
         let section = NSCollectionLayoutSection(group: verticalGroup)
@@ -180,12 +182,67 @@ enum HomeLayoutFactory {
         // top과 bottom은 그룹과 헤더/푸터 간의 간격을 조정하는데 쓰이는 듯 함
         section.contentInsets = NSDirectionalEdgeInsets(top: 11.adjusted,
                                                         leading: 21.adjusted,
-                                                        bottom: 0,
+                                                        bottom: 5.adjusted,
                                                         trailing: 21.adjusted)
         
         section.orthogonalScrollingBehavior = .continuous
         return section
         
+    }
+    
+    static func createBrandIssueSection() -> NSCollectionLayoutSection {
+        // 상단의 큰 아이템
+        let bigItemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.5),
+                                                 heightDimension: .estimated(324.adjusted))
+        let bigItem = NSCollectionLayoutItem(layoutSize: bigItemSize)
+        
+        // 상단의 큰 아이템을 가로로 묶음
+        let bigHorizontalGroupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
+                                                            heightDimension: .fractionalHeight(1))
+
+        let bigHorizontalGroup = NSCollectionLayoutGroup.horizontal(layoutSize: bigHorizontalGroupSize,
+                                                                 repeatingSubitem: bigItem,
+                                                                 count: 2)
+        bigHorizontalGroup.contentInsets = NSDirectionalEdgeInsets(top: 0,
+                                                                   leading: 0,
+                                                                   bottom: 11.adjusted,
+                                                                   trailing: 10.adjusted)
+        
+        
+        // 아래의 작은 아이템
+        let smallItemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1 / 4),
+                                                   heightDimension: .estimated(173.adjusted))
+        let smallItem = NSCollectionLayoutItem(layoutSize: smallItemSize)
+
+        // 작은 아이템을 가로로 묶음
+        let smallHorizontalGroupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
+                                                              heightDimension: .fractionalHeight(1))
+        let smallHorizontalGroup = NSCollectionLayoutGroup.horizontal(layoutSize: smallHorizontalGroupSize,
+                                                                 repeatingSubitem: smallItem,
+                                                                 count: 4)
+        
+        smallHorizontalGroup.contentInsets = NSDirectionalEdgeInsets(top: 0,
+                                                          leading: 0,
+                                                          bottom: 0,
+                                                          trailing: 8.adjusted)
+        
+        // 크고, 작은 아이템들을 세로로 묶음
+        let totalGroupSize = NSCollectionLayoutSize(widthDimension: .estimated(560.adjusted),
+                                                    heightDimension: .estimated(324.adjusted))
+        let totalGroup = NSCollectionLayoutGroup.vertical(layoutSize: totalGroupSize,
+                                                          subitems: [bigHorizontalGroup, smallHorizontalGroup])
+        totalGroup.interItemSpacing = .fixed(11.adjusted)
+
+        // 최종 그룹을 section에 반환
+        let section = NSCollectionLayoutSection(group: totalGroup)
+        section.contentInsets = NSDirectionalEdgeInsets(top: 15.adjusted,
+                                                        leading: 20.adjusted,
+                                                        bottom: 0,
+                                                        trailing: 10.adjusted)
+        section.boundarySupplementaryItems = [self.createSupplementaryHeaderItem(forSection: 4)]
+        section.orthogonalScrollingBehavior = .continuousGroupLeadingBoundary
+        
+        return section
     }
     
     static func createSupplementaryHeaderItem(forSection section: Int) -> NSCollectionLayoutBoundarySupplementaryItem {
@@ -197,11 +254,12 @@ enum HomeLayoutFactory {
                                                                                           heightDimension: .estimated(423.adjusted)),
                                                                         elementKind: UICollectionView.elementKindSectionHeader,
                                                                         alignment: .top)
-        case 3:
+        case 3, 4:
             headerElement = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: .init(widthDimension: .fractionalWidth(1),
-                                                                                          heightDimension: .estimated(22.adjusted)),
+                                                                                          heightDimension: .estimated(112.adjusted)),
                                                                         elementKind: UICollectionView.elementKindSectionHeader,
                                                                         alignment: .top)
+            
         default:
             headerElement = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: .init(widthDimension: .estimated(0),
                                                                                           heightDimension: .estimated(0)),
