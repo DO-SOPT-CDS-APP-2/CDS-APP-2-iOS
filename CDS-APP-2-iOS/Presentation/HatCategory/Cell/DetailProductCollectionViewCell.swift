@@ -186,6 +186,11 @@ final class DetailProductCollectionViewCell: UICollectionViewCell {
         brandName.text = detailProduct.brandName
         productName.text = detailProduct.productName
         salePercent.text = "\(detailProduct.salePercent)%"
-        productPrice.text = "\(detailProduct.productPrice)"
+        
+        // 가격에 세자리마다 콤마 찍어주기
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+        let price = numberFormatter.string(for: detailProduct.productPrice)
+        productPrice.text = price
     }
 }
