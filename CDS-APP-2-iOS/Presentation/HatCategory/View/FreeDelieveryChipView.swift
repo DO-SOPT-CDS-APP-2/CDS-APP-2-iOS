@@ -9,7 +9,6 @@ import UIKit
 
 final class FreeDelieveryChipView: UIView {
     
-    
     //MARK: - set Properties
     
     private let label = UILabel()

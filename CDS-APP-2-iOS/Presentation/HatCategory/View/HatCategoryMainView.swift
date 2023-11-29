@@ -10,6 +10,7 @@ import UIKit
 final class HatCategoryMainView: UIView {
     
     //MARK: - set Properties
+    
     private let scrollView = UIScrollView()
     private let contentView = UIView()
     private let realtimeBestViewTitle = UILabel()
