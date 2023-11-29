@@ -48,4 +48,28 @@ extension ProductCellData {
                                 price: StringLiterals.Home.fourthSection.thirdPrice,
                                 isHearted: false),]
     }
+    
+    static func brandIssueCellDummy() -> [ProductCellData] {
+        return [ProductCellData(image: ImageLiterals.img.imgHomeBrand3,
+                                title: StringLiterals.Home.fifthSection.pieton,
+                                percent: StringLiterals.Home.fifthSection.discount,
+                                price: StringLiterals.Home.fifthSection.price,
+                                isHearted: false),
+                ProductCellData(image: ImageLiterals.img.imgHomeBrand4,
+                                title: StringLiterals.Home.fifthSection.pieton,
+                                percent: StringLiterals.Home.fifthSection.discount,
+                                price: StringLiterals.Home.fifthSection.price,
+                                isHearted: false),
+                ProductCellData(image: ImageLiterals.img.imgHomeBrand5,
+                                title: StringLiterals.Home.fifthSection.hoka,
+                                percent: StringLiterals.Home.fifthSection.discount,
+                                price: StringLiterals.Home.fifthSection.price,
+                                isHearted: false),
+                ProductCellData(image: ImageLiterals.img.imgHomeBrand6,
+                                title: StringLiterals.Home.fifthSection.hoka,
+                                percent: StringLiterals.Home.fifthSection.discount,
+                                price: StringLiterals.Home.fifthSection.price,
+                                isHearted: false),]
+    }
+    
 }

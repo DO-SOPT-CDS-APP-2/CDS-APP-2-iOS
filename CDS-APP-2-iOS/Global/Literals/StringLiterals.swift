@@ -170,5 +170,13 @@ enum StringLiterals {
             static let thirdDiscount = "53%"
             static let thirdPrice = "39,800"
         }
+        
+        enum fifthSection {
+            static let header = "주목할 만한 브랜드 이슈"
+            static let pieton = "피에톤"
+            static let hoka = "호카"
+            static let price = "95,400"
+            static let discount = "20%"
+        }
     }
 }

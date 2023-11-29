@@ -50,7 +50,12 @@ enum ImageLiterals {
         static var imgHomeProduct4 : UIImage{ .load(named: "img_home_11")}
         static var imgHomeProduct5 : UIImage{ .load(named: "img_home_12")}
         static var imgHomeProduct6 : UIImage{ .load(named: "img_home_13")}
-
+        static var imgHomeBrand1 : UIImage{ .load(named: "img_home_14")}
+        static var imgHomeBrand2 : UIImage{ .load(named: "img_home_20")}
+        static var imgHomeBrand3 : UIImage{ .load(named: "img_home_15")}
+        static var imgHomeBrand4 : UIImage{ .load(named: "img_home_16")}
+        static var imgHomeBrand5 : UIImage{ .load(named: "img_home_18")}
+        static var imgHomeBrand6 : UIImage{ .load(named: "img_home_19")}
         static var imgHatRecommend1: UIImage{ .load(named: "img_hatrecommend1")}
         static var imgHatRecommend2: UIImage{ .load(named: "img_hatrecommend2")}
         static var imgHatRecommend3: UIImage{ .load(named: "img_hatrecommend3")}
