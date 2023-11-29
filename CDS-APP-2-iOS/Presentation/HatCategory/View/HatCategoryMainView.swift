@@ -96,7 +96,7 @@ final class HatCategoryMainView: UIView {
         contentView.snp.makeConstraints {
             $0.edges.equalToSuperview()
             $0.width.equalToSuperview()
-            $0.height.equalTo(1400)
+            $0.height.equalTo(1230)
         }
         
         realtimeBestViewTitle.snp.makeConstraints {
@@ -127,7 +127,7 @@ final class HatCategoryMainView: UIView {
         detailProductCollectionView.snp.makeConstraints {
             $0.top.equalTo(productFilterCollectionView.snp.bottom).offset(13.adjusted)
             $0.leading.trailing.equalToSuperview()
-            $0.height.equalTo(658)
+            $0.height.equalTo(670.adjusted)
         }
     }
     

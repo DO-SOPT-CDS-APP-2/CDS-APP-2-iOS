@@ -63,6 +63,36 @@ final class DetailProductCollectionViewCell: UICollectionViewCell {
             $0.font = UIFont.enDisplayBold(ofSize: 12.adjusted)
             $0.textColor = .black
         }
+        
+        hearticonImageView.do {
+            $0.image = ImageLiterals.icon.icHeart
+        }
+        
+        heartNumber.do {
+            $0.text = "93,694"
+            $0.font = .enDisplayMedium(ofSize: 8.adjusted)
+            $0.textColor = .mediumGray
+        }
+        
+        starIconImageView.do {
+            $0.image = ImageLiterals.icon.icStarGray
+        }
+        
+        starRate.do {
+            $0.text = "5.0"
+            $0.font = .enDisplayMedium(ofSize: 8.adjusted)
+            $0.textColor = .mediumGray
+        }
+        
+        starNumber.do {
+            $0.text = "(13286)"
+            $0.font = .enDisplayMedium(ofSize: 8.adjusted)
+            $0.textColor = .mediumGray
+        }
+        
+        likedButton.do {
+            $0.setImage(ImageLiterals.icon.icLikeOffBlackMedium, for: .normal)
+        }
     }
     
     //MARK: - set Hierachy
@@ -72,8 +102,14 @@ final class DetailProductCollectionViewCell: UICollectionViewCell {
                                      brandName,
                                      productName,
                                      salePercent,
-                                     productPrice,
-                                     freeDelivery)
+                                     productPrice)
+        self.contentView.addSubviews(freeDelivery,
+                                     hearticonImageView,
+                                     heartNumber,
+                                     starIconImageView,
+                                     starRate,
+                                     starNumber,
+                                     likedButton)
     }
     
     //MARK: - set Layout
@@ -110,6 +146,36 @@ final class DetailProductCollectionViewCell: UICollectionViewCell {
             $0.leading.equalToSuperview().offset(12.adjusted)
             $0.width.equalTo(43.adjusted)
             $0.height.equalTo(18.adjusted)
+        }
+        
+        hearticonImageView.snp.makeConstraints {
+            $0.bottom.equalToSuperview()
+            $0.leading.equalToSuperview().offset(11.adjusted)
+        }
+        
+        heartNumber.snp.makeConstraints {
+            $0.bottom.equalToSuperview()
+            $0.leading.equalTo(hearticonImageView.snp.trailing).offset(3.adjusted)
+        }
+        
+        starIconImageView.snp.makeConstraints {
+            $0.top.equalTo(hearticonImageView.snp.top)
+            $0.leading.equalTo(heartNumber.snp.trailing).offset(8.adjusted)
+        }
+        
+        starRate.snp.makeConstraints {
+            $0.top.equalTo(heartNumber.snp.top)
+            $0.leading.equalTo(starIconImageView.snp.trailing).offset(3.adjusted)
+        }
+        
+        starNumber.snp.makeConstraints {
+            $0.top.equalTo(starRate.snp.top)
+            $0.leading.equalTo(starRate.snp.trailing).offset(4.adjusted)
+        }
+        
+        likedButton.snp.makeConstraints {
+            $0.top.equalTo(productImageView.snp.bottom).offset(13.adjusted)
+            $0.trailing.equalToSuperview().inset(11.adjusted)
         }
     }
     
