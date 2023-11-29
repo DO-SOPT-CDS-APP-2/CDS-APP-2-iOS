@@ -53,39 +53,29 @@ final class HatDetailViewController: UIViewController {
     // MARK: - Set CollectionView
     
     private func setupCollectionView() {
-        detailcollectionView.register(MainInfoCollectionViewCell.self,
-                                      forCellWithReuseIdentifier: MainInfoCollectionViewCell.className)
+        detailcollectionView.register(MainInfoCollectionViewCell.self, forCellWithReuseIdentifier: MainInfoCollectionViewCell.className)
+        detailcollectionView.register(ProductInfoCollectionViewCell.self, forCellWithReuseIdentifier: ProductInfoCollectionViewCell.className)
+        detailcollectionView.register(SizeInfoCollectionViewCell.self, forCellWithReuseIdentifier: SizeInfoCollectionViewCell.className)
+        detailcollectionView.register(RecommendInfoCollectionViewCell.self, forCellWithReuseIdentifier: RecommendInfoCollectionViewCell.className)
+        detailcollectionView.register(ReviewInfoCollectionViewCell.self, forCellWithReuseIdentifier: ReviewInfoCollectionViewCell.className)
+        detailcollectionView.register(InquireInfoCollectionViewCell.self, forCellWithReuseIdentifier: InquireInfoCollectionViewCell.className)
         
-        detailcollectionView.register(ProductInfoCollectionViewCell.self,
-                                      forCellWithReuseIdentifier: ProductInfoCollectionViewCell.className)
-        
-        detailcollectionView.register(SizeInfoCollectionViewCell.self,
-                                      forCellWithReuseIdentifier: SizeInfoCollectionViewCell.className)
-        
-        detailcollectionView.register(RecommendInfoCollectionViewCell.self,
-                                      forCellWithReuseIdentifier: RecommendInfoCollectionViewCell.className)
-        
-        detailcollectionView.register(ReviewInfoCollectionViewCell.self,
-                                      forCellWithReuseIdentifier: ReviewInfoCollectionViewCell.className)
-
-        
-        
+        // Header
         detailcollectionView.register(ProductInfoHeaderCollectionReusableView.self,
                                       forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
                                       withReuseIdentifier: ProductInfoHeaderCollectionReusableView.className)
-        
         detailcollectionView.register(SizeInfoHeaderCollectionReusableView.self,
                                       forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
                                       withReuseIdentifier: SizeInfoHeaderCollectionReusableView.className)
-        
         detailcollectionView.register(RecommendInfoHeaderCollectionReusableView.self,
                                       forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
                                       withReuseIdentifier: RecommendInfoHeaderCollectionReusableView.className)
-        
         detailcollectionView.register(ReviewInfoHeaderCollectionReusableView.self,
                                       forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
                                       withReuseIdentifier: ReviewInfoHeaderCollectionReusableView.className)
-
+        detailcollectionView.register(InquireInfoHeaderCollectionReusableView.self,
+                                      forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+                                      withReuseIdentifier: InquireInfoHeaderCollectionReusableView.className)
     }
     
     
@@ -147,8 +137,10 @@ extension HatDetailViewController: UICollectionViewDataSource {
             return 1
         case 4:
             return 1
+        case 5:
+            return 1
         default :
-            return 0
+            return 1
         }
     }
     
@@ -174,7 +166,7 @@ extension HatDetailViewController: UICollectionViewDataSource {
             return cell
         }
         else {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainInfoCollectionViewCell.className, for: indexPath) as! MainInfoCollectionViewCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: InquireInfoCollectionViewCell.className, for: indexPath) as! InquireInfoCollectionViewCell
             return cell
         }
     }
@@ -184,45 +176,19 @@ extension HatDetailViewController: UICollectionViewDataSource {
             switch indexPath.section {
                 //case 0은 헤더가 없으므로 생략
             case 1 :
-                if kind == UICollectionView.elementKindSectionHeader {
-                    guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader,
-                                                                                       withReuseIdentifier: ProductInfoHeaderCollectionReusableView.className,
-                                                                                       for: indexPath) as? ProductInfoHeaderCollectionReusableView
-                    else {
-                        return ProductInfoHeaderCollectionReusableView()
-                    }
-                    header.configure()
-                    return header
-                } else {
-                    guard let footer = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionFooter,
-                                                                                       withReuseIdentifier: ProductInfoFooterCollectionReusableView.className,
-                                                                                       for: indexPath) as? ProductInfoFooterCollectionReusableView
-                    else {
-                        return ProductInfoFooterCollectionReusableView()
-                    }
-                    footer.configure()
-                    return footer
-                }
+                guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader,
+                                                                                   withReuseIdentifier: ProductInfoHeaderCollectionReusableView.className,
+                                                                                   for: indexPath) as? ProductInfoHeaderCollectionReusableView
+                else { return RecommendInfoHeaderCollectionReusableView() }
+                header.configure()
+                return header
             case 2 :
-                if kind == UICollectionView.elementKindSectionHeader {
-                    guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader,
-                                                                                       withReuseIdentifier: SizeInfoHeaderCollectionReusableView.className,
-                                                                                       for: indexPath) as? SizeInfoHeaderCollectionReusableView
-                    else {
-                        return SizeInfoHeaderCollectionReusableView()
-                    }
-                    header.configure()
-                    return header
-                } else {
-                    guard let footer = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionFooter,
-                                                                                       withReuseIdentifier: SizeInfoFooterCollectionReusableView.className,
-                                                                                       for: indexPath) as? SizeInfoFooterCollectionReusableView
-                    else {
-                        return SizeInfoFooterCollectionReusableView()
-                    }
-                    footer.configure()
-                    return footer
-                }
+                guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader,
+                                                                                   withReuseIdentifier: SizeInfoHeaderCollectionReusableView.className,
+                                                                                   for: indexPath) as? SizeInfoHeaderCollectionReusableView
+                else { return ReviewInfoHeaderCollectionReusableView() }
+                header.configure()
+                return header
             case 3 :
                 guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader,
                                                                                    withReuseIdentifier: RecommendInfoHeaderCollectionReusableView.className,
@@ -238,7 +204,14 @@ extension HatDetailViewController: UICollectionViewDataSource {
                 header.configure()
                 return header
 
-
+            case 5 :
+                guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader,
+                                                                                   withReuseIdentifier: InquireInfoHeaderCollectionReusableView.className,
+                                                                                   for: indexPath) as? InquireInfoHeaderCollectionReusableView
+                else { return ReviewInfoHeaderCollectionReusableView() }
+                header.configure()
+                return header
+                
             default :
                 return ProductInfoHeaderCollectionReusableView()
             }
@@ -248,13 +221,15 @@ extension HatDetailViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         switch section {
         case 1 :
-            return CGSize(width: 300, height: 45)
+            return CGSize(width: 300.adjusted, height: 45.adjusted)
         case 2 :
-            return CGSize(width: 300, height: 45)
+            return CGSize(width: 300.adjusted, height: 45.adjusted)
         case 3 :
-            return CGSize(width: 300, height: 45)
+            return CGSize(width: 300.adjusted, height: 45.adjusted)
         case 4 :
-            return CGSize(width: 300, height: 45)
+            return CGSize(width: 300.adjusted, height: 45.adjusted)
+        case 5 :
+            return CGSize(width: 300.adjusted, height: 45.adjusted)
         default :
             return CGSize.zero
         }
@@ -274,6 +249,8 @@ extension HatDetailViewController: UICollectionViewDelegateFlowLayout, UIScrollV
             return CGSize(width: collectionView.bounds.width, height: 650.adjusted)
         case 4:
             return CGSize(width: collectionView.bounds.width, height: 500.adjusted)
+        case 5:
+            return CGSize(width: collectionView.bounds.width, height: 600.adjusted)
         default:
             return CGSize(width: 0.0, height: 0.0)
         }
@@ -299,5 +276,3 @@ extension HatDetailViewController: UICollectionViewDelegateFlowLayout, UIScrollV
         }
     }
 }
-
-
