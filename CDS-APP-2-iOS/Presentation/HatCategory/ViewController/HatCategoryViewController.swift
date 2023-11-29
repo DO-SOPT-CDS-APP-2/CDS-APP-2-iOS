@@ -20,6 +20,7 @@ final class HatCategoryViewController: UIViewController {
     
     private let hatCategoryMainView = HatCategoryMainView()
     private let realtimeBestDummy = RealtimeBestItem.realtimeBestDummy()
+    private let filterDummy = FilterCategory.filterCategoryDummy()
     
     // MARK: - Life Cycle
     
@@ -88,6 +89,7 @@ final class HatCategoryViewController: UIViewController {
         self.headerCollectionView.register(HeaderCollectionViewCell.self,
                                            forCellWithReuseIdentifier: HeaderCollectionViewCell.className)
         hatCategoryMainView.realtimeBestCollectionView.register(RealTimeBestCollectionViewCell.self, forCellWithReuseIdentifier: RealTimeBestCollectionViewCell.className)
+        hatCategoryMainView.productFilterCollectionView.register(FilterCategoryCollectionViewCell.self, forCellWithReuseIdentifier: FilterCategoryCollectionViewCell.className)
     }
     
     //MARK: - set Delegate
@@ -98,6 +100,9 @@ final class HatCategoryViewController: UIViewController {
         
         hatCategoryMainView.realtimeBestCollectionView.delegate = self
         hatCategoryMainView.realtimeBestCollectionView.dataSource = self
+        
+        hatCategoryMainView.productFilterCollectionView.delegate = self
+        hatCategoryMainView.productFilterCollectionView.dataSource = self
     }
     
     // MARK: - Methods
@@ -125,8 +130,11 @@ extension HatCategoryViewController: UICollectionViewDataSource {
         if collectionView == self.headerCollectionView {
             return headerDummy.count
         }
-        else {
+        else if collectionView == hatCategoryMainView.realtimeBestCollectionView{
             return realtimeBestDummy.count
+        }
+        else {
+            return filterDummy.count
         }
     }
     
@@ -139,10 +147,17 @@ extension HatCategoryViewController: UICollectionViewDataSource {
             return item
         }
         // 2. 실시간 베스트 수평 컬렉션뷰
-        else {
+        else if collectionView == hatCategoryMainView.realtimeBestCollectionView{
             guard let item = collectionView.dequeueReusableCell(withReuseIdentifier: RealTimeBestCollectionViewCell.className, for: indexPath) as? RealTimeBestCollectionViewCell else { return UICollectionViewCell() }
             
             item.bindData(item: realtimeBestDummy[indexPath.row])
+            return item
+        }
+        // 3. 필터링 카테고리 수평 컬렉션뷰
+        else {
+            guard let item = collectionView.dequeueReusableCell(withReuseIdentifier: FilterCategoryCollectionViewCell.className, for: indexPath) as? FilterCategoryCollectionViewCell else { return UICollectionViewCell() }
+            
+            item.bindData(filterCategory: filterDummy[indexPath.row].label)
             return item
         }
     }
@@ -159,8 +174,19 @@ extension HatCategoryViewController: UICollectionViewDelegateFlowLayout {
             let cellWidth = textWidth + 18
             return CGSize(width: cellWidth, height: 43.adjusted)
         }
-        else {
+        else if collectionView == hatCategoryMainView.realtimeBestCollectionView{
             return CGSize(width: 115.adjusted, height: 157.adjusted)
+        }
+        // 스클로영역의 컬렉션뷰 아이템의 동적 width 적용을 위한 익스텐션 추가
+        else {
+            let text = filterDummy[indexPath.item].label
+            let font = UIFont.krSemiBold(ofSize: 12.adjusted)
+            let image = ImageLiterals.icon.icDetailDownGraySmall
+            let textWidth = (text as NSString).size(withAttributes: [NSAttributedString.Key.font: font]).width
+            let imageWidth = image.size.width
+            
+            let cellWidth = textWidth + imageWidth + 31
+            return CGSize(width: cellWidth, height: 31.adjusted)
         }
     }
 }
