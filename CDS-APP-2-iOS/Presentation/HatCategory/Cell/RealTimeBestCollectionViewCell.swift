@@ -89,7 +89,11 @@ final class RealTimeBestCollectionViewCell: UICollectionViewCell {
     func bindData(item: RealtimeBestItem) {
         realtimeBestImageView.image = item.image
         brandName.text = item.brandName
-        salePercent.text = item.salePercent
+        if let percent = item.salePercent {
+            salePercent.text = percent
+        } else {
+            salePercent.text = nil
+        }
         itemPrice.text = item.itemPrice
     }
 }
