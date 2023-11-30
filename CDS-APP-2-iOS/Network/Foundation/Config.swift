@@ -10,7 +10,7 @@ import Foundation
 enum Config {
     enum Keys {
         enum Plist {
-            static let baseURL = "BASE_URL"
+            static let baseURL = "http://13.124.244.193:8080/api/v1"
         }
     }
     

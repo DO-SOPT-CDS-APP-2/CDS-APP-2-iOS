@@ -13,9 +13,9 @@ class HatDetailService {
 
     func makeRequest(productID: Int) -> URLRequest {
 
-            let baseURL = Bundle.main.object(forInfoDictionaryKey: Config.Keys.Plist.baseURL) as? String ?? ""
+            let baseURL = "http://13.124.244.193:8080"
             
-            let urlString = "\(baseURL)/api/v1/product/{productId}"
+            let urlString = "\(baseURL)/api/v1/product/\(productID)"
             
             // URL 생성
             guard let url = URL(string: urlString) else {

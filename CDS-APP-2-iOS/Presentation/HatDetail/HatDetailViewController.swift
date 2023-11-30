@@ -19,20 +19,31 @@ final class HatDetailViewController: UIViewController {
         collectionView.isScrollEnabled = true
         return collectionView
     }()
-    
+    private let hatDetailMainInfoView = MainInfoCollectionViewCell()
     private let scrollToTopButton = UIButton(type: .custom)
+    private var detailProductData : DataClass?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .background
         
+   
+       
+        fetchHatDetailData()
+        
+
+        
         setupNavigationBar()
         setupCollectionView()
-        setHierachy()
+        
         setUI()
+        setHierachy()
         setLayout()
+        
         setDelegate()
         configureColletionView()
+        
+        
     }
     
     // MARK: - Set NavigationBar
@@ -128,6 +139,27 @@ final class HatDetailViewController: UIViewController {
             layout.sectionHeadersPinToVisibleBounds = true
         }
     }
+    
+    func fetchHatDetailData() {
+            Task {
+                do {
+                    let hatDetailResponse = try await HatDetailService.shared.getHatDetailWithAPI(productID: 4)
+                    detailProductData = hatDetailResponse?.data
+                    let detailProductInfo = DataClass(imageURL: detailProductData?.imageURL ?? "",
+                                                      brand: detailProductData?.brand ?? "",
+                                                      name: detailProductData?.name ?? "",
+                                                      price: detailProductData?.price ?? 0,
+                                                      discountRate: detailProductData?.discountRate ?? 0,
+                                                      discountPrice: detailProductData?.discountPrice ?? 0,
+                                                      point: detailProductData?.point ?? 0,
+                                                      pointRate: detailProductData?.pointRate ?? 0,
+                                                      description: detailProductData?.description ?? ""
+                    )
+                } catch {
+                    print("상세 정보를 가져오는 중 에러가 발생했습니다: \(error)")
+                }
+            }
+        }
     
     @objc func buttonTapped(_ sender: UIButton) {
         detailcollectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: .top, animated: true)

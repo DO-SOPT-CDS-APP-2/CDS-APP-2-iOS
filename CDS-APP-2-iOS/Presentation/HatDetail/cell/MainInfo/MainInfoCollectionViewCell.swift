@@ -247,6 +247,7 @@ final class MainInfoCollectionViewCell: UICollectionViewCell {
         contentView.addSubviews(userStackView, bottomThinDivideView, shippingLabel, shippingfeeLabel, shippingfeedescriptLabel, shippingexpectedLabel, shippingdescriptLabel, topThickDivideView, detailView, bottomThickDivideView)
     }
     
+    
     // MARK: - Set Layout
     
     private func setLayout() {
@@ -380,6 +381,18 @@ final class MainInfoCollectionViewCell: UICollectionViewCell {
             $0.width.equalTo(contentView.snp.width)
         }
     }
+    
+    func bindData(item: HatDetailResponseDTO) {
+        brandLabel.text = item.data.brand
+        productnameLabel.text = item.data.name
+        priceLabel.text = String(item.data.price)
+        discountpercentLabel.text = String(item.data.discountRate)
+        discountpriceLabel.text = String(item.data.discountPrice)
+        pointLabel.text = String(item.data.point)
+        pointpercentLabel.text = String(item.data.pointRate)
+    }
+    
+    
 }
 
 
