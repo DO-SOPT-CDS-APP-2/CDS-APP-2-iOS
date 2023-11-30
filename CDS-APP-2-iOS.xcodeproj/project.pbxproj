@@ -103,6 +103,7 @@
 		A19DB9112B171F5700CD1113 /* FreeDelieveryChipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19DB9102B171F5700CD1113 /* FreeDelieveryChipView.swift */; };
 		A1A29DED2B0F223C00C9F25D /* HeaderCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A29DEC2B0F223C00C9F25D /* HeaderCollectionViewCell.swift */; };
 		A1A29DF02B0F37DA00C9F25D /* HeaderCategoryDummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A29DEF2B0F37DA00C9F25D /* HeaderCategoryDummy.swift */; };
+		A1A8FE3E2B186373006D0C25 /* HatCategoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A8FE3D2B186373006D0C25 /* HatCategoryService.swift */; };
 		A1AE48F92B16CF810069859F /* DetailProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1AE48F82B16CF810069859F /* DetailProductCollectionViewCell.swift */; };
 		A1EB0FF22B15DA8A0023B8AD /* FilterCategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EB0FF12B15DA8A0023B8AD /* FilterCategoryCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
@@ -205,6 +206,7 @@
 		A19DB9102B171F5700CD1113 /* FreeDelieveryChipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreeDelieveryChipView.swift; sourceTree = "<group>"; };
 		A1A29DEC2B0F223C00C9F25D /* HeaderCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCollectionViewCell.swift; sourceTree = "<group>"; };
 		A1A29DEF2B0F37DA00C9F25D /* HeaderCategoryDummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCategoryDummy.swift; sourceTree = "<group>"; };
+		A1A8FE3D2B186373006D0C25 /* HatCategoryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HatCategoryService.swift; sourceTree = "<group>"; };
 		A1AE48F82B16CF810069859F /* DetailProductCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailProductCollectionViewCell.swift; sourceTree = "<group>"; };
 		A1E04C3E2B185DB70003E4D7 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		A1EB0FF12B15DA8A0023B8AD /* FilterCategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCategoryCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -324,6 +326,7 @@
 		2A0C02072B0A5E3F005764FA /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				A1A8FE3A2B186288006D0C25 /* HatCategory */,
 				2A0C021B2B0A5F66005764FA /* Foundation */,
 				2A0C02172B0A5F1F005764FA /* Home */,
 			);
@@ -715,6 +718,30 @@
 			path = Dummy;
 			sourceTree = "<group>";
 		};
+		A1A8FE3A2B186288006D0C25 /* HatCategory */ = {
+			isa = PBXGroup;
+			children = (
+				A1A8FE3C2B18629B006D0C25 /* Service */,
+				A1A8FE3B2B186296006D0C25 /* DTO */,
+			);
+			path = HatCategory;
+			sourceTree = "<group>";
+		};
+		A1A8FE3B2B186296006D0C25 /* DTO */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DTO;
+			sourceTree = "<group>";
+		};
+		A1A8FE3C2B18629B006D0C25 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				A1A8FE3D2B186373006D0C25 /* HatCategoryService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -861,6 +888,7 @@
 				835898A02B0E455500503CD1 /* ProductInfoFooterCollectionReusableView.swift in Sources */,
 				A17FBB552B11C227009214D9 /* HatCategoryMainView.swift in Sources */,
 				051836322B14A71500D4FB81 /* RecommendSmallCellData.swift in Sources */,
+				A1A8FE3E2B186373006D0C25 /* HatCategoryService.swift in Sources */,
 				2AB794552B0CFD15003DFF48 /* CategoryDetailTableHeaderView.swift in Sources */,
 				2AA327BC2B0B722100732CE9 /* NSObject+.swift in Sources */,
 				0518362F2B149AE300D4FB81 /* LineView.swift in Sources */,
