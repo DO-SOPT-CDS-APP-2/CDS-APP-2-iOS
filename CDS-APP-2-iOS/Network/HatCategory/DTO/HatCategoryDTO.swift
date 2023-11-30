@@ -7,20 +7,26 @@
 
 import UIKit
 
+struct HatCategoryDataModel: Codable {
+    let status: Int
+    let message: String
+    let data: [HatCategoryDTO]
+}
+
 struct HatCategoryDTO: Codable {
     let productId: Int
-    let productImage: String
-    let brandName: String
-    let productName: String
-    let salePercent: Int
-    let productPrice: Int
+    let imageUrl: String
+    let brand: String
+    let name: String
+    let discount: Int
+    let price: Int
     
     enum Codingkeys: String, Codable {
         case productId
-        case productImage = "imageUrl"
-        case brandName = "brand"
-        case productName = "name"
-        case salePercent = "discount"
-        case productPrice = "price"
+        case imageUrl
+        case brand
+        case name
+        case discount
+        case price
     }
 }

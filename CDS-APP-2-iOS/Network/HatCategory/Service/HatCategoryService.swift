@@ -15,7 +15,7 @@ final class HatCategoryService {
     func makeRequestURL(categoryId: Int) -> URLRequest {
         let baseURL = Bundle.main.object(forInfoDictionaryKey: Config.Keys.Plist.baseURL) as? String ?? ""
         
-        let urlString = "\(baseURL)/api/v1/category/\(categoryId)"
+        let urlString = "http://13.124.244.193:8080/api/v1/category/\(categoryId)"
         
         guard let url = URL(string: urlString) else {
             fatalError("Failed to create URL")
@@ -34,7 +34,7 @@ final class HatCategoryService {
         return request
     }
     
-    func getHatCategoryWithAPI(categoryId: Int) async throws -> HatCategoryDTO? {
+    func getHatCategoryData(categoryId: Int) async throws -> HatCategoryDataModel? {
         do {
             let request = self.makeRequestURL(categoryId: categoryId)
             let (data, response) = try await URLSession.shared.data(for: request)
@@ -62,10 +62,10 @@ final class HatCategoryService {
         }
     }
     
-    private func parseHatCategoryData(data: Data) -> HatCategoryDTO? {
+    private func parseHatCategoryData(data: Data) -> HatCategoryDataModel? {
         do {
             let jsonDecoder = JSONDecoder()
-            let result = try jsonDecoder.decode(HatCategoryDTO.self, from: data)
+            let result = try jsonDecoder.decode(HatCategoryDataModel.self, from: data)
             return result
         } catch {
             print(error)
