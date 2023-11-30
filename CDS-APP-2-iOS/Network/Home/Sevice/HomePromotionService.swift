@@ -56,9 +56,4 @@ class HomePromotionService {
             return nil
         }
     }
-    
-    private func configureHTTPError(errorCode: Int) -> Error {
-        return NetworkError(rawValue: errorCode)
-        ?? NetworkError.unknownError
-    }
 }
