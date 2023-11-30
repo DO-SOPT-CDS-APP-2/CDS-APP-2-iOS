@@ -147,12 +147,12 @@ final class HatCategoryViewController: UIViewController {
     
     @objc
     func pushHatDetailView() {
-        self.navigationController?.pushViewController(HatDetailViewController(), animated: false)
+        self.navigationController?.pushViewController(HatDetailViewController(), animated: true)
     }
     
     @objc
     func popTapped() {
-        navigationController?.popViewController(animated: false)
+        navigationController?.popViewController(animated: true)
     }
 }
 
@@ -208,11 +208,16 @@ extension HatCategoryViewController: UICollectionViewDataSource {
             
             // 좋아요 클릭 토글
             item.handler = { [weak self] in
-                self.putHeartButtonTappedWithAPI(index: indexPath.row)
                 guard let self else { return }
+                self.putHeartButtonTappedWithAPI(index: indexPath.row)
                 item.isTapped.toggle()
             }
-            item.bindData(detailProduct: detailProductDummy[indexPath.row])
+            item.bindData(data: detailProductData?[indexPath.item] ?? HatCategoryDTO(productId: Int(),
+                                                                                     imageUrl: String(),
+                                                                                     brand: String(),
+                                                                                     name: String(),
+                                                                                     discount: Int(),
+                                                                                     price: Int()))
             return item
         }
     }

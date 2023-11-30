@@ -67,7 +67,7 @@ final class HatDetailViewController: UIViewController {
     
     @objc
     func popTapped() {
-        navigationController?.popViewController(animated: false)
+        navigationController?.popViewController(animated: true)
     }
     
     // MARK: - Set CollectionView
