@@ -15,12 +15,13 @@ class HeartButtonService {
 
         let baseURL = Bundle.main.object(forInfoDictionaryKey: Config.Keys.Plist.baseURL) as? String ?? ""
         
-        let urlString = "\(baseURL)/\(memberId)/\(productId)"
+        let urlString = "\(baseURL)/api/v1/heart/\(memberId)/\(productId)"
         
         // URL 생성
         guard let url = URL(string: urlString) else {
             fatalError("Failed to create URL")
         }
+        print(url)
 
         // URLRequest 생성
         var request = URLRequest(url: url)
@@ -37,7 +38,7 @@ class HeartButtonService {
     
     func getDataTransferObject(memberId: Int, productId: Int) async throws -> HeartButtonResponseDTO? {
         do {
-            let request = self.makeRequestURL(memberId: memberId, productId: productId)
+            let request = self.makeRequestURL(memberId: memberId, productId: productId + 1)
             let (data, response) = try await URLSession.shared.data(for: request)
             guard let httpResponse = response as? HTTPURLResponse else {
                 throw NetworkError.responseError

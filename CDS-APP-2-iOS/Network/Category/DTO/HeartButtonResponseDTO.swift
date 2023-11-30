@@ -6,7 +6,16 @@
 //
 
 import Foundation
-struct HeartButtonResponseDTO: Codable {
+
+// MARK: - HeartButtonResponseDTO
+
+struct HeartButtonResponseDTO: Decodable {
+    let data: DataStruct
+}
+
+// MARK: - DataStruct
+
+struct DataStruct: Decodable {
     let isMade: Bool
 }
 

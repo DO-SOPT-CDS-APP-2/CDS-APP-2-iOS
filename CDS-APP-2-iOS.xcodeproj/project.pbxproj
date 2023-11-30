@@ -320,8 +320,8 @@
 		2A0C02072B0A5E3F005764FA /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				2A2EAFE62B182672002D3800 /* Category */,
 				2A0C021B2B0A5F66005764FA /* Foundation */,
+				2A2EAFE62B182672002D3800 /* Category */,
 				2A0C02172B0A5F1F005764FA /* Home */,
 			);
 			path = Network;

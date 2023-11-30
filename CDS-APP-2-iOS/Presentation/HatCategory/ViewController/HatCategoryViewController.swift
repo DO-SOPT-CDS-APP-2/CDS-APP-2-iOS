@@ -180,9 +180,10 @@ extension HatCategoryViewController: UICollectionViewDataSource {
             item.isUserInteractionEnabled = true
             item.addGestureRecognizer(tapGesture)
             item.handler = { [weak self] in
-                            guard let self else { return }
-                            item.isTapped.toggle()
-                        }
+                guard let self else { return }
+                item.isTapped.toggle()
+                self.getHeartButtonTappedAPI(index: indexPath.row)
+            }
             item.bindData(detailProduct: detailProductDummy[indexPath.row])
             return item
         }
@@ -235,3 +236,19 @@ extension HatCategoryViewController: UICollectionViewDelegate {
     }
 }
 
+// MARK: - Network
+
+extension HatCategoryViewController {
+    private func getHeartButtonTappedAPI(index: Int) {
+        Task {
+            do {
+                let memberId = 1
+                if let result = try await HeartButtonService.shared.getDataTransferObject(memberId: memberId, productId: index) {
+                    print(result.data.isMade)
+                }
+            } catch {
+                print(error)
+            }
+        }
+    }
+}
