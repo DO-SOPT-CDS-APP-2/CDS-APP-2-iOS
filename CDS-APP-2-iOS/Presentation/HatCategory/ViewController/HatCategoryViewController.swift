@@ -48,6 +48,7 @@ final class HatCategoryViewController: UIViewController {
         
         navigationController?.navigationBar.isHidden = false
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: ImageLiterals.icon.icBack.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(popTapped))
+        navigationItem.hidesBackButton = true
     }
     
     // MARK: - set UI
@@ -146,12 +147,12 @@ final class HatCategoryViewController: UIViewController {
     
     @objc
     func pushHatDetailView() {
-        self.navigationController?.pushViewController(HatDetailViewController(), animated: true)
+        self.navigationController?.pushViewController(HatDetailViewController(), animated: false)
     }
     
     @objc
     func popTapped() {
-        navigationController?.popViewController(animated: true)
+        navigationController?.popViewController(animated: false)
     }
 }
 
