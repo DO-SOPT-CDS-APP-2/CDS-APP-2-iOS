@@ -48,8 +48,15 @@ final class HatDetailViewController: UIViewController {
         for i in [home, search, cart] {
             i.tintColor = .black
         }
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: ImageLiterals.icon.icBack.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(popTapped))
     }
     
+    
+    @objc
+    func popTapped() {
+        navigationController?.popViewController(animated: true)
+    }
     
     // MARK: - Set CollectionView
     

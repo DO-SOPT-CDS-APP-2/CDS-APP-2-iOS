@@ -39,9 +39,8 @@ extension UINavigationController {
     }
     
     //MARK: setting left and right Button Item in NavigationBar
-
+    
     func setButtonItem() {
-        let backButtonImage = ImageLiterals.icon.icBack.withRenderingMode(.alwaysOriginal)
         let searchButtonImage = ImageLiterals.icon.icSearchBlack.withRenderingMode(.alwaysOriginal)
         let cartButtonImage = ImageLiterals.icon.icCartBlack.withRenderingMode(.alwaysOriginal)
         
