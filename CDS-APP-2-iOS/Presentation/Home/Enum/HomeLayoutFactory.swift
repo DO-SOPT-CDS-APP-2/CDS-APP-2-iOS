@@ -24,6 +24,10 @@ enum HomeLayoutFactory {
                 section = createProductSection()
             case 4:
                 section = createBrandIssueSection()
+            case 5:
+                section = createPopularSection()
+            case 6:
+                section = createAdditionSection()
             default:
                 section = createCardSection()
             }
@@ -232,7 +236,7 @@ enum HomeLayoutFactory {
         let totalGroup = NSCollectionLayoutGroup.vertical(layoutSize: totalGroupSize,
                                                           subitems: [bigHorizontalGroup, smallHorizontalGroup])
         totalGroup.interItemSpacing = .fixed(11.adjusted)
-
+        
         // 최종 그룹을 section에 반환
         let section = NSCollectionLayoutSection(group: totalGroup)
         section.contentInsets = NSDirectionalEdgeInsets(top: 15.adjusted,
@@ -245,11 +249,77 @@ enum HomeLayoutFactory {
         return section
     }
     
+    static func createPopularSection() -> NSCollectionLayoutSection {
+
+        let firstItemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1 / 6),
+                                                   heightDimension: .fractionalHeight(1))
+        let firstItem = NSCollectionLayoutItem(layoutSize: firstItemSize)
+        
+        firstItem.contentInsets = NSDirectionalEdgeInsets(top: 0,
+                                                          leading: 0,
+                                                          bottom: 0.adjusted,
+                                                          trailing: 8.adjusted)
+        
+        let horizontalGroupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
+                                                         heightDimension: .fractionalHeight(1))
+        let horizontalGroup = NSCollectionLayoutGroup.horizontal(layoutSize: horizontalGroupSize, repeatingSubitem: firstItem, count: 6)
+        
+        let verticalGroupSize = NSCollectionLayoutSize(widthDimension: .absolute(780.adjusted),
+                                                       heightDimension: .estimated(154.adjusted))
+
+        let verticalGroup = NSCollectionLayoutGroup.vertical(layoutSize: verticalGroupSize, repeatingSubitem: horizontalGroup, count: 2)
+        verticalGroup.contentInsets = NSDirectionalEdgeInsets(top: 10.adjusted,
+                                                              leading: 0,
+                                                              bottom: 0,
+                                                              trailing: 0)
+        
+        let section = NSCollectionLayoutSection(group: verticalGroup)
+        
+        // 헤더 및 푸터 지정
+        section.boundarySupplementaryItems = [self.createSupplementaryHeaderItem(forSection: 5)]
+        
+        section.contentInsets = NSDirectionalEdgeInsets(top: 20.adjusted,
+                                                        leading: 20.adjusted,
+                                                        bottom: 95.adjusted,
+                                                        trailing: 12.adjusted)
+        
+        section.orthogonalScrollingBehavior = .continuous
+        return section
+        
+    }
+    
+    static func createAdditionSection() -> NSCollectionLayoutSection {
+        
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
+                                              heightDimension: .fractionalHeight(0.5))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        
+        item.contentInsets = NSDirectionalEdgeInsets(top: 10.adjusted,
+                                                     leading: 0,
+                                                     bottom: 0,
+                                                     trailing: 0)
+        
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
+                                               heightDimension: .estimated(154.adjusted))
+        
+        let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
+        
+        let section = NSCollectionLayoutSection(group: group)
+        section.boundarySupplementaryItems = [self.createSupplementaryHeaderItem(forSection: 2)]
+        section.contentInsets = NSDirectionalEdgeInsets(top: 18.adjusted,
+                                                        leading: 20.adjusted,
+                                                        bottom: 90.adjusted,
+                                                        trailing: 20.adjusted)
+        section.orthogonalScrollingBehavior = .none
+        return section
+        
+    }
+    
     static func createSupplementaryHeaderItem(forSection section: Int) -> NSCollectionLayoutBoundarySupplementaryItem {
         let headerElement: NSCollectionLayoutBoundarySupplementaryItem
         
         switch section {
-        case 2:
+        case 2, 6:
             headerElement = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: .init(widthDimension: .fractionalWidth(1),
                                                                                           heightDimension: .estimated(423.adjusted)),
                                                                         elementKind: UICollectionView.elementKindSectionHeader,
@@ -257,6 +327,11 @@ enum HomeLayoutFactory {
         case 3, 4:
             headerElement = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: .init(widthDimension: .fractionalWidth(1),
                                                                                           heightDimension: .estimated(112.adjusted)),
+                                                                        elementKind: UICollectionView.elementKindSectionHeader,
+                                                                        alignment: .top)
+        case 5:
+            headerElement = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: .init(widthDimension: .fractionalWidth(1),
+                                                                                          heightDimension: .estimated(65.adjusted)),
                                                                         elementKind: UICollectionView.elementKindSectionHeader,
                                                                         alignment: .top)
             
