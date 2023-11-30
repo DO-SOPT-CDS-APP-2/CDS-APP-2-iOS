@@ -18,8 +18,8 @@ enum NetworkError: Int, Error, CustomStringConvertible {
         switch self {
         case .responseError: return "RESPONSE_ERROR"
         case .unknownError: return "UNKNOWN_ERROR"
-        case .notFoundError: return "404:NOT_FOUND_ERROR"
-        case .internalServerError: return "500:INTERNAL_SERVER_ERROR"
+        case .notFoundError: return "해당 상품을 찾을 수 없습니다."
+        case .internalServerError: return "서버 내부 오류입니다."
         }
     }
 }

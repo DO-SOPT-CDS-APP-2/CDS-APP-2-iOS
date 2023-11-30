@@ -21,7 +21,7 @@ final class HatCategoryViewController: UIViewController {
     private let headerDummy = HeaderCategory.headerDummy()
     private let realtimeBestDummy = RealtimeBestItem.realtimeBestDummy()
     private let filterDummy = FilterCategory.filterCategoryDummy()
-    private let detailProductDummy = DetailProduct.detailProductDummy()
+    private var detailProductData : [HatCategoryDTO]?
     
     // MARK: - Life Cycle
     
@@ -39,6 +39,16 @@ final class HatCategoryViewController: UIViewController {
         self.setHeaderCollectionViewLayout()
         self.setRegister()
         self.setDelegate()
+        
+        self.getDetailProductWithAPI()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        navigationController?.navigationBar.isHidden = false
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: ImageLiterals.icon.icBack.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(popTapped))
+        navigationItem.hidesBackButton = true
     }
     
     // MARK: - set UI
@@ -112,6 +122,16 @@ final class HatCategoryViewController: UIViewController {
     
     // MARK: - Methods
     
+    private func getDetailProductWithAPI() {
+        Task {
+            do {
+                let status = try await HatCategoryService.shared.getHatCategoryData(categoryId: 1)
+                detailProductData = status?.data
+                hatCategoryMainView.detailProductCollectionView.reloadData()
+            }
+        }
+    }
+    
     private func setNavigationBar() {
         self.navigationController?.setBackgroundColor()
         self.navigationController?.setButtonItem()
@@ -129,6 +149,11 @@ final class HatCategoryViewController: UIViewController {
     func pushHatDetailView() {
         self.navigationController?.pushViewController(HatDetailViewController(), animated: true)
     }
+    
+    @objc
+    func popTapped() {
+        navigationController?.popViewController(animated: true)
+    }
 }
 
 // MARK: - Extension
@@ -142,11 +167,11 @@ extension HatCategoryViewController: UICollectionViewDataSource {
         else if collectionView == hatCategoryMainView.realtimeBestCollectionView {
             return realtimeBestDummy.count
         }
-        else if collectionView == hatCategoryMainView.detailProductCollectionView {
-            return detailProductDummy.count
+        else if collectionView == hatCategoryMainView.productFilterCollectionView {
+            return filterDummy.count
         }
         else {
-            return filterDummy.count
+            return detailProductData?.count ?? 0
         }
     }
     
@@ -176,14 +201,23 @@ extension HatCategoryViewController: UICollectionViewDataSource {
         else {
             guard let item = collectionView.dequeueReusableCell(withReuseIdentifier: DetailProductCollectionViewCell.className, for: indexPath) as? DetailProductCollectionViewCell else { return UICollectionViewCell() }
             
+            // tapGesture 적용 -> HatDetailViewController로 전환
             let tapGesture = UITapGestureRecognizer(target: self, action: #selector(pushHatDetailView))
             item.isUserInteractionEnabled = true
             item.addGestureRecognizer(tapGesture)
+            
+            // 좋아요 클릭 토글
             item.handler = { [weak self] in
-                            guard let self else { return }
-                            item.isTapped.toggle()
-                        }
-            item.bindData(detailProduct: detailProductDummy[indexPath.row])
+                guard let self else { return }
+                self.putHeartButtonTappedWithAPI(index: indexPath.row)
+                item.isTapped.toggle()
+            }
+            item.bindData(data: detailProductData?[indexPath.item] ?? HatCategoryDTO(productId: Int(),
+                                                                                     imageUrl: String(),
+                                                                                     brand: String(),
+                                                                                     name: String(),
+                                                                                     discount: Int(),
+                                                                                     price: Int()))
             return item
         }
     }
@@ -235,3 +269,19 @@ extension HatCategoryViewController: UICollectionViewDelegate {
     }
 }
 
+// MARK: - Network
+
+extension HatCategoryViewController {
+    private func putHeartButtonTappedWithAPI(index: Int) {
+        Task {
+            do {
+                let memberId = 1
+                if let result = try await HeartButtonService.shared.putDataTransferObject(memberId: memberId, productId: index + 1) {
+                    print(result.data.isMade)
+                }
+            } catch {
+                print(error)
+            }
+        }
+    }
+}

@@ -35,6 +35,7 @@ final class HatDetailViewController: UIViewController {
 
         
         setupNavigationBar()
+                
         setupCollectionView()
         
         setUI()
@@ -47,6 +48,18 @@ final class HatDetailViewController: UIViewController {
         
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        setupNavigationBar()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        setupNavigationBar()
+    }
+    
     // MARK: - Set NavigationBar
     
     private func setupNavigationBar() {
@@ -55,13 +68,21 @@ final class HatDetailViewController: UIViewController {
         let home = UIBarButtonItem(image: ImageLiterals.icon.icHomeBlack, style: .plain, target: nil, action: nil)
         let search = UIBarButtonItem(image: ImageLiterals.icon.icSearch, style: .plain, target: nil, action: nil)
         let cart = UIBarButtonItem(image: ImageLiterals.icon.icCartBlack, style: .plain, target: nil, action: nil)
-
+        
         navigationItem.rightBarButtonItems = [cart, search, home]
         for i in [home, search, cart] {
             i.tintColor = .black
         }
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: ImageLiterals.icon.icBack.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(popTapped))
+        navigationItem.hidesBackButton = true
     }
     
+    
+    @objc
+    func popTapped() {
+        navigationController?.popViewController(animated: true)
+    }
     
     // MARK: - Set CollectionView
     
@@ -132,7 +153,7 @@ final class HatDetailViewController: UIViewController {
         detailcollectionView.dataSource = self
     }
     
-
+    
     // MARK: - Set CollectionViewFlowLayout
     
     private func configureColletionView() {
@@ -172,7 +193,7 @@ final class HatDetailViewController: UIViewController {
 extension HatDetailViewController: UICollectionViewDelegate {}
 extension HatDetailViewController: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-            return 6
+        return 6
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -222,54 +243,54 @@ extension HatDetailViewController: UICollectionViewDataSource {
             return cell
         }
     }
-
+    
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-            switch indexPath.section {
-                //case 0은 헤더가 없으므로 생략
-            case 1 :
-                guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader,
-                                                                                   withReuseIdentifier: ProductInfoHeaderCollectionReusableView.className,
-                                                                                   for: indexPath) as? ProductInfoHeaderCollectionReusableView
-                else { return RecommendInfoHeaderCollectionReusableView() }
-                header.configure()
-                return header
-            case 2 :
-                guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader,
-                                                                                   withReuseIdentifier: SizeInfoHeaderCollectionReusableView.className,
-                                                                                   for: indexPath) as? SizeInfoHeaderCollectionReusableView
-                else { return ReviewInfoHeaderCollectionReusableView() }
-                header.configure()
-                return header
-            case 3 :
-                guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader,
-                                                                                   withReuseIdentifier: RecommendInfoHeaderCollectionReusableView.className,
-                                                                                   for: indexPath) as? RecommendInfoHeaderCollectionReusableView
-                else { return RecommendInfoHeaderCollectionReusableView() }
-                header.configure()
-                return header
-            case 4 :
-                guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader,
-                                                                                   withReuseIdentifier: ReviewInfoHeaderCollectionReusableView.className,
-                                                                                   for: indexPath) as? ReviewInfoHeaderCollectionReusableView
-                else { return ReviewInfoHeaderCollectionReusableView() }
-                header.configure()
-                return header
-
-            case 5 :
-                guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader,
-                                                                                   withReuseIdentifier: InquireInfoHeaderCollectionReusableView.className,
-                                                                                   for: indexPath) as? InquireInfoHeaderCollectionReusableView
-                else { return ReviewInfoHeaderCollectionReusableView() }
-                header.configure()
-                return header
-                
-            default :
-                return ProductInfoHeaderCollectionReusableView()
-            }
+        switch indexPath.section {
+            //case 0은 헤더가 없으므로 생략
+        case 1 :
+            guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader,
+                                                                               withReuseIdentifier: ProductInfoHeaderCollectionReusableView.className,
+                                                                               for: indexPath) as? ProductInfoHeaderCollectionReusableView
+            else { return RecommendInfoHeaderCollectionReusableView() }
+            header.configure()
+            return header
+        case 2 :
+            guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader,
+                                                                               withReuseIdentifier: SizeInfoHeaderCollectionReusableView.className,
+                                                                               for: indexPath) as? SizeInfoHeaderCollectionReusableView
+            else { return ReviewInfoHeaderCollectionReusableView() }
+            header.configure()
+            return header
+        case 3 :
+            guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader,
+                                                                               withReuseIdentifier: RecommendInfoHeaderCollectionReusableView.className,
+                                                                               for: indexPath) as? RecommendInfoHeaderCollectionReusableView
+            else { return RecommendInfoHeaderCollectionReusableView() }
+            header.configure()
+            return header
+        case 4 :
+            guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader,
+                                                                               withReuseIdentifier: ReviewInfoHeaderCollectionReusableView.className,
+                                                                               for: indexPath) as? ReviewInfoHeaderCollectionReusableView
+            else { return ReviewInfoHeaderCollectionReusableView() }
+            header.configure()
+            return header
+            
+        case 5 :
+            guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader,
+                                                                               withReuseIdentifier: InquireInfoHeaderCollectionReusableView.className,
+                                                                               for: indexPath) as? InquireInfoHeaderCollectionReusableView
+            else { return ReviewInfoHeaderCollectionReusableView() }
+            header.configure()
+            return header
+            
+        default :
+            return ProductInfoHeaderCollectionReusableView()
         }
-        
-        // 헤더의 크기 지정
+    }
+    
+    // 헤더의 크기 지정
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         switch section {
         case 1 :

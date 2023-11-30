@@ -39,7 +39,6 @@ final class CategoryViewController: UIViewController {
         super.viewWillAppear(animated)
 
         self.navigationController?.navigationBar.isHidden = true
-        self.navigationItem.hidesBackButton = true
     }
     
     // MARK: - Set UI
@@ -178,7 +177,7 @@ extension CategoryViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension CategoryViewController: HatButtonAction {
     func hatButtonClicked() {
-        let viewController = HomeViewController()
-        self.navigationController?.pushViewController(viewController, animated: false)
+        let viewController = HatCategoryViewController()
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
 }
