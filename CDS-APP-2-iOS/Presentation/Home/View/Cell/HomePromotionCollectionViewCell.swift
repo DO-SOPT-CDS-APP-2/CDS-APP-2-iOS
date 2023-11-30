@@ -150,7 +150,22 @@ final class HomePromotionCollectionViewCell: UICollectionViewCell {
         handler?()
     }
     
-    func configureCell(data: PromotionCellData) {
+    func configurePromotionCell(data: PromotionData) {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        
+        guard let formattedNumber = formatter.string(from: NSNumber(value: data.price)) else { return }
+        
+        productImageView.kfSetImage(url: data.imageURL)
+        titleLabel.text = data.brand
+        subTitleLabel.text = data.name
+        discountLabel.text = "\(data.discount)%"
+        priceLabel.text = formattedNumber
+        heartButton.isSelected = false
+        heartCountLabel.text = StringLiterals.Home.thirdSection.heartCount
+    }
+    
+    func configureAdditionCell(data: PromotionCellData) {
         productImageView.image = data.image
         titleLabel.text = data.title
         subTitleLabel.text = data.subTitle
@@ -160,4 +175,3 @@ final class HomePromotionCollectionViewCell: UICollectionViewCell {
         heartCountLabel.text = "\(data.heartCount)"
     }
 }
-
