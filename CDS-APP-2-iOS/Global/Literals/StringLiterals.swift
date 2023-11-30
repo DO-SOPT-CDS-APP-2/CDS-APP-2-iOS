@@ -145,6 +145,11 @@ enum StringLiterals {
             static let life = "라이프"
             static let best = "베스트"
             static let recommand = "추천"
+            static let hat = "모자"
+            static let jewelry = "주얼리"
+            static let watch = "시계"
+            static let eye = "아이웨어"
+            static let fashion = "패션 악세서리"
         }
         
         enum secondSection {
@@ -187,6 +192,21 @@ enum StringLiterals {
             static let hoka = "호카"
             static let price = "95,400"
             static let discount = "20%"
+        }
+        
+        enum sixthSection {
+            static let header = "넘겨보는 인기 액세서리"
+        }
+        
+        enum seventhSection {
+            static let header = "디팟입점회로 만나요"
+            static let subTitle = "마론에디션의 디팟입점회가 시작되었어요. 29% 쿠폰으로 만나는 큰\n 혜택, 놓치지 마시길 바라요!"
+            static let maron = "마론에디션"
+            static let firstCellSubTitle = "23 Winter_ Grey Volume Sleeve Wool Coat"
+            static let secondCellSubtitle = "23 Winter_ Black Daddy Fit Wool Blazer"
+            static let percent = "29%"
+            static let firstCellPrice = "269,090"
+            static let secondCellPrice = "205,190"
         }
     }
 }

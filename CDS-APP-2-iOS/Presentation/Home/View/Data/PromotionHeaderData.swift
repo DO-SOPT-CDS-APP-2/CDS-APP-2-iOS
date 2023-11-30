@@ -19,4 +19,10 @@ extension PromotionHeaderData {
                                    title: StringLiterals.Home.thirdSection.headerTitle,
                                    subTitle: StringLiterals.Home.thirdSection.headerSubTitle)
     }
+    
+    static func seventhSectionHeaderData() -> PromotionHeaderData {
+        return PromotionHeaderData(bannerImage: ImageLiterals.img.imgHomeAddition1,
+                                   title: StringLiterals.Home.seventhSection.header,
+                                   subTitle: StringLiterals.Home.seventhSection.subTitle)
+    }
 }
