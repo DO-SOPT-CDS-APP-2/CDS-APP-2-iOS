@@ -40,13 +40,15 @@ final class HatCategoryViewController: UIViewController {
         self.setRegister()
         self.setDelegate()
         
-        getDetailProductWithAPI()
+        self.getDetailProductWithAPI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.getDetailProductWithAPI()
+        navigationController?.navigationBar.isHidden = false
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: ImageLiterals.icon.icBack.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(popTapped))
+        navigationItem.hidesBackButton = true
     }
     
     // MARK: - set UI
@@ -147,6 +149,11 @@ final class HatCategoryViewController: UIViewController {
     func pushHatDetailView() {
         self.navigationController?.pushViewController(HatDetailViewController(), animated: true)
     }
+    
+    @objc
+    func popTapped() {
+        navigationController?.popViewController(animated: true)
+    }
 }
 
 // MARK: - Extension
@@ -201,11 +208,16 @@ extension HatCategoryViewController: UICollectionViewDataSource {
             
             // 좋아요 클릭 토글
             item.handler = { [weak self] in
-                self.putHeartButtonTappedWithAPI(index: indexPath.row)
                 guard let self else { return }
+                self.putHeartButtonTappedWithAPI(index: indexPath.row)
                 item.isTapped.toggle()
             }
-            item.bindData(detailProduct: detailProductDummy[indexPath.row])
+            item.bindData(data: detailProductData?[indexPath.item] ?? HatCategoryDTO(productId: Int(),
+                                                                                     imageUrl: String(),
+                                                                                     brand: String(),
+                                                                                     name: String(),
+                                                                                     discount: Int(),
+                                                                                     price: Int()))
             return item
         }
     }

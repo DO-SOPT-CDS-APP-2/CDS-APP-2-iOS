@@ -13,7 +13,9 @@ class HomePromotionService {
     
     func makeRequest() -> URLRequest {
         let baseURL = Bundle.main.object(forInfoDictionaryKey: Config.Keys.Plist.baseURL) as? String ?? ""
-        let url = URL(string: baseURL + StringLiterals.Home.thirdSection.categoryURL)!
+        guard let url = URL(string: baseURL + StringLiterals.Home.thirdSection.categoryURL) else {
+            fatalError("Failed to create URL")
+        }
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         let header = ["Content-Type": "application/json"]

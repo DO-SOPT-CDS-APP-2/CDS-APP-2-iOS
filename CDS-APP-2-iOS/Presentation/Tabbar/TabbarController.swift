@@ -41,15 +41,16 @@ final class TabbarController: UITabBarController {
             let tabNavController = createTabNavigationController(
                 title: item.description,
                 image: item.icon,
-                selectedImage: item.selectedIcon
+                selectedImage: item.selectedIcon,
+                viewController: item.targetViewController
             )
             tabNavigationControllers.append(tabNavController)
         }
         
-        setViewControllers(tabNavigationControllers, animated: false)
+        setViewControllers(tabNavigationControllers, animated: true)
     }
     
-    private func createTabNavigationController(title: String, image: UIImage, selectedImage: UIImage) -> UINavigationController {
+    private func createTabNavigationController(title: String, image: UIImage, selectedImage: UIImage, viewController: UIViewController?) -> UINavigationController {
         let tabNavigationController = UINavigationController()
         
         let tabbarItem = UITabBarItem(
@@ -74,9 +75,9 @@ final class TabbarController: UITabBarController {
         tabbarItem.setTitleTextAttributes(selectedAttributes, for: .selected)
         
         tabNavigationController.tabBarItem = tabbarItem
-        
-        tabNavigationController.viewControllers = [CategoryViewController()] // 여기에 자신의 뷰컨을 넣어서 제대로 나오는 지 확인해보세요! 지금은 모든 탭에서 같은 뷰컨이 나올 것입니다. 나중에 뷰컨 작업이 끝난 후 한번에 연결시킵시다!
-
+        if let viewController = viewController {
+                tabNavigationController.viewControllers = [viewController]
+            }
         return tabNavigationController
     }
 }
