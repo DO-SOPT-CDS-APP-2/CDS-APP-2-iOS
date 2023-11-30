@@ -15,10 +15,12 @@ final class HomeViewController: UIViewController {
     // MARK: - Properties
     
     private let recommendSmallCellData: [RecommendSmallCellData] = RecommendSmallCellData.recommendSmallCellDummy()
-    private let promotionCellData: [PromotionCellData] = PromotionCellData.promotionCellDummy()
+    private var promotionCellData: [PromotionData]?
     private let productCellData: [ProductCellData] = ProductCellData.productCellDummy()
     private let brandIssueSmallCellData: [ProductCellData] = ProductCellData.brandIssueCellDummy()
     private let brandIssueBigCellData: [UIImage] = [ImageLiterals.img.imgHomeBrand1, ImageLiterals.img.imgHomeBrand2]
+    private let popularCellData: [PopularCellData] = PopularCellData.popularCellData()
+    private let additionCellData: [PromotionCellData] = PromotionCellData.additionCellDummy()
     
     // MARK: - UI Components
     
@@ -30,9 +32,25 @@ final class HomeViewController: UIViewController {
         super.viewDidLoad()
         
         addFunctions()
+        getPromotionWithAPI()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        getPromotionWithAPI()
     }
     
     // MARK: - Functions
+    
+    private func addFunctions() {
+        setUI()
+        setHierachy()
+        setLayout()
+        setRegister()
+        setDelegate()
+        setNavigation()
+    }
     
     private func setUI() {
         self.view.backgroundColor = .clear
@@ -46,15 +64,6 @@ final class HomeViewController: UIViewController {
         homeView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
-    }
-    
-    private func addFunctions() {
-        setUI()
-        setHierachy()
-        setLayout()
-        setRegister()
-        setDelegate()
-        setNavigation()
     }
     
     private func setRegister() {
@@ -91,6 +100,13 @@ final class HomeViewController: UIViewController {
         homeView.homeCollectionView.register(HomeBrandSmallCollectionViewCell.self,
                                              forCellWithReuseIdentifier: HomeBrandSmallCollectionViewCell.className)
         
+        // section 6
+        homeView.homeCollectionView.register(HomePopularCollectionViewCell.self,
+                                             forCellWithReuseIdentifier: HomePopularCollectionViewCell.className)
+        homeView.homeCollectionView.register(HomeChipReusableView.self,
+                                             forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+                                             withReuseIdentifier: HomeChipReusableView.className)
+        
     }
     
     private func setDelegate() {
@@ -101,12 +117,22 @@ final class HomeViewController: UIViewController {
     private func setNavigation() {
         self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
+    
+    private func getPromotionWithAPI() {
+        Task {
+            do {
+                let status = try await HomePromotionService.shared.getPromotionData()
+                promotionCellData = status?.data
+                homeView.homeCollectionView.reloadData()
+            }
+        }
+    }
 }
 
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 5
+        return 7
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -116,11 +142,15 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         case 1:
             return 5
         case 2:
-            return 2
+            return promotionCellData?.count ?? 0
         case 3:
             return 6
         case 4:
             return 6
+        case 5:
+            return 12
+        case 6:
+            return 2
         default:
             return 0
         }
@@ -154,7 +184,11 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         case .promotion:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomePromotionCollectionViewCell.className,
                                                                 for: indexPath) as? HomePromotionCollectionViewCell else { return UICollectionViewCell() }
-            cell.configureCell(data: promotionCellData[indexPath.item])
+            cell.configurePromotionCell(data: promotionCellData?[indexPath.item] ?? PromotionData(imageURL: String(),
+                                                                                                  brand: String(),
+                                                                                                  name: String(),
+                                                                                                  discount: Int(),
+                                                                                                  price: Int()))
             cell.handler = { [weak self] in
                 guard let self else { return }
                 cell.isTapped.toggle()
@@ -180,7 +214,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             default:
                 guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeBrandSmallCollectionViewCell.className,
                                                                     for: indexPath) as? HomeBrandSmallCollectionViewCell else { return UICollectionViewCell() }
-
+                
                 cell.configureCell(data: brandIssueSmallCellData[indexPath.item - 2])
                 cell.handler = { [weak self] in
                     guard let self else { return }
@@ -188,31 +222,60 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
                 }
                 return cell
             }
+        case .popular:
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomePopularCollectionViewCell.className,
+                                                                for: indexPath) as? HomePopularCollectionViewCell else { return UICollectionViewCell() }
+            cell.configureCell(image: popularCellData[indexPath.row].image)
+            return cell
+        case .addition:
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomePromotionCollectionViewCell.className,
+                                                                for: indexPath) as? HomePromotionCollectionViewCell else { return UICollectionViewCell() }
+            cell.configureAdditionCell(data: additionCellData[indexPath.item])
+            cell.handler = { [weak self] in
+                guard let self else { return }
+                cell.isTapped.toggle()
+            }
+            return cell
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         switch kind {
         case UICollectionView.elementKindSectionHeader:
-            if indexPath.section == 2 {
+            switch indexPath.section {
+            case 2:
                 guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
                                                                                    withReuseIdentifier: HomePromotionReusableView.className,
                                                                                    for: indexPath) as? HomePromotionReusableView else { fatalError() }
                 header.configureHeader(data: PromotionHeaderData.thirdSectionHeaderData())
                 return header
-            } else if indexPath.section == 3 {
+                
+            case 3:
                 guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
                                                                                    withReuseIdentifier: HomeTitleReusableView.className,
                                                                                    for: indexPath) as? HomeTitleReusableView else { fatalError() }
                 header.configureHeader(data: StringLiterals.Home.fourthSection.header)
                 return header
-            } else if indexPath.section == 4 {
+                
+            case 4:
                 guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
                                                                                    withReuseIdentifier: HomeTitleReusableView.className,
                                                                                    for: indexPath) as? HomeTitleReusableView else { fatalError() }
                 header.configureHeader(data: StringLiterals.Home.fifthSection.header)
                 return header
-            } else {
+            case 5:
+                guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
+                                                                                   withReuseIdentifier: HomeChipReusableView.className,
+                                                                                   for: indexPath) as? HomeChipReusableView else { fatalError() }
+                return header
+                
+            case 6:
+                guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
+                                                                                   withReuseIdentifier: HomePromotionReusableView.className,
+                                                                                   for: indexPath) as? HomePromotionReusableView else { fatalError() }
+                header.configureHeader(data: PromotionHeaderData.seventhSectionHeaderData())
+                return header
+            default:
                 return UICollectionReusableView()
             }
             

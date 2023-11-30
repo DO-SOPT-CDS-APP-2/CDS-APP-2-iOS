@@ -74,6 +74,21 @@ enum ImageLiterals {
         static var imgReview4: UIImage{ .load(named: "img_hatreview4")}
         static var imgReview5: UIImage{ .load(named: "img_hatreview5")}
         static var imgReview6: UIImage{ .load(named: "img_hatreview6")}
+        static var imgHomePopular1 : UIImage{ .load(named: "img_home_32")}
+        static var imgHomePopular2 : UIImage{ .load(named: "img_home_21")}
+        static var imgHomePopular3 : UIImage{ .load(named: "img_home_22")}
+        static var imgHomePopular4 : UIImage{ .load(named: "img_home_23")}
+        static var imgHomePopular5 : UIImage{ .load(named: "img_home_24")}
+        static var imgHomePopular6 : UIImage{ .load(named: "img_home_25")}
+        static var imgHomePopular7 : UIImage{ .load(named: "img_home_26")}
+        static var imgHomePopular8 : UIImage{ .load(named: "img_home_27")}
+        static var imgHomePopular9 : UIImage{ .load(named: "img_home_28")}
+        static var imgHomePopular10 : UIImage{ .load(named: "img_home_29")}
+        static var imgHomePopular11 : UIImage{ .load(named: "img_home_30")}
+        static var imgHomePopular12 : UIImage{ .load(named: "img_home_31")}
+        static var imgHomeAddition1 : UIImage{ .load(named: "img_home_35")}
+        static var imgHomeAddition2 : UIImage{ .load(named: "img_home_33")}
+        static var imgHomeAddition3 : UIImage{ .load(named: "img_home_34")}
         static var imgInquire: UIImage{ .load(named: "img_inquire")}
         static var imgBtnUp: UIImage{ .load(named: "img_btnUP")}
     }

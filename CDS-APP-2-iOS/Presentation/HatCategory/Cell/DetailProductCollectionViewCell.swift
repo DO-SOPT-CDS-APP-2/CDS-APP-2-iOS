@@ -190,20 +190,20 @@ final class DetailProductCollectionViewCell: UICollectionViewCell {
     
     //MARK: - Methods
     
-    func bindData(detailProduct: DetailProduct) {
-        productImageView.image = detailProduct.productImage
-        brandName.text = detailProduct.brandName
-        productName.text = detailProduct.productName
-        if let percent = detailProduct.salePercent {
-            salePercent.text = "\(percent)%"
-        } else {
+    func bindData(data: HatCategoryDTO) {
+        // 이미지 킹피셔 익스텐션 추가해야함
+        brandName.text = data.brand
+        productName.text = data.name
+        if data.discount == 0 {
             salePercent.text = nil
+        } else {
+            salePercent.text = "\(data.discount)%"
         }
         
         // 가격에 세자리마다 콤마 찍어주기
         let numberFormatter = NumberFormatter()
         numberFormatter.numberStyle = .decimal
-        let price = numberFormatter.string(for: detailProduct.productPrice)
+        let price = numberFormatter.string(for: data.price)
         productPrice.text = price
     }
     
