@@ -21,7 +21,6 @@ final class HatCategoryViewController: UIViewController {
     private let headerDummy = HeaderCategory.headerDummy()
     private let realtimeBestDummy = RealtimeBestItem.realtimeBestDummy()
     private let filterDummy = FilterCategory.filterCategoryDummy()
-    private let detailProductDummy = DetailProduct.detailProductDummy()
     
     // MARK: - Life Cycle
     

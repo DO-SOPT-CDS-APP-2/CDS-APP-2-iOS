@@ -34,7 +34,7 @@ final class HatCategoryService {
         return request
     }
     
-    func getHatCategoryWithAPI(categoryId: Int) async throws -> CityWeatherResponseDTO? {
+    func getHatCategoryWithAPI(categoryId: Int) async throws -> HatCategoryDTO? {
         do {
             let request = self.makeRequestURL(categoryId: categoryId)
             let (data, response) = try await URLSession.shared.data(for: request)
@@ -62,10 +62,10 @@ final class HatCategoryService {
         }
     }
     
-    private func parseHatCategoryData(data: Data) -> CityWeatherResponseDTO? {
+    private func parseHatCategoryData(data: Data) -> HatCategoryDTO? {
         do {
             let jsonDecoder = JSONDecoder()
-            let result = try jsonDecoder.decode(CityWeatherResponseDTO.self, from: data)
+            let result = try jsonDecoder.decode(HatCategoryDTO.self, from: data)
             return result
         } catch {
             print(error)
