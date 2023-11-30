@@ -15,7 +15,7 @@ final class HatCategoryService {
     func makeRequestURL(categoryId: Int) -> URLRequest {
         let baseURL = Bundle.main.object(forInfoDictionaryKey: Config.Keys.Plist.baseURL) as? String ?? ""
         
-        let urlString = "http://13.124.244.193:8080/api/v1/category/\(categoryId)"
+        let urlString = "\(baseURL)/api/v1/category/\(categoryId)"
         
         guard let url = URL(string: urlString) else {
             fatalError("Failed to create URL")
