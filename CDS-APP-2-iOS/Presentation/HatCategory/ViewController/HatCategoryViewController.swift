@@ -40,13 +40,13 @@ final class HatCategoryViewController: UIViewController {
         self.setRegister()
         self.setDelegate()
         
-        getDetailProductWithAPI()
+        self.getDetailProductWithAPI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.getDetailProductWithAPI()
+        navigationController?.navigationBar.isHidden = false
     }
     
     // MARK: - set UI
