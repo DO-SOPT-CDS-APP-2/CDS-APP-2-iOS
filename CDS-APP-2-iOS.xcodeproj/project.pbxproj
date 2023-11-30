@@ -104,6 +104,8 @@
 		A19DB9112B171F5700CD1113 /* FreeDelieveryChipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19DB9102B171F5700CD1113 /* FreeDelieveryChipView.swift */; };
 		A1A29DED2B0F223C00C9F25D /* HeaderCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A29DEC2B0F223C00C9F25D /* HeaderCollectionViewCell.swift */; };
 		A1A29DF02B0F37DA00C9F25D /* HeaderCategoryDummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A29DEF2B0F37DA00C9F25D /* HeaderCategoryDummy.swift */; };
+		A1A8FE3E2B186373006D0C25 /* HatCategoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A8FE3D2B186373006D0C25 /* HatCategoryService.swift */; };
+		A1A8FE402B186BA0006D0C25 /* HatCategoryDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A8FE3F2B186BA0006D0C25 /* HatCategoryDTO.swift */; };
 		A1AE48F92B16CF810069859F /* DetailProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1AE48F82B16CF810069859F /* DetailProductCollectionViewCell.swift */; };
 		A1EB0FF22B15DA8A0023B8AD /* FilterCategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EB0FF12B15DA8A0023B8AD /* FilterCategoryCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
@@ -198,6 +200,7 @@
 		835A452B2B1493760026F6C8 /* SizeInfoFooterCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeInfoFooterCollectionReusableView.swift; sourceTree = "<group>"; };
 		83AC9A9C2B15188100B10222 /* FirstRecommendCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstRecommendCollectionViewCell.swift; sourceTree = "<group>"; };
 		A122D17E2B14DA82009752A7 /* MainCategoryDummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCategoryDummy.swift; sourceTree = "<group>"; };
+		A12C157F2B18AA1100DAF419 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		A17FBB4D2B11B1EC009214D9 /* HatCategoryLayoutFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HatCategoryLayoutFactory.swift; sourceTree = "<group>"; };
 		A17FBB542B11C227009214D9 /* HatCategoryMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HatCategoryMainView.swift; sourceTree = "<group>"; };
 		A17FBB562B11C52F009214D9 /* RealTimeBestCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealTimeBestCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -208,6 +211,8 @@
 		A19DB9102B171F5700CD1113 /* FreeDelieveryChipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreeDelieveryChipView.swift; sourceTree = "<group>"; };
 		A1A29DEC2B0F223C00C9F25D /* HeaderCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCollectionViewCell.swift; sourceTree = "<group>"; };
 		A1A29DEF2B0F37DA00C9F25D /* HeaderCategoryDummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCategoryDummy.swift; sourceTree = "<group>"; };
+		A1A8FE3D2B186373006D0C25 /* HatCategoryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HatCategoryService.swift; sourceTree = "<group>"; };
+		A1A8FE3F2B186BA0006D0C25 /* HatCategoryDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HatCategoryDTO.swift; sourceTree = "<group>"; };
 		A1AE48F82B16CF810069859F /* DetailProductCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailProductCollectionViewCell.swift; sourceTree = "<group>"; };
 		A1EB0FF12B15DA8A0023B8AD /* FilterCategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -325,6 +330,7 @@
 		2A0C02072B0A5E3F005764FA /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				A1A8FE3A2B186288006D0C25 /* HatCategory */,
 				2A0C021B2B0A5F66005764FA /* Foundation */,
 				2A0C02172B0A5F1F005764FA /* Home */,
 			);
@@ -476,6 +482,7 @@
 				2A0C02082B0A5E4C005764FA /* Presentation */,
 				2A0C02072B0A5E3F005764FA /* Network */,
 				2A5296F42B051E8600279401 /* Info.plist */,
+				A12C157F2B18AA1100DAF419 /* Config.xcconfig */,
 			);
 			path = "CDS-APP-2-iOS";
 			sourceTree = "<group>";
@@ -718,6 +725,31 @@
 			path = Dummy;
 			sourceTree = "<group>";
 		};
+		A1A8FE3A2B186288006D0C25 /* HatCategory */ = {
+			isa = PBXGroup;
+			children = (
+				A1A8FE3C2B18629B006D0C25 /* Service */,
+				A1A8FE3B2B186296006D0C25 /* DTO */,
+			);
+			path = HatCategory;
+			sourceTree = "<group>";
+		};
+		A1A8FE3B2B186296006D0C25 /* DTO */ = {
+			isa = PBXGroup;
+			children = (
+				A1A8FE3F2B186BA0006D0C25 /* HatCategoryDTO.swift */,
+			);
+			path = DTO;
+			sourceTree = "<group>";
+		};
+		A1A8FE3C2B18629B006D0C25 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				A1A8FE3D2B186373006D0C25 /* HatCategoryService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -852,6 +884,7 @@
 				A17FBB572B11C52F009214D9 /* RealTimeBestCollectionViewCell.swift in Sources */,
 				2AA327D22B0C30E700732CE9 /* CALayer+.swift in Sources */,
 				832B0C7B2B16B2540042A417 /* InquireInfoHeaderCollectionReusableView.swift in Sources */,
+				A1A8FE402B186BA0006D0C25 /* HatCategoryDTO.swift in Sources */,
 				2AB794682B0CFDE8003DFF48 /* LayoutFactory.swift in Sources */,
 				832B0C792B16A8450042A417 /* ListCollectionViewCell.swift in Sources */,
 				832B0C582B15E9230042A417 /* SecondRecommendCollectionViewCell.swift in Sources */,
@@ -864,6 +897,7 @@
 				835898A02B0E455500503CD1 /* ProductInfoFooterCollectionReusableView.swift in Sources */,
 				A17FBB552B11C227009214D9 /* HatCategoryMainView.swift in Sources */,
 				051836322B14A71500D4FB81 /* RecommendSmallCellData.swift in Sources */,
+				A1A8FE3E2B186373006D0C25 /* HatCategoryService.swift in Sources */,
 				2AB794552B0CFD15003DFF48 /* CategoryDetailTableHeaderView.swift in Sources */,
 				2AA327BC2B0B722100732CE9 /* NSObject+.swift in Sources */,
 				0518362F2B149AE300D4FB81 /* LineView.swift in Sources */,

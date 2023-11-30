@@ -21,7 +21,7 @@ final class HatCategoryViewController: UIViewController {
     private let headerDummy = HeaderCategory.headerDummy()
     private let realtimeBestDummy = RealtimeBestItem.realtimeBestDummy()
     private let filterDummy = FilterCategory.filterCategoryDummy()
-    private let detailProductDummy = DetailProduct.detailProductDummy()
+    private var detailProductData : [HatCategoryDTO]?
     
     // MARK: - Life Cycle
     
@@ -39,6 +39,14 @@ final class HatCategoryViewController: UIViewController {
         self.setHeaderCollectionViewLayout()
         self.setRegister()
         self.setDelegate()
+        
+        getDetailProductWithAPI()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.getDetailProductWithAPI()
     }
     
     // MARK: - set UI
@@ -112,6 +120,16 @@ final class HatCategoryViewController: UIViewController {
     
     // MARK: - Methods
     
+    private func getDetailProductWithAPI() {
+        Task {
+            do {
+                let status = try await HatCategoryService.shared.getHatCategoryData(categoryId: 1)
+                detailProductData = status?.data
+                hatCategoryMainView.detailProductCollectionView.reloadData()
+            }
+        }
+    }
+    
     private func setNavigationBar() {
         self.navigationController?.setBackgroundColor()
         self.navigationController?.setButtonItem()
@@ -142,11 +160,11 @@ extension HatCategoryViewController: UICollectionViewDataSource {
         else if collectionView == hatCategoryMainView.realtimeBestCollectionView {
             return realtimeBestDummy.count
         }
-        else if collectionView == hatCategoryMainView.detailProductCollectionView {
-            return detailProductDummy.count
+        else if collectionView == hatCategoryMainView.productFilterCollectionView {
+            return filterDummy.count
         }
         else {
-            return filterDummy.count
+            return detailProductData?.count ?? 0
         }
     }
     
@@ -176,14 +194,23 @@ extension HatCategoryViewController: UICollectionViewDataSource {
         else {
             guard let item = collectionView.dequeueReusableCell(withReuseIdentifier: DetailProductCollectionViewCell.className, for: indexPath) as? DetailProductCollectionViewCell else { return UICollectionViewCell() }
             
+            // tapGesture 적용 -> HatDetailViewController로 전환
             let tapGesture = UITapGestureRecognizer(target: self, action: #selector(pushHatDetailView))
             item.isUserInteractionEnabled = true
             item.addGestureRecognizer(tapGesture)
+            
+            // 좋아요 클릭 토글
             item.handler = { [weak self] in
-                            guard let self else { return }
-                            item.isTapped.toggle()
-                        }
-            item.bindData(detailProduct: detailProductDummy[indexPath.row])
+                guard let self else { return }
+                item.isTapped.toggle()
+            }
+            
+            item.bindData(data: detailProductData?[indexPath.item] ?? HatCategoryDTO(productId: Int(),
+                                                                                     imageUrl: String(),
+                                                                                     brand: String(),
+                                                                                     name: String(),
+                                                                                     discount: Int(),
+                                                                                     price: Int()))
             return item
         }
     }
