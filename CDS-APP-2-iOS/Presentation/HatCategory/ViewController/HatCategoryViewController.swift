@@ -201,16 +201,11 @@ extension HatCategoryViewController: UICollectionViewDataSource {
             
             // 좋아요 클릭 토글
             item.handler = { [weak self] in
+                self.putHeartButtonTappedWithAPI(index: indexPath.row)
                 guard let self else { return }
                 item.isTapped.toggle()
             }
-            
-            item.bindData(data: detailProductData?[indexPath.item] ?? HatCategoryDTO(productId: Int(),
-                                                                                     imageUrl: String(),
-                                                                                     brand: String(),
-                                                                                     name: String(),
-                                                                                     discount: Int(),
-                                                                                     price: Int()))
+            item.bindData(detailProduct: detailProductDummy[indexPath.row])
             return item
         }
     }
@@ -262,3 +257,19 @@ extension HatCategoryViewController: UICollectionViewDelegate {
     }
 }
 
+// MARK: - Network
+
+extension HatCategoryViewController {
+    private func putHeartButtonTappedWithAPI(index: Int) {
+        Task {
+            do {
+                let memberId = 1
+                if let result = try await HeartButtonService.shared.putDataTransferObject(memberId: memberId, productId: index + 1) {
+                    print(result.data.isMade)
+                }
+            } catch {
+                print(error)
+            }
+        }
+    }
+}
