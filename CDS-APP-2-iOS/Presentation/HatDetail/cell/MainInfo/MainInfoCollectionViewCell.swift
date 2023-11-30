@@ -249,7 +249,7 @@ final class MainInfoCollectionViewCell: UICollectionViewCell {
         }
         
         brandmoreIcon.snp.makeConstraints {
-            $0.top.equalTo(brandLabel.snp.top).offset(1.adjusted)
+            $0.top.equalTo(productImage.snp.bottom).offset(22.adjusted)
             $0.leading.equalTo(brandLabel.snp.trailing).offset(3.adjusted)
         }
         
@@ -378,6 +378,7 @@ final class MainInfoCollectionViewCell: UICollectionViewCell {
         discountpriceLabel.text = String(item.discountPrice) + "원"
         pointLabel.text = String(item.point) + "p"
         pointpercentLabel.text = " (" + String(item.pointRate) + "%)"
+
     }
     
     

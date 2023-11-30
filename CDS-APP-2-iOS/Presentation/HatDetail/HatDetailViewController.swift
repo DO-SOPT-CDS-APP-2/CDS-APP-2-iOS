@@ -197,12 +197,12 @@ extension HatDetailViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.section == 0 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainInfoCollectionViewCell.className, for: indexPath) as! MainInfoCollectionViewCell
-            //guard let dataForCell = detailProductInfo else { return MainInfoCollectionViewCell() }
             cell.bindData(item: detailProductInfo)
             return cell
         }
         else if indexPath.section == 1 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProductInfoCollectionViewCell.className, for: indexPath) as! ProductInfoCollectionViewCell
+            
             return cell
         }
         else if indexPath.section == 2 {
