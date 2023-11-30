@@ -11,7 +11,7 @@ class HomePromotionService {
     static let shared = HomePromotionService()
     private init() {}
     
-    func makeRequest() -> URLRequest {
+    private func makeRequest() -> URLRequest {
         let baseURL = Bundle.main.object(forInfoDictionaryKey: Config.Keys.Plist.baseURL) as? String ?? ""
         guard let url = URL(string: baseURL + StringLiterals.Home.thirdSection.categoryURL) else {
             fatalError("Failed to create URL")
@@ -32,13 +32,21 @@ class HomePromotionService {
             guard let httpResponse = response as? HTTPURLResponse else {
                 throw NetworkError.responseError
             }
-            return parsePromotionData(data: data)
+            if httpResponse.statusCode == 200 {
+                return parsePromotionData(data: data)
+            } else if httpResponse.statusCode == 404 {
+                throw NetworkError.notFoundError
+            } else if httpResponse.statusCode == 500 {
+                throw NetworkError.internalServerError
+            } else {
+                throw NetworkError.unknownError
+            }
         } catch {
             throw error
         }
     }
     
-    func parsePromotionData(data: Data) -> PromotionDataModel? {
+    private func parsePromotionData(data: Data) -> PromotionDataModel? {
         do {
             let jsonDecoder = JSONDecoder()
             let result = try jsonDecoder.decode(PromotionDataModel.self, from: data)
