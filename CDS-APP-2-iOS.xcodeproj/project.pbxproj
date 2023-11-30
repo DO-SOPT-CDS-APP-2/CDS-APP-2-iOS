@@ -46,6 +46,8 @@
 		2A0C02342B0A6681005764FA /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0C02332B0A6681005764FA /* UIColor+.swift */; };
 		2A0C02362B0A6B5B005764FA /* UIImage+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0C02352B0A6B5B005764FA /* UIImage+.swift */; };
 		2A2EAFE52B176A2C002D3800 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A2EAFE42B176A2C002D3800 /* NetworkError.swift */; };
+		2A2EAFEA2B1826A2002D3800 /* HeartButtonService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A2EAFE92B1826A2002D3800 /* HeartButtonService.swift */; };
+		2A2EAFEC2B182ED1002D3800 /* HeartButtonResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A2EAFEB2B182ED1002D3800 /* HeartButtonResponseDTO.swift */; };
 		2A5296E72B051E8400279401 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5296E62B051E8400279401 /* AppDelegate.swift */; };
 		2A5296E92B051E8400279401 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5296E82B051E8400279401 /* SceneDelegate.swift */; };
 		2A5296EB2B051E8400279401 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5296EA2B051E8400279401 /* HomeViewController.swift */; };
@@ -150,6 +152,8 @@
 		2A0C02332B0A6681005764FA /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		2A0C02352B0A6B5B005764FA /* UIImage+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+.swift"; sourceTree = "<group>"; };
 		2A2EAFE42B176A2C002D3800 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		2A2EAFE92B1826A2002D3800 /* HeartButtonService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartButtonService.swift; sourceTree = "<group>"; };
+		2A2EAFEB2B182ED1002D3800 /* HeartButtonResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartButtonResponseDTO.swift; sourceTree = "<group>"; };
 		2A5296E32B051E8400279401 /* CDS-APP-2-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CDS-APP-2-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A5296E62B051E8400279401 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2A5296E82B051E8400279401 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -331,6 +335,7 @@
 			children = (
 				A1A8FE3A2B186288006D0C25 /* HatCategory */,
 				2A0C021B2B0A5F66005764FA /* Foundation */,
+				2A2EAFE62B182672002D3800 /* Category */,
 				2A0C02172B0A5F1F005764FA /* Home */,
 			);
 			path = Network;
@@ -453,6 +458,31 @@
 				0583D65A2B1851A100A87981 /* HomePromotionService.swift */,
 			);
 			path = Sevice;
+			sourceTree = "<group>";
+		};
+		2A2EAFE62B182672002D3800 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				2A2EAFE72B182682002D3800 /* DTO */,
+				2A2EAFE82B182687002D3800 /* Service */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		2A2EAFE72B182682002D3800 /* DTO */ = {
+			isa = PBXGroup;
+			children = (
+				2A2EAFEB2B182ED1002D3800 /* HeartButtonResponseDTO.swift */,
+			);
+			path = DTO;
+			sourceTree = "<group>";
+		};
+		2A2EAFE82B182687002D3800 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				2A2EAFE92B1826A2002D3800 /* HeartButtonService.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 		2A5296DA2B051E8400279401 = {
@@ -833,6 +863,7 @@
 				832B0C672B1675FC0042A417 /* ReviewInfoHeaderCollectionReusableView.swift in Sources */,
 				05C3D3B22B1511D400A51903 /* HomeSeeAllReusableView.swift in Sources */,
 				2A5296EB2B051E8400279401 /* HomeViewController.swift in Sources */,
+				2A2EAFEA2B1826A2002D3800 /* HeartButtonService.swift in Sources */,
 				05C3D3AE2B150CD800A51903 /* HomeProductCollectionViewCell.swift in Sources */,
 				056F2F372B0DE5BC00BA6ED8 /* HomeTopView.swift in Sources */,
 				2AB794632B0CFDE8003DFF48 /* ProductInfoCollectionViewCell.swift in Sources */,
@@ -868,6 +899,7 @@
 				2AB794622B0CFDE8003DFF48 /* MainInfoCollectionViewCell.swift in Sources */,
 				A1A29DED2B0F223C00C9F25D /* HeaderCollectionViewCell.swift in Sources */,
 				2AB794512B0CFD15003DFF48 /* CategoryTableViewCell.swift in Sources */,
+				2A2EAFEC2B182ED1002D3800 /* HeartButtonResponseDTO.swift in Sources */,
 				058D7AB72B10CBB5002D6A0A /* HomeCardCollectionViewCell.swift in Sources */,
 				A1AE48F92B16CF810069859F /* DetailProductCollectionViewCell.swift in Sources */,
 				056F2F3B2B0DF67D00BA6ED8 /* ChipView.swift in Sources */,
