@@ -22,6 +22,7 @@ final class HatDetailViewController: UIViewController {
     private let hatDetailMainInfoView = MainInfoCollectionViewCell()
     private let scrollToTopButton = UIButton(type: .custom)
     private var detailProductData : DataClass?
+    private var detailProductInfo : DataClass?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -145,7 +146,7 @@ final class HatDetailViewController: UIViewController {
                 do {
                     let hatDetailResponse = try await HatDetailService.shared.getHatDetailWithAPI(productID: 4)
                     detailProductData = hatDetailResponse?.data
-                    let detailProductInfo = DataClass(imageURL: detailProductData?.imageURL ?? "",
+                    detailProductInfo = DataClass(imageURL: detailProductData?.imageURL ?? "",
                                                       brand: detailProductData?.brand ?? "",
                                                       name: detailProductData?.name ?? "",
                                                       price: detailProductData?.price ?? 0,
@@ -155,6 +156,8 @@ final class HatDetailViewController: UIViewController {
                                                       pointRate: detailProductData?.pointRate ?? 0,
                                                       description: detailProductData?.description ?? ""
                     )
+                    print("🍎🍎🍎", detailProductInfo)
+                    detailcollectionView.reloadData()
                 } catch {
                     print("상세 정보를 가져오는 중 에러가 발생했습니다: \(error)")
                 }
@@ -194,6 +197,8 @@ extension HatDetailViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.section == 0 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainInfoCollectionViewCell.className, for: indexPath) as! MainInfoCollectionViewCell
+            //guard let dataForCell = detailProductInfo else { return MainInfoCollectionViewCell() }
+            cell.bindData(item: detailProductInfo)
             return cell
         }
         else if indexPath.section == 1 {

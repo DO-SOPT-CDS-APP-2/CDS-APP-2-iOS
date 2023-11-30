@@ -81,7 +81,6 @@ final class MainInfoCollectionViewCell: UICollectionViewCell {
         brandLabel.do {
             $0.textColor = .darkGray
             $0.font = .krSemiBold(ofSize: 12.adjusted)
-            $0.text = StringLiterals.HatDetail.MainInfo.brandKR
         }
         
         brandmoreIcon.do {
@@ -91,7 +90,6 @@ final class MainInfoCollectionViewCell: UICollectionViewCell {
         productnameLabel.do {
             $0.textColor = .black
             $0.font = .enDisplayBold(ofSize: 14.adjusted)
-            $0.text = StringLiterals.HatDetail.MainInfo.productName
         }
         
     
@@ -118,39 +116,28 @@ final class MainInfoCollectionViewCell: UICollectionViewCell {
         
         priceLabel.do {
             $0.textColor = .lightGray
-            $0.text = StringLiterals.HatDetail.MainInfo.originPrice
+            $0.font = .krBold(ofSize: 14.adjusted)
         }
-        let priceattributedString = NSMutableAttributedString(string: priceLabel.text ?? "")
-        priceattributedString.addAttribute(.font, value: UIFont.enDisplayBold(ofSize: 14.adjusted), range: NSRange(location: 0, length: priceattributedString.length - 1))
-        priceattributedString.addAttribute(.font, value: UIFont.krBold(ofSize: 14.adjusted), range: NSRange(location: priceattributedString.length - 1, length: 1))
-        priceLabel.attributedText = priceattributedString
+
 
         discountpercentLabel.do {
             $0.textColor = .point
             $0.font = .enDisplayBold(ofSize: 20.adjusted)
-            $0.text = StringLiterals.HatDetail.MainInfo.discountPercent
         }
         
         discountpriceLabel.do {
             $0.textColor = .black
-            $0.text = StringLiterals.HatDetail.MainInfo.discountPrice
+            $0.font = .enDisplayBold(ofSize: 20.adjusted)
         }
-        let discountpriceattributedString = NSMutableAttributedString(string: discountpriceLabel.text ?? "")
-        discountpriceattributedString.addAttribute(.font, value: UIFont.enDisplayBold(ofSize: 20.adjusted), range: NSRange(location: 0, length: discountpriceattributedString.length - 1))
-        discountpriceattributedString.addAttribute(.font, value: UIFont.krBold(ofSize: 20.adjusted), range: NSRange(location: discountpriceattributedString.length - 1, length: 1))
-        discountpriceLabel.attributedText = discountpriceattributedString
-        
-        
+
         pointLabel.do {
             $0.textColor = .darkGray
             $0.font = .enDisplayMedium(ofSize: 10.adjusted)
-            $0.text = StringLiterals.HatDetail.MainInfo.point
         }
         
         pointpercentLabel.do {
             $0.textColor = .darkGray
             $0.font = .enDisplayMedium(ofSize: 12.adjusted)
-            $0.text = StringLiterals.HatDetail.MainInfo.pointPercent
         }
     
         pointdescriptLabel.do {
@@ -298,7 +285,7 @@ final class MainInfoCollectionViewCell: UICollectionViewCell {
         
         discountpriceLabel.snp.makeConstraints {
             $0.top.equalTo(discountpercentLabel.snp.top)
-            $0.leading.equalTo(brandLabel.snp.leading).offset(40.adjusted)
+            $0.leading.equalTo(brandLabel.snp.leading).offset(50.adjusted)
         }
         
         pointLabel.snp.makeConstraints {
@@ -382,14 +369,15 @@ final class MainInfoCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    func bindData(item: HatDetailResponseDTO) {
-        brandLabel.text = item.data.brand
-        productnameLabel.text = item.data.name
-        priceLabel.text = String(item.data.price)
-        discountpercentLabel.text = String(item.data.discountRate)
-        discountpriceLabel.text = String(item.data.discountPrice)
-        pointLabel.text = String(item.data.point)
-        pointpercentLabel.text = String(item.data.pointRate)
+    func bindData(item: DataClass?) {
+        guard let item else { return }
+        brandLabel.text = item.brand
+        productnameLabel.text = item.name
+        priceLabel.text = String(item.price) + "원"
+        discountpercentLabel.text = String(item.discountRate) + "%"
+        discountpriceLabel.text = String(item.discountPrice) + "원"
+        pointLabel.text = String(item.point) + "p"
+        pointpercentLabel.text = " (" + String(item.pointRate) + "%)"
     }
     
     
