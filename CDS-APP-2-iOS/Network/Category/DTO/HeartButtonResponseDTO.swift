@@ -18,4 +18,3 @@ struct HeartButtonResponseDTO: Decodable {
 struct DataStruct: Decodable {
     let isMade: Bool
 }
-

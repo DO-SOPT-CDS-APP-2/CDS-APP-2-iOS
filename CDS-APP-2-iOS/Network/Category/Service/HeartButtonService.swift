@@ -36,9 +36,9 @@ class HeartButtonService {
         return request
     }
     
-    func getDataTransferObject(memberId: Int, productId: Int) async throws -> HeartButtonResponseDTO? {
+    func putDataTransferObject(memberId: Int, productId: Int) async throws -> HeartButtonResponseDTO? {
         do {
-            let request = self.makeRequestURL(memberId: memberId, productId: productId + 1)
+            let request = self.makeRequestURL(memberId: memberId, productId: productId)
             let (data, response) = try await URLSession.shared.data(for: request)
             guard let httpResponse = response as? HTTPURLResponse else {
                 throw NetworkError.responseError
