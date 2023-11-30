@@ -15,7 +15,7 @@ final class HomeViewController: UIViewController {
     // MARK: - Properties
     
     private let recommendSmallCellData: [RecommendSmallCellData] = RecommendSmallCellData.recommendSmallCellDummy()
-    private let promotionCellData: [PromotionCellData] = PromotionCellData.promotionCellDummy()
+    private var promotionCellData: [PromotionData]?
     private let productCellData: [ProductCellData] = ProductCellData.productCellDummy()
     private let brandIssueSmallCellData: [ProductCellData] = ProductCellData.brandIssueCellDummy()
     private let brandIssueBigCellData: [UIImage] = [ImageLiterals.img.imgHomeBrand1, ImageLiterals.img.imgHomeBrand2]
@@ -32,9 +32,25 @@ final class HomeViewController: UIViewController {
         super.viewDidLoad()
         
         addFunctions()
+        getPromotionWithAPI()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        getPromotionWithAPI()
     }
     
     // MARK: - Functions
+    
+    private func addFunctions() {
+        setUI()
+        setHierachy()
+        setLayout()
+        setRegister()
+        setDelegate()
+        setNavigation()
+    }
     
     private func setUI() {
         self.view.backgroundColor = .clear
@@ -48,15 +64,6 @@ final class HomeViewController: UIViewController {
         homeView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
-    }
-    
-    private func addFunctions() {
-        setUI()
-        setHierachy()
-        setLayout()
-        setRegister()
-        setDelegate()
-        setNavigation()
     }
     
     private func setRegister() {
@@ -110,6 +117,16 @@ final class HomeViewController: UIViewController {
     private func setNavigation() {
         self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
+    
+    private func getPromotionWithAPI() {
+        Task {
+            do {
+                let status = try await HomePromotionService.shared.getPromotionData()
+                promotionCellData = status?.data
+                homeView.homeCollectionView.reloadData()
+            }
+        }
+    }
 }
 
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -125,7 +142,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         case 1:
             return 5
         case 2:
-            return 2
+            return promotionCellData?.count ?? 0
         case 3:
             return 6
         case 4:
@@ -167,7 +184,11 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         case .promotion:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomePromotionCollectionViewCell.className,
                                                                 for: indexPath) as? HomePromotionCollectionViewCell else { return UICollectionViewCell() }
-            cell.configureCell(data: promotionCellData[indexPath.item])
+            cell.configurePromotionCell(data: promotionCellData?[indexPath.item] ?? PromotionData(imageURL: String(),
+                                                                                                  brand: String(),
+                                                                                                  name: String(),
+                                                                                                  discount: Int(),
+                                                                                                  price: Int()))
             cell.handler = { [weak self] in
                 guard let self else { return }
                 cell.isTapped.toggle()
@@ -193,7 +214,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             default:
                 guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeBrandSmallCollectionViewCell.className,
                                                                     for: indexPath) as? HomeBrandSmallCollectionViewCell else { return UICollectionViewCell() }
-
+                
                 cell.configureCell(data: brandIssueSmallCellData[indexPath.item - 2])
                 cell.handler = { [weak self] in
                     guard let self else { return }
@@ -209,7 +230,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         case .addition:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomePromotionCollectionViewCell.className,
                                                                 for: indexPath) as? HomePromotionCollectionViewCell else { return UICollectionViewCell() }
-            cell.configureCell(data: additionCellData[indexPath.item])
+            cell.configureAdditionCell(data: additionCellData[indexPath.item])
             cell.handler = { [weak self] in
                 guard let self else { return }
                 cell.isTapped.toggle()
