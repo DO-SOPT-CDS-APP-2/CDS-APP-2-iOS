@@ -205,8 +205,6 @@ final class DetailProductCollectionViewCell: UICollectionViewCell {
         numberFormatter.numberStyle = .decimal
         let price = numberFormatter.string(for: detailProduct.productPrice)
         productPrice.text = price
-        
-        self.layoutIfNeeded()
     }
     
     @objc
