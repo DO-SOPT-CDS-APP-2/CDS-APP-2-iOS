@@ -170,7 +170,7 @@ enum StringLiterals {
             static let tenPercent = "10%"
             static let firstCellPrice = "106,200"
             static let secondCellPrice = "282,600"
-            static let categoryURL = "api/v1/category/home"
+            static let categoryURL = "/api/v1/category/home"
             static let heartCount = "148"
         }
         

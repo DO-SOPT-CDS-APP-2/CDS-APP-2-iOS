@@ -538,7 +538,6 @@
 		2AB794572B0CFDE8003DFF48 /* HatDetail */ = {
 			isa = PBXGroup;
 			children = (
-				832B0C542B15D8820042A417 /* Dummy */,
 				2AB794582B0CFDE8003DFF48 /* HatDetailViewController.swift */,
 				2AB794602B0CFDE8003DFF48 /* LayoutFactory.swift */,
 				2AB794592B0CFDE8003DFF48 /* cell */,
@@ -557,13 +556,6 @@
 				832B0C6F2B16A00E0042A417 /* InquireInfo */,
 			);
 			path = cell;
-			sourceTree = "<group>";
-		};
-		832B0C542B15D8820042A417 /* Dummy */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Dummy;
 			sourceTree = "<group>";
 		};
 		832B0C602B162C320042A417 /* FirstRecommend */ = {

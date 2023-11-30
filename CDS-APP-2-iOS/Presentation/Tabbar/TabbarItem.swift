@@ -43,4 +43,14 @@ enum TabbarItem: CaseIterable {
         case .my: return StringLiterals.Tabbar.title.my
         }
     }
+    
+    var targetViewController: UIViewController? {
+        switch self {
+        case .home: return HomeViewController()
+        case .category: return CategoryViewController()
+        case .search: return nil
+        case .like: return nil
+        case .my: return nil
+        }
+    }
 }

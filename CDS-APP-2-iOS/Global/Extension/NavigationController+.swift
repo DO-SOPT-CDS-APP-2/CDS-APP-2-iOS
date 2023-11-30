@@ -45,9 +45,6 @@ extension UINavigationController {
         let searchButtonImage = ImageLiterals.icon.icSearchBlack.withRenderingMode(.alwaysOriginal)
         let cartButtonImage = ImageLiterals.icon.icCartBlack.withRenderingMode(.alwaysOriginal)
         
-        let backButton = UIBarButtonItem(image: backButtonImage, style: .plain, target: nil, action: nil)
-        topViewController?.navigationItem.leftBarButtonItem = backButton
-        
         let searchButton = UIBarButtonItem(image: searchButtonImage, style: .plain, target: nil, action: nil)
         let cartButton = UIBarButtonItem(image: cartButtonImage, style: .plain, target: nil, action: nil)
         topViewController?.navigationItem.rightBarButtonItems = [searchButton, cartButton]

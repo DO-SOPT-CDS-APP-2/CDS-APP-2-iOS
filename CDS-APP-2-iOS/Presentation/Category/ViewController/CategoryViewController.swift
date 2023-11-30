@@ -178,7 +178,7 @@ extension CategoryViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension CategoryViewController: HatButtonAction {
     func hatButtonClicked() {
-        let viewController = HomeViewController()
-        self.navigationController?.pushViewController(viewController, animated: false)
+        let viewController = HatCategoryViewController()
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
 }
