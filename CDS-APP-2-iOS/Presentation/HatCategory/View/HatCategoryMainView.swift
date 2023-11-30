@@ -11,13 +11,13 @@ final class HatCategoryMainView: UIView {
     
     //MARK: - set Properties
     
+    private let scrollView = UIScrollView()
+    private let contentView = UIView()
     private let realtimeBestViewTitle = UILabel()
-    lazy var realtimeBestCollectionView = UICollectionView(frame: .zero,
-                                                           collectionViewLayout: UICollectionViewLayout())
+    lazy var realtimeBestCollectionView = UICollectionView(frame: .zero,collectionViewLayout: UICollectionViewLayout())
     private let divisionLine = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 0))
     lazy var productFilterCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout())
-    
-    
+    lazy var detailProductCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout())
     
     //MARK: - Life Cycle
     
@@ -30,6 +30,9 @@ final class HatCategoryMainView: UIView {
         
         self.setRealtimeCollectionViewLayout()
         self.setProductFilterCollectionViewLayout()
+        self.setDetailProductCollectionViewLayout()
+        
+        
     }
     
     @available(*, unavailable)
@@ -40,6 +43,11 @@ final class HatCategoryMainView: UIView {
     //MARK: - set UI
     
     private func setUI() {
+        scrollView.do {
+            $0.contentInsetAdjustmentBehavior = .never
+            $0.showsVerticalScrollIndicator = false
+        }
+
         realtimeBestViewTitle.do {
             $0.text = "실시간 베스트"
             $0.font = UIFont.krBold(ofSize: 16.adjusted)
@@ -59,20 +67,39 @@ final class HatCategoryMainView: UIView {
             $0.contentInsetAdjustmentBehavior = .never
             $0.showsHorizontalScrollIndicator = false
         }
+        
+        detailProductCollectionView.do {
+            $0.contentInsetAdjustmentBehavior = .never
+            $0.showsVerticalScrollIndicator = false
+        }
     }
     
     //MARK: - set Heirachy
     
     private func setHierachy() {
-        self.addSubviews(realtimeBestViewTitle,
-                         realtimeBestCollectionView,
-                         divisionLine,
-                         productFilterCollectionView)
+        self.addSubview(scrollView)
+        scrollView.addSubview(contentView)
+        contentView.addSubviews(realtimeBestViewTitle,
+                                realtimeBestCollectionView,
+                                divisionLine,
+                                productFilterCollectionView,
+                                detailProductCollectionView)
     }
     
     //MARK: - set Layout
     
     private func setLayout() {
+        scrollView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+            $0.width.equalToSuperview()
+        }
+        
+        contentView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+            $0.width.equalToSuperview()
+            $0.height.equalTo(1230.adjusted)
+        }
+        
         realtimeBestViewTitle.snp.makeConstraints {
             $0.top.equalToSuperview().inset(19.adjusted)
             $0.leading.equalToSuperview().inset(20.adjusted)
@@ -97,6 +124,12 @@ final class HatCategoryMainView: UIView {
             $0.trailing.equalToSuperview()
             $0.height.equalTo(31.adjusted)
         }
+        
+        detailProductCollectionView.snp.makeConstraints {
+            $0.top.equalTo(productFilterCollectionView.snp.bottom).offset(13.adjusted)
+            $0.leading.trailing.equalToSuperview()
+            $0.height.equalTo(670.adjusted)
+        }
     }
     
     //MARK: - set collectionView FlowLayout
@@ -111,8 +144,17 @@ final class HatCategoryMainView: UIView {
     private func setProductFilterCollectionViewLayout() {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .horizontal
-        flowLayout.minimumInteritemSpacing = 6
+        flowLayout.minimumLineSpacing = 6
         self.productFilterCollectionView.setCollectionViewLayout(flowLayout, animated: false)
+    }
+    
+    private func setDetailProductCollectionViewLayout() {
+        let flowLayout = UICollectionViewFlowLayout()
+        flowLayout.scrollDirection = .vertical
+        flowLayout.itemSize = CGSize(width: (UIScreen.main.bounds.width - 1) / 2 , height: 314.adjusted)
+        flowLayout.minimumInteritemSpacing = 1
+        flowLayout.minimumLineSpacing = 30
+        self.detailProductCollectionView.setCollectionViewLayout(flowLayout, animated: false)
     }
 }
 

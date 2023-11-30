@@ -63,10 +63,9 @@ final class FilterCategoryCollectionViewCell: UICollectionViewCell {
         }
         
         downDetailImageView.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(9.adjusted)
-            $0.bottom.equalToSuperview().inset(8.adjusted)
+            $0.centerY.equalToSuperview()
             $0.leading.equalTo(label.snp.trailing).offset(5.adjusted)
-            $0.trailing.equalToSuperview().inset(12.adjusted)
+            $0.size.equalTo(10.adjusted)
         }
     }
     

@@ -33,6 +33,10 @@ enum ImageLiterals {
         static var imgHatCategory2: UIImage { .load(named: "img_hatcategory_2")}
         static var imgHatCategory3: UIImage { .load(named: "img_hatcategory_3")}
         static var imgHatCategory4: UIImage { .load(named: "img_hatcategory_4")}
+        static var imgHatCategory5: UIImage { .load(named: "img_hatcategory_5")}
+        static var imgHatCategory6: UIImage { .load(named: "img_hatcategory_6")}
+        static var imgHatCategory7: UIImage { .load(named: "img_hatcategory_7")}
+        static var imgHatCategory8: UIImage { .load(named: "img_hatcategory_8")}
         static var imgHat2 : UIImage{ .load(named: "img_hat2")}
         static var imgHatModel : UIImage{ .load(named: "img_hatmodel")}
         static var imgHome1 : UIImage{ .load(named: "img_home_2")}
