@@ -101,7 +101,6 @@
 		83A886472B1852D3003D12FC /* HatDetailResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A886462B1852D3003D12FC /* HatDetailResponseDTO.swift */; };
 		83AC9A9D2B15188100B10222 /* FirstRecommendCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83AC9A9C2B15188100B10222 /* FirstRecommendCollectionViewCell.swift */; };
 		A122D17F2B14DA82009752A7 /* MainCategoryDummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = A122D17E2B14DA82009752A7 /* MainCategoryDummy.swift */; };
-		A17FBB4E2B11B1EC009214D9 /* HatCategoryLayoutFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17FBB4D2B11B1EC009214D9 /* HatCategoryLayoutFactory.swift */; };
 		A17FBB552B11C227009214D9 /* HatCategoryMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17FBB542B11C227009214D9 /* HatCategoryMainView.swift */; };
 		A17FBB572B11C52F009214D9 /* RealTimeBestCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17FBB562B11C52F009214D9 /* RealTimeBestCollectionViewCell.swift */; };
 		A19559A12B0DC360002EED37 /* HatCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19559A02B0DC360002EED37 /* HatCategoryViewController.swift */; };
@@ -209,7 +208,6 @@
 		83A886462B1852D3003D12FC /* HatDetailResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HatDetailResponseDTO.swift; sourceTree = "<group>"; };
 		83AC9A9C2B15188100B10222 /* FirstRecommendCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstRecommendCollectionViewCell.swift; sourceTree = "<group>"; };
 		A122D17E2B14DA82009752A7 /* MainCategoryDummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCategoryDummy.swift; sourceTree = "<group>"; };
-		A17FBB4D2B11B1EC009214D9 /* HatCategoryLayoutFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HatCategoryLayoutFactory.swift; sourceTree = "<group>"; };
 		A17FBB542B11C227009214D9 /* HatCategoryMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HatCategoryMainView.swift; sourceTree = "<group>"; };
 		A17FBB562B11C52F009214D9 /* RealTimeBestCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealTimeBestCollectionViewCell.swift; sourceTree = "<group>"; };
 		A18370082B0D01B700B64568 /* TabbarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarItem.swift; sourceTree = "<group>"; };
@@ -719,14 +717,6 @@
 			path = Service;
 			sourceTree = "<group>";
 		};
-		A17FBB4C2B11B1AE009214D9 /* Enum */ = {
-			isa = PBXGroup;
-			children = (
-				A17FBB4D2B11B1EC009214D9 /* HatCategoryLayoutFactory.swift */,
-			);
-			path = Enum;
-			sourceTree = "<group>";
-		};
 		A17FBB532B11C219009214D9 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -740,7 +730,6 @@
 			isa = PBXGroup;
 			children = (
 				A17FBB532B11C219009214D9 /* View */,
-				A17FBB4C2B11B1AE009214D9 /* Enum */,
 				A1A29DEE2B0F37C900C9F25D /* Dummy */,
 				A1A29DEB2B0F221900C9F25D /* Cell */,
 				A195599F2B0DC34E002EED37 /* ViewController */,
@@ -945,7 +934,6 @@
 				832B0C582B15E9230042A417 /* SecondRecommendCollectionViewCell.swift in Sources */,
 				2AB794532B0CFD15003DFF48 /* CategoryTableView.swift in Sources */,
 				832B0C692B168ED20042A417 /* ReviewPhotoCollectionViewCell.swift in Sources */,
-				A17FBB4E2B11B1EC009214D9 /* HatCategoryLayoutFactory.swift in Sources */,
 				83A886472B1852D3003D12FC /* HatDetailResponseDTO.swift in Sources */,
 				2A0C021D2B0A5F78005764FA /* Config.swift in Sources */,
 				A19559B62B0DFAA0002EED37 /* NavigationController+.swift in Sources */,
