@@ -48,6 +48,7 @@
 		2A2EAFE52B176A2C002D3800 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A2EAFE42B176A2C002D3800 /* NetworkError.swift */; };
 		2A2EAFEA2B1826A2002D3800 /* HeartButtonService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A2EAFE92B1826A2002D3800 /* HeartButtonService.swift */; };
 		2A2EAFEC2B182ED1002D3800 /* HeartButtonResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A2EAFEB2B182ED1002D3800 /* HeartButtonResponseDTO.swift */; };
+		2A2EAFFA2B19E932002D3800 /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 2A2EAFF92B19E932002D3800 /* Config.xcconfig */; };
 		2A5296E72B051E8400279401 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5296E62B051E8400279401 /* AppDelegate.swift */; };
 		2A5296E92B051E8400279401 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5296E82B051E8400279401 /* SceneDelegate.swift */; };
 		2A5296EB2B051E8400279401 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5296EA2B051E8400279401 /* HomeViewController.swift */; };
@@ -96,6 +97,8 @@
 		835899182B13016B00503CD1 /* MainInfoDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835899172B13016B00503CD1 /* MainInfoDetailView.swift */; };
 		835A452A2B1490360026F6C8 /* SizeInfoHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835A45292B1490360026F6C8 /* SizeInfoHeaderCollectionReusableView.swift */; };
 		835A452C2B1493760026F6C8 /* SizeInfoFooterCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835A452B2B1493760026F6C8 /* SizeInfoFooterCollectionReusableView.swift */; };
+		83A886452B184E9A003D12FC /* HatDetailService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A886442B184E9A003D12FC /* HatDetailService.swift */; };
+		83A886472B1852D3003D12FC /* HatDetailResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A886462B1852D3003D12FC /* HatDetailResponseDTO.swift */; };
 		83AC9A9D2B15188100B10222 /* FirstRecommendCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83AC9A9C2B15188100B10222 /* FirstRecommendCollectionViewCell.swift */; };
 		A122D17F2B14DA82009752A7 /* MainCategoryDummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = A122D17E2B14DA82009752A7 /* MainCategoryDummy.swift */; };
 		A17FBB4E2B11B1EC009214D9 /* HatCategoryLayoutFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17FBB4D2B11B1EC009214D9 /* HatCategoryLayoutFactory.swift */; };
@@ -154,6 +157,7 @@
 		2A2EAFE42B176A2C002D3800 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		2A2EAFE92B1826A2002D3800 /* HeartButtonService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartButtonService.swift; sourceTree = "<group>"; };
 		2A2EAFEB2B182ED1002D3800 /* HeartButtonResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartButtonResponseDTO.swift; sourceTree = "<group>"; };
+		2A2EAFF92B19E932002D3800 /* Config.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		2A5296E32B051E8400279401 /* CDS-APP-2-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CDS-APP-2-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A5296E62B051E8400279401 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2A5296E82B051E8400279401 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -201,9 +205,10 @@
 		835899172B13016B00503CD1 /* MainInfoDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInfoDetailView.swift; sourceTree = "<group>"; };
 		835A45292B1490360026F6C8 /* SizeInfoHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeInfoHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 		835A452B2B1493760026F6C8 /* SizeInfoFooterCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeInfoFooterCollectionReusableView.swift; sourceTree = "<group>"; };
+		83A886442B184E9A003D12FC /* HatDetailService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HatDetailService.swift; sourceTree = "<group>"; };
+		83A886462B1852D3003D12FC /* HatDetailResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HatDetailResponseDTO.swift; sourceTree = "<group>"; };
 		83AC9A9C2B15188100B10222 /* FirstRecommendCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstRecommendCollectionViewCell.swift; sourceTree = "<group>"; };
 		A122D17E2B14DA82009752A7 /* MainCategoryDummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCategoryDummy.swift; sourceTree = "<group>"; };
-		A12C157F2B18AA1100DAF419 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		A17FBB4D2B11B1EC009214D9 /* HatCategoryLayoutFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HatCategoryLayoutFactory.swift; sourceTree = "<group>"; };
 		A17FBB542B11C227009214D9 /* HatCategoryMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HatCategoryMainView.swift; sourceTree = "<group>"; };
 		A17FBB562B11C52F009214D9 /* RealTimeBestCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealTimeBestCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -334,6 +339,7 @@
 			isa = PBXGroup;
 			children = (
 				A1A8FE3A2B186288006D0C25 /* HatCategory */,
+				83A886432B184E78003D12FC /* HatDetail */,
 				2A0C021B2B0A5F66005764FA /* Foundation */,
 				2A2EAFE62B182672002D3800 /* Category */,
 				2A0C02172B0A5F1F005764FA /* Home */,
@@ -488,6 +494,7 @@
 		2A5296DA2B051E8400279401 = {
 			isa = PBXGroup;
 			children = (
+				2A2EAFF92B19E932002D3800 /* Config.xcconfig */,
 				2A5296E52B051E8400279401 /* CDS-APP-2-iOS */,
 				2A5296E42B051E8400279401 /* Products */,
 				835898C22B0FA61100503CD1 /* Recovered References */,
@@ -510,7 +517,6 @@
 				2A0C02082B0A5E4C005764FA /* Presentation */,
 				2A0C02072B0A5E3F005764FA /* Network */,
 				2A5296F42B051E8600279401 /* Info.plist */,
-				A12C157F2B18AA1100DAF419 /* Config.xcconfig */,
 			);
 			path = "CDS-APP-2-iOS";
 			sourceTree = "<group>";
@@ -688,6 +694,31 @@
 			path = Tabbar;
 			sourceTree = "<group>";
 		};
+		83A886432B184E78003D12FC /* HatDetail */ = {
+			isa = PBXGroup;
+			children = (
+				83A886492B18580A003D12FC /* Service */,
+				83A886482B1857FF003D12FC /* DTO */,
+			);
+			path = HatDetail;
+			sourceTree = "<group>";
+		};
+		83A886482B1857FF003D12FC /* DTO */ = {
+			isa = PBXGroup;
+			children = (
+				83A886462B1852D3003D12FC /* HatDetailResponseDTO.swift */,
+			);
+			path = DTO;
+			sourceTree = "<group>";
+		};
+		83A886492B18580A003D12FC /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				83A886442B184E9A003D12FC /* HatDetailService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
 		A17FBB4C2B11B1AE009214D9 /* Enum */ = {
 			isa = PBXGroup;
 			children = (
@@ -842,6 +873,7 @@
 				2A0C022B2B0A61D3005764FA /* GmarketSansTTFLight.ttf in Resources */,
 				2A5296F02B051E8600279401 /* Assets.xcassets in Resources */,
 				2A0C022A2B0A61D3005764FA /* GmarketSansTTFBold.ttf in Resources */,
+				2A2EAFFA2B19E932002D3800 /* Config.xcconfig in Resources */,
 				2A0C022D2B0A61D3005764FA /* GmarketSansTTFMedium.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -889,6 +921,7 @@
 				832B0C5F2B1627B60042A417 /* SecondDetailCollectionViewCell.swift in Sources */,
 				2A0C02122B0A5EAE005764FA /* UIView+.swift in Sources */,
 				83AC9A9D2B15188100B10222 /* FirstRecommendCollectionViewCell.swift in Sources */,
+				83A886452B184E9A003D12FC /* HatDetailService.swift in Sources */,
 				835898E42B0FFEFE00503CD1 /* TabbarItem.swift in Sources */,
 				835898CF2B0FA68D00503CD1 /* SizeInfoCollectionViewCell.swift in Sources */,
 				2AB794502B0CFD15003DFF48 /* CategoryDetailTableViewCell.swift in Sources */,
@@ -913,6 +946,7 @@
 				2AB794532B0CFD15003DFF48 /* CategoryTableView.swift in Sources */,
 				832B0C692B168ED20042A417 /* ReviewPhotoCollectionViewCell.swift in Sources */,
 				A17FBB4E2B11B1EC009214D9 /* HatCategoryLayoutFactory.swift in Sources */,
+				83A886472B1852D3003D12FC /* HatDetailResponseDTO.swift in Sources */,
 				2A0C021D2B0A5F78005764FA /* Config.swift in Sources */,
 				A19559B62B0DFAA0002EED37 /* NavigationController+.swift in Sources */,
 				2A0C020E2B0A5E9A005764FA /* ImageLiterals.swift in Sources */,
@@ -968,7 +1002,7 @@
 /* Begin XCBuildConfiguration section */
 		2A5296F52B051E8600279401 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A12C157F2B18AA1100DAF419 /* Config.xcconfig */;
+			baseConfigurationReference = 2A2EAFF92B19E932002D3800 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -1029,7 +1063,7 @@
 		};
 		2A5296F62B051E8600279401 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A12C157F2B18AA1100DAF419 /* Config.xcconfig */;
+			baseConfigurationReference = 2A2EAFF92B19E932002D3800 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;

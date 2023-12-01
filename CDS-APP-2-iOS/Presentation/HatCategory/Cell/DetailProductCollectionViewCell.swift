@@ -24,6 +24,7 @@ final class DetailProductCollectionViewCell: UICollectionViewCell {
     private let heartNumber = UILabel()
     private let starRate = UILabel()
     private let starNumber = UILabel()
+    private var productID: Int = Int()
     private lazy var likedButton = UIButton()
     
     var handler: (() -> (Void))?
@@ -189,6 +190,7 @@ final class DetailProductCollectionViewCell: UICollectionViewCell {
     //MARK: - Methods
     
     func bindData(data: HatCategoryDTO) {
+        productID = data.productId
         productImageView.kfSetImage(url: data.imageUrl)
         brandName.text = data.brand
         productName.text = data.name
