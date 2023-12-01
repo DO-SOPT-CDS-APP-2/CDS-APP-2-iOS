@@ -32,13 +32,13 @@ final class HomeViewController: UIViewController {
         super.viewDidLoad()
         
         addFunctions()
-        getPromotionWithAPI()
+        registerCell()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        getPromotionWithAPI()
+        registerCell()
     }
     
     // MARK: - Functions
@@ -118,7 +118,7 @@ final class HomeViewController: UIViewController {
         self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
-    private func getPromotionWithAPI() {
+    private func registerCell() {
         Task {
             do {
                 let status = try await HomePromotionService.shared.getPromotionData()
