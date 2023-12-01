@@ -96,10 +96,10 @@
 		835899182B13016B00503CD1 /* MainInfoDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835899172B13016B00503CD1 /* MainInfoDetailView.swift */; };
 		835A452A2B1490360026F6C8 /* SizeInfoHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835A45292B1490360026F6C8 /* SizeInfoHeaderCollectionReusableView.swift */; };
 		835A452C2B1493760026F6C8 /* SizeInfoFooterCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835A452B2B1493760026F6C8 /* SizeInfoFooterCollectionReusableView.swift */; };
-		83A886422B184A10003D12FC /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 83A886412B184A10003D12FC /* Config.xcconfig */; };
 		83A886452B184E9A003D12FC /* HatDetailService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A886442B184E9A003D12FC /* HatDetailService.swift */; };
 		83A886472B1852D3003D12FC /* HatDetailResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A886462B1852D3003D12FC /* HatDetailResponseDTO.swift */; };
 		83AC9A9D2B15188100B10222 /* FirstRecommendCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83AC9A9C2B15188100B10222 /* FirstRecommendCollectionViewCell.swift */; };
+		83D82BC62B19AB34008C6FEC /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 83D82BC52B19AB34008C6FEC /* Config.xcconfig */; };
 		A122D17F2B14DA82009752A7 /* MainCategoryDummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = A122D17E2B14DA82009752A7 /* MainCategoryDummy.swift */; };
 		A17FBB4E2B11B1EC009214D9 /* HatCategoryLayoutFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17FBB4D2B11B1EC009214D9 /* HatCategoryLayoutFactory.swift */; };
 		A17FBB552B11C227009214D9 /* HatCategoryMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17FBB542B11C227009214D9 /* HatCategoryMainView.swift */; };
@@ -204,12 +204,11 @@
 		835899172B13016B00503CD1 /* MainInfoDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInfoDetailView.swift; sourceTree = "<group>"; };
 		835A45292B1490360026F6C8 /* SizeInfoHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeInfoHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 		835A452B2B1493760026F6C8 /* SizeInfoFooterCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeInfoFooterCollectionReusableView.swift; sourceTree = "<group>"; };
-		83A886412B184A10003D12FC /* Config.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		83A886442B184E9A003D12FC /* HatDetailService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HatDetailService.swift; sourceTree = "<group>"; };
 		83A886462B1852D3003D12FC /* HatDetailResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HatDetailResponseDTO.swift; sourceTree = "<group>"; };
 		83AC9A9C2B15188100B10222 /* FirstRecommendCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstRecommendCollectionViewCell.swift; sourceTree = "<group>"; };
+		83D82BC52B19AB34008C6FEC /* Config.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Config.xcconfig; path = ../../Downloads/Config.xcconfig; sourceTree = "<group>"; };
 		A122D17E2B14DA82009752A7 /* MainCategoryDummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCategoryDummy.swift; sourceTree = "<group>"; };
-		A12C157F2B18AA1100DAF419 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		A17FBB4D2B11B1EC009214D9 /* HatCategoryLayoutFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HatCategoryLayoutFactory.swift; sourceTree = "<group>"; };
 		A17FBB542B11C227009214D9 /* HatCategoryMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HatCategoryMainView.swift; sourceTree = "<group>"; };
 		A17FBB562B11C52F009214D9 /* RealTimeBestCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealTimeBestCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -495,7 +494,7 @@
 		2A5296DA2B051E8400279401 = {
 			isa = PBXGroup;
 			children = (
-				83A886412B184A10003D12FC /* Config.xcconfig */,
+				83D82BC52B19AB34008C6FEC /* Config.xcconfig */,
 				2A5296E52B051E8400279401 /* CDS-APP-2-iOS */,
 				2A5296E42B051E8400279401 /* Products */,
 				835898C22B0FA61100503CD1 /* Recovered References */,
@@ -518,7 +517,6 @@
 				2A0C02082B0A5E4C005764FA /* Presentation */,
 				2A0C02072B0A5E3F005764FA /* Network */,
 				2A5296F42B051E8600279401 /* Info.plist */,
-				A12C157F2B18AA1100DAF419 /* Config.xcconfig */,
 			);
 			path = "CDS-APP-2-iOS";
 			sourceTree = "<group>";
@@ -875,7 +873,7 @@
 				2A0C022B2B0A61D3005764FA /* GmarketSansTTFLight.ttf in Resources */,
 				2A5296F02B051E8600279401 /* Assets.xcassets in Resources */,
 				2A0C022A2B0A61D3005764FA /* GmarketSansTTFBold.ttf in Resources */,
-				83A886422B184A10003D12FC /* Config.xcconfig in Resources */,
+				83D82BC62B19AB34008C6FEC /* Config.xcconfig in Resources */,
 				2A0C022D2B0A61D3005764FA /* GmarketSansTTFMedium.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1004,7 +1002,6 @@
 /* Begin XCBuildConfiguration section */
 		2A5296F52B051E8600279401 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A12C157F2B18AA1100DAF419 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -1065,7 +1062,6 @@
 		};
 		2A5296F62B051E8600279401 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A12C157F2B18AA1100DAF419 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
