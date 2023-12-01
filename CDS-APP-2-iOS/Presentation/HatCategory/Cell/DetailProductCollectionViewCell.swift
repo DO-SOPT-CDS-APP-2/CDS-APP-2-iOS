@@ -76,7 +76,6 @@ final class DetailProductCollectionViewCell: UICollectionViewCell {
         }
         
         heartNumber.do {
-            $0.text = "93,694"
             $0.font = .enDisplayMedium(ofSize: 8.adjusted)
             $0.textColor = .mediumGray
         }
@@ -92,7 +91,6 @@ final class DetailProductCollectionViewCell: UICollectionViewCell {
         }
         
         starNumber.do {
-            $0.text = "(13286)"
             $0.font = .enDisplayMedium(ofSize: 8.adjusted)
             $0.textColor = .mediumGray
         }

@@ -141,10 +141,10 @@ enum StringLiterals {
                 static let heartNumber3 = "31,267"
                 static let heartNumber4 = "20,177"
                 
-                static let starNumber1 = "13286"
-                static let starNumber2 = "3057"
-                static let starNumber3 = "4091"
-                static let starNumber4 = "1665"
+                static let starNumber1 = "(13286)"
+                static let starNumber2 = "(3057)"
+                static let starNumber3 = "(4091)"
+                static let starNumber4 = "(1665)"
             }
         }
     }
