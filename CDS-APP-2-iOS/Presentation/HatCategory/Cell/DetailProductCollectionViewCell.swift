@@ -196,9 +196,14 @@ final class DetailProductCollectionViewCell: UICollectionViewCell {
         productName.text = data.name
         if data.discount == 0 {
             salePercent.text = nil
+            productPrice.snp.makeConstraints {
+                $0.leading.equalToSuperview().inset(12.adjusted)
+            }
         } else {
             salePercent.text = "\(data.discount)%"
         }
+        
+        self.layoutIfNeeded()
         
         // 가격에 세자리마다 콤마 찍어주기
         let numberFormatter = NumberFormatter()
