@@ -68,6 +68,7 @@ final class HatDetailViewController: UIViewController {
         super.viewWillAppear(animated)
         
         setupNavigationBar()
+        self.tabBarController?.tabBar.isHidden = true
     }
     
     // MARK: - Set NavigationBar
@@ -150,7 +151,7 @@ final class HatDetailViewController: UIViewController {
         }
         
         scrollToTopButton.snp.makeConstraints {
-            $0.top.equalTo(detailcollectionView.snp.bottom).inset(120.adjusted)
+            $0.top.equalTo(detailcollectionView.snp.bottom).inset(70.adjusted)
             $0.leading.equalTo(detailcollectionView.snp.trailing).inset(70.adjusted)
         }
     }
