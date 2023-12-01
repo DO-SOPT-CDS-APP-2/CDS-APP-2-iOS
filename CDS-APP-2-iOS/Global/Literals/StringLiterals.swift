@@ -123,7 +123,6 @@ enum StringLiterals {
                 }
                 enum product4 {
                     static let name = "시엔느"
-                    static let salePercent = "5%"
                     static let price = "45,000"
                 }
             }
@@ -134,6 +133,18 @@ enum StringLiterals {
                 static let priceRange = "가격대"
                 static let productInfo = "상품정보"
                 static let brand = "브랜드"
+            }
+            
+            enum detailProduct{
+                static let heartNumber1 = "93,694"
+                static let heartNumber2 = "34,196"
+                static let heartNumber3 = "31,267"
+                static let heartNumber4 = "20,177"
+                
+                static let starNumber1 = "(13286)"
+                static let starNumber2 = "(3057)"
+                static let starNumber3 = "(4091)"
+                static let starNumber4 = "(1665)"
             }
         }
     }

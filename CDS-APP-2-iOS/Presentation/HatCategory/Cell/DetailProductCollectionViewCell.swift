@@ -77,7 +77,6 @@ final class DetailProductCollectionViewCell: UICollectionViewCell {
         }
         
         heartNumber.do {
-            $0.text = "93,694"
             $0.font = .enDisplayMedium(ofSize: 8.adjusted)
             $0.textColor = .mediumGray
         }
@@ -93,7 +92,6 @@ final class DetailProductCollectionViewCell: UICollectionViewCell {
         }
         
         starNumber.do {
-            $0.text = "(13286)"
             $0.font = .enDisplayMedium(ofSize: 8.adjusted)
             $0.textColor = .mediumGray
         }
@@ -192,22 +190,31 @@ final class DetailProductCollectionViewCell: UICollectionViewCell {
     //MARK: - Methods
     
     func bindData(data: HatCategoryDTO) {
-        // 이미지 킹피셔 익스텐션 추가해야함
         productID = data.productId
         productImageView.kfSetImage(url: data.imageUrl)
         brandName.text = data.brand
         productName.text = data.name
         if data.discount == 0 {
             salePercent.text = nil
+            productPrice.snp.makeConstraints {
+                $0.leading.equalToSuperview().inset(12.adjusted)
+            }
         } else {
             salePercent.text = "\(data.discount)%"
         }
+        
+        self.layoutIfNeeded()
         
         // 가격에 세자리마다 콤마 찍어주기
         let numberFormatter = NumberFormatter()
         numberFormatter.numberStyle = .decimal
         let price = numberFormatter.string(for: data.price)
         productPrice.text = price
+    }
+    
+    func bindHeartandStarNumber(data: DetailProductHeartandStar) {
+        heartNumber.text = data.heart
+        starNumber.text = data.star
     }
     
     @objc

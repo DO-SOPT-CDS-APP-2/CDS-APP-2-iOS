@@ -22,6 +22,7 @@ final class HatCategoryViewController: UIViewController {
     private let realtimeBestDummy = RealtimeBestItem.realtimeBestDummy()
     private let filterDummy = FilterCategory.filterCategoryDummy()
     private var detailProductData : [HatCategoryDTO]?
+    private let heartAndStarDummy = DetailProductHeartandStar.heartAndStarDummy()
     
     // MARK: - Life Cycle
     
@@ -209,7 +210,7 @@ extension HatCategoryViewController: UICollectionViewDataSource {
                                                                                      name: String(),
                                                                                      discount: Int(),
                                                                                      price: Int()))
-            
+            item.bindHeartandStarNumber(data: heartAndStarDummy[indexPath.row])
             return item
         }
     }
