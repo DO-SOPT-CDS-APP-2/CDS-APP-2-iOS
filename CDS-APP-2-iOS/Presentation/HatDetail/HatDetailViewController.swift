@@ -175,7 +175,7 @@ final class HatDetailViewController: UIViewController {
     func fetchHatDetailData() {
             Task {
                 do {
-                    let hatDetailResponse = try await HatDetailService.shared.getHatDetailWithAPI(productID: 3)
+                    let hatDetailResponse = try await HatDetailService.shared.getHatDetailWithAPI(productID: productId)
                     detailProductData = hatDetailResponse?.data
                     detailProductInfo = DataClass(imageURL: detailProductData?.imageURL ?? "",
                                                       brand: detailProductData?.brand ?? "",

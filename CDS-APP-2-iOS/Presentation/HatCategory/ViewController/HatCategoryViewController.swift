@@ -127,7 +127,6 @@ final class HatCategoryViewController: UIViewController {
             do {
                 let status = try await HatCategoryService.shared.getHatCategoryData(categoryId: 1)
                 detailProductData = status?.data
-                var productId = status?.data[0].productId ?? 0
                 hatCategoryMainView.detailProductCollectionView.reloadData()
             }
         }
