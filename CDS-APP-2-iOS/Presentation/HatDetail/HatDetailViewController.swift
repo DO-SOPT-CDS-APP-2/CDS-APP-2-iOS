@@ -12,6 +12,7 @@ import Then
 
 final class HatDetailViewController: UIViewController {
     
+    private var productId: Int
     private let detailcollectionView : UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -23,6 +24,15 @@ final class HatDetailViewController: UIViewController {
     private let scrollToTopButton = UIButton(type: .custom)
     private var detailProductData : DataClass?
     private var detailProductInfo : DataClass?
+    
+    init(forProductId: Int) {
+        self.productId = forProductId
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -165,7 +175,7 @@ final class HatDetailViewController: UIViewController {
     func fetchHatDetailData() {
             Task {
                 do {
-                    let hatDetailResponse = try await HatDetailService.shared.getHatDetailWithAPI(productID: 4)
+                    let hatDetailResponse = try await HatDetailService.shared.getHatDetailWithAPI(productID: productId)
                     detailProductData = hatDetailResponse?.data
                     detailProductInfo = DataClass(imageURL: detailProductData?.imageURL ?? "",
                                                       brand: detailProductData?.brand ?? "",
@@ -177,7 +187,6 @@ final class HatDetailViewController: UIViewController {
                                                       pointRate: detailProductData?.pointRate ?? 0,
                                                       description: detailProductData?.description ?? ""
                     )
-                    print("🍎🍎🍎", detailProductInfo)
                     detailcollectionView.reloadData()
                 } catch {
                     print("상세 정보를 가져오는 중 에러가 발생했습니다: \(error)")
@@ -223,7 +232,7 @@ extension HatDetailViewController: UICollectionViewDataSource {
         }
         else if indexPath.section == 1 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProductInfoCollectionViewCell.className, for: indexPath) as! ProductInfoCollectionViewCell
-            
+            cell.bindData(item: detailProductInfo)
             return cell
         }
         else if indexPath.section == 2 {
@@ -315,7 +324,7 @@ extension HatDetailViewController: UICollectionViewDelegateFlowLayout, UIScrollV
         case 0:
             return CGSize(width: collectionView.bounds.width, height: 900.adjusted)
         case 1:
-            return CGSize(width: collectionView.bounds.width, height: 980.adjusted)
+            return CGSize(width: collectionView.bounds.width, height: 1400.adjusted)
         case 2:
             return CGSize(width: collectionView.bounds.width, height: 340.adjusted)
         case 3:
