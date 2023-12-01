@@ -212,6 +212,11 @@ final class DetailProductCollectionViewCell: UICollectionViewCell {
         productPrice.text = price
     }
     
+    func bindHeartandStarNumber(data: DetailProductHeartandStar) {
+        heartNumber.text = data.heart
+        starNumber.text = data.star
+    }
+    
     @objc
     func likeTapped() {
         handler?()
