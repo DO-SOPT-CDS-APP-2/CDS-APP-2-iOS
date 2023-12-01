@@ -191,7 +191,6 @@ final class DetailProductCollectionViewCell: UICollectionViewCell {
     //MARK: - Methods
     
     func bindData(data: HatCategoryDTO) {
-        // 이미지 킹피셔 익스텐션 추가해야함
         productImageView.kfSetImage(url: data.imageUrl)
         brandName.text = data.brand
         productName.text = data.name

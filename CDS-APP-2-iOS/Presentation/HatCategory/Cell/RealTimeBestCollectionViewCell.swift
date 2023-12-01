@@ -93,6 +93,11 @@ final class RealTimeBestCollectionViewCell: UICollectionViewCell {
             salePercent.text = percent
         } else {
             salePercent.text = nil
+            itemPrice.snp.makeConstraints {
+                $0.leading.equalToSuperview()
+            }
+            
+            self.layoutIfNeeded()
         }
         itemPrice.text = item.itemPrice
     }
