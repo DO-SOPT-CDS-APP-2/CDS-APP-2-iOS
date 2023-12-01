@@ -14,7 +14,6 @@ class HatDetailService {
     func makeRequest(productID: Int) -> URLRequest {
         
         let baseURL = Bundle.main.object(forInfoDictionaryKey: Config.Keys.Plist.baseURL) as? String ?? ""
-        print(" 🍎🍎", baseURL)
         let urlString = "\(baseURL)/api/v1/product/\(productID)"
 
             // URL 생성
