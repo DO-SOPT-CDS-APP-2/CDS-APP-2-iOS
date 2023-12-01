@@ -24,6 +24,7 @@ final class DetailProductCollectionViewCell: UICollectionViewCell {
     private let heartNumber = UILabel()
     private let starRate = UILabel()
     private let starNumber = UILabel()
+    private var productID: Int = Int()
     private lazy var likedButton = UIButton()
     
     var handler: (() -> (Void))?
@@ -192,6 +193,7 @@ final class DetailProductCollectionViewCell: UICollectionViewCell {
     
     func bindData(data: HatCategoryDTO) {
         // 이미지 킹피셔 익스텐션 추가해야함
+        productID = data.productId
         productImageView.kfSetImage(url: data.imageUrl)
         brandName.text = data.brand
         productName.text = data.name

@@ -14,7 +14,7 @@ import Kingfisher
 final class ProductInfoCollectionViewCell: UICollectionViewCell {
     
     private let hatImage = UIImageView()
-    private let hatmodelImage = UIImageView()
+
     private let productdescriptmoreButton = UIButton()
     private let thickDivideView = UIView()
     
@@ -35,9 +35,7 @@ final class ProductInfoCollectionViewCell: UICollectionViewCell {
     private func setUI() {
         contentView.backgroundColor = .white
         
-        hatmodelImage.do {
-            $0.image = ImageLiterals.img.imgHatModel
-        }
+      
         
         productdescriptmoreButton.do {
             $0.setTitle(StringLiterals.HatDetail.ProductInfo.productDescriptMore, for: .normal)
@@ -56,24 +54,19 @@ final class ProductInfoCollectionViewCell: UICollectionViewCell {
     // MARK: - Set Hierachy
     
     private func setHierachy() {
-        contentView.addSubviews(hatImage, hatmodelImage, productdescriptmoreButton, thickDivideView)
+        contentView.addSubviews(hatImage, productdescriptmoreButton, thickDivideView)
     }
     
     // MARK: - Set Layout
     
     private func setLayout() {
-//        hatImage.snp.makeConstraints {
-//            $0.top.equalToSuperview().inset(10.adjusted)
-//            $0.centerX.equalToSuperview()
-//        }
-        
-        hatmodelImage.snp.makeConstraints {
-            $0.top.equalTo(hatImage.snp.bottom)
+        hatImage.snp.makeConstraints {
+            $0.top.equalToSuperview().inset(10.adjusted)
             $0.centerX.equalToSuperview()
         }
         
         productdescriptmoreButton.snp.makeConstraints {
-            $0.top.equalTo(hatmodelImage.snp.bottom).offset(10.adjusted)
+            $0.top.equalTo(hatImage.snp.bottom).offset(10.adjusted)
             $0.centerX.equalToSuperview()
             $0.width.equalTo(335.adjusted)
             $0.height.equalTo(56.adjusted)
@@ -86,12 +79,10 @@ final class ProductInfoCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    // 킹피셔 익스텐션 메인에서 풀 받고 다시 작업할게요 ❤️
+    // 작업끝 ❤️
     func bindData(item: DataClass?) {
         guard let item else { return }
-        //hatImage.kfSetImage(url: item.imageURL)
-        
-        
+        hatImage.kfSetImage(url: item.description)
 
     }
 }

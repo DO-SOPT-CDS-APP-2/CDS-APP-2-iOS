@@ -127,6 +127,7 @@ final class HatCategoryViewController: UIViewController {
             do {
                 let status = try await HatCategoryService.shared.getHatCategoryData(categoryId: 1)
                 detailProductData = status?.data
+                var productId = status?.data[0].productId ?? 0
                 hatCategoryMainView.detailProductCollectionView.reloadData()
             }
         }
@@ -143,11 +144,6 @@ final class HatCategoryViewController: UIViewController {
         flowLayout.scrollDirection = .horizontal
         flowLayout.minimumInteritemSpacing = 9
         self.headerCollectionView.setCollectionViewLayout(flowLayout, animated: false)
-    }
-    
-    @objc
-    func pushHatDetailView() {
-        self.navigationController?.pushViewController(HatDetailViewController(), animated: true)
     }
     
     @objc
@@ -201,11 +197,7 @@ extension HatCategoryViewController: UICollectionViewDataSource {
         else {
             guard let item = collectionView.dequeueReusableCell(withReuseIdentifier: DetailProductCollectionViewCell.className, for: indexPath) as? DetailProductCollectionViewCell else { return UICollectionViewCell() }
             
-            // tapGesture 적용 -> HatDetailViewController로 전환
-            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(pushHatDetailView))
-            item.isUserInteractionEnabled = true
-            item.addGestureRecognizer(tapGesture)
-            
+
             // 좋아요 클릭 토글
             item.handler = { [weak self] in
                 guard let self else { return }
@@ -218,7 +210,17 @@ extension HatCategoryViewController: UICollectionViewDataSource {
                                                                                      name: String(),
                                                                                      discount: Int(),
                                                                                      price: Int()))
+            
             return item
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let productId = detailProductData?[indexPath.item].productId
+        
+        if productId == 3 {
+            let hatDetailViewController = HatDetailViewController(forProductId: productId ?? 0)
+            self.navigationController?.pushViewController(hatDetailViewController, animated: true)
         }
     }
 }
