@@ -9,6 +9,7 @@ import UIKit
 
 import SnapKit
 import Then
+import Kingfisher
 
 final class ProductInfoCollectionViewCell: UICollectionViewCell {
     
@@ -33,10 +34,6 @@ final class ProductInfoCollectionViewCell: UICollectionViewCell {
     
     private func setUI() {
         contentView.backgroundColor = .white
-         
-        hatImage.do {
-            $0.image = ImageLiterals.img.imgHat2
-        }
         
         hatmodelImage.do {
             $0.image = ImageLiterals.img.imgHatModel
@@ -65,10 +62,10 @@ final class ProductInfoCollectionViewCell: UICollectionViewCell {
     // MARK: - Set Layout
     
     private func setLayout() {
-        hatImage.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(10.adjusted)
-            $0.centerX.equalToSuperview()
-        }
+//        hatImage.snp.makeConstraints {
+//            $0.top.equalToSuperview().inset(10.adjusted)
+//            $0.centerX.equalToSuperview()
+//        }
         
         hatmodelImage.snp.makeConstraints {
             $0.top.equalTo(hatImage.snp.bottom)
@@ -87,5 +84,14 @@ final class ProductInfoCollectionViewCell: UICollectionViewCell {
             $0.bottom.equalTo(productdescriptmoreButton.snp.bottom).offset(25.adjusted)
             $0.width.equalTo(contentView.snp.width)
         }
+    }
+    
+    // 킹피셔 익스텐션 메인에서 풀 받고 다시 작업할게요 ❤️
+    func bindData(item: DataClass?) {
+        guard let item else { return }
+        //hatImage.kfSetImage(url: item.imageURL)
+        
+        
+
     }
 }
