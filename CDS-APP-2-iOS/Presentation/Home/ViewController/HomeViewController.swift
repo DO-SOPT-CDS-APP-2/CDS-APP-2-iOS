@@ -39,6 +39,7 @@ final class HomeViewController: UIViewController {
         super.viewWillAppear(animated)
         
         registerCell()
+        self.tabBarController?.tabBar.isHidden = false
     }
     
     // MARK: - Functions

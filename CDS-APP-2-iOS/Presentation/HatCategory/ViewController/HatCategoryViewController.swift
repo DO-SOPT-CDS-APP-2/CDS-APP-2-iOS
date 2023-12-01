@@ -50,6 +50,7 @@ final class HatCategoryViewController: UIViewController {
         navigationController?.navigationBar.isHidden = false
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: ImageLiterals.icon.icBack.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(popTapped))
         navigationItem.hidesBackButton = true
+        self.tabBarController?.tabBar.isHidden = false
     }
     
     // MARK: - set UI

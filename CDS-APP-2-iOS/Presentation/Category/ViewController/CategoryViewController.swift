@@ -39,6 +39,7 @@ final class CategoryViewController: UIViewController {
         super.viewWillAppear(animated)
 
         self.navigationController?.navigationBar.isHidden = true
+        self.tabBarController?.tabBar.isHidden = false
     }
     
     // MARK: - Set UI
