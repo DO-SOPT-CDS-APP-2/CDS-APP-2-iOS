@@ -9,9 +9,12 @@ import UIKit
 
 // MARK: - ReviewInfo = 리뷰 사진 CollectionView
 
-class ReviewPhotoCollectionViewCell: UICollectionViewCell {
+final class ReviewPhotoCollectionViewCell: UICollectionViewCell {
+    
+    // MARK: - set Properties
     private let productImage = UIImageView()
-
+    
+    // MARK: - Life Cycle
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -23,7 +26,6 @@ class ReviewPhotoCollectionViewCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
-    
     
     // MARK: - Set Hierachy
     
@@ -39,7 +41,6 @@ class ReviewPhotoCollectionViewCell: UICollectionViewCell {
         }
     }
 
-    
     func bindData(item: ReviewPhotoItem) {
         productImage.image = item.image
     }

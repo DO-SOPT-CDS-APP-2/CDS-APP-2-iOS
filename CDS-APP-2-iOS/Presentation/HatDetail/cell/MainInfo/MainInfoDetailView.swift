@@ -13,8 +13,8 @@ import Then
 // MARK: - MainInfo Cell Datail View
 
 final class MainInfoDetailView: UIView {
-
-    // MARK: - Conponents
+    
+    // MARK: - set Properties
     
     private let hatdetailImage = UIImageView()
     private let brandnameEN = UILabel()
@@ -84,16 +84,18 @@ final class MainInfoDetailView: UIView {
             $0.alignment = .center
             $0.spacing = 2.adjusted
         }
-        
-        
     }
     
     // MARK: - set Hierachy
     
     private func setHierachy() {
-        brandnameStackView.addArrangedSubviews(brandnameEN, brandnameKR)
-        likeStackView.addArrangedSubviews(likeIcon, likecount)
-        self.addSubviews(hatdetailImage,
+        brandnameStackView.addArrangedSubviews(brandnameEN,
+                                               brandnameKR)
+        
+        likeStackView.addArrangedSubviews(likeIcon,
+                                          likecount)
+        
+        addSubviews(hatdetailImage,
                          brandnameStackView,
                          moreIcon,
                          likeStackView)

@@ -7,12 +7,16 @@
 
 import UIKit
 
-class SecondDetailCollectionViewCell: UICollectionViewCell {
+final class SecondDetailCollectionViewCell: UICollectionViewCell {
+    
+    // MARK: - set Properties
     
     private let eventImage = UIImageView()
     private let eventTitleLabel = UILabel()
     private let eventDurationLabel = UILabel()
     private let eventStackView = UIStackView()
+    
+    // MARK: - Life Cycle
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -26,7 +30,7 @@ class SecondDetailCollectionViewCell: UICollectionViewCell {
         super.init(coder: coder)
     }
     
-    // MARK: - Set UI
+    // MARK: - set UI
     
     private func setUI() {
         eventTitleLabel.do {
@@ -41,30 +45,29 @@ class SecondDetailCollectionViewCell: UICollectionViewCell {
         
         eventStackView.do {
             $0.axis = .vertical
-            $0.spacing = 10
-            
+            $0.spacing = 10.adjusted
         }
     }
     
-    // MARK: - Set Hierachy
+    // MARK: - set Hierachy
     
     private func setHierachy() {
-        eventStackView.addArrangedSubviews(eventImage, eventTitleLabel, eventDurationLabel)
+        eventStackView.addArrangedSubviews(eventImage,
+                                           eventTitleLabel,
+                                           eventDurationLabel)
+        
         contentView.addSubview(eventStackView)
     }
     
     // MARK: - Set Layout
     
     private func setLayout() {
-
         eventStackView.snp.makeConstraints {
             $0.top.equalToSuperview()
             $0.width.equalTo(217.adjusted)
             $0.height.equalTo(250.adjusted)
-     
         }
     }
-    
     
     func bindData(item: EventItem) {
         eventImage.image = item.image

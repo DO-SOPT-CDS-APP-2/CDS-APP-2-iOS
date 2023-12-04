@@ -12,7 +12,9 @@ import Then
 
 // MARK: - 추천 Section - StickHeader
 
-class RecommendInfoHeaderCollectionReusableView: UICollectionReusableView {
+final class RecommendInfoHeaderCollectionReusableView: UICollectionReusableView {
+    
+    // MARK: - set Properties
     
     private let productInfoLabel = UILabel()
     private let sizeLabel = UILabel()
@@ -22,6 +24,8 @@ class RecommendInfoHeaderCollectionReusableView: UICollectionReusableView {
     private let selectlineView = UIView()
     private let selectStackView = UIStackView()
     private let headerStackView = UIStackView()
+    
+    // MARK: - Life Cycle
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -39,11 +43,10 @@ class RecommendInfoHeaderCollectionReusableView: UICollectionReusableView {
         setLayout()
     }
     
-    // MARK: - Set UI
+    // MARK: - set UI
     
     func setUI() {
         productInfoLabel.do {
-            $0.textColor = .lightGray
             $0.text = StringLiterals.HatDetail.header.productInfo
         }
         
@@ -56,23 +59,21 @@ class RecommendInfoHeaderCollectionReusableView: UICollectionReusableView {
         }
         
         sizeLabel.do {
-            $0.textColor = .lightGray
             $0.text = StringLiterals.HatDetail.header.size
         }
         
         recommendLabel.do {
             $0.textColor = .black
+            $0.font = .krBold(ofSize: 14.adjusted)
             $0.text = StringLiterals.HatDetail.header.recommend
             $0.textAlignment = .center
         }
         
         reviewLabel.do {
-            $0.textColor = .lightGray
             $0.text = StringLiterals.HatDetail.header.review
         }
         
         inquireLabel.do {
-            $0.textColor = .lightGray
             $0.text = StringLiterals.HatDetail.header.inquire
         }
         
@@ -81,9 +82,10 @@ class RecommendInfoHeaderCollectionReusableView: UICollectionReusableView {
             $0.distribution = .equalCentering
         }
         
-        [productInfoLabel, sizeLabel, recommendLabel, reviewLabel, inquireLabel].forEach {
+        [productInfoLabel, sizeLabel, reviewLabel, inquireLabel].forEach {
             $0.sizeToFit()
             $0.font = .krBold(ofSize: 14.adjusted)
+            $0.textColor = .lightGray
         }
     }
     
@@ -91,13 +93,17 @@ class RecommendInfoHeaderCollectionReusableView: UICollectionReusableView {
     // MARK: - Set Hierachy
     
     func setHierachy() {
-        selectStackView.addArrangedSubview(recommendLabel)
-        selectStackView.addArrangedSubview(selectlineView)
-        headerStackView.addArrangedSubviews(productInfoLabel, sizeLabel, selectStackView, reviewLabel, inquireLabel)
+        selectStackView.addArrangedSubviews(recommendLabel,
+                                            selectlineView)
+        
+        headerStackView.addArrangedSubviews(productInfoLabel,
+                                            sizeLabel,
+                                            selectStackView,
+                                            reviewLabel,
+                                            inquireLabel)
 
         addSubview(headerStackView)
     }
-    
     
     // MARK: - Set Layout
     

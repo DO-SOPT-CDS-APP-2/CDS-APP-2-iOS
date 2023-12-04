@@ -7,16 +7,16 @@
 
 import UIKit
 
-class ReviewInfoCollectionViewCell: UICollectionViewCell {
+final class ReviewInfoCollectionViewCell: UICollectionViewCell {
+    
+    // MARK: - set Properties
     
     private let reviewPhotoDummy = ReviewPhotoItem.reviewPhotoDummy()
     
     private let reviewCollectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.itemSize = CGSize(width: 110.adjusted, height: 110.adjusted)
-
         flowLayout.minimumInteritemSpacing = 3
-    
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
         return collectionView
     }()
@@ -29,8 +29,9 @@ class ReviewInfoCollectionViewCell: UICollectionViewCell {
     private let reviewStackView = UIStackView()
     private let starStackView = UIStackView()
     private let reviewTitleLabel = UILabel()
-    
     private let moreReviewButton = UIButton()
+    
+    // MARK: - Life Cycle
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -46,7 +47,7 @@ class ReviewInfoCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - Set UI
+    // MARK: - set UI
     
     private func setUI() {
         contentView.backgroundColor = .white
@@ -54,20 +55,25 @@ class ReviewInfoCollectionViewCell: UICollectionViewCell {
         GPALabel.do {
             $0.text = StringLiterals.HatDetail.ReviewInfo.GPA
             $0.textColor = .black
+            $0.font = .krBold(ofSize: 14.adjusted)
+            $0.textAlignment = .center
         }
         
         sizeLabel.do {
             $0.text = StringLiterals.HatDetail.ReviewInfo.size
-            $0.textColor = .lightGray
         }
         
         colorLabel.do {
             $0.text = StringLiterals.HatDetail.ReviewInfo.color
-            $0.textColor = .lightGray
         }
         
         qualityLabel.do {
             $0.text = StringLiterals.HatDetail.ReviewInfo.quality
+        }
+        
+        [sizeLabel, colorLabel, qualityLabel].forEach {
+            $0.font = .krBold(ofSize: 14.adjusted)
+            $0.textAlignment = .center
             $0.textColor = .lightGray
         }
         
@@ -79,12 +85,6 @@ class ReviewInfoCollectionViewCell: UICollectionViewCell {
         scoreString.addAttribute(.foregroundColor, value: UIColor.point, range: NSRange(location: 0, length: 3))
         scoreString.addAttribute(.foregroundColor, value: UIColor.lightGray, range: NSRange(location: 3, length: scoreString.length - 3))
         scoreLabel.attributedText = scoreString
-        
-
-        [GPALabel, sizeLabel, colorLabel, qualityLabel].forEach {
-            $0.font = .krBold(ofSize: 14.adjusted)
-            $0.textAlignment = .center
-        }
         
         reviewStackView.do {
             $0.axis = .horizontal
@@ -120,16 +120,25 @@ class ReviewInfoCollectionViewCell: UICollectionViewCell {
     }
     
     
-    // MARK: - Set Hierachy
+    // MARK: - set Hierachy
     
     private func setHierachy() {
-        reviewStackView.addArrangedSubviews(GPALabel, sizeLabel, colorLabel, qualityLabel)
-        contentView.addSubviews(reviewStackView, starStackView, scoreLabel, reviewTitleLabel, reviewCollectionView, moreReviewButton)
+        reviewStackView.addArrangedSubviews(GPALabel,
+                                            sizeLabel,
+                                            colorLabel,
+                                            qualityLabel)
+        
+        contentView.addSubviews(reviewStackView,
+                                starStackView,
+                                scoreLabel,
+                                reviewTitleLabel,
+                                reviewCollectionView,
+                                moreReviewButton)
     }
     
     
     
-    // MARK: - Set Layout
+    // MARK: - set Layout
     
     private func setLayout() {
         reviewStackView.snp.makeConstraints {
@@ -167,7 +176,7 @@ class ReviewInfoCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    // MARK: - Set Delegate
+    // MARK: - set Delegate
     
     private func setDelegate() {
         self.reviewCollectionView.delegate = self
@@ -175,17 +184,18 @@ class ReviewInfoCollectionViewCell: UICollectionViewCell {
     }
     
     
-    // MARK: - Set CollectionView
+    // MARK: - set CollectionView
     
     private func setupCollectionView() {
-        reviewCollectionView.register(ReviewPhotoCollectionViewCell.self, forCellWithReuseIdentifier: ReviewPhotoCollectionViewCell.className)
+        reviewCollectionView.register(ReviewPhotoCollectionViewCell.self,
+                                      forCellWithReuseIdentifier: ReviewPhotoCollectionViewCell.className)
     }
 }
 
 extension ReviewInfoCollectionViewCell: UICollectionViewDelegate {}
 extension ReviewInfoCollectionViewCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 6
+        return reviewPhotoDummy.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

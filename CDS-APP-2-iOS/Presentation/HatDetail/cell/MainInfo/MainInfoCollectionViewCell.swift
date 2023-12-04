@@ -10,7 +10,11 @@ import UIKit
 import SnapKit
 import Then
 
+// MARK: - MainInfo CollectionView Cell 
+
 final class MainInfoCollectionViewCell: UICollectionViewCell {
+    
+    //MARK: - Set Properties
     
     private let productImage = UIImageView()
     
@@ -56,6 +60,8 @@ final class MainInfoCollectionViewCell: UICollectionViewCell {
     private let brandNameStackView = UIStackView()
     
     private let detailView = MainInfoDetailView()
+    
+    // MARK: - Life Cycle
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -118,7 +124,6 @@ final class MainInfoCollectionViewCell: UICollectionViewCell {
             $0.textColor = .lightGray
             $0.font = .krBold(ofSize: 14.adjusted)
         }
-
 
         discountpercentLabel.do {
             $0.textColor = .point
@@ -187,28 +192,25 @@ final class MainInfoCollectionViewCell: UICollectionViewCell {
         }
         
         shippingfeeLabel.do {
-            $0.textColor = .darkGray
-            $0.font = .krRegular(ofSize: 12.adjusted)
             $0.text = StringLiterals.HatDetail.MainInfo.shippigFee
         }
         
         shippingfeedescriptLabel.do {
-            $0.textColor = .darkGray
-            $0.font = .krRegular(ofSize: 12.adjusted)
             $0.numberOfLines = 0
             $0.text = StringLiterals.HatDetail.MainInfo.shippingFeeDescript
         }
         
         shippingexpectedLabel.do {
-            $0.textColor = .darkGray
-            $0.font = .krRegular(ofSize: 12.adjusted)
             $0.text = StringLiterals.HatDetail.MainInfo.shippingExpected
         }
         
         shippingdescriptLabel.do {
-            $0.textColor = .darkGray
-            $0.font = .krRegular(ofSize: 12.adjusted)
             $0.text = StringLiterals.HatDetail.MainInfo.shippingDescript
+        }
+        
+        [shippingfeeLabel, shippingfeedescriptLabel, shippingexpectedLabel, shippingdescriptLabel].forEach {
+            $0.font = .krRegular(ofSize: 12.adjusted)
+            $0.textColor = .darkGray
         }
         
         let shippingattributedString = NSMutableAttributedString(string: shippingdescriptLabel.text ?? "")
@@ -216,26 +218,49 @@ final class MainInfoCollectionViewCell: UICollectionViewCell {
         shippingattributedString.addAttribute(.foregroundColor, value: UIColor.darkGray, range: NSRange(location: 5, length: shippingattributedString.length - 5))
         shippingdescriptLabel.attributedText = shippingattributedString
         
-        for i in [topThinDivideView, bottomThinDivideView, topThickDivideView, bottomThickDivideView] {
-            i.backgroundColor = .background
+        [topThinDivideView, bottomThinDivideView, topThickDivideView, bottomThickDivideView].forEach {
+            $0.backgroundColor = .background
         }
     }
     
     // MARK: - Set Hierachy
     
     private func setHierachy() {
-        contentView.addSubviews(productImage, brandLabel, brandmoreIcon, productnameLabel, reviewStackView, reviewnumberLabel, reviewdescriptLabel, priceLabel, discountpercentLabel, discountpriceLabel, pointLabel, pointpercentLabel, pointdescriptLabel, topThinDivideView)
+        contentView.addSubviews(productImage,
+                                brandLabel,
+                                brandmoreIcon,
+                                productnameLabel,
+                                reviewStackView,
+                                reviewnumberLabel,
+                                reviewdescriptLabel,
+                                priceLabel,
+                                discountpercentLabel,
+                                discountpriceLabel,
+                                pointLabel,
+                                pointpercentLabel,
+                                pointdescriptLabel,
+                                topThinDivideView)
 
-        userStackView.addArrangedSubviews(userLabel)
-        userStackView.addArrangedSubview(spacerView)
-        userStackView.addArrangedSubviews(userdiscountpercentLabel, userdiscountpriceLabel)
-        userStackView.addArrangedSubview(usermoreIcon)
-        
-        contentView.addSubviews(userStackView, bottomThinDivideView, shippingLabel, shippingfeeLabel, shippingfeedescriptLabel, shippingexpectedLabel, shippingdescriptLabel, topThickDivideView, detailView, bottomThickDivideView)
+        userStackView.addArrangedSubviews(userLabel,
+                                          spacerView,
+                                          userdiscountpercentLabel,
+                                          userdiscountpriceLabel,
+                                          usermoreIcon)
+
+        contentView.addSubviews(userStackView,
+                                bottomThinDivideView,
+                                shippingLabel,
+                                shippingfeeLabel,
+                                shippingfeedescriptLabel,
+                                shippingexpectedLabel,
+                                shippingdescriptLabel,
+                                topThickDivideView,
+                                detailView,
+                                bottomThickDivideView)
     }
     
     
-    // MARK: - Set Layout
+    // MARK: - set Layout
     
     private func setLayout() {
         productImage.snp.makeConstraints {
@@ -378,15 +403,5 @@ final class MainInfoCollectionViewCell: UICollectionViewCell {
         discountpriceLabel.text = String(item.discountPrice) + "원"
         pointLabel.text = String(item.point) + "p"
         pointpercentLabel.text = " (" + String(item.pointRate) + "%)"
-
-    }
-    
-    
-}
-
-
-extension UIStackView {
-    func addArrangedSubviews(_ labels: UILabel...) {
-        labels.forEach { self.addArrangedSubview($0) }
     }
 }

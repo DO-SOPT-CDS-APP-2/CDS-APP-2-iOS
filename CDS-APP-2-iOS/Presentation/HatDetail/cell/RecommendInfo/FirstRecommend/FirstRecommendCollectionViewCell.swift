@@ -10,11 +10,14 @@ import UIKit
 import SnapKit
 import Then
 
-class FirstRecommendCollectionViewCell: UICollectionViewCell {
+// MARK: - 1번째 추천 CollectionView - Recommend
+
+final class FirstRecommendCollectionViewCell: UICollectionViewCell {
+    
+    // MARK: - set Properties
     
     private let recommendDummy = RecommendItem.recommendDummy()
     
-    // 1번째 추천 CollectionView - Recommend
     private let firstCollecitonView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.itemSize = CGSize(width: 153, height: 330)
@@ -25,6 +28,8 @@ class FirstRecommendCollectionViewCell: UICollectionViewCell {
     }()
     
     private let recommendLabel = UILabel()
+    
+    // MARK: - Life Cycle
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -40,9 +45,14 @@ class FirstRecommendCollectionViewCell: UICollectionViewCell {
         super.init(coder: coder)
     }
     
+    // MARK: - set UI
+    
     private func setUI() {
-        firstCollecitonView.backgroundColor = .clear
-        firstCollecitonView.showsHorizontalScrollIndicator = false
+
+        firstCollecitonView.do {
+            $0.backgroundColor = .clear
+            $0.showsHorizontalScrollIndicator = false
+        }
         
         recommendLabel.do {
             $0.text = "타입서비스의 이 상품은 어때요?"
@@ -52,16 +62,16 @@ class FirstRecommendCollectionViewCell: UICollectionViewCell {
         brandString.addAttribute(.foregroundColor, value: UIColor.point, range: NSRange(location: 0, length: 5))
         brandString.addAttribute(.foregroundColor, value: UIColor.black, range: NSRange(location: 5, length: brandString.length - 5))
         recommendLabel.attributedText = brandString
-        
     }
     
-    // MARK: - Set Hierachy
+    // MARK: - set Hierachy
     
     private func setHierachy() {
-        contentView.addSubviews(recommendLabel, firstCollecitonView)
+        contentView.addSubviews(recommendLabel,
+                                firstCollecitonView)
     }
     
-    // MARK: - Set Layout
+    // MARK: - set Layout
     
     private func setLayout() {
         recommendLabel.snp.makeConstraints {
@@ -78,7 +88,7 @@ class FirstRecommendCollectionViewCell: UICollectionViewCell {
 
     }
     
-    // MARK: - Set Delegate
+    // MARK: - set Delegate
     
     private func setDelegate() {
         self.firstCollecitonView.delegate = self
@@ -86,17 +96,18 @@ class FirstRecommendCollectionViewCell: UICollectionViewCell {
     }
     
     
-    // MARK: - Set CollectionView
+    // MARK: - set CollectionView
     
     private func setupCollectionView() {
-        firstCollecitonView.register(FirstDetailCollectionViewCell.self, forCellWithReuseIdentifier: FirstDetailCollectionViewCell.className)
+        firstCollecitonView.register(FirstDetailCollectionViewCell.self,
+                                     forCellWithReuseIdentifier: FirstDetailCollectionViewCell.className)
     }
 }
 
 extension FirstRecommendCollectionViewCell: UICollectionViewDelegate {}
 extension FirstRecommendCollectionViewCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
+        return recommendDummy.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

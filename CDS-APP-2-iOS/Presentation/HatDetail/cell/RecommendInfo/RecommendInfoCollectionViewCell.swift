@@ -12,11 +12,13 @@ import Then
 
 // MARK: - 추천 Section main Cell
 
-class RecommendInfoCollectionViewCell: UICollectionViewCell {
+final class RecommendInfoCollectionViewCell: UICollectionViewCell {
+    
+    // MARK: - set Properties
 
     private let detailCollecitonView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
-        flowLayout.itemSize = CGSize(width: UIScreen.main.bounds.width, height: 350)
+        flowLayout.itemSize = CGSize(width: UIScreen.main.bounds.width, height: 350.adjusted)
         flowLayout.scrollDirection = .vertical
         flowLayout.minimumLineSpacing = 8.adjusted
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
@@ -24,6 +26,9 @@ class RecommendInfoCollectionViewCell: UICollectionViewCell {
     }()
 
     private let thickdivideView = UIView()
+    
+    
+    // MARK: - Life Cycle
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -39,7 +44,7 @@ class RecommendInfoCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - Set UI
+    // MARK: - set UI
     
     private func setUI() {
 
@@ -54,13 +59,14 @@ class RecommendInfoCollectionViewCell: UICollectionViewCell {
     }
     
     
-    // MARK: - Set Hierachy
+    // MARK: - set Hierachy
     
     private func setHierachy() {
-        contentView.addSubviews(detailCollecitonView, thickdivideView)
+        contentView.addSubviews(detailCollecitonView,
+                                thickdivideView)
     }
     
-    // MARK: - Set Layout
+    // MARK: - set Layout
     
     private func setLayout() {
         detailCollecitonView.snp.makeConstraints {
@@ -69,25 +75,26 @@ class RecommendInfoCollectionViewCell: UICollectionViewCell {
         
         thickdivideView.snp.makeConstraints {
             $0.top.equalTo(detailCollecitonView.snp.bottom).inset(70.adjusted)
-            $0.height.equalTo(8)
+            $0.height.equalTo(8.adjusted)
             $0.width.equalTo(contentView.snp.width)
-
         }
     }
     
     
-    // MARK: - Set Delegate
+    // MARK: - set Delegate
     
     private func setDelegate() {
         self.detailCollecitonView.delegate = self
         self.detailCollecitonView.dataSource = self
     }
     
-    // MARK: - Set CollectionView
+    // MARK: - set CollectionView
     
     private func setupCollectionView() {
-        detailCollecitonView.register(FirstRecommendCollectionViewCell.self, forCellWithReuseIdentifier: FirstRecommendCollectionViewCell.className)
-        detailCollecitonView.register(SecondRecommendCollectionViewCell.self, forCellWithReuseIdentifier: SecondRecommendCollectionViewCell.className)
+        detailCollecitonView.register(FirstRecommendCollectionViewCell.self,
+                                      forCellWithReuseIdentifier: FirstRecommendCollectionViewCell.className)
+        detailCollecitonView.register(SecondRecommendCollectionViewCell.self,
+                                      forCellWithReuseIdentifier: SecondRecommendCollectionViewCell.className)
     }
 }
 
@@ -112,7 +119,8 @@ extension RecommendInfoCollectionViewCell: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.section == 0 {
-            let item = collectionView.dequeueReusableCell(withReuseIdentifier: FirstRecommendCollectionViewCell.className, for: indexPath) as! FirstRecommendCollectionViewCell
+            let item = collectionView.dequeueReusableCell(withReuseIdentifier: FirstRecommendCollectionViewCell.className,
+                                                          for: indexPath) as! FirstRecommendCollectionViewCell
 
             return item
         } else {
@@ -128,7 +136,9 @@ extension RecommendInfoCollectionViewCell: UICollectionViewDataSource {
 }
 
 extension RecommendInfoCollectionViewCell: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize{
         switch indexPath.section {
         case 0:
             return CGSize(width: collectionView.bounds.width, height: 350.adjusted)

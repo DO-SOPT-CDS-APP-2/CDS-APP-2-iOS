@@ -10,10 +10,14 @@ import UIKit
 import SnapKit
 import Then
 
-class ListCollectionViewCell: UICollectionViewCell {
+final class ListCollectionViewCell: UICollectionViewCell {
+    
+    // MARK: - set Properties
     
     private let etcLabel = UILabel()
     private let thinDivideView = UIView()
+    
+    // MARK: - Life Cycle
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -27,8 +31,9 @@ class ListCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - set UI
+    
     private func setUI() {
-
         etcLabel.do {
             $0.font = .krBold(ofSize: 16.adjusted)
             $0.textColor = .black
@@ -39,19 +44,23 @@ class ListCollectionViewCell: UICollectionViewCell {
         }
     }
     
+    // MARK: - set Hierachy
+    
     private func setHierachy() {
-        contentView.addSubviews(etcLabel, thinDivideView)
+        contentView.addSubviews(etcLabel,
+                                thinDivideView)
     }
+    
+    // MARK: - set Layout
     
     private func setLayout() {
         etcLabel.snp.makeConstraints {
-            $0.centerY.equalToSuperview()
-            $0.leading.equalToSuperview()
+            $0.centerY.leading.equalToSuperview()
         }
         
         thinDivideView.snp.makeConstraints {
             $0.top.equalTo(etcLabel.snp.bottom).offset(5.adjusted)
-            $0.bottom.equalTo(etcLabel.snp.bottom).offset(6.adjusted)
+            $0.height.equalTo(1.adjusted)
             $0.width.equalTo(335.adjusted)
         }
     }

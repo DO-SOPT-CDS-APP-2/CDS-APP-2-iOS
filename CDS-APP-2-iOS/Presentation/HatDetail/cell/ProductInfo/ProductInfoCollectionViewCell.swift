@@ -13,10 +13,13 @@ import Kingfisher
 
 final class ProductInfoCollectionViewCell: UICollectionViewCell {
     
+    // MARK: - set Properties
+    
     private let hatImage = UIImageView()
-
     private let productdescriptmoreButton = UIButton()
     private let thickDivideView = UIView()
+    
+    // MARK: - Life Cycle
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -30,13 +33,11 @@ final class ProductInfoCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - Set UI
+    // MARK: - set UI
     
     private func setUI() {
         contentView.backgroundColor = .white
-        
-      
-        
+
         productdescriptmoreButton.do {
             $0.setTitle(StringLiterals.HatDetail.ProductInfo.productDescriptMore, for: .normal)
             $0.setTitleColor(.black, for: .normal)
@@ -50,14 +51,15 @@ final class ProductInfoCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    
-    // MARK: - Set Hierachy
+    // MARK: - set Hierachy
     
     private func setHierachy() {
-        contentView.addSubviews(hatImage, productdescriptmoreButton, thickDivideView)
+        contentView.addSubviews(hatImage,
+                                productdescriptmoreButton,
+                                thickDivideView)
     }
     
-    // MARK: - Set Layout
+    // MARK: - set Layout
     
     private func setLayout() {
         hatImage.snp.makeConstraints {
@@ -83,6 +85,5 @@ final class ProductInfoCollectionViewCell: UICollectionViewCell {
     func bindData(item: DataClass?) {
         guard let item else { return }
         hatImage.kfSetImage(url: item.description)
-
     }
 }

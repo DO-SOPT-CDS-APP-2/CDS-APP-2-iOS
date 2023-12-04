@@ -10,11 +10,14 @@ import UIKit
 import SnapKit
 import Then
 
-class SecondRecommendCollectionViewCell: UICollectionViewCell {
+// MARK: - 2번째 추천 CollectionView - Event
 
+final class SecondRecommendCollectionViewCell: UICollectionViewCell {
+    
+    // MARK: - set Properties
+    
     private let eventDummy = EventItem.eventDummy()
     
-    // 2번째 추천 CollectionView - Event
     private let secondCollecitonView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.itemSize = CGSize(width: 217, height: UIScreen.main.bounds.height/2)
@@ -25,6 +28,8 @@ class SecondRecommendCollectionViewCell: UICollectionViewCell {
     }()
     
     private let eventLabel = UILabel()
+
+    // MARK: - Life Cycle
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -40,7 +45,7 @@ class SecondRecommendCollectionViewCell: UICollectionViewCell {
         super.init(coder: coder)
     }
     
-    // MARK: - Set UI
+    // MARK: - set UI
     
     private func setUI() {
         secondCollecitonView.showsHorizontalScrollIndicator = false
@@ -52,13 +57,14 @@ class SecondRecommendCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    // MARK: - Set Hierachy
+    // MARK: - set Hierachy
     
     private func setHierachy() {
-        contentView.addSubviews(eventLabel, secondCollecitonView)
+        contentView.addSubviews(eventLabel,
+                                secondCollecitonView)
     }
     
-    // MARK: - Set Layout
+    // MARK: - set Layout
     
     private func setLayout() {
         eventLabel.snp.makeConstraints {
@@ -74,24 +80,25 @@ class SecondRecommendCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    // MARK: - Set Delegate
+    // MARK: - set Delegate
     
     private func setDelegate() {
         self.secondCollecitonView.delegate = self
         self.secondCollecitonView.dataSource = self
     }
     
-    // MARK: - Set CollectionView
+    // MARK: - set CollectionView
     
     private func setupCollectionView() {
-        secondCollecitonView.register(SecondDetailCollectionViewCell.self, forCellWithReuseIdentifier: SecondDetailCollectionViewCell.className)
+        secondCollecitonView.register(SecondDetailCollectionViewCell.self,
+                                      forCellWithReuseIdentifier: SecondDetailCollectionViewCell.className)
     }
 }
 
 extension SecondRecommendCollectionViewCell: UICollectionViewDelegate {}
 extension SecondRecommendCollectionViewCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
+        return eventDummy.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

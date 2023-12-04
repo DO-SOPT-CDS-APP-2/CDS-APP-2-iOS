@@ -10,18 +10,21 @@ import UIKit
 import SnapKit
 import Then
 
-class InquireInfoCollectionViewCell: UICollectionViewCell {
+final class InquireInfoCollectionViewCell: UICollectionViewCell {
+    
+    // MARK: - set Properties
     
     private let inquireDummy = InquireList.inquiredummy()
     private let inquireImage = UIImageView()
+    
     private let detailColletionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
-        flowLayout.itemSize = CGSize(width: 335, height: 45)
+        flowLayout.itemSize = CGSize(width: 335.adjusted, height: 45.adjusted)
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
         return collectionView
     }()
     
-    
+    // MARK: - Life Cycle
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -38,29 +41,30 @@ class InquireInfoCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - Set UI
+    // MARK: - set UI
     
     private func setUI() {
         contentView.backgroundColor = .white
-        detailColletionView.backgroundColor = .white
-        detailColletionView.showsHorizontalScrollIndicator = false
+        detailColletionView.do {
+            $0.backgroundColor = .white
+            $0.showsHorizontalScrollIndicator = false
+        }
 
         inquireImage.do {
             $0.image = ImageLiterals.img.imgInquire
         }
     }
     
-    // MARK: - Set Hierachy
-    
-    
+    // MARK: - set Hierachy
+
     private func setHierachy() {
-        contentView.addSubviews(inquireImage, detailColletionView)
+        contentView.addSubviews(inquireImage,
+                                detailColletionView)
     }
     
-    // MARK: - Set Layout
+    // MARK: - set Layout
     
     private func setLayout() {
-
         inquireImage.snp.makeConstraints {
             $0.top.equalToSuperview().inset(20.adjusted)
             $0.leading.equalToSuperview().inset(15.adjusted)
@@ -75,7 +79,7 @@ class InquireInfoCollectionViewCell: UICollectionViewCell {
 
     }
     
-    // MARK: - Set Delegate
+    // MARK: - set Delegate
     
     private func setDelegate() {
         self.detailColletionView.delegate = self
@@ -83,17 +87,18 @@ class InquireInfoCollectionViewCell: UICollectionViewCell {
     }
     
     
-    // MARK: - Set CollectionView
+    // MARK: - set CollectionView
     
     private func setupCollectionView() {
-        detailColletionView.register(ListCollectionViewCell.self, forCellWithReuseIdentifier: ListCollectionViewCell.className)
+        detailColletionView.register(ListCollectionViewCell.self,
+                                     forCellWithReuseIdentifier: ListCollectionViewCell.className)
     }
 }
 
 extension InquireInfoCollectionViewCell: UICollectionViewDelegate {}
 extension InquireInfoCollectionViewCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
+        return inquireDummy.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

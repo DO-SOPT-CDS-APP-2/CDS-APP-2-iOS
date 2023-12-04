@@ -11,6 +11,8 @@ import Then
  
 final class SizeInfoHeaderCollectionReusableView: UICollectionReusableView {
     
+    // MARK: - set Properties
+    
     private let productInfoLabel = UILabel()
     private let sizeLabel = UILabel()
     private let recommendLabel = UILabel()
@@ -19,6 +21,8 @@ final class SizeInfoHeaderCollectionReusableView: UICollectionReusableView {
     private let selectlineView = UIView()
     private let selectStackView = UIStackView()
     private let headerStackView = UIStackView()
+    
+    // MARK: - Life Cycle
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -36,12 +40,10 @@ final class SizeInfoHeaderCollectionReusableView: UICollectionReusableView {
         setLayout()
     }
     
-    // MARK: - Set UI
+    // MARK: - set UI
     
     func setUI() {
         productInfoLabel.do {
-            $0.textColor = .lightGray
-            $0.font = .krBold(ofSize: 14.adjusted)
             $0.text = StringLiterals.HatDetail.header.productInfo
         }
         
@@ -61,21 +63,20 @@ final class SizeInfoHeaderCollectionReusableView: UICollectionReusableView {
         }
         
         recommendLabel.do {
-            $0.textColor = .lightGray
-            $0.font = .krBold(ofSize: 14.adjusted)
             $0.text = StringLiterals.HatDetail.header.recommend
         }
         
         reviewLabel.do {
-            $0.textColor = .lightGray
-            $0.font = .krBold(ofSize: 14.adjusted)
             $0.text = StringLiterals.HatDetail.header.review
         }
         
         inquireLabel.do {
+            $0.text = StringLiterals.HatDetail.header.inquire
+        }
+        
+        [productInfoLabel, recommendLabel, reviewLabel, inquireLabel].forEach {
             $0.textColor = .lightGray
             $0.font = .krBold(ofSize: 14.adjusted)
-            $0.text = StringLiterals.HatDetail.header.inquire
         }
         
         headerStackView.do {
@@ -86,19 +87,23 @@ final class SizeInfoHeaderCollectionReusableView: UICollectionReusableView {
     }
     
     
-    // MARK: - Set Hierachy
+    // MARK: - set Hierachy
     
     func setHierachy() {
-        selectStackView.addArrangedSubview(sizeLabel)
-        selectStackView.addArrangedSubview(selectlineView)
-        //headerStackView.addArrangedSubview(selectStackView)
-        headerStackView.addArrangedSubviews(productInfoLabel, selectStackView, recommendLabel, reviewLabel, inquireLabel)
+        selectStackView.addArrangedSubviews(sizeLabel,
+                                            selectlineView)
+        
+        headerStackView.addArrangedSubviews(productInfoLabel,
+                                            selectStackView,
+                                            recommendLabel,
+                                            reviewLabel,
+                                            inquireLabel)
 
         addSubview(headerStackView)
     }
     
     
-    // MARK: - Set Layout
+    // MARK: - set Layout
     
     func setLayout() {
         selectlineView.snp.makeConstraints {
@@ -115,4 +120,3 @@ final class SizeInfoHeaderCollectionReusableView: UICollectionReusableView {
         }
     }
 }
-

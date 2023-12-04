@@ -7,7 +7,10 @@
 
 import UIKit
 
-class FirstDetailCollectionViewCell: UICollectionViewCell {
+final class FirstDetailCollectionViewCell: UICollectionViewCell {
+    
+    // MARK: - set Properties
+    
     private let productImage = UIImageView()
     private let brandNameEN = UILabel()
     private let brandNameKR = UILabel()
@@ -16,6 +19,8 @@ class FirstDetailCollectionViewCell: UICollectionViewCell {
     private let priceStackView = UIStackView()
     private let shippingLabel = UILabel()
     private let productStackView = UIStackView()
+    
+    // MARK: - Life Cycle
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -29,19 +34,15 @@ class FirstDetailCollectionViewCell: UICollectionViewCell {
         super.init(coder: coder)
     }
     
-    
-    
-    // MARK: - Set UI
+    // MARK: - set UI
     
     private func setUI() {
         brandNameKR.do {
             $0.font = .krBold(ofSize: 10.adjusted)
-            $0.textColor = .black
         }
         
         brandNameEN.do {
             $0.font = .enDisplayMedium(ofSize: 10.adjusted)
-            $0.textColor = .black
         }
         
         salePercentLabel.do {
@@ -50,7 +51,6 @@ class FirstDetailCollectionViewCell: UICollectionViewCell {
         }
         priceLabel.do {
             $0.font = .enDisplayBold(ofSize: 10.adjusted)
-            $0.textColor = .black
         }
         
         priceStackView.do {
@@ -61,24 +61,34 @@ class FirstDetailCollectionViewCell: UICollectionViewCell {
         shippingLabel.do {
             $0.text = "무료배송"
             $0.font = .krRegular(ofSize: 10.adjusted)
-            $0.textColor = .black
         }
         
         productStackView.do {
             $0.axis = .vertical
             $0.spacing = 10
         }
+        
+        [brandNameKR, brandNameEN, priceLabel, shippingLabel].forEach {
+            $0.textColor = .black
+        }
     }
     
-    // MARK: - Set Hierachy
+    // MARK: - set Hierachy
     
     private func setHierachy() {
-        priceStackView.addArrangedSubviews(salePercentLabel, priceLabel)
-        productStackView.addArrangedSubviews(productImage, brandNameKR, brandNameEN, priceStackView, shippingLabel)
+        priceStackView.addArrangedSubviews(salePercentLabel,
+                                           priceLabel)
+        
+        productStackView.addArrangedSubviews(productImage,
+                                             brandNameKR,
+                                             brandNameEN,
+                                             priceStackView,
+                                             shippingLabel)
+        
         contentView.addSubview(productStackView)
     }
     
-    // MARK: - Set Layout
+    // MARK: - set Layout
     
     private func setLayout() {
         salePercentLabel.snp.makeConstraints {
@@ -95,7 +105,6 @@ class FirstDetailCollectionViewCell: UICollectionViewCell {
         }
     }
 
-    
     func bindData(item: RecommendItem) {
         productImage.image = item.image
         brandNameEN.text = item.brandNameEN
@@ -103,5 +112,4 @@ class FirstDetailCollectionViewCell: UICollectionViewCell {
         salePercentLabel.text = item.salePercent
         priceLabel.text = item.price
     }
-    
 }

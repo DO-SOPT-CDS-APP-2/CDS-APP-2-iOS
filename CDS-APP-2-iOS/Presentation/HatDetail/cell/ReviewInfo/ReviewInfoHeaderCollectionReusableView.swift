@@ -12,7 +12,9 @@ import Then
 
 // MARK: - 리뷰 Section - StickHeader
 
-class ReviewInfoHeaderCollectionReusableView: UICollectionReusableView {
+final class ReviewInfoHeaderCollectionReusableView: UICollectionReusableView {
+    
+    // MARK: - set Properties
     
     private let productInfoLabel = UILabel()
     private let sizeLabel = UILabel()
@@ -23,6 +25,8 @@ class ReviewInfoHeaderCollectionReusableView: UICollectionReusableView {
     private let selectStackView = UIStackView()
     private let headerStackView = UIStackView()
     
+    // MARK: - Life Cycle
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
@@ -32,18 +36,17 @@ class ReviewInfoHeaderCollectionReusableView: UICollectionReusableView {
     }
     
     func configure() {
-        backgroundColor = .white
-        
         setUI()
         setHierachy()
         setLayout()
     }
     
-    // MARK: - Set UI
+    // MARK: - set UI
     
     func setUI() {
+        backgroundColor = .white
+    
         productInfoLabel.do {
-            $0.textColor = .lightGray
             $0.text = StringLiterals.HatDetail.header.productInfo
         }
         
@@ -56,12 +59,10 @@ class ReviewInfoHeaderCollectionReusableView: UICollectionReusableView {
         }
         
         sizeLabel.do {
-            $0.textColor = .lightGray
             $0.text = StringLiterals.HatDetail.header.size
         }
         
         recommendLabel.do {
-            $0.textColor = .lightGray
             $0.text = StringLiterals.HatDetail.header.recommend
         }
         
@@ -69,10 +70,10 @@ class ReviewInfoHeaderCollectionReusableView: UICollectionReusableView {
             $0.textColor = .black
             $0.text = StringLiterals.HatDetail.header.review
             $0.textAlignment = .center
+            $0.font = .krBold(ofSize: 14.adjusted)
         }
         
         inquireLabel.do {
-            $0.textColor = .lightGray
             $0.text = StringLiterals.HatDetail.header.inquire
         }
         
@@ -81,9 +82,10 @@ class ReviewInfoHeaderCollectionReusableView: UICollectionReusableView {
             $0.distribution = .equalCentering
         }
         
-        [productInfoLabel, sizeLabel, recommendLabel, reviewLabel, inquireLabel].forEach {
+        [productInfoLabel, sizeLabel, recommendLabel, inquireLabel].forEach {
             $0.sizeToFit()
             $0.font = .krBold(ofSize: 14.adjusted)
+            $0.textColor = .lightGray
         }
     }
     
@@ -91,9 +93,14 @@ class ReviewInfoHeaderCollectionReusableView: UICollectionReusableView {
     // MARK: - Set Hierachy
     
     func setHierachy() {
-        selectStackView.addArrangedSubview(reviewLabel)
-        selectStackView.addArrangedSubview(selectlineView)
-        headerStackView.addArrangedSubviews(productInfoLabel, sizeLabel, recommendLabel, selectStackView, inquireLabel)
+        selectStackView.addArrangedSubviews(reviewLabel,
+                                           selectlineView)
+        
+        headerStackView.addArrangedSubviews(productInfoLabel,
+                                            sizeLabel,
+                                            recommendLabel,
+                                            selectStackView,
+                                            inquireLabel)
 
         addSubview(headerStackView)
     }
@@ -102,7 +109,6 @@ class ReviewInfoHeaderCollectionReusableView: UICollectionReusableView {
     // MARK: - Set Layout
     
     func setLayout() {
-        
         selectlineView.snp.makeConstraints {
             $0.width.equalTo(63.adjusted)
             $0.height.equalTo(1.adjusted)

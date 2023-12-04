@@ -12,6 +12,8 @@ import Then
 
 final class HatDetailViewController: UIViewController {
     
+    // MARK: - Set Properties
+    
     private var productId: Int
     private let detailcollectionView : UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -34,18 +36,13 @@ final class HatDetailViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .background
-        
-   
-       
         fetchHatDetailData()
         
-
-        
         setupNavigationBar()
-                
         setupCollectionView()
         
         setUI()
@@ -54,24 +51,20 @@ final class HatDetailViewController: UIViewController {
         
         setDelegate()
         configureColletionView()
-        
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
         setupNavigationBar()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         setupNavigationBar()
         self.tabBarController?.tabBar.isHidden = true
     }
     
-    // MARK: - Set NavigationBar
+    // MARK: - set NavigationBar
     
     private func setupNavigationBar() {
         navigationController?.navigationBar.backgroundColor = .clear
@@ -81,8 +74,9 @@ final class HatDetailViewController: UIViewController {
         let cart = UIBarButtonItem(image: ImageLiterals.icon.icCartBlack, style: .plain, target: nil, action: nil)
         
         navigationItem.rightBarButtonItems = [cart, search, home]
-        for i in [home, search, cart] {
-            i.tintColor = .black
+        
+        [home, search, cart].forEach {
+            $0.tintColor = .black
         }
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: ImageLiterals.icon.icBack.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(popTapped))
@@ -95,15 +89,21 @@ final class HatDetailViewController: UIViewController {
         navigationController?.popViewController(animated: true)
     }
     
-    // MARK: - Set CollectionView
+    // MARK: - set CollectionView
     
     private func setupCollectionView() {
-        detailcollectionView.register(MainInfoCollectionViewCell.self, forCellWithReuseIdentifier: MainInfoCollectionViewCell.className)
-        detailcollectionView.register(ProductInfoCollectionViewCell.self, forCellWithReuseIdentifier: ProductInfoCollectionViewCell.className)
-        detailcollectionView.register(SizeInfoCollectionViewCell.self, forCellWithReuseIdentifier: SizeInfoCollectionViewCell.className)
-        detailcollectionView.register(RecommendInfoCollectionViewCell.self, forCellWithReuseIdentifier: RecommendInfoCollectionViewCell.className)
-        detailcollectionView.register(ReviewInfoCollectionViewCell.self, forCellWithReuseIdentifier: ReviewInfoCollectionViewCell.className)
-        detailcollectionView.register(InquireInfoCollectionViewCell.self, forCellWithReuseIdentifier: InquireInfoCollectionViewCell.className)
+        detailcollectionView.register(MainInfoCollectionViewCell.self,
+                                      forCellWithReuseIdentifier: MainInfoCollectionViewCell.className)
+        detailcollectionView.register(ProductInfoCollectionViewCell.self,
+                                      forCellWithReuseIdentifier: ProductInfoCollectionViewCell.className)
+        detailcollectionView.register(SizeInfoCollectionViewCell.self,
+                                      forCellWithReuseIdentifier: SizeInfoCollectionViewCell.className)
+        detailcollectionView.register(RecommendInfoCollectionViewCell.self,
+                                      forCellWithReuseIdentifier: RecommendInfoCollectionViewCell.className)
+        detailcollectionView.register(ReviewInfoCollectionViewCell.self,
+                                      forCellWithReuseIdentifier: ReviewInfoCollectionViewCell.className)
+        detailcollectionView.register(InquireInfoCollectionViewCell.self,
+                                      forCellWithReuseIdentifier: InquireInfoCollectionViewCell.className)
         
         // Header
         detailcollectionView.register(ProductInfoHeaderCollectionReusableView.self,
@@ -124,21 +124,22 @@ final class HatDetailViewController: UIViewController {
     }
     
     
-    // MARK: - Set UI
+    // MARK: - set UI
     
     private func setUI() {
         detailcollectionView.backgroundColor = .clear
-        
+        view.backgroundColor = .background
         scrollToTopButton.do {
             $0.setImage(ImageLiterals.img.imgBtnUp, for: .normal)
             $0.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
         }
     }
     
-    // MARK: - Set Hierachy
+    // MARK: - set Hierachy
     
     private func setHierachy() {
-        view.addSubviews(detailcollectionView, scrollToTopButton)
+        view.addSubviews(detailcollectionView,
+                         scrollToTopButton)
     }
     
     
@@ -157,7 +158,7 @@ final class HatDetailViewController: UIViewController {
     }
     
     
-    // MARK: - Set Delegate
+    // MARK: - set Delegate
     
     private func setDelegate() {
         detailcollectionView.delegate = self
@@ -165,13 +166,15 @@ final class HatDetailViewController: UIViewController {
     }
     
     
-    // MARK: - Set CollectionViewFlowLayout
+    // MARK: - set CollectionViewFlowLayout
     
     private func configureColletionView() {
         if let layout = detailcollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             layout.sectionHeadersPinToVisibleBounds = true
         }
     }
+    
+    // MARK: - Network
     
     func fetchHatDetailData() {
             Task {
@@ -218,8 +221,6 @@ extension HatDetailViewController: UICollectionViewDataSource {
             return 1
         case 4:
             return 1
-        case 5:
-            return 1
         default :
             return 1
         }
@@ -227,29 +228,35 @@ extension HatDetailViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.section == 0 {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainInfoCollectionViewCell.className, for: indexPath) as! MainInfoCollectionViewCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainInfoCollectionViewCell.className,
+                                                          for: indexPath) as! MainInfoCollectionViewCell
             cell.bindData(item: detailProductInfo)
             return cell
         }
         else if indexPath.section == 1 {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProductInfoCollectionViewCell.className, for: indexPath) as! ProductInfoCollectionViewCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProductInfoCollectionViewCell.className,
+                                                          for: indexPath) as! ProductInfoCollectionViewCell
             cell.bindData(item: detailProductInfo)
             return cell
         }
         else if indexPath.section == 2 {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SizeInfoCollectionViewCell.className, for: indexPath) as! SizeInfoCollectionViewCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SizeInfoCollectionViewCell.className,
+                                                          for: indexPath) as! SizeInfoCollectionViewCell
             return cell
         }
         else if indexPath.section == 3 {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecommendInfoCollectionViewCell.className, for: indexPath) as! RecommendInfoCollectionViewCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecommendInfoCollectionViewCell.className,
+                                                          for: indexPath) as! RecommendInfoCollectionViewCell
             return cell
         }
         else if indexPath.section == 4 {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ReviewInfoCollectionViewCell.className, for: indexPath) as! ReviewInfoCollectionViewCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ReviewInfoCollectionViewCell.className,
+                                                          for: indexPath) as! ReviewInfoCollectionViewCell
             return cell
         }
         else {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: InquireInfoCollectionViewCell.className, for: indexPath) as! InquireInfoCollectionViewCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: InquireInfoCollectionViewCell.className,
+                                                          for: indexPath) as! InquireInfoCollectionViewCell
             return cell
         }
     }
@@ -294,7 +301,6 @@ extension HatDetailViewController: UICollectionViewDataSource {
             else { return ReviewInfoHeaderCollectionReusableView() }
             header.configure()
             return header
-            
         default :
             return ProductInfoHeaderCollectionReusableView()
         }
@@ -311,14 +317,13 @@ extension HatDetailViewController: UICollectionViewDataSource {
             return CGSize(width: 300.adjusted, height: 45.adjusted)
         case 4 :
             return CGSize(width: 300.adjusted, height: 45.adjusted)
-        case 5 :
-            return CGSize(width: 300.adjusted, height: 45.adjusted)
         default :
-            return CGSize.zero
+            return CGSize(width: 300.adjusted, height: 45.adjusted)
         }
     }
 }
 
+// MainCollectionView의 각 Section 사이즈 지정
 extension HatDetailViewController: UICollectionViewDelegateFlowLayout, UIScrollViewDelegate {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         switch indexPath.section {
@@ -343,8 +348,8 @@ extension HatDetailViewController: UICollectionViewDelegateFlowLayout, UIScrollV
         updateHeaderView(for: scrollView, inSection: 1)
     }
     
+    // Sticky Header 
     private func updateHeaderView(for scrollView: UIScrollView, inSection section: Int) {
-        
         //헤더 가져오기
         let headerView = detailcollectionView.visibleSupplementaryViews(ofKind: UICollectionView.elementKindSectionHeader).first as? ProductInfoHeaderCollectionReusableView
         
