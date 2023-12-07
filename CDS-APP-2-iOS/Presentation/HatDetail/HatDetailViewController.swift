@@ -162,10 +162,9 @@ final class HatDetailViewController: UIViewController {
         }
         
         scrollToTopButton.snp.makeConstraints {
-            $0.bottom.equalTo(hatDetailTabbar.snp.top).offset(37.adjusted)
+            $0.bottom.equalToSuperview().inset(137.adjusted)
             $0.leading.equalTo(detailcollectionView.snp.trailing).inset(70.adjusted)
         }
-        
     }
     
     
