@@ -223,6 +223,12 @@ extension HatCategoryViewController: UICollectionViewDataSource {
             let hatDetailViewController = HatDetailViewController(forProductId: productId ?? 0)
             self.navigationController?.pushViewController(hatDetailViewController, animated: true)
         }
+        
+        // 서버 통신 안되므로 임시로 뷰 전환 연결해둠
+        if collectionView == hatCategoryMainView.realtimeBestCollectionView {
+            let hatDetailViewController = HatDetailViewController(forProductId: productId ?? 0)
+            self.navigationController?.pushViewController(hatDetailViewController, animated: true)
+        }
     }
 }
 
