@@ -48,7 +48,6 @@
 		2A2EAFE52B176A2C002D3800 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A2EAFE42B176A2C002D3800 /* NetworkError.swift */; };
 		2A2EAFEA2B1826A2002D3800 /* HeartButtonService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A2EAFE92B1826A2002D3800 /* HeartButtonService.swift */; };
 		2A2EAFEC2B182ED1002D3800 /* HeartButtonResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A2EAFEB2B182ED1002D3800 /* HeartButtonResponseDTO.swift */; };
-		2A2EAFFA2B19E932002D3800 /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 2A2EAFF92B19E932002D3800 /* Config.xcconfig */; };
 		2A5296E72B051E8400279401 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5296E62B051E8400279401 /* AppDelegate.swift */; };
 		2A5296E92B051E8400279401 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5296E82B051E8400279401 /* SceneDelegate.swift */; };
 		2A5296EB2B051E8400279401 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5296EA2B051E8400279401 /* HomeViewController.swift */; };
@@ -110,6 +109,7 @@
 		A1A8FE3E2B186373006D0C25 /* HatCategoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A8FE3D2B186373006D0C25 /* HatCategoryService.swift */; };
 		A1A8FE402B186BA0006D0C25 /* HatCategoryDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A8FE3F2B186BA0006D0C25 /* HatCategoryDTO.swift */; };
 		A1AE48F92B16CF810069859F /* DetailProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1AE48F82B16CF810069859F /* DetailProductCollectionViewCell.swift */; };
+		A1E12D1D2B2174AC005B8BDE /* HatDetailTabbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E12D1C2B2174AC005B8BDE /* HatDetailTabbarView.swift */; };
 		A1EB0FF22B15DA8A0023B8AD /* FilterCategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EB0FF12B15DA8A0023B8AD /* FilterCategoryCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -155,7 +155,6 @@
 		2A2EAFE42B176A2C002D3800 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		2A2EAFE92B1826A2002D3800 /* HeartButtonService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartButtonService.swift; sourceTree = "<group>"; };
 		2A2EAFEB2B182ED1002D3800 /* HeartButtonResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartButtonResponseDTO.swift; sourceTree = "<group>"; };
-		2A2EAFF92B19E932002D3800 /* Config.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		2A5296E32B051E8400279401 /* CDS-APP-2-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CDS-APP-2-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A5296E62B051E8400279401 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2A5296E82B051E8400279401 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -218,6 +217,8 @@
 		A1A8FE3D2B186373006D0C25 /* HatCategoryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HatCategoryService.swift; sourceTree = "<group>"; };
 		A1A8FE3F2B186BA0006D0C25 /* HatCategoryDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HatCategoryDTO.swift; sourceTree = "<group>"; };
 		A1AE48F82B16CF810069859F /* DetailProductCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailProductCollectionViewCell.swift; sourceTree = "<group>"; };
+		A1E12D1B2B21723F005B8BDE /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
+		A1E12D1C2B2174AC005B8BDE /* HatDetailTabbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HatDetailTabbarView.swift; sourceTree = "<group>"; };
 		A1EB0FF12B15DA8A0023B8AD /* FilterCategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -490,7 +491,6 @@
 		2A5296DA2B051E8400279401 = {
 			isa = PBXGroup;
 			children = (
-				2A2EAFF92B19E932002D3800 /* Config.xcconfig */,
 				2A5296E52B051E8400279401 /* CDS-APP-2-iOS */,
 				2A5296E42B051E8400279401 /* Products */,
 				835898C22B0FA61100503CD1 /* Recovered References */,
@@ -513,6 +513,7 @@
 				2A0C02082B0A5E4C005764FA /* Presentation */,
 				2A0C02072B0A5E3F005764FA /* Network */,
 				2A5296F42B051E8600279401 /* Info.plist */,
+				A1E12D1B2B21723F005B8BDE /* Config.xcconfig */,
 			);
 			path = "CDS-APP-2-iOS";
 			sourceTree = "<group>";
@@ -685,6 +686,7 @@
 			children = (
 				835898E32B0FFEFE00503CD1 /* TabbarItem.swift */,
 				835898E62B0FFF2200503CD1 /* TabbarController.swift */,
+				A1E12D1C2B2174AC005B8BDE /* HatDetailTabbarView.swift */,
 			);
 			path = Tabbar;
 			sourceTree = "<group>";
@@ -859,7 +861,6 @@
 				2A0C022B2B0A61D3005764FA /* GmarketSansTTFLight.ttf in Resources */,
 				2A5296F02B051E8600279401 /* Assets.xcassets in Resources */,
 				2A0C022A2B0A61D3005764FA /* GmarketSansTTFBold.ttf in Resources */,
-				2A2EAFFA2B19E932002D3800 /* Config.xcconfig in Resources */,
 				2A0C022D2B0A61D3005764FA /* GmarketSansTTFMedium.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -946,6 +947,7 @@
 				0583D65E2B18678E00A87981 /* UIImageView+.swift in Sources */,
 				0518361E2B11C81100D4FB81 /* HomeRecommendSmallCollectionViewCell.swift in Sources */,
 				0583D65B2B1851A100A87981 /* HomePromotionService.swift in Sources */,
+				A1E12D1D2B2174AC005B8BDE /* HatDetailTabbarView.swift in Sources */,
 				05C3D3B82B15EC4000A51903 /* HomeBrandSmallCollectionViewCell.swift in Sources */,
 				0583D6552B172CD200A87981 /* HomePopularCollectionViewCell.swift in Sources */,
 				2A0C02362B0A6B5B005764FA /* UIImage+.swift in Sources */,
@@ -986,7 +988,7 @@
 /* Begin XCBuildConfiguration section */
 		2A5296F52B051E8600279401 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2A2EAFF92B19E932002D3800 /* Config.xcconfig */;
+			baseConfigurationReference = A1E12D1B2B21723F005B8BDE /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -1047,7 +1049,7 @@
 		};
 		2A5296F62B051E8600279401 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2A2EAFF92B19E932002D3800 /* Config.xcconfig */;
+			baseConfigurationReference = A1E12D1B2B21723F005B8BDE /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;

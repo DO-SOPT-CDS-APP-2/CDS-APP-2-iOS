@@ -25,6 +25,8 @@ final class HatDetailViewController: UIViewController {
     private var detailProductData : DataClass?
     private var detailProductInfo : DataClass?
     
+    private let hatDetailTabbar = HatDetailTabbarView()
+    
     init(forProductId: Int) {
         self.productId = forProductId
         super.init(nibName: nil, bundle: nil)
@@ -138,7 +140,9 @@ final class HatDetailViewController: UIViewController {
     // MARK: - Set Hierachy
     
     private func setHierachy() {
-        view.addSubviews(detailcollectionView, scrollToTopButton)
+        view.addSubviews(detailcollectionView,
+                         scrollToTopButton, 
+                         hatDetailTabbar)
     }
     
     
@@ -147,11 +151,18 @@ final class HatDetailViewController: UIViewController {
     private func setLayout() {
         detailcollectionView.snp.makeConstraints {
             $0.top.equalToSuperview().inset(10.adjusted)
-            $0.leading.trailing.bottom.equalToSuperview()
+            $0.leading.trailing.equalToSuperview()
+            $0.bottom.equalTo(hatDetailTabbar.snp.top)
+        }
+        
+        hatDetailTabbar.snp.makeConstraints {
+            $0.bottom.equalToSuperview()
+            $0.leading.trailing.equalToSuperview()
+            $0.height.equalTo(100.adjusted)
         }
         
         scrollToTopButton.snp.makeConstraints {
-            $0.top.equalTo(detailcollectionView.snp.bottom).inset(70.adjusted)
+            $0.bottom.equalToSuperview().inset(137.adjusted)
             $0.leading.equalTo(detailcollectionView.snp.trailing).inset(70.adjusted)
         }
     }
