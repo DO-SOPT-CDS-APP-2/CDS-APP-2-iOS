@@ -46,6 +46,7 @@
 		2A0C02342B0A6681005764FA /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0C02332B0A6681005764FA /* UIColor+.swift */; };
 		2A0C02362B0A6B5B005764FA /* UIImage+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0C02352B0A6B5B005764FA /* UIImage+.swift */; };
 		2A0ED7502B3024DB00593920 /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 2A0ED74F2B3024DB00593920 /* Config.xcconfig */; };
+		2A0ED7522B302ECF00593920 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0ED7512B302ECF00593920 /* Observable.swift */; };
 		2A2EAFE52B176A2C002D3800 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A2EAFE42B176A2C002D3800 /* NetworkError.swift */; };
 		2A2EAFEA2B1826A2002D3800 /* HeartButtonService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A2EAFE92B1826A2002D3800 /* HeartButtonService.swift */; };
 		2A2EAFEC2B182ED1002D3800 /* HeartButtonResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A2EAFEB2B182ED1002D3800 /* HeartButtonResponseDTO.swift */; };
@@ -154,6 +155,7 @@
 		2A0C02332B0A6681005764FA /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		2A0C02352B0A6B5B005764FA /* UIImage+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+.swift"; sourceTree = "<group>"; };
 		2A0ED74F2B3024DB00593920 /* Config.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
+		2A0ED7512B302ECF00593920 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		2A2EAFE42B176A2C002D3800 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		2A2EAFE92B1826A2002D3800 /* HeartButtonService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartButtonService.swift; sourceTree = "<group>"; };
 		2A2EAFEB2B182ED1002D3800 /* HeartButtonResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartButtonResponseDTO.swift; sourceTree = "<group>"; };
@@ -464,6 +466,14 @@
 			path = Sevice;
 			sourceTree = "<group>";
 		};
+		2A0ED7532B302EDB00593920 /* Observable */ = {
+			isa = PBXGroup;
+			children = (
+				2A0ED7512B302ECF00593920 /* Observable.swift */,
+			);
+			path = Observable;
+			sourceTree = "<group>";
+		};
 		2A2EAFE62B182672002D3800 /* Category */ = {
 			isa = PBXGroup;
 			children = (
@@ -522,7 +532,8 @@
 		2AB7943E2B0CFD15003DFF48 /* Category */ = {
 			isa = PBXGroup;
 			children = (
-				2AB7943F2B0CFD15003DFF48 /* Dummy */,
+				2A0ED7532B302EDB00593920 /* Observable */,
+				2AB7943F2B0CFD15003DFF48 /* Model */,
 				2AB794432B0CFD15003DFF48 /* Cell */,
 				2AB794472B0CFD15003DFF48 /* View */,
 				2AB7944B2B0CFD15003DFF48 /* ViewController */,
@@ -531,14 +542,14 @@
 			path = "CDS-APP-2-iOS/Presentation/Category";
 			sourceTree = SOURCE_ROOT;
 		};
-		2AB7943F2B0CFD15003DFF48 /* Dummy */ = {
+		2AB7943F2B0CFD15003DFF48 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				2AB794412B0CFD15003DFF48 /* Category.swift */,
 				2AB794402B0CFD15003DFF48 /* CategoryList.swift */,
 				2AB794422B0CFD15003DFF48 /* CategoryDetailList.swift */,
 			);
-			path = Dummy;
+			path = Model;
 			sourceTree = "<group>";
 		};
 		2AB794432B0CFD15003DFF48 /* Cell */ = {
@@ -926,6 +937,7 @@
 				A1AE48F92B16CF810069859F /* DetailProductCollectionViewCell.swift in Sources */,
 				056F2F3B2B0DF67D00BA6ED8 /* ChipView.swift in Sources */,
 				A17FBB572B11C52F009214D9 /* RealTimeBestCollectionViewCell.swift in Sources */,
+				2A0ED7522B302ECF00593920 /* Observable.swift in Sources */,
 				2AA327D22B0C30E700732CE9 /* CALayer+.swift in Sources */,
 				832B0C7B2B16B2540042A417 /* InquireInfoHeaderCollectionReusableView.swift in Sources */,
 				A1A8FE402B186BA0006D0C25 /* HatCategoryDTO.swift in Sources */,
