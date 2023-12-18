@@ -47,6 +47,7 @@
 		2A0C02362B0A6B5B005764FA /* UIImage+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0C02352B0A6B5B005764FA /* UIImage+.swift */; };
 		2A0ED7502B3024DB00593920 /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 2A0ED74F2B3024DB00593920 /* Config.xcconfig */; };
 		2A0ED7522B302ECF00593920 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0ED7512B302ECF00593920 /* Observable.swift */; };
+		2A0ED7562B30304700593920 /* CategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0ED7552B30304700593920 /* CategoryViewModel.swift */; };
 		2A2EAFE52B176A2C002D3800 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A2EAFE42B176A2C002D3800 /* NetworkError.swift */; };
 		2A2EAFEA2B1826A2002D3800 /* HeartButtonService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A2EAFE92B1826A2002D3800 /* HeartButtonService.swift */; };
 		2A2EAFEC2B182ED1002D3800 /* HeartButtonResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A2EAFEB2B182ED1002D3800 /* HeartButtonResponseDTO.swift */; };
@@ -156,6 +157,7 @@
 		2A0C02352B0A6B5B005764FA /* UIImage+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+.swift"; sourceTree = "<group>"; };
 		2A0ED74F2B3024DB00593920 /* Config.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		2A0ED7512B302ECF00593920 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		2A0ED7552B30304700593920 /* CategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewModel.swift; sourceTree = "<group>"; };
 		2A2EAFE42B176A2C002D3800 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		2A2EAFE92B1826A2002D3800 /* HeartButtonService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartButtonService.swift; sourceTree = "<group>"; };
 		2A2EAFEB2B182ED1002D3800 /* HeartButtonResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartButtonResponseDTO.swift; sourceTree = "<group>"; };
@@ -474,6 +476,14 @@
 			path = Observable;
 			sourceTree = "<group>";
 		};
+		2A0ED7542B302FFB00593920 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2A0ED7552B30304700593920 /* CategoryViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		2A2EAFE62B182672002D3800 /* Category */ = {
 			isa = PBXGroup;
 			children = (
@@ -532,6 +542,7 @@
 		2AB7943E2B0CFD15003DFF48 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				2A0ED7542B302FFB00593920 /* ViewModel */,
 				2A0ED7532B302EDB00593920 /* Observable */,
 				2AB7943F2B0CFD15003DFF48 /* Model */,
 				2AB794432B0CFD15003DFF48 /* Cell */,
@@ -910,6 +921,7 @@
 				056F2F392B0DF1C700BA6ED8 /* UIStackView+.swift in Sources */,
 				2A0C02102B0A5EA5005764FA /* StringLiterals.swift in Sources */,
 				0583D6592B18506F00A87981 /* PromotionDataModel.swift in Sources */,
+				2A0ED7562B30304700593920 /* CategoryViewModel.swift in Sources */,
 				832B0C732B16A04F0042A417 /* InquireInfoCollectionViewCell.swift in Sources */,
 				8358989C2B0DE62100503CD1 /* ProductInfoHeaderCollectionReusableView.swift in Sources */,
 				0518362C2B1487C700D4FB81 /* HomePromotionCollectionViewCell.swift in Sources */,

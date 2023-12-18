@@ -13,15 +13,13 @@ import Then
 // MARK: - CategoryViewController
 
 final class CategoryViewController: UIViewController {
+    
+    private let viewModel = CategoryViewModel()
 
     // MARK: - Properties
 
     private let headerView = CategoryView() // View와 ViewController를 분리
-    private let headerDummy = Category.dummy()
-    
     private let contentView = CategoryTableView() // View와 ViewController를 분리
-    private let categoryListDummy = CategoryList.dummy()
-    private let categoryDetailListDummy = CategoryDetailList.dummy()
     
     // MARK: - Life Cycle
 
@@ -31,7 +29,7 @@ final class CategoryViewController: UIViewController {
         setUI()
         setHierachy()
         setLayout()
-        setDelegate()
+        bindViewModel()
         setRegister()
     }
     
@@ -40,6 +38,30 @@ final class CategoryViewController: UIViewController {
 
         self.navigationController?.navigationBar.isHidden = true
         self.tabBarController?.tabBar.isHidden = false
+    }
+    
+    private func bindViewModel() {
+        self.headerView.horizontalCollectionView.dataSource = viewModel
+        
+        self.contentView.categoryTableView.delegate = viewModel
+        self.contentView.categoryTableView.dataSource = viewModel
+        self.contentView.categoryDetailTableView.delegate = viewModel
+        self.contentView.categoryDetailTableView.dataSource = viewModel
+        
+//        self.viewModel.categoryModel.bind { [weak self] _ in
+//            guard let self else { return }
+//            self.headerView.horizontalCollectionView.reloadData()
+//        }
+//
+//        self.viewModel.categoryListModel.bind { [weak self] _ in
+//            guard let self else { return }
+//            self.contentView.categoryTableView.reloadData()
+//        }
+//
+//        self.viewModel.categoryDetailListModel.bind { [weak self] _ in
+//            guard let self else { return }
+//            self.contentView.categoryDetailTableView.reloadData()
+//        }
     }
     
     // MARK: - Set UI
@@ -80,18 +102,7 @@ final class CategoryViewController: UIViewController {
             $0.width.equalTo(261.adjusted)
         }
     }
-    
-    // MARK: - Set Delegate
 
-    private func setDelegate() {
-        headerView.horizontalCollectionView.dataSource = self
-        
-        contentView.categoryTableView.delegate = self
-        contentView.categoryTableView.dataSource = self
-        contentView.categoryDetailTableView.delegate = self
-        contentView.categoryDetailTableView.dataSource = self
-    }
-    
     // MARK: - Set Register
     
     private func setRegister() {
@@ -99,78 +110,8 @@ final class CategoryViewController: UIViewController {
         contentView.categoryTableView.register(CategoryTableViewCell.self, forCellReuseIdentifier: CategoryTableViewCell.className)
         contentView.categoryDetailTableView.register(CategoryDetailTableViewCell.self, forCellReuseIdentifier: CategoryDetailTableViewCell.className)
         
-    }
-   
-}
-
-// MARK: - UICollectionViewDataSource
-
-extension CategoryViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return headerDummy.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryHorizontalCollectionViewCell.className, for: indexPath) as? CategoryHorizontalCollectionViewCell else { return UICollectionViewCell() }
-        let category = headerDummy[indexPath.row]
-        cell.configureCell(category: category)
-        return cell
-    }
-    
-}
-
-// MARK: - UITableViewDelegate, UITableViewDataSource (각 TableView 마다 다르게 적용)
-
-extension CategoryViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if tableView == contentView.categoryTableView {
-            return categoryListDummy.count
-        } else {
-            return categoryDetailListDummy.count
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if tableView == contentView.categoryTableView {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: CategoryTableViewCell.className, for: indexPath) as? CategoryTableViewCell else { return UITableViewCell() }
-            let categoryList = categoryListDummy[indexPath.row]
-            cell.configureCell(category: categoryList, index: indexPath.row)
-            cell.selectionStyle = .none
-            return cell
-        } else {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: CategoryDetailTableViewCell.className, for: indexPath) as? CategoryDetailTableViewCell else { return UITableViewCell() }
-            let categoryDetailList = categoryDetailListDummy[indexPath.row]
-            cell.configureCell(category: categoryDetailList, index: indexPath.row)
-            cell.selectionStyle = .none
-            cell.cellDelegate = self
-            return cell
-        }
-        
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if tableView == contentView.categoryTableView {
-            return 56.adjusted
-        } else {
-            return 46.adjusted
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if tableView == contentView.categoryTableView {
-            return nil
-        } else {
-            let headerView = CategoryDetailTableHeaderView()
-            return headerView
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if tableView == contentView.categoryTableView {
-            return 0
-        } else {
-            return 178.adjusted
-        }
+        contentView.categoryTableView.tag = 1
+        contentView.categoryDetailTableView.tag = 2
     }
 }
 
