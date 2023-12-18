@@ -7,8 +7,15 @@
 
 import UIKit
 
-final class CategoryViewModel: NSObject {
-    var categoryModel: Observable<[Category]> = Observable([
+protocol CategoryViewModel: UICollectionViewDataSource, UITableViewDelegate, UITableViewDataSource {
+    var categoryModel: [Category] { get }
+    var categoryListModel: [CategoryList] { get }
+    var categoryDetailListModel: [CategoryDetailList] { get }
+    var pushViewController: Observable<Bool> { get }
+}
+
+final class ImplementCategoryViewModel: NSObject, CategoryViewModel {
+    let categoryModel = [
                         Category(image: ImageLiterals.img.imgCollect, label: "모아보기"),
                         Category(image: ImageLiterals.img.imgShowcase, label: "쇼케이스"),
                         Category(image: ImageLiterals.img.imgPT, label: "PT"),
@@ -22,9 +29,9 @@ final class CategoryViewModel: NSObject {
                         Category(image: ImageLiterals.img.imgLivingStyle, label: "리빙스타일"),
                         Category(image: ImageLiterals.img.imgWelove, label: "WELOVE"),
                         Category(image: ImageLiterals.img.imgLookBook, label: "룩북"),
-                        Category(image: ImageLiterals.img.imgSpecialOrder, label: "스페셜오더")])
+                        Category(image: ImageLiterals.img.imgSpecialOrder, label: "스페셜오더")]
     
-    var categoryListModel: Observable<[CategoryList]> = Observable([
+    let categoryListModel = [
                         CategoryList(label: "의류"),
                         CategoryList(label: "가방"),
                         CategoryList(label: "신발"),
@@ -37,9 +44,9 @@ final class CategoryViewModel: NSObject {
                         CategoryList(label: "푸드"),
                         CategoryList(label: "레저"),
                         CategoryList(label: "유아/아동"),
-                        CategoryList(label: "컬처")])
+                        CategoryList(label: "컬처")]
     
-    var categoryDetailListModel: Observable<[CategoryDetailList]> = Observable([
+     let categoryDetailListModel = [
                         CategoryDetailList(label: "전체"),
                         CategoryDetailList(label: "FOR YOU"),
                         CategoryDetailList(label: "BEST"),
@@ -58,55 +65,50 @@ final class CategoryViewModel: NSObject {
                         CategoryDetailList(label: "벨트"),
                         CategoryDetailList(label: "시계"),
                         CategoryDetailList(label: "EXCLUSIVE"),
-                        CategoryDetailList(label: "해외브랜드")])
+                        CategoryDetailList(label: "해외브랜드")]
+    
+    var pushViewController: Observable<Bool> = Observable(false)
+    
 }
 
-extension CategoryViewModel: UICollectionViewDataSource {
+extension ImplementCategoryViewModel {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return categoryModel.value.count
+        return categoryModel.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryHorizontalCollectionViewCell.className, for: indexPath) as? CategoryHorizontalCollectionViewCell else { return UICollectionViewCell() }
-        let category = categoryModel.value[indexPath.row]
+        let category = categoryModel[indexPath.row]
         cell.configureCell(category: category)
         return cell
     }
 }
 
-extension CategoryViewModel: UITableViewDelegate, UITableViewDataSource {
+extension ImplementCategoryViewModel {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView.tag == 1 {
-            return categoryListModel.value.count
+            return categoryListModel.count
         } else {
-            return categoryDetailListModel.value.count
+            return categoryDetailListModel.count
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if tableView.tag == 1 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: CategoryTableViewCell.className, for: indexPath) as? CategoryTableViewCell else { return UITableViewCell() }
-            let categoryList = categoryListModel.value[indexPath.row]
+            let categoryList = categoryListModel[indexPath.row]
             cell.configureCell(category: categoryList, index: indexPath.row)
             cell.selectionStyle = .none
             return cell
         } else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: CategoryDetailTableViewCell.className, for: indexPath) as? CategoryDetailTableViewCell else { return UITableViewCell() }
-            let categoryDetailList = categoryDetailListModel.value[indexPath.row]
+            let categoryDetailList = categoryDetailListModel[indexPath.row]
             cell.configureCell(category: categoryDetailList, index: indexPath.row)
             cell.selectionStyle = .none
-//            cell.cellDelegate = self
+            cell.cellDelegate = self
             return cell
         }
         
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if tableView.tag == 1 {
-            return 56.adjusted
-        } else {
-            return 46.adjusted
-        }
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -118,11 +120,12 @@ extension CategoryViewModel: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if tableView.tag == 1 {
-            return 0
-        } else {
-            return 178.adjusted
-        }
+}
+
+// MARK: - Delegate Protocol
+
+extension ImplementCategoryViewModel: HatButtonAction {
+    func hatButtonClicked() {
+        self.pushViewController.value = true
     }
 }

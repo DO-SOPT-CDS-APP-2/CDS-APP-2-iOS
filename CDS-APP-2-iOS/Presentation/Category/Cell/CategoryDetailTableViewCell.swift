@@ -118,5 +118,4 @@ final class CategoryDetailTableViewCell: UITableViewCell {
     private func hatButtonClicked() {
         cellDelegate?.hatButtonClicked()
     }
-    
 }

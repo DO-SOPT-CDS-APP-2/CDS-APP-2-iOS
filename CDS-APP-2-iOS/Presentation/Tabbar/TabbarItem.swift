@@ -47,7 +47,7 @@ enum TabbarItem: CaseIterable {
     var targetViewController: UIViewController? {
         switch self {
         case .home: return HomeViewController()
-        case .category: return CategoryViewController()
+        case .category: return CategoryViewController(viewModel: ImplementCategoryViewModel())
         case .search: return nil
         case .like: return nil
         case .my: return nil

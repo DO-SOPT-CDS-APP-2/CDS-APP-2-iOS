@@ -14,7 +14,7 @@ import Then
 
 final class CategoryViewController: UIViewController {
     
-    private let viewModel = CategoryViewModel()
+    private let viewModel: CategoryViewModel?
 
     // MARK: - Properties
 
@@ -22,7 +22,16 @@ final class CategoryViewController: UIViewController {
     private let contentView = CategoryTableView() // View와 ViewController를 분리
     
     // MARK: - Life Cycle
-
+    
+    init(viewModel: CategoryViewModel){
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -42,26 +51,18 @@ final class CategoryViewController: UIViewController {
     
     private func bindViewModel() {
         self.headerView.horizontalCollectionView.dataSource = viewModel
-        
         self.contentView.categoryTableView.delegate = viewModel
         self.contentView.categoryTableView.dataSource = viewModel
         self.contentView.categoryDetailTableView.delegate = viewModel
         self.contentView.categoryDetailTableView.dataSource = viewModel
         
-//        self.viewModel.categoryModel.bind { [weak self] _ in
-//            guard let self else { return }
-//            self.headerView.horizontalCollectionView.reloadData()
-//        }
-//
-//        self.viewModel.categoryListModel.bind { [weak self] _ in
-//            guard let self else { return }
-//            self.contentView.categoryTableView.reloadData()
-//        }
-//
-//        self.viewModel.categoryDetailListModel.bind { [weak self] _ in
-//            guard let self else { return }
-//            self.contentView.categoryDetailTableView.reloadData()
-//        }
+        self.viewModel?.pushViewController.bind { [weak self] _ in
+            guard let self else { return }
+            if self.viewModel?.pushViewController.value == true {
+                let viewController = HatCategoryViewController()
+                self.navigationController?.pushViewController(viewController, animated: true)
+            }
+        }
     }
     
     // MARK: - Set UI
@@ -112,14 +113,5 @@ final class CategoryViewController: UIViewController {
         
         contentView.categoryTableView.tag = 1
         contentView.categoryDetailTableView.tag = 2
-    }
-}
-
-// MARK: - Delegate Protocol
-
-extension CategoryViewController: HatButtonAction {
-    func hatButtonClicked() {
-        let viewController = HatCategoryViewController()
-        self.navigationController?.pushViewController(viewController, animated: true)
     }
 }
