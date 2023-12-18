@@ -542,12 +542,12 @@
 		2AB7943E2B0CFD15003DFF48 /* Category */ = {
 			isa = PBXGroup;
 			children = (
-				2A0ED7542B302FFB00593920 /* ViewModel */,
 				2A0ED7532B302EDB00593920 /* Observable */,
 				2AB7943F2B0CFD15003DFF48 /* Model */,
 				2AB794432B0CFD15003DFF48 /* Cell */,
 				2AB794472B0CFD15003DFF48 /* View */,
 				2AB7944B2B0CFD15003DFF48 /* ViewController */,
+				2A0ED7542B302FFB00593920 /* ViewModel */,
 			);
 			name = Category;
 			path = "CDS-APP-2-iOS/Presentation/Category";

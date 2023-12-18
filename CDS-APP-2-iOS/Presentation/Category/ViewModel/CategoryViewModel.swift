@@ -7,7 +7,9 @@
 
 import UIKit
 
-protocol CategoryViewModel: UICollectionViewDataSource, UITableViewDelegate, UITableViewDataSource {
+typealias UIDataSourceDelegate = UICollectionViewDataSource & UITableViewDelegate & UITableViewDataSource
+
+protocol CategoryViewModel: UIDataSourceDelegate {
     var categoryModel: [Category] { get }
     var categoryListModel: [CategoryList] { get }
     var categoryDetailListModel: [CategoryDetailList] { get }
