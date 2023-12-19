@@ -12,6 +12,17 @@ import Then
 
 final class HatCategoryViewController: UIViewController {
     
+    private let networkProvider: HeartButtonServiceType
+    
+    init(networkProvider: HeartButtonServiceType) {
+        self.networkProvider = networkProvider
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     // MARK: - Properties
     
     private let headerCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout())
@@ -285,7 +296,7 @@ extension HatCategoryViewController {
         Task {
             do {
                 let memberId = 1
-                if let result = try await HeartButtonService.shared.putDataTransferObject(memberId: memberId, productId: index + 1) {
+                if let result = try await networkProvider.putDataTransferObject(memberId: memberId, productId: index + 1) {
                     print(result.data.isMade)
                 }
             } catch {
