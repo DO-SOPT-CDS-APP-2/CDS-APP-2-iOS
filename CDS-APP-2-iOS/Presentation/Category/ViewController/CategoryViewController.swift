@@ -14,7 +14,7 @@ import Then
 
 final class CategoryViewController: UIViewController {
     
-    private let viewModel: CategoryViewModel?
+    private let viewModel: ImplementCategoryViewModel
 
     // MARK: - Properties
 
@@ -23,7 +23,7 @@ final class CategoryViewController: UIViewController {
     
     // MARK: - Life Cycle
     
-    init(viewModel: CategoryViewModel){
+    init(viewModel: ImplementCategoryViewModel){
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -38,7 +38,7 @@ final class CategoryViewController: UIViewController {
         setUI()
         setHierachy()
         setLayout()
-        bindViewModel()
+        setDelegate()
         setRegister()
     }
     
@@ -47,22 +47,6 @@ final class CategoryViewController: UIViewController {
 
         self.navigationController?.navigationBar.isHidden = true
         self.tabBarController?.tabBar.isHidden = false
-    }
-    
-    private func bindViewModel() {
-        self.headerView.horizontalCollectionView.dataSource = viewModel
-        self.contentView.categoryTableView.delegate = viewModel
-        self.contentView.categoryTableView.dataSource = viewModel
-        self.contentView.categoryDetailTableView.delegate = viewModel
-        self.contentView.categoryDetailTableView.dataSource = viewModel
-        
-        self.viewModel?.pushViewController.bind { [weak self] _ in
-            guard let self else { return }
-            if self.viewModel?.pushViewController.value == true {
-                let viewController = HatCategoryViewController()
-                self.navigationController?.pushViewController(viewController, animated: true)
-            }
-        }
     }
     
     // MARK: - Set UI
@@ -103,6 +87,16 @@ final class CategoryViewController: UIViewController {
             $0.width.equalTo(261.adjusted)
         }
     }
+    
+    // MARK: - Set Delegate
+    
+    private func setDelegate() {
+        self.headerView.horizontalCollectionView.dataSource = self
+        self.contentView.categoryTableView.delegate = self
+        self.contentView.categoryTableView.dataSource = self
+        self.contentView.categoryDetailTableView.delegate = self
+        self.contentView.categoryDetailTableView.dataSource = self
+    }
 
     // MARK: - Set Register
     
@@ -113,5 +107,65 @@ final class CategoryViewController: UIViewController {
         
         contentView.categoryTableView.tag = 1
         contentView.categoryDetailTableView.tag = 2
+    }
+}
+
+
+extension CategoryViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return viewModel.categoryModel.value.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryHorizontalCollectionViewCell.className, for: indexPath) as? CategoryHorizontalCollectionViewCell else { return UICollectionViewCell() }
+        let category = viewModel.categoryModel.value[indexPath.row]
+        cell.configureCell(category: category)
+        return cell
+    }
+}
+
+extension CategoryViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if tableView.tag == 1 {
+            return viewModel.categoryListModel.value.count
+        } else {
+            return viewModel.categoryDetailListModel.value.count
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if tableView.tag == 1 {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: CategoryTableViewCell.className, for: indexPath) as? CategoryTableViewCell else { return UITableViewCell() }
+            let categoryList = viewModel.categoryListModel.value[indexPath.row]
+            cell.configureCell(category: categoryList, index: indexPath.row)
+            cell.selectionStyle = .none
+            return cell
+        } else {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: CategoryDetailTableViewCell.className, for: indexPath) as? CategoryDetailTableViewCell else { return UITableViewCell() }
+            let categoryDetailList = viewModel.categoryDetailListModel.value[indexPath.row]
+            cell.configureCell(category: categoryDetailList, index: indexPath.row)
+            cell.selectionStyle = .none
+            cell.cellDelegate = self
+            return cell
+        }
+        
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if tableView.tag == 1 {
+            return nil
+        } else {
+            let headerView = CategoryDetailTableHeaderView()
+            return headerView
+        }
+    }
+}
+
+// MARK: - Delegate Protocol
+
+extension CategoryViewController: HatButtonAction {
+    func hatButtonClicked() {
+        let viewController = HatCategoryViewController()
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
 }
