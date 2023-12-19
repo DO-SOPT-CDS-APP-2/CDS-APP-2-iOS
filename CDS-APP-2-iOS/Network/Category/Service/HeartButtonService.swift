@@ -7,9 +7,13 @@
 
 import Foundation
 
-class HeartButtonService {
-    static let shared = HeartButtonService()
-    private init() {}
+protocol HeartButtonServiceType {
+    func makeRequestURL(memberId: Int, productId: Int) -> URLRequest
+    func putDataTransferObject(memberId: Int, productId: Int) async throws -> HeartButtonResponseDTO?
+    func parseHeartButtonData(data: Data) -> HeartButtonResponseDTO?
+}
+
+final class HeartButtonService: HeartButtonServiceType {
     
     func makeRequestURL(memberId: Int, productId: Int) -> URLRequest {
 
@@ -58,7 +62,7 @@ class HeartButtonService {
         
     }
     
-    private func parseHeartButtonData(data: Data) -> HeartButtonResponseDTO? {
+    func parseHeartButtonData(data: Data) -> HeartButtonResponseDTO? {
         do {
             let jsonDecoder = JSONDecoder()
             let result = try jsonDecoder.decode(HeartButtonResponseDTO.self, from: data)

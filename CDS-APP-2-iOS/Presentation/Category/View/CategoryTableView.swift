@@ -49,6 +49,8 @@ final class CategoryTableView: UIView {
             $0.backgroundColor = .background
             $0.isUserInteractionEnabled = true
             $0.showsVerticalScrollIndicator = false
+            $0.rowHeight = 56.adjusted
+            $0.contentInset = UIEdgeInsets(top: -15, left: 0, bottom: -15, right: 0)
         }
         
         categoryDetailTableView.do {
@@ -56,6 +58,8 @@ final class CategoryTableView: UIView {
             $0.backgroundColor = .white
             $0.isUserInteractionEnabled = true
             $0.showsVerticalScrollIndicator = false
+            $0.rowHeight = 46.adjusted
+            $0.sectionHeaderHeight = 178.adjusted
         }
         
     }

@@ -13,18 +13,25 @@ import Then
 // MARK: - CategoryViewController
 
 final class CategoryViewController: UIViewController {
+    
+    private let viewModel: ImplementCategoryViewModel
 
     // MARK: - Properties
 
     private let headerView = CategoryView() // View와 ViewController를 분리
-    private let headerDummy = Category.dummy()
-    
     private let contentView = CategoryTableView() // View와 ViewController를 분리
-    private let categoryListDummy = CategoryList.dummy()
-    private let categoryDetailListDummy = CategoryDetailList.dummy()
     
     // MARK: - Life Cycle
-
+    
+    init(viewModel: ImplementCategoryViewModel){
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -82,16 +89,15 @@ final class CategoryViewController: UIViewController {
     }
     
     // MARK: - Set Delegate
-
-    private func setDelegate() {
-        headerView.horizontalCollectionView.dataSource = self
-        
-        contentView.categoryTableView.delegate = self
-        contentView.categoryTableView.dataSource = self
-        contentView.categoryDetailTableView.delegate = self
-        contentView.categoryDetailTableView.dataSource = self
-    }
     
+    private func setDelegate() {
+        self.headerView.horizontalCollectionView.dataSource = self
+        self.contentView.categoryTableView.delegate = self
+        self.contentView.categoryTableView.dataSource = self
+        self.contentView.categoryDetailTableView.delegate = self
+        self.contentView.categoryDetailTableView.dataSource = self
+    }
+
     // MARK: - Set Register
     
     private func setRegister() {
@@ -99,47 +105,44 @@ final class CategoryViewController: UIViewController {
         contentView.categoryTableView.register(CategoryTableViewCell.self, forCellReuseIdentifier: CategoryTableViewCell.className)
         contentView.categoryDetailTableView.register(CategoryDetailTableViewCell.self, forCellReuseIdentifier: CategoryDetailTableViewCell.className)
         
+        contentView.categoryTableView.tag = 1
+        contentView.categoryDetailTableView.tag = 2
     }
-   
 }
 
-// MARK: - UICollectionViewDataSource
 
 extension CategoryViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return headerDummy.count
+        return viewModel.categoryModel.value.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryHorizontalCollectionViewCell.className, for: indexPath) as? CategoryHorizontalCollectionViewCell else { return UICollectionViewCell() }
-        let category = headerDummy[indexPath.row]
+        let category = viewModel.categoryModel.value[indexPath.row]
         cell.configureCell(category: category)
         return cell
     }
-    
 }
-
-// MARK: - UITableViewDelegate, UITableViewDataSource (각 TableView 마다 다르게 적용)
 
 extension CategoryViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if tableView == contentView.categoryTableView {
-            return categoryListDummy.count
+        if tableView.tag == 1 {
+            return viewModel.categoryListModel.value.count
         } else {
-            return categoryDetailListDummy.count
+            return viewModel.categoryDetailListModel.value.count
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if tableView == contentView.categoryTableView {
+        if tableView.tag == 1 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: CategoryTableViewCell.className, for: indexPath) as? CategoryTableViewCell else { return UITableViewCell() }
-            let categoryList = categoryListDummy[indexPath.row]
+            let categoryList = viewModel.categoryListModel.value[indexPath.row]
             cell.configureCell(category: categoryList, index: indexPath.row)
             cell.selectionStyle = .none
             return cell
         } else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: CategoryDetailTableViewCell.className, for: indexPath) as? CategoryDetailTableViewCell else { return UITableViewCell() }
-            let categoryDetailList = categoryDetailListDummy[indexPath.row]
+            let categoryDetailList = viewModel.categoryDetailListModel.value[indexPath.row]
             cell.configureCell(category: categoryDetailList, index: indexPath.row)
             cell.selectionStyle = .none
             cell.cellDelegate = self
@@ -148,28 +151,12 @@ extension CategoryViewController: UITableViewDelegate, UITableViewDataSource {
         
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if tableView == contentView.categoryTableView {
-            return 56.adjusted
-        } else {
-            return 46.adjusted
-        }
-    }
-    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if tableView == contentView.categoryTableView {
+        if tableView.tag == 1 {
             return nil
         } else {
             let headerView = CategoryDetailTableHeaderView()
             return headerView
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if tableView == contentView.categoryTableView {
-            return 0
-        } else {
-            return 178.adjusted
         }
     }
 }
@@ -178,7 +165,7 @@ extension CategoryViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension CategoryViewController: HatButtonAction {
     func hatButtonClicked() {
-        let viewController = HatCategoryViewController()
+        let viewController = HatCategoryViewController(networkProvider: HeartButtonService())
         self.navigationController?.pushViewController(viewController, animated: true)
     }
 }
